@@ -6,8 +6,8 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "sw
 const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Vertex Design System",
-  description: "The visual language and reusable interface patterns for Vertex.",
+  title: "Vertex — Intelligent Learning",
+  description: "Search your learning in plain English and find the exact lesson you need.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
