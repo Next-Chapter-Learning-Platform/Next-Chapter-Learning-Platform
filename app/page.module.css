@@ -75,23 +75,48 @@
   cursor: pointer;
 }
 
-.accountActions button:first-child {
+.notificationButton {
   width: 38px;
   height: 44px;
 }
 
-.avatarButton {
+.authTextButton {
+  min-height: 40px;
+  padding: 0 17px !important;
+  border: 1px solid #e7dcd4 !important;
+  border-radius: 999px;
+  background: #fffdfb !important;
+  color: #111417 !important;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.authTextButton:hover {
+  border-color: #f04b16 !important;
+  color: #f04b16 !important;
+  transform: translateY(-1px);
+}
+
+.signUpButton {
+  border-color: #111417 !important;
+  background: #111417 !important;
+  color: #fffdfb !important;
+}
+
+.signUpButton:hover {
+  border-color: #f04b16 !important;
+  background: #f04b16 !important;
+  color: #fffdfb !important;
+}
+
+.userAvatar {
   width: 52px;
   height: 52px;
   overflow: hidden;
-  border: 1px solid #e7dcd4 !important;
+  border: 1px solid #e7dcd4;
   border-radius: 50%;
-}
-
-.avatar {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 .hero {
@@ -497,9 +522,15 @@
     gap: 10px;
   }
 
-  .avatarButton {
+  .userAvatar {
     width: 43px;
     height: 43px;
+  }
+
+  .authTextButton {
+    min-height: 38px;
+    padding-inline: 13px !important;
+    font-size: 13px;
   }
 
   .hero {
