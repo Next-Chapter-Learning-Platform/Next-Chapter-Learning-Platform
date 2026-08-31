@@ -1,3 +1,4 @@
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import type { ReactNode } from "react";
 import styles from "./page.module.css";
 
@@ -40,27 +41,6 @@ function VertexMark({ size = 38 }: { size?: number }) {
       <path d="M2 5h36L20 37 2 5Z" fill="#f04b16" />
       <path d="M11 10h18l-9 16-9-16Z" fill="#fffdfb" />
       <path d="M15 10h10l-5 9-5-9Z" fill="#f04b16" />
-    </svg>
-  );
-}
-
-function Avatar() {
-  return (
-    <svg className={styles.avatar} viewBox="0 0 52 52" role="img" aria-label="Open your profile">
-      <defs>
-        <linearGradient id="avatar-bg" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stopColor="#eee3db" />
-          <stop offset="1" stopColor="#d9c6b8" />
-        </linearGradient>
-      </defs>
-      <circle cx="26" cy="26" r="26" fill="url(#avatar-bg)" />
-      <path d="M14 52c1-11 7-17 12-17s12 5 14 17" fill="#15181d" />
-      <path d="M18 24c0-10 4-16 10-16 7 0 11 6 11 16v12c-4-3-7-5-12-5-4 0-7 1-10 4z" fill="#2b201c" />
-      <ellipse cx="27" cy="23" rx="8" ry="11" fill="#e9a982" />
-      <path d="M20 19c1-7 4-10 8-10 6 0 9 5 10 12-4-1-7-5-8-8-2 4-5 6-10 7" fill="#3b2923" />
-      <path d="M25 25c1 1 3 1 4 0" stroke="#a75e45" strokeWidth=".8" fill="none" strokeLinecap="round" />
-      <circle cx="24" cy="22" r=".7" fill="#3b2923" />
-      <circle cx="30" cy="22" r=".7" fill="#3b2923" />
     </svg>
   );
 }
@@ -159,8 +139,22 @@ export default function Home() {
               <a href="#my-learning">My Learning</a>
             </div>
             <div className={styles.accountActions}>
-              <button type="button" aria-label="View notifications"><Icon name="bell" size={25} /></button>
-              <button type="button" className={styles.avatarButton} aria-label="Open your profile"><Avatar /></button>
+              <Show when="signed-out">
+                <SignInButton>
+                  <button type="button" className={styles.authTextButton}>Sign in</button>
+                </SignInButton>
+                <SignUpButton>
+                  <button type="button" className={`${styles.authTextButton} ${styles.signUpButton}`}>Sign up</button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <button type="button" className={styles.notificationButton} aria-label="View notifications">
+                  <Icon name="bell" size={25} />
+                </button>
+                <UserButton
+                  appearance={{ elements: { avatarBox: styles.userAvatar } }}
+                />
+              </Show>
             </div>
           </nav>
         </header>

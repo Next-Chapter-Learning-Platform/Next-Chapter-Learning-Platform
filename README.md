@@ -17,7 +17,7 @@
     
   </div>
 
-  <h3 align="center">Vertex | AI-Powered Learning Platform</h3>
+  <h3 align="center">Next Chapter | AI-Powered Learning Platform</h3>
 
    <!-- <div align="center">
      Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/watch?v=XUkNR-JfHwo" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
@@ -30,7 +30,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🔗 [Assets](#links)
+<!-- 5. 🔗 [Assets](#links) -->
 <!-- 6. 🚀 [More](#more) -->
 
 <!-- ## 🚨 Tutorial -->
@@ -47,9 +47,8 @@ Vertex is a production-ready full-stack learning platform designed to revolution
 
 Beyond its end-user functionality, Vertex showcases a structured agentic engineering workflow. By utilizing custom agent skills, project rules, and context files, developers can stay in control as architects while leveraging AI coding assistants to build complex features with security, speed, and scalability.
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **50k+** members. It's a place where people help each other out.
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+<!-- <a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a> -->
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -149,13 +148,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-## <a name="links">🔗 Assets</a>
+<!-- ## <a name="links">🔗 Assets</a>
 
 Assets and snippets used in the project can be found in the **[video kit](https://jsmastery.com/video-kit/bb6b2872-494c-4420-9a04-60e99dbb12af)**.
 
 <a href="https://jsmastery.com/video-kit/bb6b2872-494c-4420-9a04-60e99dbb12af" target="_blank">
   <img src="public/readme/readme-videokit.webp" alt="Video Kit Banner">
-</a>
+</a> -->
 
 <!-- ## <a name="more">🚀 More</a> -->
 
