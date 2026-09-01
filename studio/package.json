@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "sanity dev",
     "build": "sanity build",
-    "typegen": "sanity schemas extract --force --enforce-required-fields && sanity typegen generate",
+    "typegen": "sanity schemas extract --enforce-required-fields && sanity typegen generate",
     "deploy": "sanity deploy --schema-required",
     "deploy-schema": "sanity schema deploy"
   },

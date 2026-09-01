@@ -4,7 +4,7 @@ import type {QueryParams} from 'next-sanity'
 
 import {client} from './client'
 
-type SanityFetchOptions<Result> = {
+type SanityFetchOptions = {
   query: string
   params?: QueryParams
   tags?: string[]
@@ -16,7 +16,7 @@ export async function sanityFetch<Result>({
   params = {},
   tags = [],
   revalidate = 300,
-}: SanityFetchOptions<Result>): Promise<Result> {
+}: SanityFetchOptions): Promise<Result> {
   return client.fetch<Result>(query, params, {
     next: {revalidate, tags},
   })

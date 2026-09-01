@@ -4,6 +4,9 @@ import {dataset, projectId} from './env'
 
 export default defineCliConfig({
   api: {projectId, dataset},
+  deployment: {
+    appId: 'xgx17gg4sl45r2lb1zpohxfg',
+  },
   schemaExtraction: {
     enabled: true,
     path: 'schema.json',

@@ -55,7 +55,14 @@ export async function getLessonBySlug(slug: string) {
   )
   const moduleNumber = moduleIndex + 1
   const lessonNumber = lessonIndex + 1
-  const {modules: _modules, ...courseSummary} = parentCourse
+  const courseSummary = {
+    _id: parentCourse._id,
+    title: parentCourse.title,
+    slug: parentCourse.slug,
+    coverImage: parentCourse.coverImage,
+    category: parentCourse.category,
+    instructor: parentCourse.instructor,
+  }
 
   return {
     ...lesson,
