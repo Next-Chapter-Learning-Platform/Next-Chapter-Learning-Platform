@@ -8,16 +8,20 @@ export const learningOutcome = defineType({
     defineField({
       name: 'icon',
       title: 'Icon',
-      type: 'image',
-      options: {hotspot: true},
-      fields: [
-        defineField({
-          name: 'alt',
-          title: 'Alternative text',
-          type: 'string',
-          validation: (Rule) => Rule.required().max(120),
-        }),
-      ],
+      type: 'string',
+      description: 'Semantic icon key rendered by the Vertex interface.',
+      options: {
+        list: [
+          {title: 'Code', value: 'code'},
+          {title: 'Gauge', value: 'gauge'},
+          {title: 'Layers', value: 'layers'},
+          {title: 'Puzzle', value: 'puzzle'},
+          {title: 'Rocket', value: 'rocket'},
+          {title: 'Shield', value: 'shield'},
+          {title: 'Sparkles', value: 'sparkles'},
+          {title: 'Workflow', value: 'workflow'},
+        ],
+      },
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -35,6 +39,6 @@ export const learningOutcome = defineType({
     }),
   ],
   preview: {
-    select: {title: 'title', subtitle: 'description', media: 'icon'},
+    select: {title: 'title', subtitle: 'description'},
   },
 })

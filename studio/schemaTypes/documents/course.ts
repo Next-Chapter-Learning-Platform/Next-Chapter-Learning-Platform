@@ -66,12 +66,13 @@ export const course = defineType({
     defineField({
       name: 'price',
       title: 'Price',
-      type: 'coursePrice',
+      type: 'number',
       group: 'details',
-      validation: (Rule) => Rule.required(),
+      description: 'Price in US dollars. Use 0 for a free course.',
+      validation: (Rule) => Rule.required().min(0).precision(2),
     }),
     defineField({
-      name: 'isPopular',
+      name: 'popular',
       title: 'Popular course',
       type: 'boolean',
       group: 'details',

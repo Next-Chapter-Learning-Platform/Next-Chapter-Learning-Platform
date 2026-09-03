@@ -1,7 +1,7 @@
 import {defineQuery} from 'next-sanity'
 
 export const COURSES_QUERY = defineQuery(`
-  *[_type == "course"] | order(isPopular desc, title asc) {
+  *[_type == "course"] | order(popular desc, title asc) {
     _id,
     title,
     "slug": slug.current,
@@ -13,11 +13,8 @@ export const COURSES_QUERY = defineQuery(`
       hotspot
     },
     level,
-    price {
-      amount,
-      currency
-    },
-    isPopular,
+    price,
+    popular,
     studentCount,
     "category": category-> {
       _id,
@@ -38,7 +35,7 @@ export const COURSES_QUERY = defineQuery(`
     },
     "moduleCount": count(modules),
     "lessonCount": count(modules[].lessons[]),
-    "durationSeconds": math::sum(modules[].lessons[]->durationSeconds)
+    "duration": math::sum(modules[].lessons[]->duration)
   }
 `)
 
@@ -55,22 +52,14 @@ export const COURSE_BY_SLUG_QUERY = defineQuery(`
       hotspot
     },
     level,
-    price {
-      amount,
-      currency
-    },
-    isPopular,
+    price,
+    popular,
     studentCount,
     learningOutcomes[] {
       _key,
       title,
       description,
-      icon {
-        asset,
-        alt,
-        crop,
-        hotspot
-      }
+      icon
     },
     "category": category-> {
       _id,
@@ -106,8 +95,8 @@ export const COURSE_BY_SLUG_QUERY = defineQuery(`
             crop,
             hotspot
           },
-          durationSeconds,
-          isFreePreview,
+          duration,
+          freePreview,
           studentCount,
           keyPoints
         }
