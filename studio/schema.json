@@ -224,12 +224,11 @@
       "price": {
         "type": "objectAttribute",
         "value": {
-          "type": "inline",
-          "name": "coursePrice"
+          "type": "number"
         },
         "optional": true
       },
-      "isPopular": {
+      "popular": {
         "type": "objectAttribute",
         "value": {
           "type": "boolean"
@@ -302,36 +301,6 @@
           }
         },
         "optional": true
-      }
-    }
-  },
-  {
-    "name": "coursePrice",
-    "type": "type",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "coursePrice"
-          }
-        },
-        "amount": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "number"
-          },
-          "optional": true
-        },
-        "currency": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          },
-          "optional": true
-        }
       }
     }
   },
@@ -564,14 +533,14 @@
         },
         "optional": true
       },
-      "durationSeconds": {
+      "duration": {
         "type": "objectAttribute",
         "value": {
           "type": "number"
         },
         "optional": true
       },
-      "isFreePreview": {
+      "freePreview": {
         "type": "objectAttribute",
         "value": {
           "type": "boolean"
@@ -626,7 +595,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "lessonResource"
+              "name": "resource"
             }
           }
         },
@@ -1070,7 +1039,7 @@
     }
   },
   {
-    "name": "lessonResource",
+    "name": "resource",
     "type": "type",
     "value": {
       "type": "object",
@@ -1079,7 +1048,7 @@
           "type": "objectAttribute",
           "value": {
             "type": "string",
-            "value": "lessonResource"
+            "value": "resource"
           }
         },
         "type": {
@@ -1147,54 +1116,41 @@
         "icon": {
           "type": "objectAttribute",
           "value": {
-            "type": "object",
-            "attributes": {
-              "asset": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageAsset.reference"
-                },
-                "optional": true
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "code"
               },
-              "media": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "unknown"
-                },
-                "optional": true
+              {
+                "type": "string",
+                "value": "gauge"
               },
-              "hotspot": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageHotspot"
-                },
-                "optional": true
+              {
+                "type": "string",
+                "value": "layers"
               },
-              "crop": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "inline",
-                  "name": "sanity.imageCrop"
-                },
-                "optional": true
+              {
+                "type": "string",
+                "value": "puzzle"
               },
-              "alt": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                },
-                "optional": true
+              {
+                "type": "string",
+                "value": "rocket"
               },
-              "_type": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string",
-                  "value": "image"
-                }
+              {
+                "type": "string",
+                "value": "shield"
+              },
+              {
+                "type": "string",
+                "value": "sparkles"
+              },
+              {
+                "type": "string",
+                "value": "workflow"
               }
-            }
+            ]
           },
           "optional": true
         },

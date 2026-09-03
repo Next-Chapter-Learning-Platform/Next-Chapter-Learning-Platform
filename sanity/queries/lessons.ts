@@ -12,8 +12,8 @@ export const LESSON_BY_SLUG_QUERY = defineQuery(`
       crop,
       hotspot
     },
-    durationSeconds,
-    isFreePreview,
+    duration,
+    freePreview,
     studentCount,
     notes,
     keyPoints,
@@ -65,8 +65,8 @@ export const COURSE_FOR_LESSON_QUERY = defineQuery(`
         "_id": @->_id,
         "title": @->title,
         "slug": @->slug.current,
-        "durationSeconds": @->durationSeconds,
-        "isFreePreview": @->isFreePreview
+        "duration": @->duration,
+        "freePreview": @->freePreview
       }
     }
   }

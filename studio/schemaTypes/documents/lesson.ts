@@ -50,14 +50,14 @@ export const lesson = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'durationSeconds',
+      name: 'duration',
       title: 'Duration (seconds)',
       type: 'number',
       description: 'Whole seconds; used later by playback and progress features.',
       validation: (Rule) => Rule.required().integer().min(0),
     }),
     defineField({
-      name: 'isFreePreview',
+      name: 'freePreview',
       title: 'Free preview',
       type: 'boolean',
       initialValue: false,
@@ -99,12 +99,12 @@ export const lesson = defineType({
       name: 'resources',
       title: 'Resources',
       type: 'array',
-      of: [defineArrayMember({type: 'lessonResource'})],
+      of: [defineArrayMember({type: 'resource'})],
       validation: (Rule) => Rule.max(12),
     }),
   ],
   preview: {
-    select: {title: 'title', duration: 'durationSeconds', media: 'thumbnail'},
+    select: {title: 'title', duration: 'duration', media: 'thumbnail'},
     prepare({title, duration, media}) {
       return {title, subtitle: formatDuration(duration), media}
     },

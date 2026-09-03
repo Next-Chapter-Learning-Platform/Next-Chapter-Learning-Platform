@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-09-01T08:16:54.597Z",
+  "createdAt": "2026-09-02T09:10:47.645Z",
   "studioVersion": "5.31.2",
   "version": 3,
   "workspaces": [
@@ -13,7 +13,7 @@
       },
       "name": "vertex",
       "projectId": "yvdbypvw",
-      "schema": "832e0d33.create-schema.json",
+      "schema": "75862b3b.create-schema.json",
       "title": "Vertex Content Studio",
       "tools": "ef87c8fe.create-tools.json"
     }

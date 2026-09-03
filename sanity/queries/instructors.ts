@@ -25,11 +25,8 @@ export const INSTRUCTOR_BY_SLUG_QUERY = defineQuery(`
         hotspot
       },
       level,
-      price {
-        amount,
-        currency
-      },
-      isPopular,
+      price,
+      popular,
       studentCount,
       "category": category-> {
         _id,
@@ -38,7 +35,7 @@ export const INSTRUCTOR_BY_SLUG_QUERY = defineQuery(`
       },
       "moduleCount": count(modules),
       "lessonCount": count(modules[].lessons[]),
-      "durationSeconds": math::sum(modules[].lessons[]->durationSeconds)
+      "duration": math::sum(modules[].lessons[]->duration)
     }
   }
 `)
