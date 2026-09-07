@@ -1,5 +1,24 @@
 import {defineQuery} from 'next-sanity'
 
+export const HOMEPAGE_COURSES_QUERY = defineQuery(`
+  *[_type == "course" && defined(slug.current)]
+  | order(popular desc, title asc)[0...3] {
+    _id,
+    title,
+    "slug": slug.current,
+    summary,
+    coverImage {
+      asset,
+      alt,
+      crop,
+      hotspot
+    },
+    level,
+    "moduleCount": count(modules),
+    "duration": math::sum(modules[].lessons[]->duration)
+  }
+`)
+
 export const COURSES_QUERY = defineQuery(`
   *[_type == "course"] | order(popular desc, title asc) {
     _id,

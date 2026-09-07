@@ -4,6 +4,7 @@ import type {
   COURSE_BY_SLUG_QUERY_RESULT,
   COURSE_SLUGS_QUERY_RESULT,
   COURSES_QUERY_RESULT,
+  HOMEPAGE_COURSES_QUERY_RESULT,
 } from '@/sanity.types'
 
 import {sanityCacheTags} from '../lib/cache-tags'
@@ -12,7 +13,15 @@ import {
   COURSE_BY_SLUG_QUERY,
   COURSE_SLUGS_QUERY,
   COURSES_QUERY,
+  HOMEPAGE_COURSES_QUERY,
 } from '../queries/courses'
+
+export function getHomepageCourses() {
+  return sanityFetch<HOMEPAGE_COURSES_QUERY_RESULT>({
+    query: HOMEPAGE_COURSES_QUERY,
+    tags: [sanityCacheTags.courses, sanityCacheTags.lessons],
+  })
+}
 
 export function getCourses() {
   return sanityFetch<COURSES_QUERY_RESULT>({
