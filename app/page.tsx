@@ -1,5 +1,11 @@
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import type { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+import type { HOMEPAGE_COURSES_QUERY_RESULT } from "@/sanity.types";
+import { getHomepageCourses } from "@/sanity/data/courses";
+import { urlFor } from "@/sanity/lib/image";
+
 import styles from "./page.module.css";
 
 type IconName = "arrow" | "bell" | "clock" | "file" | "search" | "signal" | "star";
@@ -45,86 +51,76 @@ function VertexMark({ size = 38 }: { size?: number }) {
   );
 }
 
-function NextMark() {
-  return <div className={`${styles.courseMark} ${styles.nextMark}`} aria-hidden="true">N</div>;
+type HomepageCourse = HOMEPAGE_COURSES_QUERY_RESULT[number];
+
+function formatLevel(level: HomepageCourse["level"]) {
+  if (!level) return "All levels";
+  return level.charAt(0).toUpperCase() + level.slice(1);
 }
 
-function DockerMark() {
+function formatDuration(seconds: number | null) {
+  const safeSeconds = Math.max(0, Math.round(seconds ?? 0));
+  const hours = Math.floor(safeSeconds / 3600);
+  const minutes = Math.round((safeSeconds % 3600) / 60);
+
+  if (hours === 0) return `${Math.max(1, minutes)}m`;
+  if (minutes === 0) return `${hours}h`;
+  return `${hours}h ${minutes}m`;
+}
+
+function courseAbbreviation(title: string) {
+  const words = title.match(/[A-Za-z0-9]+/g) ?? [];
+  if (words.length === 0) return "V";
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
+  const firstInitial = words[0]?.charAt(0) || "V";
+  const secondInitial = words[1]?.charAt(0) || "";
+  return `${firstInitial}${secondInitial}`.toUpperCase();
+}
+
+function CourseMark({ course, title }: { course: HomepageCourse; title: string }) {
+  const imageUrl = course.coverImage?.asset
+    ? urlFor(course.coverImage).width(180).height(180).fit("crop").auto("format").url()
+    : null;
+
   return (
-    <div className={`${styles.courseMark} ${styles.dockerMark}`} aria-hidden="true">
-      <svg viewBox="0 0 76 76">
-        <g fill="#2496ed" stroke="#123b68" strokeWidth="1.3">
-          <rect x="18" y="24" width="9" height="8" rx="1" /><rect x="29" y="24" width="9" height="8" rx="1" />
-          <rect x="40" y="24" width="9" height="8" rx="1" /><rect x="29" y="14" width="9" height="8" rx="1" />
-          <rect x="40" y="14" width="9" height="8" rx="1" /><rect x="40" y="4" width="9" height="8" rx="1" />
-          <rect x="51" y="24" width="9" height="8" rx="1" />
-          <path d="M8 34h49c2-7 8-9 13-5-2 4-5 6-9 7-3 18-14 27-29 27C18 63 9 53 8 34Z" />
-        </g>
-        <path d="M16 42c7 2 17 2 29-1" fill="none" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" opacity=".8" />
-        <circle cx="18" cy="39" r="1.2" fill="#fff" />
-      </svg>
+    <div className={styles.courseMark} aria-hidden="true">
+      {imageUrl ? (
+        <Image src={imageUrl} alt="" fill sizes="74px" />
+      ) : (
+        <span>{courseAbbreviation(title)}</span>
+      )}
     </div>
   );
 }
 
-function TypeScriptMark() {
-  return <div className={`${styles.courseMark} ${styles.typescriptMark}`} aria-hidden="true">TS</div>;
-}
+function CourseCard({ course }: { course: HomepageCourse }) {
+  const title = course.title ?? "Untitled course";
+  const slug = course.slug;
+  const moduleCount = course.moduleCount ?? 0;
 
-type Course = {
-  title: string;
-  description: string;
-  level: string;
-  duration: string;
-  modules: string;
-  mark: ReactNode;
-};
+  if (!slug) return null;
 
-const courses: Course[] = [
-  {
-    title: "Next.js for Production",
-    description: "Build scalable, high-performance web applications with Next.js.",
-    level: "Intermediate",
-    duration: "18h 24m",
-    modules: "12 modules",
-    mark: <NextMark />,
-  },
-  {
-    title: "Docker Essentials",
-    description: "Containerize applications and streamline your development workflow.",
-    level: "Beginner",
-    duration: "10h 12m",
-    modules: "8 modules",
-    mark: <DockerMark />,
-  },
-  {
-    title: "TypeScript Deep Dive",
-    description: "Go beyond the basics and write safer, more expressive code.",
-    level: "Intermediate",
-    duration: "14h 36m",
-    modules: "10 modules",
-    mark: <TypeScriptMark />,
-  },
-];
-
-function CourseCard({ course }: { course: Course }) {
   return (
     <article className={styles.courseCard}>
-      {course.mark}
-      <h3>{course.title}</h3>
-      <p>{course.description}</p>
-      <div className={styles.courseMeta}>
-        <span><Icon name="signal" size={16} />{course.level}</span>
-        <span><Icon name="clock" size={16} />{course.duration}</span>
-        <span><Icon name="file" size={16} />{course.modules}</span>
-      </div>
+      <Link className={styles.courseCardLink} href={`/courses/${slug}`} aria-label={`View ${title}`}>
+        <CourseMark course={course} title={title} />
+        <h3>{title}</h3>
+        <p className={styles.courseCardCopy}>{course.summary}</p>
+        <div className={styles.courseMeta}>
+          <span><Icon name="signal" size={16} />{formatLevel(course.level)}</span>
+          <span><Icon name="clock" size={16} />{formatDuration(course.duration)}</span>
+          <span><Icon name="file" size={16} />{moduleCount} {moduleCount === 1 ? "module" : "modules"}</span>
+        </div>
+      </Link>
     </article>
   );
 }
 
 const skylineHeights = [88, 120, 160, 195, 142, 126, 80, 46, 75, 108, 145, 193, 126, 84, 148, 175];
 
-export default function Home() {
+export default async function Home() {
+  const courses = await getHomepageCourses();
+
   return (
     <div className={styles.viewport}>
       <div className={styles.pageFrame}>
@@ -135,7 +131,7 @@ export default function Home() {
               <span>Vertex</span>
             </a>
             <div className={styles.navLinks}>
-              <a href="#courses">Courses</a>
+              <Link href="/courses">Courses</Link>
               <a href="#my-learning">My Learning</a>
             </div>
             <div className={styles.accountActions}>
@@ -164,7 +160,7 @@ export default function Home() {
             <p className={styles.eyebrow}>Intelligent Learning</p>
             <h1 id="home-heading"><span>Search your learning</span><span>in plain English.</span></h1>
             <p className={styles.heroCopy}>Vertex understands what you want to learn and<br />finds the exact lessons across all your courses.</p>
-            <a className={styles.primaryCta} href="#courses">Explore Courses <Icon name="arrow" size={25} /></a>
+            <Link className={styles.primaryCta} href="/courses">Explore Courses <Icon name="arrow" size={25} /></Link>
             <div className={styles.searchBox} role="search">
               <Icon name="search" size={32} />
               <label className={styles.srOnly} htmlFor="learning-search">Search your learning</label>
@@ -176,10 +172,14 @@ export default function Home() {
           <section className={styles.coursesSection} id="courses" aria-labelledby="courses-heading">
             <div className={styles.coursesHeader}>
               <h2 id="courses-heading">All Courses</h2>
-              <a href="#courses">View all courses <Icon name="arrow" size={21} /></a>
+              <Link href="/courses">View all courses <Icon name="arrow" size={21} /></Link>
             </div>
             <div className={styles.courseGrid}>
-              {courses.map((course) => <CourseCard key={course.title} course={course} />)}
+              {courses.length > 0 ? (
+                courses.map((course) => <CourseCard key={course._id} course={course} />)
+              ) : (
+                <p className={styles.emptyCourses}>Courses are being prepared.</p>
+              )}
             </div>
 
             <div className={styles.weeklyMessage} id="my-learning">

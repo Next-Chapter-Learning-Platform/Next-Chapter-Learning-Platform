@@ -131,7 +131,7 @@ function SiteHeader() {
           <span>Vertex</span>
         </Link>
         <div className={styles.navLinks}>
-          <Link href="/#courses">Courses</Link>
+          <Link href="/courses">Courses</Link>
           <Link href="/#my-learning">My Learning</Link>
         </div>
         <div className={styles.accountActions}>
@@ -201,7 +201,7 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
 
         <main>
           <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
-            <Link href="/#courses">All Courses</Link>
+            <Link href="/courses">All Courses</Link>
             <UiIcon name="chevron" size={17} />
             <span aria-current="page">{title}</span>
           </nav>

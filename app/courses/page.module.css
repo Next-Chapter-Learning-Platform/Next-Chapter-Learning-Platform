@@ -1,0 +1,394 @@
+.viewport {
+  min-height: 100vh;
+  background-color: #fffaf7;
+  background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgba(242, 191, 162, 0.24) 8px 9px);
+}
+
+.pageFrame {
+  width: min(calc(100% - 58px), 1440px);
+  min-height: 100vh;
+  margin: 0 auto;
+  border-inline: 1px solid #eee1d8;
+  background: #fffdfb;
+  box-shadow: 0 0 45px rgba(77, 48, 31, 0.035);
+}
+
+.header {
+  height: 99px;
+  border-bottom: 1px solid #eee4dd;
+}
+
+.headerInner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 32px 0 40px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #111417;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  margin-left: 59px;
+  color: #111417;
+  font-size: 15px;
+}
+
+.navLinks a {
+  transition: color 160ms ease;
+}
+
+.navLinks a:hover,
+.activeNavLink {
+  color: #ee4d1b;
+}
+
+.accountActions {
+  display: flex;
+  align-items: center;
+  gap: 21px;
+  margin-left: auto;
+}
+
+.accountActions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #24292f;
+  cursor: pointer;
+}
+
+.notificationButton {
+  width: 38px;
+  height: 44px;
+}
+
+.authTextButton {
+  min-height: 40px;
+  padding: 0 17px !important;
+  border: 1px solid #e7dcd4 !important;
+  border-radius: 999px;
+  background: #fffdfb !important;
+  color: #111417 !important;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.authTextButton:hover {
+  border-color: #f04b16 !important;
+  color: #f04b16 !important;
+}
+
+.signUpButton {
+  border-color: #111417 !important;
+  background: #111417 !important;
+  color: #fffdfb !important;
+}
+
+.signUpButton:hover {
+  border-color: #f04b16 !important;
+  background: #f04b16 !important;
+}
+
+.userAvatar {
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border: 1px solid #e7dcd4;
+  border-radius: 50%;
+}
+
+.main {
+  width: min(calc(100% - 80px), 1280px);
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.intro {
+  max-width: 680px;
+  margin-bottom: 46px;
+}
+
+.intro p {
+  margin: 0 0 13px;
+  color: #e95023;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  color: #0b0e11;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(42px, 5vw, 62px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.intro > span {
+  display: block;
+  margin-top: 18px;
+  color: #667080;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.courseCard {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #eadfd8;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(70, 43, 27, 0.035);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.courseCard:hover {
+  border-color: #e7c7b5;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(70, 43, 27, 0.08);
+}
+
+.courseLink {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid #eee3dc;
+  background: #f4efeb;
+}
+
+.cover img {
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.courseCard:hover .cover img {
+  transform: scale(1.025);
+}
+
+.coverPlaceholder {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(145deg, #f6f1ed, #eee6e0);
+  color: #8b827c;
+  font-size: 12px;
+}
+
+.popularBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: rgba(255, 253, 251, 0.94);
+  box-shadow: 0 3px 10px rgba(28, 20, 15, 0.09);
+  color: #e95023;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px 24px 22px;
+}
+
+.category {
+  margin: 0 0 10px;
+  color: #e95023;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cardBody h2 {
+  margin: 0;
+  color: #101316;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.summary {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 14px 0 0;
+  color: #606a79;
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px 18px;
+  margin-top: 23px;
+  padding-top: 18px;
+  border-top: 1px solid #eee4dd;
+  color: #626b78;
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.cardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+  color: #e95023;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.courseCard:hover .cardAction svg {
+  transform: translateX(3px);
+}
+
+.cardAction svg {
+  transition: transform 160ms ease;
+}
+
+.emptyState {
+  padding: 70px 24px;
+  border: 1px solid #eadfd8;
+  border-radius: 15px;
+  background: #fff;
+  text-align: center;
+}
+
+.emptyState h2 {
+  margin: 0;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 28px;
+}
+
+.emptyState p {
+  margin: 12px 0 0;
+  color: #667080;
+}
+
+@media (max-width: 960px) {
+  .pageFrame {
+    width: calc(100% - 32px);
+  }
+
+  .courseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .viewport {
+    background-image: none;
+  }
+
+  .pageFrame {
+    width: 100%;
+    border-inline: 0;
+  }
+
+  .header {
+    height: 80px;
+  }
+
+  .headerInner {
+    padding: 0 20px;
+  }
+
+  .brand {
+    gap: 7px;
+    font-size: 19px;
+  }
+
+  .brand svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .accountActions {
+    gap: 10px;
+  }
+
+  .authTextButton {
+    min-height: 38px;
+    padding-inline: 13px !important;
+    font-size: 13px;
+  }
+
+  .userAvatar {
+    width: 43px;
+    height: 43px;
+  }
+
+  .main {
+    width: calc(100% - 40px);
+    padding: 52px 0 68px;
+  }
+
+  .intro {
+    margin-bottom: 32px;
+  }
+
+  .intro > span {
+    font-size: 15px;
+  }
+
+  .courseGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .cardBody {
+    padding: 21px 20px 20px;
+  }
+}

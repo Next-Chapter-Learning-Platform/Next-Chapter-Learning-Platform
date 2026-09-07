@@ -285,51 +285,57 @@
 }
 
 .courseCard {
-  display: flex;
   min-width: 0;
   height: 374px;
-  flex-direction: column;
-  padding: 31px 18px 27px;
   border: 1px solid #e9dcd4;
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.73);
   box-shadow: 0 7px 18px rgba(70, 43, 27, 0.025);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.courseCard:hover {
+  border-color: #e7c7b5;
+  transform: translateY(-2px);
+  box-shadow: 0 11px 24px rgba(70, 43, 27, 0.065);
+}
+
+.courseCardLink {
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  padding: 31px 18px 27px;
+  border-radius: inherit;
 }
 
 .courseMark {
+  position: relative;
   display: flex;
   width: 74px;
   height: 74px;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   margin: 0 8px 27px;
   border-radius: 10px;
-}
-
-.nextMark {
-  background: linear-gradient(135deg, #030303, #17191c);
+  background: linear-gradient(135deg, #16191d, #292e35);
   box-shadow: inset -10px -10px 18px rgba(255, 255, 255, 0.035);
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 47px;
-  font-weight: 300;
-  letter-spacing: -0.09em;
+  font-size: 29px;
+  font-weight: 650;
+  letter-spacing: -0.06em;
 }
 
-.dockerMark svg {
-  width: 76px;
-  height: 76px;
-  overflow: visible;
+.courseMark img {
+  object-fit: cover;
 }
 
-.typescriptMark {
-  background: linear-gradient(135deg, #3178c6, #438de2);
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 37px;
-  font-weight: 700;
-  letter-spacing: -0.04em;
+.courseMark span {
+  position: relative;
+  z-index: 1;
 }
 
 .courseCard h3 {
@@ -342,7 +348,7 @@
   letter-spacing: -0.035em;
 }
 
-.courseCard > p {
+.courseCardCopy {
   margin: 0 8px;
   color: #5c6676;
   font-size: 14px;
@@ -371,6 +377,13 @@
 
 .courseMeta svg {
   flex: 0 0 auto;
+}
+
+.emptyCourses {
+  grid-column: 1 / -1;
+  margin: 36px 0;
+  color: #687180;
+  text-align: center;
 }
 
 .weeklyMessage {
@@ -617,6 +630,10 @@
     grid-column: auto;
   }
 
+  .courseCardLink {
+    padding-inline: 16px;
+  }
+
   .courseMeta span {
     font-size: 9px;
   }
@@ -645,10 +662,6 @@
 @media (max-width: 390px) {
   .coursesHeader a span {
     display: none;
-  }
-
-  .courseCard {
-    padding-inline: 16px;
   }
 
   .courseMeta {
