@@ -1,3 +1,4 @@
+import { withPostHogConfig } from "@posthog/nextjs-config";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -30,4 +31,16 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Upload source maps at build time so front-end exceptions symbolicate. The
+// personal API key is server-only, so this only runs when it is configured;
+// without it the build uses the plain config and never breaks.
+const posthogApiKey = process.env.POSTHOG_API_KEY;
+const posthogProjectId = process.env.POSTHOG_PROJECT_ID;
+
+export default posthogApiKey && posthogProjectId
+  ? withPostHogConfig(nextConfig, {
+      personalApiKey: posthogApiKey,
+      projectId: posthogProjectId,
+      host: process.env.POSTHOG_HOST,
+    })
+  : nextConfig;
