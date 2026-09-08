@@ -1,13 +1,13 @@
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
 import type { COURSES_QUERY_RESULT } from "@/sanity.types";
 import { getCourses } from "@/sanity/data/courses";
-import { urlFor } from "@/sanity/lib/image";
+import { proxyImageUrl, urlFor } from "@/sanity/lib/image";
 
+import { CoverImage } from "../cover-image";
 import { CourseCardLink } from "./course-card-link";
 import { CoursesCatalogViewed } from "./course-view-events";
 import styles from "./page.module.css";
@@ -115,18 +115,25 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
   const title = course.title ?? "Untitled course";
   const slug = course.slug;
   const coverUrl = course.coverImage?.asset
-    ? urlFor(course.coverImage).width(900).height(560).fit("crop").auto("format").url()
+    ? proxyImageUrl(urlFor(course.coverImage).width(900).height(560).fit("crop").auto("format").url())
     : null;
   const blurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
 
   if (!slug) return null;
+
+  const coverPlaceholder = (
+    <div className={styles.coverPlaceholder} role="img" aria-label={`${title} cover image unavailable`}>
+      <Icon name="image" size={34} />
+      <span>Cover image unavailable</span>
+    </div>
+  );
 
   return (
     <article className={styles.courseCard}>
       <CourseCardLink className={styles.courseLink} href={`/courses/${slug}`} courseSlug={slug} courseTitle={title} aria-label={`View ${title}`}>
         <div className={styles.cover}>
           {coverUrl ? (
-            <Image
+            <CoverImage
               src={coverUrl}
               alt={course.coverImage?.alt ?? `${title} course cover`}
               fill
@@ -134,12 +141,10 @@ function CourseCard({ course, index }: { course: Course; index: number }) {
               fetchPriority={index < 3 ? "high" : "auto"}
               placeholder={blurDataUrl ? "blur" : "empty"}
               blurDataURL={blurDataUrl}
+              fallback={coverPlaceholder}
             />
           ) : (
-            <div className={styles.coverPlaceholder} role="img" aria-label={`${title} cover image unavailable`}>
-              <Icon name="image" size={34} />
-              <span>Cover image unavailable</span>
-            </div>
+            coverPlaceholder
           )}
           {course.popular && <span className={styles.popularBadge}>Popular</span>}
         </div>

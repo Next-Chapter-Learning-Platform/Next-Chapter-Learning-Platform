@@ -1,14 +1,14 @@
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { cache, type ReactNode } from "react";
 
 import type { COURSE_BY_SLUG_QUERY_RESULT } from "@/sanity.types";
 import { getCourseBySlug, getCourseSlugs } from "@/sanity/data/courses";
-import { urlFor } from "@/sanity/lib/image";
+import { proxyImageUrl, urlFor } from "@/sanity/lib/image";
 
+import { CoverImage } from "../../cover-image";
 import { CourseViewed } from "../course-view-events";
 import { BookmarkButton } from "./bookmark-button";
 import { StartLearningButton } from "./start-learning-button";
@@ -190,13 +190,19 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
   const firstLesson = lessons.find((lesson) => lesson.slug);
   const primaryHref = firstLesson?.slug ? `/lessons/${firstLesson.slug}` : "#course-content";
   const coverUrl = course.coverImage?.asset
-    ? urlFor(course.coverImage).width(720).height(840).fit("crop").auto("format").url()
+    ? proxyImageUrl(urlFor(course.coverImage).width(720).height(840).fit("crop").auto("format").url())
     : null;
   const coverBlurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
+  const coverFallback = (
+    <div className={styles.coverFallback} aria-label={`${title} course cover`}>
+      <span>{title.charAt(0)}</span>
+    </div>
+  );
   const instructorPhotoUrl = course.instructor?.photo?.asset
-    ? urlFor(course.instructor.photo).width(180).height(180).fit("crop").auto("format").url()
+    ? proxyImageUrl(urlFor(course.instructor.photo).width(180).height(180).fit("crop").auto("format").url())
     : null;
   const instructorBlurDataUrl = course.instructor?.photo?.assetData?.metadata?.lqip ?? undefined;
+  const instructorInitial = <span aria-hidden="true">{course.instructor?.name?.charAt(0) ?? "V"}</span>;
 
   return (
     <div className={styles.viewport}>
@@ -218,7 +224,7 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
           <section className={styles.hero} aria-labelledby="course-heading">
             <div className={styles.cover}>
               {coverUrl ? (
-                <Image
+                <CoverImage
                   src={coverUrl}
                   alt={course.coverImage?.alt ?? `${title} course cover`}
                   fill
@@ -226,11 +232,10 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
                   fetchPriority="high"
                   placeholder={coverBlurDataUrl ? "blur" : "empty"}
                   blurDataURL={coverBlurDataUrl}
+                  fallback={coverFallback}
                 />
               ) : (
-                <div className={styles.coverFallback} aria-label={`${title} course cover`}>
-                  <span>{title.charAt(0)}</span>
-                </div>
+                coverFallback
               )}
             </div>
 
@@ -309,16 +314,17 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
             <section className={styles.instructor} aria-labelledby="instructor-heading">
               <div className={styles.instructorPhoto}>
                 {instructorPhotoUrl ? (
-                  <Image
+                  <CoverImage
                     src={instructorPhotoUrl}
                     alt={course.instructor.photo?.alt ?? `${course.instructor.name ?? "Course instructor"} portrait`}
                     fill
                     sizes="76px"
                     placeholder={instructorBlurDataUrl ? "blur" : "empty"}
                     blurDataURL={instructorBlurDataUrl}
+                    fallback={instructorInitial}
                   />
                 ) : (
-                  <span aria-hidden="true">{course.instructor.name?.charAt(0) ?? "V"}</span>
+                  instructorInitial
                 )}
               </div>
               <div>
