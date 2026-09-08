@@ -1,0 +1,180 @@
+.viewport {
+  min-height: 100vh;
+  background-color: #fffaf7;
+  background-image: repeating-linear-gradient(135deg, transparent 0 8px, rgba(242, 191, 162, 0.2) 8px 9px);
+}
+
+.pageFrame {
+  width: min(calc(100% - 58px), 1440px);
+  min-height: 100vh;
+  margin: 0 auto;
+  border-inline: 1px solid #eee1d8;
+  background: #fffdfb;
+}
+
+.header {
+  display: flex;
+  height: 99px;
+  align-items: center;
+  gap: 42px;
+  padding: 0 40px;
+  border-bottom: 1px solid #eee4dd;
+}
+
+.pulse {
+  display: block;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eee7e2;
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.68), transparent);
+  background-position: -220px 0;
+  background-repeat: no-repeat;
+  animation: shimmer 1.35s ease-in-out infinite;
+}
+
+.brand {
+  width: 116px;
+  height: 38px;
+}
+
+.nav {
+  width: 178px;
+  height: 17px;
+}
+
+.account {
+  width: 96px;
+  height: 42px;
+  margin-left: auto;
+  border-radius: 999px;
+}
+
+.catalogMain {
+  width: min(calc(100% - 80px), 1280px);
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.intro {
+  margin-bottom: 46px;
+}
+
+.eyebrow {
+  width: 116px;
+  height: 12px;
+}
+
+.title {
+  width: min(360px, 70vw);
+  height: 64px;
+  margin-top: 18px;
+}
+
+.copy {
+  width: min(610px, 88vw);
+  height: 18px;
+  margin-top: 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.card {
+  overflow: hidden;
+  border: 1px solid #eadfd8;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.cardCover {
+  aspect-ratio: 16 / 10;
+  border-radius: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 24px;
+}
+
+.cardEyebrow { width: 76px; height: 10px; }
+.cardTitle { width: 78%; height: 27px; }
+.cardCopy { width: 100%; height: 58px; }
+.cardMeta { width: 88%; height: 18px; margin-top: 9px; }
+
+.detailMain {
+  width: calc(100% - 36px);
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.breadcrumb {
+  width: 250px;
+  height: 16px;
+  margin: 36px 0;
+}
+
+.detailHero {
+  display: grid;
+  grid-template-columns: 281px minmax(0, 1fr);
+  align-items: center;
+  gap: 59px;
+}
+
+.detailCover {
+  height: 327px;
+  border-radius: 12px;
+}
+
+.detailCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.badge { width: 78px; height: 26px; }
+.detailTitle { width: min(520px, 90%); height: 58px; }
+.detailText { width: min(570px, 100%); height: 52px; }
+.detailMeta { width: min(460px, 90%); height: 18px; }
+.detailButton { width: 170px; height: 54px; margin-top: 2px; }
+
+.detailPanel {
+  width: 100%;
+  height: 190px;
+  margin-top: 38px;
+  border: 1px solid #eadfd8;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  to { background-position: calc(100% + 220px) 0; }
+}
+
+@media (max-width: 960px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pageFrame { width: calc(100% - 32px); }
+}
+
+@media (max-width: 700px) {
+  .detailHero { grid-template-columns: 1fr; gap: 31px; }
+  .detailCover { width: min(100%, 420px); height: min(108vw, 440px); justify-self: center; }
+}
+
+@media (max-width: 640px) {
+  .viewport { background-image: none; }
+  .pageFrame { width: 100%; border-inline: 0; }
+  .header { height: 80px; padding: 0 20px; }
+  .nav { display: none; }
+  .catalogMain { width: calc(100% - 40px); padding: 52px 0 68px; }
+  .grid { grid-template-columns: 1fr; gap: 18px; }
+  .detailMain { width: calc(100% - 40px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+}

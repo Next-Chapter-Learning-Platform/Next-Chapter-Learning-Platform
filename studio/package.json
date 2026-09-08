@@ -6,6 +6,7 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "typegen": "sanity schemas extract --enforce-required-fields && sanity typegen generate",
+    "repair-course-covers": "sanity exec scripts/repair-course-cover-assets.ts --with-user-token",
     "deploy": "sanity deploy --schema-required",
     "deploy-schema": "sanity schema deploy"
   },
