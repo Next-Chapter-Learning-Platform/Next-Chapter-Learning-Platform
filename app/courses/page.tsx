@@ -8,6 +8,8 @@ import type { COURSES_QUERY_RESULT } from "@/sanity.types";
 import { getCourses } from "@/sanity/data/courses";
 import { urlFor } from "@/sanity/lib/image";
 
+import { getPostHogClient } from "@/lib/posthog-server";
+import { CourseCardLink } from "./course-card-link";
 import styles from "./page.module.css";
 
 type Course = COURSES_QUERY_RESULT[number];
@@ -120,7 +122,7 @@ function CourseCard({ course }: { course: Course }) {
 
   return (
     <article className={styles.courseCard}>
-      <Link className={styles.courseLink} href={`/courses/${slug}`} aria-label={`View ${title}`}>
+      <CourseCardLink className={styles.courseLink} href={`/courses/${slug}`} courseSlug={slug} courseTitle={title} aria-label={`View ${title}`}>
         <div className={styles.cover}>
           {coverUrl ? (
             <Image
@@ -149,13 +151,26 @@ function CourseCard({ course }: { course: Course }) {
           </div>
           <span className={styles.cardAction}>View course <Icon name="arrow" size={19} /></span>
         </div>
-      </Link>
+      </CourseCardLink>
     </article>
   );
 }
 
 export default async function CoursesPage() {
   const courses = await getCourses();
+
+  // Track catalog view server-side
+  const posthog = getPostHogClient();
+  if (posthog) {
+    posthog.capture({
+      distinctId: "anonymous",
+      event: "courses_catalog_viewed",
+      properties: {
+        course_count: courses.length,
+      },
+    });
+    await posthog.flush();
+  }
 
   return (
     <div className={styles.viewport}>

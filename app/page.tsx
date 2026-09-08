@@ -6,6 +6,7 @@ import type { HOMEPAGE_COURSES_QUERY_RESULT } from "@/sanity.types";
 import { getHomepageCourses } from "@/sanity/data/courses";
 import { urlFor } from "@/sanity/lib/image";
 
+import { ExploreCTA, SearchBox } from "./homepage-interactions";
 import styles from "./page.module.css";
 
 type IconName = "arrow" | "bell" | "clock" | "file" | "search" | "signal" | "star";
@@ -160,13 +161,13 @@ export default async function Home() {
             <p className={styles.eyebrow}>Intelligent Learning</p>
             <h1 id="home-heading"><span>Search your learning</span><span>in plain English.</span></h1>
             <p className={styles.heroCopy}>Vertex understands what you want to learn and<br />finds the exact lessons across all your courses.</p>
-            <Link className={styles.primaryCta} href="/courses">Explore Courses <Icon name="arrow" size={25} /></Link>
-            <div className={styles.searchBox} role="search">
+            <ExploreCTA className={styles.primaryCta} href="/courses">Explore Courses <Icon name="arrow" size={25} /></ExploreCTA>
+            <SearchBox className={styles.searchBox}>
               <Icon name="search" size={32} />
               <label className={styles.srOnly} htmlFor="learning-search">Search your learning</label>
               <input id="learning-search" name="q" type="search" placeholder="Ask anything about your learning..." />
               <kbd>⌘ K</kbd>
-            </div>
+            </SearchBox>
           </section>
 
           <section className={styles.coursesSection} id="courses" aria-labelledby="courses-heading">

@@ -10,6 +10,8 @@ import { getCourseBySlug, getCourseSlugs } from "@/sanity/data/courses";
 import { urlFor } from "@/sanity/lib/image";
 
 import { BookmarkButton } from "./bookmark-button";
+import { StartLearningButton } from "./start-learning-button";
+import { getPostHogClient } from "@/lib/posthog-server";
 import styles from "./page.module.css";
 
 type Course = NonNullable<COURSE_BY_SLUG_QUERY_RESULT>;
@@ -181,6 +183,21 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
   const course = await getCourse(slug);
   if (!course) notFound();
 
+  // Track course view server-side
+  const posthog = getPostHogClient();
+  if (posthog) {
+    posthog.capture({
+      distinctId: slug,
+      event: "course_viewed",
+      properties: {
+        course_slug: slug,
+        course_title: course.title ?? undefined,
+        course_level: course.level ?? undefined,
+      },
+    });
+    await posthog.flush();
+  }
+
   const title = course.title ?? "Untitled course";
   const modules = course.modules ?? [];
   const lessons = modules.flatMap((courseModule) => courseModule.lessons ?? []);
@@ -234,10 +251,10 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
                 <MetaItem icon="users">{formatStudentCount(course.studentCount)}</MetaItem>
               </div>
               <div className={styles.heroActions}>
-                <Link className={styles.primaryButton} href={primaryHref}>
+                <StartLearningButton className={styles.primaryButton} href={primaryHref} courseSlug={slug}>
                   Start Learning <UiIcon name="arrow" size={22} />
-                </Link>
-                <BookmarkButton />
+                </StartLearningButton>
+                <BookmarkButton courseSlug={slug} />
               </div>
             </div>
           </section>
@@ -325,9 +342,9 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
           <div className={styles.progressTrack} aria-label="Course progress: 0%" role="progressbar" aria-valuenow={0} aria-valuemin={0} aria-valuemax={100}>
             <span />
           </div>
-          <Link className={styles.progressButton} href={primaryHref}>
+          <StartLearningButton className={styles.progressButton} href={primaryHref} courseSlug={slug}>
             Start Learning <UiIcon name="arrow" size={22} />
-          </Link>
+          </StartLearningButton>
         </div>
 
         <div className={styles.skyline} aria-hidden="true">
