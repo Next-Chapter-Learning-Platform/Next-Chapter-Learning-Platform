@@ -1,11 +1,11 @@
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
 import Link from "next/link";
 
 import type { HOMEPAGE_COURSES_QUERY_RESULT } from "@/sanity.types";
 import { getHomepageCourses } from "@/sanity/data/courses";
-import { urlFor } from "@/sanity/lib/image";
+import { proxyImageUrl, urlFor } from "@/sanity/lib/image";
 
+import { CoverImage } from "./cover-image";
 import { ExploreCTA, SearchBox } from "./homepage-interactions";
 import styles from "./page.module.css";
 
@@ -80,23 +80,25 @@ function courseAbbreviation(title: string) {
 
 function CourseMark({ course, title }: { course: HomepageCourse; title: string }) {
   const imageUrl = course.coverImage?.asset
-    ? urlFor(course.coverImage).width(180).height(180).fit("crop").auto("format").url()
+    ? proxyImageUrl(urlFor(course.coverImage).width(180).height(180).fit("crop").auto("format").url())
     : null;
   const blurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
+  const abbreviation = <span>{courseAbbreviation(title)}</span>;
 
   return (
     <div className={styles.courseMark} aria-hidden="true">
       {imageUrl ? (
-        <Image
+        <CoverImage
           src={imageUrl}
           alt=""
           fill
           sizes="74px"
           placeholder={blurDataUrl ? "blur" : "empty"}
           blurDataURL={blurDataUrl}
+          fallback={abbreviation}
         />
       ) : (
-        <span>{courseAbbreviation(title)}</span>
+        abbreviation
       )}
     </div>
   );
