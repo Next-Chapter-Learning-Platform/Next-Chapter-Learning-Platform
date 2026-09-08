@@ -1,17 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import posthog from "posthog-js";
 import styles from "./page.module.css";
 
-export function BookmarkButton() {
+export function BookmarkButton({ courseSlug }: { courseSlug?: string }) {
   const [bookmarked, setBookmarked] = useState(false);
+
+  function handleBookmark() {
+    const next = !bookmarked;
+    setBookmarked(next);
+    posthog.capture("course_bookmarked", {
+      course_slug: courseSlug,
+      bookmarked: next,
+    });
+  }
 
   return (
     <button
       type="button"
       className={styles.bookmarkButton}
       aria-pressed={bookmarked}
-      onClick={() => setBookmarked((current) => !current)}
+      onClick={handleBookmark}
     >
       <svg
         width="21"
