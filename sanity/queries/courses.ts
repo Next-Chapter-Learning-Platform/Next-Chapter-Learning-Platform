@@ -9,6 +9,14 @@ export const HOMEPAGE_COURSES_QUERY = defineQuery(`
     summary,
     coverImage {
       asset,
+      "assetData": asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {width, height, aspectRatio}
+        }
+      },
       alt,
       crop,
       hotspot
@@ -27,6 +35,14 @@ export const COURSES_QUERY = defineQuery(`
     summary,
     coverImage {
       asset,
+      "assetData": asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {width, height, aspectRatio}
+        }
+      },
       alt,
       crop,
       hotspot
@@ -46,6 +62,14 @@ export const COURSES_QUERY = defineQuery(`
       "slug": slug.current,
       photo {
         asset,
+        "assetData": asset->{
+          _id,
+          url,
+          metadata {
+            lqip,
+            dimensions {width, height, aspectRatio}
+          }
+        },
         alt,
         crop,
         hotspot
@@ -66,6 +90,14 @@ export const COURSE_BY_SLUG_QUERY = defineQuery(`
     summary,
     coverImage {
       asset,
+      "assetData": asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {width, height, aspectRatio}
+        }
+      },
       alt,
       crop,
       hotspot
@@ -92,6 +124,14 @@ export const COURSE_BY_SLUG_QUERY = defineQuery(`
       "slug": slug.current,
       photo {
         asset,
+        "assetData": asset->{
+          _id,
+          url,
+          metadata {
+            lqip,
+            dimensions {width, height, aspectRatio}
+          }
+        },
         alt,
         crop,
         hotspot

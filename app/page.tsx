@@ -82,11 +82,19 @@ function CourseMark({ course, title }: { course: HomepageCourse; title: string }
   const imageUrl = course.coverImage?.asset
     ? urlFor(course.coverImage).width(180).height(180).fit("crop").auto("format").url()
     : null;
+  const blurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
 
   return (
     <div className={styles.courseMark} aria-hidden="true">
       {imageUrl ? (
-        <Image src={imageUrl} alt="" fill sizes="74px" />
+        <Image
+          src={imageUrl}
+          alt=""
+          fill
+          sizes="74px"
+          placeholder={blurDataUrl ? "blur" : "empty"}
+          blurDataURL={blurDataUrl}
+        />
       ) : (
         <span>{courseAbbreviation(title)}</span>
       )}

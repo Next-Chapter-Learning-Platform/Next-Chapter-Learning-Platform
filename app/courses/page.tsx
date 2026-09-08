@@ -8,8 +8,8 @@ import type { COURSES_QUERY_RESULT } from "@/sanity.types";
 import { getCourses } from "@/sanity/data/courses";
 import { urlFor } from "@/sanity/lib/image";
 
-import { getPostHogClient } from "@/lib/posthog-server";
 import { CourseCardLink } from "./course-card-link";
+import { CoursesCatalogViewed } from "./course-view-events";
 import styles from "./page.module.css";
 
 type Course = COURSES_QUERY_RESULT[number];
@@ -111,12 +111,13 @@ function MetaItem({ icon, children }: { icon: IconName; children: ReactNode }) {
   return <span><Icon name={icon} size={17} />{children}</span>;
 }
 
-function CourseCard({ course }: { course: Course }) {
+function CourseCard({ course, index }: { course: Course; index: number }) {
   const title = course.title ?? "Untitled course";
   const slug = course.slug;
   const coverUrl = course.coverImage?.asset
     ? urlFor(course.coverImage).width(900).height(560).fit("crop").auto("format").url()
     : null;
+  const blurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
 
   if (!slug) return null;
 
@@ -130,6 +131,9 @@ function CourseCard({ course }: { course: Course }) {
               alt={course.coverImage?.alt ?? `${title} course cover`}
               fill
               sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 960px) 50vw, 400px"
+              fetchPriority={index < 3 ? "high" : "auto"}
+              placeholder={blurDataUrl ? "blur" : "empty"}
+              blurDataURL={blurDataUrl}
             />
           ) : (
             <div className={styles.coverPlaceholder} role="img" aria-label={`${title} cover image unavailable`}>
@@ -159,21 +163,9 @@ function CourseCard({ course }: { course: Course }) {
 export default async function CoursesPage() {
   const courses = await getCourses();
 
-  // Track catalog view server-side
-  const posthog = getPostHogClient();
-  if (posthog) {
-    posthog.capture({
-      distinctId: "anonymous",
-      event: "courses_catalog_viewed",
-      properties: {
-        course_count: courses.length,
-      },
-    });
-    await posthog.flush();
-  }
-
   return (
     <div className={styles.viewport}>
+      <CoursesCatalogViewed courseCount={courses.length} />
       <div className={styles.pageFrame}>
         <SiteHeader />
         <main className={styles.main}>
@@ -185,7 +177,7 @@ export default async function CoursesPage() {
 
           {courses.length > 0 ? (
             <section className={styles.courseGrid} aria-label={`${courses.length} available courses`}>
-              {courses.map((course) => <CourseCard course={course} key={course._id} />)}
+              {courses.map((course, index) => <CourseCard course={course} index={index} key={course._id} />)}
             </section>
           ) : (
             <section className={styles.emptyState}>

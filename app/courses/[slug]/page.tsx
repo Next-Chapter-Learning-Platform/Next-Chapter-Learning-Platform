@@ -9,9 +9,9 @@ import type { COURSE_BY_SLUG_QUERY_RESULT } from "@/sanity.types";
 import { getCourseBySlug, getCourseSlugs } from "@/sanity/data/courses";
 import { urlFor } from "@/sanity/lib/image";
 
+import { CourseViewed } from "../course-view-events";
 import { BookmarkButton } from "./bookmark-button";
 import { StartLearningButton } from "./start-learning-button";
-import { getPostHogClient } from "@/lib/posthog-server";
 import styles from "./page.module.css";
 
 type Course = NonNullable<COURSE_BY_SLUG_QUERY_RESULT>;
@@ -183,21 +183,6 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
   const course = await getCourse(slug);
   if (!course) notFound();
 
-  // Track course view server-side
-  const posthog = getPostHogClient();
-  if (posthog) {
-    posthog.capture({
-      distinctId: slug,
-      event: "course_viewed",
-      properties: {
-        course_slug: slug,
-        course_title: course.title ?? undefined,
-        course_level: course.level ?? undefined,
-      },
-    });
-    await posthog.flush();
-  }
-
   const title = course.title ?? "Untitled course";
   const modules = course.modules ?? [];
   const lessons = modules.flatMap((courseModule) => courseModule.lessons ?? []);
@@ -207,12 +192,19 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
   const coverUrl = course.coverImage?.asset
     ? urlFor(course.coverImage).width(720).height(840).fit("crop").auto("format").url()
     : null;
+  const coverBlurDataUrl = course.coverImage?.assetData?.metadata?.lqip ?? undefined;
   const instructorPhotoUrl = course.instructor?.photo?.asset
     ? urlFor(course.instructor.photo).width(180).height(180).fit("crop").auto("format").url()
     : null;
+  const instructorBlurDataUrl = course.instructor?.photo?.assetData?.metadata?.lqip ?? undefined;
 
   return (
     <div className={styles.viewport}>
+      <CourseViewed
+        courseSlug={slug}
+        courseTitle={course.title ?? undefined}
+        courseLevel={course.level ?? undefined}
+      />
       <div className={styles.pageFrame}>
         <SiteHeader />
 
@@ -231,7 +223,9 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
                   alt={course.coverImage?.alt ?? `${title} course cover`}
                   fill
                   sizes="(max-width: 640px) calc(100vw - 40px), 281px"
-                  priority
+                  fetchPriority="high"
+                  placeholder={coverBlurDataUrl ? "blur" : "empty"}
+                  blurDataURL={coverBlurDataUrl}
                 />
               ) : (
                 <div className={styles.coverFallback} aria-label={`${title} course cover`}>
@@ -320,6 +314,8 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
                     alt={course.instructor.photo?.alt ?? `${course.instructor.name ?? "Course instructor"} portrait`}
                     fill
                     sizes="76px"
+                    placeholder={instructorBlurDataUrl ? "blur" : "empty"}
+                    blurDataURL={instructorBlurDataUrl}
                   />
                 ) : (
                   <span aria-hidden="true">{course.instructor.name?.charAt(0) ?? "V"}</span>
