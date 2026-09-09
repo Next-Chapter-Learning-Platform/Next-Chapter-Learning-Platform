@@ -188,7 +188,7 @@ export default async function CoursePage({ params }: PageProps<"/courses/[slug]"
   const lessons = modules.flatMap((courseModule) => courseModule.lessons ?? []);
   const totalDuration = lessons.reduce((total, lesson) => total + (lesson.duration ?? 0), 0);
   const firstLesson = lessons.find((lesson) => lesson.slug);
-  const primaryHref = firstLesson?.slug ? `/lessons/${firstLesson.slug}` : "#course-content";
+  const primaryHref = firstLesson?.slug ? `/lessons/${firstLesson.slug}` : null;
   const coverUrl = course.coverImage?.asset
     ? urlFor(course.coverImage).width(720).height(840).fit("crop").auto("format").url()
     : null;

@@ -295,6 +295,16 @@
   box-shadow: 0 9px 18px rgba(219, 78, 34, 0.23);
 }
 
+.primaryButton:disabled,
+.progressButton:disabled {
+  border-color: #e7d9d0;
+  background: #f2ece8;
+  box-shadow: none;
+  color: #9aa0a9;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .bookmarkButton {
   display: inline-flex;
   min-height: 54px;
