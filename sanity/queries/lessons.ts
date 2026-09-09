@@ -8,6 +8,14 @@ export const LESSON_BY_SLUG_QUERY = defineQuery(`
     videoUrl,
     thumbnail {
       asset,
+      "assetData": asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {width, height, aspectRatio}
+        }
+      },
       alt,
       crop,
       hotspot
@@ -33,8 +41,17 @@ export const COURSE_FOR_LESSON_QUERY = defineQuery(`
     _id,
     title,
     "slug": slug.current,
+    level,
     coverImage {
       asset,
+      "assetData": asset->{
+        _id,
+        url,
+        metadata {
+          lqip,
+          dimensions {width, height, aspectRatio}
+        }
+      },
       alt,
       crop,
       hotspot
