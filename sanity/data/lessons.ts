@@ -55,10 +55,22 @@ export async function getLessonBySlug(slug: string) {
   )
   const moduleNumber = moduleIndex + 1
   const lessonNumber = lessonIndex + 1
+  const orderedLessons = modules.flatMap((courseModule, orderedModuleIndex) =>
+    (courseModule.lessons ?? []).map((moduleLesson, orderedLessonIndex) => ({
+      ...moduleLesson,
+      moduleNumber: orderedModuleIndex + 1,
+      lessonNumber: orderedLessonIndex + 1,
+      moduleTitle: courseModule.title,
+    })),
+  )
+  const orderedLessonIndex = orderedLessons.findIndex(
+    (moduleLesson) => moduleLesson._id === lesson._id,
+  )
   const courseSummary = {
     _id: parentCourse._id,
     title: parentCourse.title,
     slug: parentCourse.slug,
+    level: parentCourse.level,
     coverImage: parentCourse.coverImage,
     category: parentCourse.category,
     instructor: parentCourse.instructor,
@@ -72,6 +84,13 @@ export async function getLessonBySlug(slug: string) {
       moduleNumber,
       lessonNumber,
       lessonLabel: `Lesson ${moduleNumber}.${lessonNumber}`,
+      modules,
+      previousLesson:
+        orderedLessonIndex > 0 ? orderedLessons[orderedLessonIndex - 1] : null,
+      nextLesson:
+        orderedLessonIndex >= 0 && orderedLessonIndex < orderedLessons.length - 1
+          ? orderedLessons[orderedLessonIndex + 1]
+          : null,
     },
   }
 }
