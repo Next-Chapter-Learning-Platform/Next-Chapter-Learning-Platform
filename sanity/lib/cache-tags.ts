@@ -3,6 +3,7 @@ export const sanityCacheTags = {
   courses: 'sanity:courses',
   instructors: 'sanity:instructors',
   lessons: 'sanity:lessons',
+  videos: 'sanity:videos',
   course: (slug: string) => `sanity:course:${slug}`,
   instructor: (slug: string) => `sanity:instructor:${slug}`,
   lesson: (slug: string) => `sanity:lesson:${slug}`,
