@@ -6,6 +6,9 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "typegen": "sanity schemas extract --enforce-required-fields && sanity typegen generate",
+    "videos:test": "tsx --test scripts/video-ingestion/transform.test.ts",
+    "videos:dry-run": "tsx scripts/video-ingestion/ingest.ts",
+    "videos:ingest": "sanity exec scripts/video-ingestion/ingest.ts --with-user-token -- --commit",
     "repair-course-covers": "sanity exec scripts/repair-course-cover-assets.ts --with-user-token",
     "deploy": "sanity deploy --schema-required",
     "deploy-schema": "sanity schema deploy"
@@ -15,10 +18,12 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "sanity": "^5.31.2",
-    "styled-components": "^6.5.3"
+    "styled-components": "^6.5.3",
+    "youtube-caption-extractor": "^1.10.2"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
+    "tsx": "^4.23.13",
     "typescript": "^5.9.3"
   }
 }
