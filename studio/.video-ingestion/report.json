@@ -1,0 +1,16 @@
+{
+  "mode": "commit",
+  "startedAt": "2026-09-11T04:42:48.992Z",
+  "finishedAt": "2026-09-11T04:43:20.064Z",
+  "sourceCount": 120,
+  "selectedCount": 120,
+  "producedCount": 120,
+  "failedCount": 0,
+  "cacheHitCount": 120,
+  "outputPath": "C:\\Users\\myatthihasoe\\Desktop\\NextChapter\\Next-Chapter-Learning-Platform\\studio\\.video-ingestion\\video-import.ndjson",
+  "failures": [],
+  "verification": {
+    "selectedVideoDocuments": 100,
+    "totalVideoDocuments": 100
+  }
+}

@@ -1,0 +1,1008 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "UC5xf8FbdJc",
+  "url": "https://www.youtube.com/watch?v=UC5xf8FbdJc",
+  "title": "Back-Of-The-Envelope Estimation / Capacity Planning",
+  "description": "Weekly system design newsletter: https://bit.ly/3tfAlYD\n\nCheckout our bestselling System Design Interview books: \nVolume 1: https://amzn.to/3Ou7gkd\nVolume 2: https://amzn.to/3HqGozy\n\nOther things we made:\nDigital version of System Design Interview books: https://bit.ly/3mlDSk9\nTwitter: https://bit.ly/3HqEz5G\nLinkedIn:  https://bit.ly/39h22JK\n\nABOUT US: \nCovering topics and trends in large-scale system design, from the authors of the best-selling System Design Interview series.",
+  "expectedDurationSeconds": 512,
+  "transcript": [
+    {
+      "startSeconds": 7.68,
+      "durationSeconds": 4.8,
+      "text": "Back of the envelope math is a very"
+    },
+    {
+      "startSeconds": 9.4,
+      "durationSeconds": 4.92,
+      "text": "useful tool in a system design toolbox."
+    },
+    {
+      "startSeconds": 12.48,
+      "durationSeconds": 4.52,
+      "text": "In this video, we'll go over how and"
+    },
+    {
+      "startSeconds": 14.32,
+      "durationSeconds": 4.44,
+      "text": "when to use it and share some tips on"
+    },
+    {
+      "startSeconds": 17,
+      "durationSeconds": 2.68,
+      "text": "using it effectively. Let's dive right"
+    },
+    {
+      "startSeconds": 18.76,
+      "durationSeconds": 2.8,
+      "text": "in."
+    },
+    {
+      "startSeconds": 19.68,
+      "durationSeconds": 4.08,
+      "text": "Experienced developers use back of the"
+    },
+    {
+      "startSeconds": 21.56,
+      "durationSeconds": 3.68,
+      "text": "envelope math to quickly sanity check a"
+    },
+    {
+      "startSeconds": 23.76,
+      "durationSeconds": 4,
+      "text": "design."
+    },
+    {
+      "startSeconds": 25.24,
+      "durationSeconds": 5.24,
+      "text": "In these cases, absolute accuracy is not"
+    },
+    {
+      "startSeconds": 27.76,
+      "durationSeconds": 6.32,
+      "text": "important. Usually, it is good enough to"
+    },
+    {
+      "startSeconds": 30.48,
+      "durationSeconds": 5.28,
+      "text": "get within or two of the actual numbers"
+    },
+    {
+      "startSeconds": 34.08,
+      "durationSeconds": 4.24,
+      "text": "we are looking for."
+    },
+    {
+      "startSeconds": 35.76,
+      "durationSeconds": 5.16,
+      "text": "For example, if the math says at our"
+    },
+    {
+      "startSeconds": 38.32,
+      "durationSeconds": 5.28,
+      "text": "scale our web service needs to handle 1"
+    },
+    {
+      "startSeconds": 40.92,
+      "durationSeconds": 5.12,
+      "text": "million requests per second and each web"
+    },
+    {
+      "startSeconds": 43.6,
+      "durationSeconds": 4.6,
+      "text": "server could only handle about 10,000"
+    },
+    {
+      "startSeconds": 46.04,
+      "durationSeconds": 3.4,
+      "text": "requests per second, we learn two things"
+    },
+    {
+      "startSeconds": 48.2,
+      "durationSeconds": 3.64,
+      "text": "quickly."
+    },
+    {
+      "startSeconds": 49.44,
+      "durationSeconds": 4.56,
+      "text": "One, we learn we'll need a cluster of"
+    },
+    {
+      "startSeconds": 51.84,
+      "durationSeconds": 4.12,
+      "text": "web servers with a load balancing in"
+    },
+    {
+      "startSeconds": 54,
+      "durationSeconds": 3.48,
+      "text": "front of them. We'll need about 100 web"
+    },
+    {
+      "startSeconds": 55.96,
+      "durationSeconds": 3.04,
+      "text": "servers."
+    },
+    {
+      "startSeconds": 57.48,
+      "durationSeconds": 3.48,
+      "text": "Another example,"
+    },
+    {
+      "startSeconds": 59,
+      "durationSeconds": 3.88,
+      "text": "if the math shows that the database"
+    },
+    {
+      "startSeconds": 60.96,
+      "durationSeconds": 4.36,
+      "text": "needs to handle about 10 queries per"
+    },
+    {
+      "startSeconds": 62.88,
+      "durationSeconds": 4.96,
+      "text": "second at peak, it means that a single"
+    },
+    {
+      "startSeconds": 65.32,
+      "durationSeconds": 4.56,
+      "text": "database server could handle the load"
+    },
+    {
+      "startSeconds": 67.84,
+      "durationSeconds": 4.24,
+      "text": "for a while and there's no need to"
+    },
+    {
+      "startSeconds": 69.88,
+      "durationSeconds": 3.64,
+      "text": "consider sharding or caching for a"
+    },
+    {
+      "startSeconds": 72.08,
+      "durationSeconds": 3.16,
+      "text": "while."
+    },
+    {
+      "startSeconds": 73.52,
+      "durationSeconds": 4.76,
+      "text": "Now, let's go over some of the most"
+    },
+    {
+      "startSeconds": 75.24,
+      "durationSeconds": 6.52,
+      "text": "popular numbers to estimate. The most"
+    },
+    {
+      "startSeconds": 78.28,
+      "durationSeconds": 5.32,
+      "text": "useful by far is requests per second"
+    },
+    {
+      "startSeconds": 81.76,
+      "durationSeconds": 4.64,
+      "text": "at the service level or queries per"
+    },
+    {
+      "startSeconds": 83.6,
+      "durationSeconds": 4.72,
+      "text": "second at the database level."
+    },
+    {
+      "startSeconds": 86.4,
+      "durationSeconds": 4.52,
+      "text": "Let's go over the common inputs in the"
+    },
+    {
+      "startSeconds": 88.32,
+      "durationSeconds": 5.84,
+      "text": "requests per second calculations."
+    },
+    {
+      "startSeconds": 90.92,
+      "durationSeconds": 5.52,
+      "text": "First input is DAU or daily active"
+    },
+    {
+      "startSeconds": 94.16,
+      "durationSeconds": 4.56,
+      "text": "users. This number should be easy to"
+    },
+    {
+      "startSeconds": 96.44,
+      "durationSeconds": 4.8,
+      "text": "obtain. Sometimes, the only available"
+    },
+    {
+      "startSeconds": 98.72,
+      "durationSeconds": 5.16,
+      "text": "number will be monthly active users. In"
+    },
+    {
+      "startSeconds": 101.24,
+      "durationSeconds": 5.08,
+      "text": "that case, estimate the DAU as a"
+    },
+    {
+      "startSeconds": 103.88,
+      "durationSeconds": 5.12,
+      "text": "percentage of the MAU."
+    },
+    {
+      "startSeconds": 106.32,
+      "durationSeconds": 4.84,
+      "text": "The second input is the estimate of the"
+    },
+    {
+      "startSeconds": 109,
+      "durationSeconds": 4.48,
+      "text": "usage per DAU"
+    },
+    {
+      "startSeconds": 111.16,
+      "durationSeconds": 4.56,
+      "text": "of the service we're designing for."
+    },
+    {
+      "startSeconds": 113.48,
+      "durationSeconds": 4.92,
+      "text": "For example, not everyone active on"
+    },
+    {
+      "startSeconds": 115.72,
+      "durationSeconds": 6.04,
+      "text": "Twitter makes a post. So, only a"
+    },
+    {
+      "startSeconds": 118.4,
+      "durationSeconds": 5.48,
+      "text": "percentage does that. So, 10% to 25%"
+    },
+    {
+      "startSeconds": 121.76,
+      "durationSeconds": 4.24,
+      "text": "seems to be reasonable. Again, it"
+    },
+    {
+      "startSeconds": 123.88,
+      "durationSeconds": 5.239,
+      "text": "doesn't have to be exact. Getting within"
+    },
+    {
+      "startSeconds": 126,
+      "durationSeconds": 5.24,
+      "text": "an order of magnitude is usually fine."
+    },
+    {
+      "startSeconds": 129.119,
+      "durationSeconds": 5.361,
+      "text": "Now, the third input is a scaling"
+    },
+    {
+      "startSeconds": 131.24,
+      "durationSeconds": 5.04,
+      "text": "factor. Usage rate for a service usually"
+    },
+    {
+      "startSeconds": 134.48,
+      "durationSeconds": 4.44,
+      "text": "has peaks and valleys throughout the"
+    },
+    {
+      "startSeconds": 136.28,
+      "durationSeconds": 5.12,
+      "text": "day. We need to estimate how much higher"
+    },
+    {
+      "startSeconds": 138.92,
+      "durationSeconds": 5.08,
+      "text": "the traffic would peak compared to the"
+    },
+    {
+      "startSeconds": 141.4,
+      "durationSeconds": 4.68,
+      "text": "average. This will reflect the estimated"
+    },
+    {
+      "startSeconds": 144,
+      "durationSeconds": 4.36,
+      "text": "request per second peak where the design"
+    },
+    {
+      "startSeconds": 146.08,
+      "durationSeconds": 4.48,
+      "text": "could potentially break."
+    },
+    {
+      "startSeconds": 148.36,
+      "durationSeconds": 4.48,
+      "text": "For example, for a service like Google"
+    },
+    {
+      "startSeconds": 150.56,
+      "durationSeconds": 4.64,
+      "text": "Maps, the usage rate during commute"
+    },
+    {
+      "startSeconds": 152.84,
+      "durationSeconds": 3.72,
+      "text": "hours could be five times higher than"
+    },
+    {
+      "startSeconds": 155.2,
+      "durationSeconds": 3.2,
+      "text": "average."
+    },
+    {
+      "startSeconds": 156.56,
+      "durationSeconds": 5.12,
+      "text": "Another example, for a ride-sharing"
+    },
+    {
+      "startSeconds": 158.4,
+      "durationSeconds": 6.76,
+      "text": "service like Uber, weekend nights could"
+    },
+    {
+      "startSeconds": 161.68,
+      "durationSeconds": 5.64,
+      "text": "have twice as many riders as average."
+    },
+    {
+      "startSeconds": 165.16,
+      "durationSeconds": 4.28,
+      "text": "Now, let's go over an example. We'll"
+    },
+    {
+      "startSeconds": 167.32,
+      "durationSeconds": 3.92,
+      "text": "estimate the number of tweets created"
+    },
+    {
+      "startSeconds": 169.44,
+      "durationSeconds": 3.92,
+      "text": "per second on Twitter."
+    },
+    {
+      "startSeconds": 171.24,
+      "durationSeconds": 4.64,
+      "text": "Note, these numbers are made up and they"
+    },
+    {
+      "startSeconds": 173.36,
+      "durationSeconds": 5.76,
+      "text": "are not official numbers from Twitter."
+    },
+    {
+      "startSeconds": 175.88,
+      "durationSeconds": 6.16,
+      "text": "Let's assume Twitter has 300 million MAU"
+    },
+    {
+      "startSeconds": 179.12,
+      "durationSeconds": 6.32,
+      "text": "and 50% of the MAU use Twitter daily."
+    },
+    {
+      "startSeconds": 182.04,
+      "durationSeconds": 6.4,
+      "text": "So, that's about 150 million DAU."
+    },
+    {
+      "startSeconds": 185.44,
+      "durationSeconds": 5.4,
+      "text": "Next, we estimate that about 25% of"
+    },
+    {
+      "startSeconds": 188.44,
+      "durationSeconds": 4.96,
+      "text": "Twitter DAU make tweets."
+    },
+    {
+      "startSeconds": 190.84,
+      "durationSeconds": 4.04,
+      "text": "And each one on average makes two"
+    },
+    {
+      "startSeconds": 193.4,
+      "durationSeconds": 5.32,
+      "text": "tweets."
+    },
+    {
+      "startSeconds": 194.88,
+      "durationSeconds": 5.4,
+      "text": "That is 25% * 2, so it is 0.5 tweets per"
+    },
+    {
+      "startSeconds": 198.72,
+      "durationSeconds": 3.88,
+      "text": "DAU."
+    },
+    {
+      "startSeconds": 200.28,
+      "durationSeconds": 4.92,
+      "text": "For the scaling factor, we estimate that"
+    },
+    {
+      "startSeconds": 202.6,
+      "durationSeconds": 4.52,
+      "text": "most people tweet in the morning when"
+    },
+    {
+      "startSeconds": 205.2,
+      "durationSeconds": 4.16,
+      "text": "they get up and can't wait to share what"
+    },
+    {
+      "startSeconds": 207.12,
+      "durationSeconds": 4.44,
+      "text": "they dream about the night before. And"
+    },
+    {
+      "startSeconds": 209.36,
+      "durationSeconds": 4.879,
+      "text": "that spikes the tweet created per"
+    },
+    {
+      "startSeconds": 211.56,
+      "durationSeconds": 5.2,
+      "text": "traffic to twice the average when the US"
+    },
+    {
+      "startSeconds": 214.239,
+      "durationSeconds": 4.041,
+      "text": "East Coast wakes up, let's say."
+    },
+    {
+      "startSeconds": 216.76,
+      "durationSeconds": 4.8,
+      "text": "Now, we have enough to calculate the"
+    },
+    {
+      "startSeconds": 218.28,
+      "durationSeconds": 8.72,
+      "text": "peak tweets created per second. We have"
+    },
+    {
+      "startSeconds": 221.56,
+      "durationSeconds": 9.72,
+      "text": "150 million DAU * 0.5 tweets per DAU * 2"
+    },
+    {
+      "startSeconds": 227,
+      "durationSeconds": 6.32,
+      "text": "times scaling factor divided by 86,400"
+    },
+    {
+      "startSeconds": 231.28,
+      "durationSeconds": 4.44,
+      "text": "seconds in a day."
+    },
+    {
+      "startSeconds": 233.32,
+      "durationSeconds": 4.28,
+      "text": "Now, that is roughly about 1,500 tweets"
+    },
+    {
+      "startSeconds": 235.72,
+      "durationSeconds": 3.92,
+      "text": "created per second."
+    },
+    {
+      "startSeconds": 237.6,
+      "durationSeconds": 4.28,
+      "text": "Let's go over the techniques we used to"
+    },
+    {
+      "startSeconds": 239.64,
+      "durationSeconds": 4.6,
+      "text": "simplify the calculations."
+    },
+    {
+      "startSeconds": 241.88,
+      "durationSeconds": 4.28,
+      "text": "First, we convert all big numbers to"
+    },
+    {
+      "startSeconds": 244.24,
+      "durationSeconds": 4.28,
+      "text": "scientific notation."
+    },
+    {
+      "startSeconds": 246.16,
+      "durationSeconds": 3.64,
+      "text": "Doing math on really big numbers is very"
+    },
+    {
+      "startSeconds": 248.52,
+      "durationSeconds": 3.439,
+      "text": "error-prone."
+    },
+    {
+      "startSeconds": 249.8,
+      "durationSeconds": 4.56,
+      "text": "By converting big numbers to scientific"
+    },
+    {
+      "startSeconds": 251.959,
+      "durationSeconds": 5.56,
+      "text": "notation, part of the multiplication"
+    },
+    {
+      "startSeconds": 254.36,
+      "durationSeconds": 4.879,
+      "text": "becomes simple addition, and division"
+    },
+    {
+      "startSeconds": 257.519,
+      "durationSeconds": 4.961,
+      "text": "becomes subtraction."
+    },
+    {
+      "startSeconds": 259.239,
+      "durationSeconds": 9.561,
+      "text": "In the example above, 150 million DAU"
+    },
+    {
+      "startSeconds": 262.48,
+      "durationSeconds": 9.64,
+      "text": "becomes 150 * 10 ^ 6 or 1.5 * 10 ^ 8."
+    },
+    {
+      "startSeconds": 268.8,
+      "durationSeconds": 5.96,
+      "text": "There are 86,400 seconds in a day. We"
+    },
+    {
+      "startSeconds": 272.12,
+      "durationSeconds": 5.48,
+      "text": "round it up to 100,000 seconds, and that"
+    },
+    {
+      "startSeconds": 274.76,
+      "durationSeconds": 5.2,
+      "text": "becomes 10 ^ 5 seconds."
+    },
+    {
+      "startSeconds": 277.6,
+      "durationSeconds": 5.76,
+      "text": "And since it's a division, 10 ^ 5"
+    },
+    {
+      "startSeconds": 279.96,
+      "durationSeconds": 5.36,
+      "text": "becomes 10 ^ -5."
+    },
+    {
+      "startSeconds": 283.36,
+      "durationSeconds": 3.08,
+      "text": "Next, we group all the power of 10s"
+    },
+    {
+      "startSeconds": 285.32,
+      "durationSeconds": 3.68,
+      "text": "together,"
+    },
+    {
+      "startSeconds": 286.44,
+      "durationSeconds": 7.8,
+      "text": "and then all other numbers together."
+    },
+    {
+      "startSeconds": 289,
+      "durationSeconds": 10.52,
+      "text": "So, the math becomes 1.5 * 0.5 * 2,"
+    },
+    {
+      "startSeconds": 294.24,
+      "durationSeconds": 10,
+      "text": "and uh 10 ^ 8 * 10 ^ -5, which is equal"
+    },
+    {
+      "startSeconds": 299.52,
+      "durationSeconds": 7.72,
+      "text": "to 10 ^ 8 - 5, which is 10 ^ 3."
+    },
+    {
+      "startSeconds": 304.24,
+      "durationSeconds": 6.16,
+      "text": "Putting all together is like 1.5 * 10 ^"
+    },
+    {
+      "startSeconds": 307.24,
+      "durationSeconds": 4.92,
+      "text": "3 or 1,500."
+    },
+    {
+      "startSeconds": 310.4,
+      "durationSeconds": 3.84,
+      "text": "Now, with practice, we should be able to"
+    },
+    {
+      "startSeconds": 312.16,
+      "durationSeconds": 4.2,
+      "text": "convert a large number to a scientific"
+    },
+    {
+      "startSeconds": 314.24,
+      "durationSeconds": 3.92,
+      "text": "notation in seconds."
+    },
+    {
+      "startSeconds": 316.36,
+      "durationSeconds": 3.32,
+      "text": "And here are some handy conversions we"
+    },
+    {
+      "startSeconds": 318.16,
+      "durationSeconds": 3.92,
+      "text": "should memorize."
+    },
+    {
+      "startSeconds": 319.68,
+      "durationSeconds": 4.36,
+      "text": "As an example, we should know by heart"
+    },
+    {
+      "startSeconds": 322.08,
+      "durationSeconds": 5.04,
+      "text": "that 10 ^ 12"
+    },
+    {
+      "startSeconds": 324.04,
+      "durationSeconds": 5.44,
+      "text": "is a trillion or a terabyte. And when we"
+    },
+    {
+      "startSeconds": 327.12,
+      "durationSeconds": 4.96,
+      "text": "see a number like 50 terabyte, we should"
+    },
+    {
+      "startSeconds": 329.48,
+      "durationSeconds": 6.8,
+      "text": "be able to convert it quickly to 50 * 10"
+    },
+    {
+      "startSeconds": 332.08,
+      "durationSeconds": 5.839,
+      "text": "^ 12, which is 5 * 10 ^ 13."
+    },
+    {
+      "startSeconds": 336.28,
+      "durationSeconds": 4.52,
+      "text": "We're going to ignore the fact that 1"
+    },
+    {
+      "startSeconds": 337.919,
+      "durationSeconds": 6.881,
+      "text": "kilobyte is actually 2 ^ 10 bytes or"
+    },
+    {
+      "startSeconds": 340.8,
+      "durationSeconds": 6.2,
+      "text": "1,024 bytes, and not a dozen bytes. We"
+    },
+    {
+      "startSeconds": 344.8,
+      "durationSeconds": 4.36,
+      "text": "don't need the that degree of accuracy"
+    },
+    {
+      "startSeconds": 347,
+      "durationSeconds": 3.92,
+      "text": "for back of the envelope math."
+    },
+    {
+      "startSeconds": 349.16,
+      "durationSeconds": 4.28,
+      "text": "Now, let's wrap up by going through one"
+    },
+    {
+      "startSeconds": 350.92,
+      "durationSeconds": 4.96,
+      "text": "last example. We'll estimate how much"
+    },
+    {
+      "startSeconds": 353.44,
+      "durationSeconds": 5.36,
+      "text": "storage is required for storing"
+    },
+    {
+      "startSeconds": 355.88,
+      "durationSeconds": 5,
+      "text": "multimedia files for tweets."
+    },
+    {
+      "startSeconds": 358.8,
+      "durationSeconds": 4.32,
+      "text": "Now, we know from previous example that"
+    },
+    {
+      "startSeconds": 360.88,
+      "durationSeconds": 3.16,
+      "text": "there are about 150 million tweets per"
+    },
+    {
+      "startSeconds": 363.12,
+      "durationSeconds": 3.68,
+      "text": "day."
+    },
+    {
+      "startSeconds": 364.04,
+      "durationSeconds": 4.8,
+      "text": "Now, we need an estimate on a percentage"
+    },
+    {
+      "startSeconds": 366.8,
+      "durationSeconds": 5.2,
+      "text": "of tweets that could contain multimedia"
+    },
+    {
+      "startSeconds": 368.84,
+      "durationSeconds": 4.96,
+      "text": "content and how large those files are on"
+    },
+    {
+      "startSeconds": 372,
+      "durationSeconds": 4.4,
+      "text": "average."
+    },
+    {
+      "startSeconds": 373.8,
+      "durationSeconds": 5.76,
+      "text": "From meticulous research, we estimate"
+    },
+    {
+      "startSeconds": 376.4,
+      "durationSeconds": 6.36,
+      "text": "that 10% of tweets contain pictures and"
+    },
+    {
+      "startSeconds": 379.56,
+      "durationSeconds": 5.48,
+      "text": "they're about 100 kilobyte each and 1%"
+    },
+    {
+      "startSeconds": 382.76,
+      "durationSeconds": 4.68,
+      "text": "of all the tweets contain videos and"
+    },
+    {
+      "startSeconds": 385.04,
+      "durationSeconds": 4.6,
+      "text": "they're about 100 megabyte each. We"
+    },
+    {
+      "startSeconds": 387.44,
+      "durationSeconds": 4.8,
+      "text": "further assume that the files are"
+    },
+    {
+      "startSeconds": 389.64,
+      "durationSeconds": 5.2,
+      "text": "replicated with three copies each and"
+    },
+    {
+      "startSeconds": 392.24,
+      "durationSeconds": 3.64,
+      "text": "that Twitter would keep the media for 5"
+    },
+    {
+      "startSeconds": 394.84,
+      "durationSeconds": 2.92,
+      "text": "years."
+    },
+    {
+      "startSeconds": 395.88,
+      "durationSeconds": 4.48,
+      "text": "Now, here's the math. For storing"
+    },
+    {
+      "startSeconds": 397.76,
+      "durationSeconds": 5.4,
+      "text": "pictures, we have the following."
+    },
+    {
+      "startSeconds": 400.36,
+      "durationSeconds": 5.36,
+      "text": "We have 150 million tweets times one in"
+    },
+    {
+      "startSeconds": 403.16,
+      "durationSeconds": 5.64,
+      "text": "10 tweets with pictures times 100"
+    },
+    {
+      "startSeconds": 405.72,
+      "durationSeconds": 6.84,
+      "text": "kilobyte per picture times 400 days in a"
+    },
+    {
+      "startSeconds": 408.8,
+      "durationSeconds": 7.04,
+      "text": "year times 5 years times three copies."
+    },
+    {
+      "startSeconds": 412.56,
+      "durationSeconds": 7,
+      "text": "So, that turns into 1.5 times 10 to the"
+    },
+    {
+      "startSeconds": 415.84,
+      "durationSeconds": 6.96,
+      "text": "eighth times 10 to the minus one times"
+    },
+    {
+      "startSeconds": 419.56,
+      "durationSeconds": 6.76,
+      "text": "10 to the fifth times four times 10 to"
+    },
+    {
+      "startSeconds": 422.8,
+      "durationSeconds": 5.16,
+      "text": "the second times five times three."
+    },
+    {
+      "startSeconds": 426.32,
+      "durationSeconds": 5.52,
+      "text": "Again, we group the powers of 10s"
+    },
+    {
+      "startSeconds": 427.96,
+      "durationSeconds": 7.44,
+      "text": "together. This becomes 1.5 times four"
+    },
+    {
+      "startSeconds": 431.84,
+      "durationSeconds": 7.64,
+      "text": "times five times three, which is 90."
+    },
+    {
+      "startSeconds": 435.4,
+      "durationSeconds": 7.4,
+      "text": "And 10 to the eighth minus one plus five"
+    },
+    {
+      "startSeconds": 439.48,
+      "durationSeconds": 6.24,
+      "text": "plus two, which is 10 to the 14th. And"
+    },
+    {
+      "startSeconds": 442.8,
+      "durationSeconds": 6.84,
+      "text": "that becomes 90 times 10 to the 15,"
+    },
+    {
+      "startSeconds": 445.72,
+      "durationSeconds": 6.04,
+      "text": "which is from the table 9 petabytes."
+    },
+    {
+      "startSeconds": 449.64,
+      "durationSeconds": 4.24,
+      "text": "Now, for storing videos, we take yet"
+    },
+    {
+      "startSeconds": 451.76,
+      "durationSeconds": 5.76,
+      "text": "another shortcut. Since videos on"
+    },
+    {
+      "startSeconds": 453.88,
+      "durationSeconds": 6.32,
+      "text": "average 100 megabyte each while pictures"
+    },
+    {
+      "startSeconds": 457.52,
+      "durationSeconds": 5.68,
+      "text": "100 kilobyte, a video is a thousand time"
+    },
+    {
+      "startSeconds": 460.2,
+      "durationSeconds": 5.6,
+      "text": "bigger than a picture on average. Now,"
+    },
+    {
+      "startSeconds": 463.2,
+      "durationSeconds": 5.6,
+      "text": "second, only 1% of tweets contain a"
+    },
+    {
+      "startSeconds": 465.8,
+      "durationSeconds": 6.04,
+      "text": "video, while pictures appear in 10% of"
+    },
+    {
+      "startSeconds": 468.8,
+      "durationSeconds": 4.2,
+      "text": "all the tweets. So, videos are 1/10 as"
+    },
+    {
+      "startSeconds": 471.84,
+      "durationSeconds": 2.44,
+      "text": "popular."
+    },
+    {
+      "startSeconds": 473,
+      "durationSeconds": 5.36,
+      "text": "Now, putting the math together, the"
+    },
+    {
+      "startSeconds": 474.28,
+      "durationSeconds": 5.24,
+      "text": "total video storage is 1,000 * 1/10 of"
+    },
+    {
+      "startSeconds": 478.36,
+      "durationSeconds": 5.76,
+      "text": "pictures"
+    },
+    {
+      "startSeconds": 479.52,
+      "durationSeconds": 6.68,
+      "text": "uh storage, which is 100 * 9 petabyte or"
+    },
+    {
+      "startSeconds": 484.12,
+      "durationSeconds": 4.6,
+      "text": "900 petabytes."
+    },
+    {
+      "startSeconds": 486.2,
+      "durationSeconds": 5.04,
+      "text": "In conclusion, back-of-the-envelope math"
+    },
+    {
+      "startSeconds": 488.72,
+      "durationSeconds": 5.28,
+      "text": "is a very useful tool in our system"
+    },
+    {
+      "startSeconds": 491.24,
+      "durationSeconds": 4.8,
+      "text": "design toolbox. Now, don't over-index on"
+    },
+    {
+      "startSeconds": 494,
+      "durationSeconds": 4.52,
+      "text": "precision. Getting within an order of"
+    },
+    {
+      "startSeconds": 496.04,
+      "durationSeconds": 4.72,
+      "text": "magnitude is usually enough to inform"
+    },
+    {
+      "startSeconds": 498.52,
+      "durationSeconds": 3.88,
+      "text": "and validate our design."
+    },
+    {
+      "startSeconds": 500.76,
+      "durationSeconds": 3.6,
+      "text": "If you'd like to learn more about system"
+    },
+    {
+      "startSeconds": 502.4,
+      "durationSeconds": 3.88,
+      "text": "design, check out our books and weekly"
+    },
+    {
+      "startSeconds": 504.36,
+      "durationSeconds": 3.64,
+      "text": "newsletter. Please subscribe if you"
+    },
+    {
+      "startSeconds": 506.28,
+      "durationSeconds": 5.36,
+      "text": "learned something new. Thank you so"
+    },
+    {
+      "startSeconds": 508,
+      "durationSeconds": 3.64,
+      "text": "much, and we'll see you next time."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:05.576Z"
+}

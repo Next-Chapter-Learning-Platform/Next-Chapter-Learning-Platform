@@ -1,0 +1,1178 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "j3QJ1Rhxxbw",
+  "url": "https://www.youtube.com/watch?v=j3QJ1Rhxxbw",
+  "title": "Next 16.0 - generateStaticParams function Explained: Supercharge Your Dynamic Routes",
+  "description": "Welcome to BuildBytesDaily!\nIn this bite-sized episode, we break down `generateStaticParams` in Next.js — how it lets you pre-render dynamic routes at build time for blazing-fast page loads.\n\n🔍 In This Episode\n• What `generateStaticParams` is and how it replaces `getStaticPaths` for static site generation (SSG)\n• The performance benefits: generating HTML at build time to reduce server load and ensure consistent, fast user experiences.\n\n▶️ Subscribe for weekly 5–10 minute dev & tech breakdowns: / @buildbytesdaily\n🔔 Hit the bell to never miss an episode!\n\n📌 Want the show notes or links to Next.js docs? Reply and I’ll drop them here.\n\n#Nextjs #generateStaticParams #WebPerformance #StaticGeneration #React #SSG #BuildBytesDaily",
+  "expectedDurationSeconds": 496,
+  "transcript": [
+    {
+      "startSeconds": 0.24,
+      "durationSeconds": 4.4,
+      "text": "Welcome to Build Bites Daily. Hey all"
+    },
+    {
+      "startSeconds": 2.56,
+      "durationSeconds": 3.44,
+      "text": "you NextJS developers out there, you"
+    },
+    {
+      "startSeconds": 4.64,
+      "durationSeconds": 4.72,
+      "text": "know that feeling when your static"
+    },
+    {
+      "startSeconds": 6,
+      "durationSeconds": 5.36,
+      "text": "homepage just flies? It's instant, but"
+    },
+    {
+      "startSeconds": 9.36,
+      "durationSeconds": 3.84,
+      "text": "then you click over to a blog post or a"
+    },
+    {
+      "startSeconds": 11.36,
+      "durationSeconds": 4.319,
+      "text": "product page and there's that little bit"
+    },
+    {
+      "startSeconds": 13.2,
+      "durationSeconds": 5.2,
+      "text": "of a delay. Well, in this explainer, we"
+    },
+    {
+      "startSeconds": 15.679,
+      "durationSeconds": 4.641,
+      "text": "are going to crush that delay. Yeah,"
+    },
+    {
+      "startSeconds": 18.4,
+      "durationSeconds": 3.84,
+      "text": "this is probably one of the most common"
+    },
+    {
+      "startSeconds": 20.32,
+      "durationSeconds": 3.84,
+      "text": "questions I see. You build this"
+    },
+    {
+      "startSeconds": 22.24,
+      "durationSeconds": 3.52,
+      "text": "lightning fast site, but the performance"
+    },
+    {
+      "startSeconds": 24.16,
+      "durationSeconds": 3.84,
+      "text": "just doesn't seem to hold up for your"
+    },
+    {
+      "startSeconds": 25.76,
+      "durationSeconds": 3.919,
+      "text": "dynamic content. Don't worry, you are"
+    },
+    {
+      "startSeconds": 28,
+      "durationSeconds": 3.76,
+      "text": "definitely not alone. And the good news"
+    },
+    {
+      "startSeconds": 29.679,
+      "durationSeconds": 4.241,
+      "text": "is there's a fantastic solution baked"
+    },
+    {
+      "startSeconds": 31.76,
+      "durationSeconds": 4.319,
+      "text": "right into Nex.js. So let's talk about"
+    },
+    {
+      "startSeconds": 33.92,
+      "durationSeconds": 3.84,
+      "text": "what's really going on here. So the"
+    },
+    {
+      "startSeconds": 36.079,
+      "durationSeconds": 3.921,
+      "text": "whole issue really comes down to how"
+    },
+    {
+      "startSeconds": 37.76,
+      "durationSeconds": 3.44,
+      "text": "dynamic routes are handled by default. I"
+    },
+    {
+      "startSeconds": 40,
+      "durationSeconds": 3.92,
+      "text": "mean they're amazing, right? You can"
+    },
+    {
+      "startSeconds": 41.2,
+      "durationSeconds": 4.96,
+      "text": "have one file like /slug.js that handles"
+    },
+    {
+      "startSeconds": 43.92,
+      "durationSeconds": 4.08,
+      "text": "all of your thousands of blog posts. But"
+    },
+    {
+      "startSeconds": 46.16,
+      "durationSeconds": 5.12,
+      "text": "that flexibility comes with a hidden"
+    },
+    {
+      "startSeconds": 48,
+      "durationSeconds": 6.239,
+      "text": "cost. That hidden cost is in those two"
+    },
+    {
+      "startSeconds": 51.28,
+      "durationSeconds": 4.72,
+      "text": "words on demand. See, when a user asks"
+    },
+    {
+      "startSeconds": 54.239,
+      "durationSeconds": 3.921,
+      "text": "for a dynamic page that hasn't been"
+    },
+    {
+      "startSeconds": 56,
+      "durationSeconds": 4.079,
+      "text": "built yet, the server has to scramble."
+    },
+    {
+      "startSeconds": 58.16,
+      "durationSeconds": 4.079,
+      "text": "It has to wake up, go fetch the data,"
+    },
+    {
+      "startSeconds": 60.079,
+      "durationSeconds": 4.48,
+      "text": "actually render the HTML for the page,"
+    },
+    {
+      "startSeconds": 62.239,
+      "durationSeconds": 4.321,
+      "text": "and only then can it send it back to the"
+    },
+    {
+      "startSeconds": 64.559,
+      "durationSeconds": 3.92,
+      "text": "user. Every one of those steps takes"
+    },
+    {
+      "startSeconds": 66.56,
+      "durationSeconds": 3.919,
+      "text": "time, and that's time your user is just"
+    },
+    {
+      "startSeconds": 68.479,
+      "durationSeconds": 4.721,
+      "text": "staring at a loading screen. We can do"
+    },
+    {
+      "startSeconds": 70.479,
+      "durationSeconds": 5.041,
+      "text": "way, way better than that. And that's,"
+    },
+    {
+      "startSeconds": 73.2,
+      "durationSeconds": 5.68,
+      "text": "my friends, is where our hero of the day"
+    },
+    {
+      "startSeconds": 75.52,
+      "durationSeconds": 5.44,
+      "text": "comes in. Generate static params. This"
+    },
+    {
+      "startSeconds": 78.88,
+      "durationSeconds": 4.16,
+      "text": "is a seriously powerful function in the"
+    },
+    {
+      "startSeconds": 80.96,
+      "durationSeconds": 3.839,
+      "text": "Nex.js JS OP router that lets us"
+    },
+    {
+      "startSeconds": 83.04,
+      "durationSeconds": 4.079,
+      "text": "completely change the game for our"
+    },
+    {
+      "startSeconds": 84.799,
+      "durationSeconds": 5.201,
+      "text": "dynamic pages, turning that wait time"
+    },
+    {
+      "startSeconds": 87.119,
+      "durationSeconds": 4.801,
+      "text": "into instant load time. The official"
+    },
+    {
+      "startSeconds": 90,
+      "durationSeconds": 3.52,
+      "text": "docs really say it all. Instead of"
+    },
+    {
+      "startSeconds": 91.92,
+      "durationSeconds": 3.28,
+      "text": "waiting for a user to show up and ask"
+    },
+    {
+      "startSeconds": 93.52,
+      "durationSeconds": 4.32,
+      "text": "for a page, we're going to proactively"
+    },
+    {
+      "startSeconds": 95.2,
+      "durationSeconds": 4.32,
+      "text": "tell Nex.js, hey, build all these pages"
+    },
+    {
+      "startSeconds": 97.84,
+      "durationSeconds": 4.16,
+      "text": "ahead of time when you're building the"
+    },
+    {
+      "startSeconds": 99.52,
+      "durationSeconds": 4.48,
+      "text": "whole site. It's a huge shift, and it is"
+    },
+    {
+      "startSeconds": 102,
+      "durationSeconds": 4.799,
+      "text": "the absolute key to unlocking that top"
+    },
+    {
+      "startSeconds": 104,
+      "durationSeconds": 4.24,
+      "text": "tier performance. Honestly, the best way"
+    },
+    {
+      "startSeconds": 106.799,
+      "durationSeconds": 2.96,
+      "text": "to wrap your head around this is to"
+    },
+    {
+      "startSeconds": 108.24,
+      "durationSeconds": 4.239,
+      "text": "think of it like you're handing Next.js"
+    },
+    {
+      "startSeconds": 109.759,
+      "durationSeconds": 4.241,
+      "text": "JS, a to-do list or a shopping list."
+    },
+    {
+      "startSeconds": 112.479,
+      "durationSeconds": 3.201,
+      "text": "You're just saying, \"Okay, before you"
+    },
+    {
+      "startSeconds": 114,
+      "durationSeconds": 4,
+      "text": "deploy everything, I need you to go out"
+    },
+    {
+      "startSeconds": 115.68,
+      "durationSeconds": 5.36,
+      "text": "and create a ready to go HTML page for"
+    },
+    {
+      "startSeconds": 118,
+      "durationSeconds": 5.92,
+      "text": "product ID 1, product ID 2, and my blog"
+    },
+    {
+      "startSeconds": 121.04,
+      "durationSeconds": 5.2,
+      "text": "post titled Hello World.\" So, what's the"
+    },
+    {
+      "startSeconds": 123.92,
+      "durationSeconds": 4.319,
+      "text": "result of giving Next.js that list?"
+    },
+    {
+      "startSeconds": 126.24,
+      "durationSeconds": 3.84,
+      "text": "Well, every single one of those pages"
+    },
+    {
+      "startSeconds": 128.239,
+      "durationSeconds": 4.481,
+      "text": "gets pre-built, packaged up, and sent to"
+    },
+    {
+      "startSeconds": 130.08,
+      "durationSeconds": 4.72,
+      "text": "a CDN where it just sits there waiting."
+    },
+    {
+      "startSeconds": 132.72,
+      "durationSeconds": 4.4,
+      "text": "The moment a user clicks the link, bam,"
+    },
+    {
+      "startSeconds": 134.8,
+      "durationSeconds": 4.24,
+      "text": "the page is served instantly. No server"
+    },
+    {
+      "startSeconds": 137.12,
+      "durationSeconds": 4.56,
+      "text": "thinking, no on demand rendering, just"
+    },
+    {
+      "startSeconds": 139.04,
+      "durationSeconds": 4.48,
+      "text": "pure speed, just like your homepage. All"
+    },
+    {
+      "startSeconds": 141.68,
+      "durationSeconds": 4.08,
+      "text": "right, so that all sounds great in"
+    },
+    {
+      "startSeconds": 143.52,
+      "durationSeconds": 4.32,
+      "text": "theory, but how do we actually make this"
+    },
+    {
+      "startSeconds": 145.76,
+      "durationSeconds": 4.08,
+      "text": "build list in our code? You'll be"
+    },
+    {
+      "startSeconds": 147.84,
+      "durationSeconds": 3.28,
+      "text": "surprised at how simple and intuitive it"
+    },
+    {
+      "startSeconds": 149.84,
+      "durationSeconds": 4.08,
+      "text": "actually is. Let's get into the"
+    },
+    {
+      "startSeconds": 151.12,
+      "durationSeconds": 5.04,
+      "text": "nitty-gritty. Okay, at its core, the"
+    },
+    {
+      "startSeconds": 153.92,
+      "durationSeconds": 4.72,
+      "text": "entire job of generate static params is"
+    },
+    {
+      "startSeconds": 156.16,
+      "durationSeconds": 4.4,
+      "text": "to do one thing, return an array. That's"
+    },
+    {
+      "startSeconds": 158.64,
+      "durationSeconds": 3.679,
+      "text": "it. And inside that array, you put a"
+    },
+    {
+      "startSeconds": 160.56,
+      "durationSeconds": 3.759,
+      "text": "bunch of little objects. Each one of"
+    },
+    {
+      "startSeconds": 162.319,
+      "durationSeconds": 4.64,
+      "text": "those objects tells Nex.js JS about one"
+    },
+    {
+      "startSeconds": 164.319,
+      "durationSeconds": 4.481,
+      "text": "single page you want it to pre-build."
+    },
+    {
+      "startSeconds": 166.959,
+      "durationSeconds": 4,
+      "text": "And what's so cool about this is how"
+    },
+    {
+      "startSeconds": 168.8,
+      "durationSeconds": 4,
+      "text": "logical it is. The shape of the objects"
+    },
+    {
+      "startSeconds": 170.959,
+      "durationSeconds": 4.56,
+      "text": "you return has to match the dynamic"
+    },
+    {
+      "startSeconds": 172.8,
+      "durationSeconds": 5.12,
+      "text": "parts of your URL. So if your URL has a"
+    },
+    {
+      "startSeconds": 175.519,
+      "durationSeconds": 5.281,
+      "text": "dynamic ID, your object needs a key"
+    },
+    {
+      "startSeconds": 177.92,
+      "durationSeconds": 4.72,
+      "text": "called ID. If your URL has category and"
+    },
+    {
+      "startSeconds": 180.8,
+      "durationSeconds": 3.92,
+      "text": "product, well, your object needs keys"
+    },
+    {
+      "startSeconds": 182.64,
+      "durationSeconds": 4.16,
+      "text": "for both. It just makes sense. Let's"
+    },
+    {
+      "startSeconds": 184.72,
+      "durationSeconds": 4.08,
+      "text": "look at some real code. Okay, let's"
+    },
+    {
+      "startSeconds": 186.8,
+      "durationSeconds": 3.84,
+      "text": "start with the most basic case you can"
+    },
+    {
+      "startSeconds": 188.8,
+      "durationSeconds": 4.96,
+      "text": "imagine. We have a route with just one"
+    },
+    {
+      "startSeconds": 190.64,
+      "durationSeconds": 4.8,
+      "text": "dynamic segment ID. Inside our page.tsx"
+    },
+    {
+      "startSeconds": 193.76,
+      "durationSeconds": 3.759,
+      "text": "file for that route. We just export our"
+    },
+    {
+      "startSeconds": 195.44,
+      "durationSeconds": 4.159,
+      "text": "function and return an array of objects."
+    },
+    {
+      "startSeconds": 197.519,
+      "durationSeconds": 4.161,
+      "text": "Here we're returning three objects each"
+    },
+    {
+      "startSeconds": 199.599,
+      "durationSeconds": 4.321,
+      "text": "with a different ID. And that's it."
+    },
+    {
+      "startSeconds": 201.68,
+      "durationSeconds": 4.08,
+      "text": "We're literally telling Nex.js, when you"
+    },
+    {
+      "startSeconds": 203.92,
+      "durationSeconds": 4.88,
+      "text": "build the site, please create static"
+    },
+    {
+      "startSeconds": 205.76,
+      "durationSeconds": 4.64,
+      "text": "pages for /roduct 1/2"
+    },
+    {
+      "startSeconds": 208.8,
+      "durationSeconds": 4.32,
+      "text": "and/prouct/3."
+    },
+    {
+      "startSeconds": 210.4,
+      "durationSeconds": 4.399,
+      "text": "Done. So what if your URL is more"
+    },
+    {
+      "startSeconds": 213.12,
+      "durationSeconds": 4.399,
+      "text": "complex? What if you have multiple"
+    },
+    {
+      "startSeconds": 214.799,
+      "durationSeconds": 5.601,
+      "text": "dynamic parts? It's just as easy. For a"
+    },
+    {
+      "startSeconds": 217.519,
+      "durationSeconds": 4.481,
+      "text": "route like / product/category/prouct,"
+    },
+    {
+      "startSeconds": 220.4,
+      "durationSeconds": 4,
+      "text": "our objects just need to have keys for"
+    },
+    {
+      "startSeconds": 222,
+      "durationSeconds": 4,
+      "text": "both category and product. In this case,"
+    },
+    {
+      "startSeconds": 224.4,
+      "durationSeconds": 4,
+      "text": "we're pre-building two very specific"
+    },
+    {
+      "startSeconds": 226,
+      "durationSeconds": 5.2,
+      "text": "pages. Product one in category A and"
+    },
+    {
+      "startSeconds": 228.4,
+      "durationSeconds": 4.32,
+      "text": "product two in category B. And yeah, of"
+    },
+    {
+      "startSeconds": 231.2,
+      "durationSeconds": 3.679,
+      "text": "course, it works with those tricky catch"
+    },
+    {
+      "startSeconds": 232.72,
+      "durationSeconds": 4.079,
+      "text": "all routes, too. For a route using dot"
+    },
+    {
+      "startSeconds": 234.879,
+      "durationSeconds": 3.521,
+      "text": "dot dot slug, the only difference is"
+    },
+    {
+      "startSeconds": 236.799,
+      "durationSeconds": 3.52,
+      "text": "that the value for the slug key is an"
+    },
+    {
+      "startSeconds": 238.4,
+      "durationSeconds": 3.52,
+      "text": "array of strings. Each string in that"
+    },
+    {
+      "startSeconds": 240.319,
+      "durationSeconds": 4.721,
+      "text": "array becomes a segment in the final"
+    },
+    {
+      "startSeconds": 241.92,
+      "durationSeconds": 6.319,
+      "text": "path. So, slug equals a1 perfectly"
+    },
+    {
+      "startSeconds": 245.04,
+      "durationSeconds": 5.6,
+      "text": "generates the path / product/ a1. It's"
+    },
+    {
+      "startSeconds": 248.239,
+      "durationSeconds": 4.241,
+      "text": "really flexible. Oh, and a super"
+    },
+    {
+      "startSeconds": 250.64,
+      "durationSeconds": 3.92,
+      "text": "important pro tip here, especially for"
+    },
+    {
+      "startSeconds": 252.48,
+      "durationSeconds": 4.08,
+      "text": "anyone coming from the old pages router."
+    },
+    {
+      "startSeconds": 254.56,
+      "durationSeconds": 4.079,
+      "text": "If you're thinking, hm, this sounds a"
+    },
+    {
+      "startSeconds": 256.56,
+      "durationSeconds": 4.799,
+      "text": "lot like get static paths, you're"
+    },
+    {
+      "startSeconds": 258.639,
+      "durationSeconds": 4.881,
+      "text": "exactly right. Generate static params is"
+    },
+    {
+      "startSeconds": 261.359,
+      "durationSeconds": 4.4,
+      "text": "the new modern replacement for get"
+    },
+    {
+      "startSeconds": 263.52,
+      "durationSeconds": 4.959,
+      "text": "static paths in the app router. Same"
+    },
+    {
+      "startSeconds": 265.759,
+      "durationSeconds": 4.401,
+      "text": "job, new name. Okay, so hard- coding an"
+    },
+    {
+      "startSeconds": 268.479,
+      "durationSeconds": 4,
+      "text": "array like that is perfect for"
+    },
+    {
+      "startSeconds": 270.16,
+      "durationSeconds": 4,
+      "text": "understanding how this works. But in a"
+    },
+    {
+      "startSeconds": 272.479,
+      "durationSeconds": 4.16,
+      "text": "real world app, you're not going to sit"
+    },
+    {
+      "startSeconds": 274.16,
+      "durationSeconds": 4.4,
+      "text": "there and type out the IDs for 500 blog"
+    },
+    {
+      "startSeconds": 276.639,
+      "durationSeconds": 4.161,
+      "text": "posts. Your data is coming from"
+    },
+    {
+      "startSeconds": 278.56,
+      "durationSeconds": 4.72,
+      "text": "somewhere else. So let's look at how we"
+    },
+    {
+      "startSeconds": 280.8,
+      "durationSeconds": 4,
+      "text": "can generate these paths dynamically."
+    },
+    {
+      "startSeconds": 283.28,
+      "durationSeconds": 3.52,
+      "text": "The most common approach is to just"
+    },
+    {
+      "startSeconds": 284.8,
+      "durationSeconds": 3.76,
+      "text": "build everything up front. You can make"
+    },
+    {
+      "startSeconds": 286.8,
+      "durationSeconds": 3.52,
+      "text": "generate static params and async"
+    },
+    {
+      "startSeconds": 288.56,
+      "durationSeconds": 3.76,
+      "text": "function, which is awesome. This lets"
+    },
+    {
+      "startSeconds": 290.32,
+      "durationSeconds": 4.319,
+      "text": "you await a fetch call to your database"
+    },
+    {
+      "startSeconds": 292.32,
+      "durationSeconds": 3.84,
+      "text": "or your CMS right inside the function."
+    },
+    {
+      "startSeconds": 294.639,
+      "durationSeconds": 4,
+      "text": "You grab all your posts and then just"
+    },
+    {
+      "startSeconds": 296.16,
+      "durationSeconds": 4.16,
+      "text": "use a simple map to transform that list"
+    },
+    {
+      "startSeconds": 298.639,
+      "durationSeconds": 3.84,
+      "text": "of posts into the array of params"
+    },
+    {
+      "startSeconds": 300.32,
+      "durationSeconds": 3.92,
+      "text": "objects that Nex.js JS needs. This is"
+    },
+    {
+      "startSeconds": 302.479,
+      "durationSeconds": 3.361,
+      "text": "perfect for your typical blog or doc"
+    },
+    {
+      "startSeconds": 304.24,
+      "durationSeconds": 4.64,
+      "text": "site where you want every single page to"
+    },
+    {
+      "startSeconds": 305.84,
+      "durationSeconds": 5.44,
+      "text": "be static and instant. But what if you"
+    },
+    {
+      "startSeconds": 308.88,
+      "durationSeconds": 4.48,
+      "text": "have an e-commerce store with 50,000"
+    },
+    {
+      "startSeconds": 311.28,
+      "durationSeconds": 4,
+      "text": "products? Building all of those pages at"
+    },
+    {
+      "startSeconds": 313.36,
+      "durationSeconds": 4.559,
+      "text": "once could make your build times really,"
+    },
+    {
+      "startSeconds": 315.28,
+      "durationSeconds": 5.199,
+      "text": "really long. So a much smarter strategy"
+    },
+    {
+      "startSeconds": 317.919,
+      "durationSeconds": 4,
+      "text": "is to just build a subset. For instance,"
+    },
+    {
+      "startSeconds": 320.479,
+      "durationSeconds": 3.361,
+      "text": "you could fetch all your products, but"
+    },
+    {
+      "startSeconds": 321.919,
+      "durationSeconds": 4.641,
+      "text": "only return the params for, say, your"
+    },
+    {
+      "startSeconds": 323.84,
+      "durationSeconds": 4.48,
+      "text": "top 100 best sellers. Those 100 pages"
+    },
+    {
+      "startSeconds": 326.56,
+      "durationSeconds": 4.56,
+      "text": "will be instant. What about the other"
+    },
+    {
+      "startSeconds": 328.32,
+      "durationSeconds": 4.4,
+      "text": "49,900? They'll get generated on demand"
+    },
+    {
+      "startSeconds": 331.12,
+      "durationSeconds": 3.44,
+      "text": "the very first time someone visits them"
+    },
+    {
+      "startSeconds": 332.72,
+      "durationSeconds": 4,
+      "text": "and then they'll be cached. It's truly"
+    },
+    {
+      "startSeconds": 334.56,
+      "durationSeconds": 4.32,
+      "text": "the best of both worlds. And then"
+    },
+    {
+      "startSeconds": 336.72,
+      "durationSeconds": 4.56,
+      "text": "there's this third really cool option,"
+    },
+    {
+      "startSeconds": 338.88,
+      "durationSeconds": 4.48,
+      "text": "build absolutely nothing at build time."
+    },
+    {
+      "startSeconds": 341.28,
+      "durationSeconds": 3.919,
+      "text": "You can just return an empty array."
+    },
+    {
+      "startSeconds": 343.36,
+      "durationSeconds": 4.48,
+      "text": "You're telling Nex.js, hey, don't"
+    },
+    {
+      "startSeconds": 345.199,
+      "durationSeconds": 4.641,
+      "text": "pre-build any of these pages. This means"
+    },
+    {
+      "startSeconds": 347.84,
+      "durationSeconds": 3.68,
+      "text": "every dynamic page will be generated on"
+    },
+    {
+      "startSeconds": 349.84,
+      "durationSeconds": 4.799,
+      "text": "demand when it's requested for the first"
+    },
+    {
+      "startSeconds": 351.52,
+      "durationSeconds": 5.36,
+      "text": "time and then cached. This powerful"
+    },
+    {
+      "startSeconds": 354.639,
+      "durationSeconds": 4.961,
+      "text": "pattern is known as incremental static"
+    },
+    {
+      "startSeconds": 356.88,
+      "durationSeconds": 5.36,
+      "text": "regeneration or ISR where your site"
+    },
+    {
+      "startSeconds": 359.6,
+      "durationSeconds": 3.84,
+      "text": "builds itself over time as it's needed."
+    },
+    {
+      "startSeconds": 362.24,
+      "durationSeconds": 2.88,
+      "text": "Now, talking about these different"
+    },
+    {
+      "startSeconds": 363.44,
+      "durationSeconds": 3.68,
+      "text": "strategies brings up a really important"
+    },
+    {
+      "startSeconds": 365.12,
+      "durationSeconds": 4.639,
+      "text": "question. What happens when a user tries"
+    },
+    {
+      "startSeconds": 367.12,
+      "durationSeconds": 4.799,
+      "text": "to visit a URL that we didn't pre-build?"
+    },
+    {
+      "startSeconds": 369.759,
+      "durationSeconds": 4.72,
+      "text": "Well, Nex.js gives us a very clear way"
+    },
+    {
+      "startSeconds": 371.919,
+      "durationSeconds": 3.681,
+      "text": "to control exactly that behavior. That"
+    },
+    {
+      "startSeconds": 374.479,
+      "durationSeconds": 2.72,
+      "text": "control comes from a little"
+    },
+    {
+      "startSeconds": 375.6,
+      "durationSeconds": 4,
+      "text": "configuration option called dynamic"
+    },
+    {
+      "startSeconds": 377.199,
+      "durationSeconds": 4.241,
+      "text": "params. You just export it as a variable"
+    },
+    {
+      "startSeconds": 379.6,
+      "durationSeconds": 4.879,
+      "text": "from your page file right alongside the"
+    },
+    {
+      "startSeconds": 381.44,
+      "durationSeconds": 4.96,
+      "text": "function. This one setting tells NexJSJS"
+    },
+    {
+      "startSeconds": 384.479,
+      "durationSeconds": 4.72,
+      "text": "exactly what to do with those unknown or"
+    },
+    {
+      "startSeconds": 386.4,
+      "durationSeconds": 5.359,
+      "text": "ungenerated paths. And you've got two"
+    },
+    {
+      "startSeconds": 389.199,
+      "durationSeconds": 4.961,
+      "text": "settings. The default is true. This"
+    },
+    {
+      "startSeconds": 391.759,
+      "durationSeconds": 4,
+      "text": "means if a page wasn't pre-built, Nex.js"
+    },
+    {
+      "startSeconds": 394.16,
+      "durationSeconds": 3.68,
+      "text": "will try to generate it when it's"
+    },
+    {
+      "startSeconds": 395.759,
+      "durationSeconds": 4.241,
+      "text": "requested. This is perfect for that"
+    },
+    {
+      "startSeconds": 397.84,
+      "durationSeconds": 3.84,
+      "text": "subset strategy we just talked about. On"
+    },
+    {
+      "startSeconds": 400,
+      "durationSeconds": 3.759,
+      "text": "the other hand, you can set dynamic"
+    },
+    {
+      "startSeconds": 401.68,
+      "durationSeconds": 3.92,
+      "text": "params to false. This is like telling"
+    },
+    {
+      "startSeconds": 403.759,
+      "durationSeconds": 3.361,
+      "text": "Nex.js, if the page isn't in my"
+    },
+    {
+      "startSeconds": 405.6,
+      "durationSeconds": 3.92,
+      "text": "pre-built list, it simply does not"
+    },
+    {
+      "startSeconds": 407.12,
+      "durationSeconds": 4.16,
+      "text": "exist. Period. Any request for a page"
+    },
+    {
+      "startSeconds": 409.52,
+      "durationSeconds": 4.399,
+      "text": "that wasn't pre-built will get a 404"
+    },
+    {
+      "startSeconds": 411.28,
+      "durationSeconds": 4.4,
+      "text": "error. And just a quick final tidbit you"
+    },
+    {
+      "startSeconds": 413.919,
+      "durationSeconds": 3.441,
+      "text": "should know, the function behaves a"
+    },
+    {
+      "startSeconds": 415.68,
+      "durationSeconds": 3.84,
+      "text": "little differently in development versus"
+    },
+    {
+      "startSeconds": 417.36,
+      "durationSeconds": 3.92,
+      "text": "production. When you're running NextDev,"
+    },
+    {
+      "startSeconds": 419.52,
+      "durationSeconds": 3.679,
+      "text": "it runs every time you navigate to a"
+    },
+    {
+      "startSeconds": 421.28,
+      "durationSeconds": 4,
+      "text": "page so you can see your changes live."
+    },
+    {
+      "startSeconds": 423.199,
+      "durationSeconds": 3.921,
+      "text": "But in production, it only runs one time"
+    },
+    {
+      "startSeconds": 425.28,
+      "durationSeconds": 3.6,
+      "text": "during the next build command to"
+    },
+    {
+      "startSeconds": 427.12,
+      "durationSeconds": 4.799,
+      "text": "generate all those static files for your"
+    },
+    {
+      "startSeconds": 428.88,
+      "durationSeconds": 5.68,
+      "text": "deployment. All right, that was a lot of"
+    },
+    {
+      "startSeconds": 431.919,
+      "durationSeconds": 5.601,
+      "text": "info. Let's just zoom out for a second"
+    },
+    {
+      "startSeconds": 434.56,
+      "durationSeconds": 4.56,
+      "text": "and recap the big benefits here. Why"
+    },
+    {
+      "startSeconds": 437.52,
+      "durationSeconds": 4.64,
+      "text": "should you really go to the trouble of"
+    },
+    {
+      "startSeconds": 439.12,
+      "durationSeconds": 5.6,
+      "text": "using this in your apps? First, and this"
+    },
+    {
+      "startSeconds": 442.16,
+      "durationSeconds": 5.12,
+      "text": "is the big one, performance. Your users"
+    },
+    {
+      "startSeconds": 444.72,
+      "durationSeconds": 5.199,
+      "text": "get that instant, snappy experience."
+    },
+    {
+      "startSeconds": 447.28,
+      "durationSeconds": 4.639,
+      "text": "Second, SEO. Google and other search"
+    },
+    {
+      "startSeconds": 449.919,
+      "durationSeconds": 4.56,
+      "text": "engine crawlers absolutely love plain"
+    },
+    {
+      "startSeconds": 451.919,
+      "durationSeconds": 5.041,
+      "text": "HTML files. They can index your site so"
+    },
+    {
+      "startSeconds": 454.479,
+      "durationSeconds": 4,
+      "text": "much faster. Third, you're taking a huge"
+    },
+    {
+      "startSeconds": 456.96,
+      "durationSeconds": 3.44,
+      "text": "load off your server since it's not"
+    },
+    {
+      "startSeconds": 458.479,
+      "durationSeconds": 3.44,
+      "text": "constantly having to build pages. And"
+    },
+    {
+      "startSeconds": 460.4,
+      "durationSeconds": 3.04,
+      "text": "finally, your builds become way more"
+    },
+    {
+      "startSeconds": 461.919,
+      "durationSeconds": 3.041,
+      "text": "reliable and predictable. You know"
+    },
+    {
+      "startSeconds": 463.44,
+      "durationSeconds": 3.52,
+      "text": "exactly what pages are going to exist"
+    },
+    {
+      "startSeconds": 464.96,
+      "durationSeconds": 3.76,
+      "text": "when you hit deploy. So that brings me"
+    },
+    {
+      "startSeconds": 466.96,
+      "durationSeconds": 2.959,
+      "text": "to my question for you. I want you to"
+    },
+    {
+      "startSeconds": 468.72,
+      "durationSeconds": 2.96,
+      "text": "think about the projects you're working"
+    },
+    {
+      "startSeconds": 469.919,
+      "durationSeconds": 3.921,
+      "text": "on right now. Is it a blog, an"
+    },
+    {
+      "startSeconds": 471.68,
+      "durationSeconds": 4.079,
+      "text": "e-commerce site, a portfolio? Which one"
+    },
+    {
+      "startSeconds": 473.84,
+      "durationSeconds": 3.68,
+      "text": "of your dynamic routes could you give a"
+    },
+    {
+      "startSeconds": 475.759,
+      "durationSeconds": 3.681,
+      "text": "massive speed boost to with generate"
+    },
+    {
+      "startSeconds": 477.52,
+      "durationSeconds": 4,
+      "text": "static params? What pages can you take"
+    },
+    {
+      "startSeconds": 479.44,
+      "durationSeconds": 3.52,
+      "text": "from on demand and make instant? That's"
+    },
+    {
+      "startSeconds": 481.52,
+      "durationSeconds": 2.88,
+      "text": "the challenge I'm leaving you with. If"
+    },
+    {
+      "startSeconds": 482.96,
+      "durationSeconds": 3.04,
+      "text": "you found this explainer useful and it"
+    },
+    {
+      "startSeconds": 484.4,
+      "durationSeconds": 2.88,
+      "text": "helps clear things up, please do me a"
+    },
+    {
+      "startSeconds": 486,
+      "durationSeconds": 2.96,
+      "text": "favor and hit that like and subscribe"
+    },
+    {
+      "startSeconds": 487.28,
+      "durationSeconds": 3.359,
+      "text": "button for more deep dives into web"
+    },
+    {
+      "startSeconds": 488.96,
+      "durationSeconds": 3.359,
+      "text": "development right here on Build Bites"
+    },
+    {
+      "startSeconds": 490.639,
+      "durationSeconds": 4.68,
+      "text": "Daily. Thanks for watching and happy"
+    },
+    {
+      "startSeconds": 492.319,
+      "durationSeconds": 3,
+      "text": "coding."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:22:34.882Z"
+}

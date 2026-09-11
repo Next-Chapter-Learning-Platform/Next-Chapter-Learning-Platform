@@ -1,0 +1,1068 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "L5kCvTuddGE",
+  "url": "https://www.youtube.com/watch?v=L5kCvTuddGE",
+  "title": "Avoid unnecessary React Rerenders by Optimizing Performance",
+  "description": "We are going to see why performance can be bad in react applications and what we can use to diagnose and fix the problems. To fix re-rendering issues in our React app we're going to make use of React Hooks such as useMemo and React.memo. \nTopics discussed in the video:\n\nMemoization:  https://www.youtube.com/watch?v=qrAJJMjRA2g\ncreateContext: https://www.youtube.com/watch?v=pgZXqS-r9gE\n\n\nGitHub: https://github.com/mimo84/\nTwitter: https://twitter.com/mostly_code",
+  "expectedDurationSeconds": 558,
+  "transcript": [
+    {
+      "startSeconds": 0.38,
+      "durationSeconds": 5.879,
+      "text": "performance in react so I have a little"
+    },
+    {
+      "startSeconds": 3.78,
+      "durationSeconds": 6.42,
+      "text": "demo here where I have a few components"
+    },
+    {
+      "startSeconds": 6.259,
+      "durationSeconds": 5.92,
+      "text": "and I have an input that every time I"
+    },
+    {
+      "startSeconds": 10.2,
+      "durationSeconds": 4.2,
+      "text": "change the value the welcome input"
+    },
+    {
+      "startSeconds": 12.179,
+      "durationSeconds": 4.44,
+      "text": "changes this value and I have a button"
+    },
+    {
+      "startSeconds": 14.4,
+      "durationSeconds": 4.379,
+      "text": "that sets a values it's like a counter"
+    },
+    {
+      "startSeconds": 16.619,
+      "durationSeconds": 6.061,
+      "text": "that is displayed in here as well inside"
+    },
+    {
+      "startSeconds": 18.779,
+      "durationSeconds": 7.441,
+      "text": "the button and what happens is every"
+    },
+    {
+      "startSeconds": 22.68,
+      "durationSeconds": 6.24,
+      "text": "time I click it this welcome input gets"
+    },
+    {
+      "startSeconds": 26.22,
+      "durationSeconds": 6.24,
+      "text": "displayed again although the props that"
+    },
+    {
+      "startSeconds": 28.92,
+      "durationSeconds": 5.819,
+      "text": "displayed do not actually show up why"
+    },
+    {
+      "startSeconds": 32.46,
+      "durationSeconds": 3.72,
+      "text": "this is happening so well there are"
+    },
+    {
+      "startSeconds": 34.739,
+      "durationSeconds": 2.761,
+      "text": "actually although this the demo is"
+    },
+    {
+      "startSeconds": 36.18,
+      "durationSeconds": 5.46,
+      "text": "really simple there are actually a"
+    },
+    {
+      "startSeconds": 37.5,
+      "durationSeconds": 6.78,
+      "text": "variety of things going on in this demo"
+    },
+    {
+      "startSeconds": 41.64,
+      "durationSeconds": 6.48,
+      "text": "so let's see how I have set it up I set"
+    },
+    {
+      "startSeconds": 44.28,
+      "durationSeconds": 5.82,
+      "text": "up a provider a react provider so that I"
+    },
+    {
+      "startSeconds": 48.12,
+      "durationSeconds": 5.04,
+      "text": "can show things that happen when we use"
+    },
+    {
+      "startSeconds": 50.1,
+      "durationSeconds": 6.2,
+      "text": "a context I use some lifted state that"
+    },
+    {
+      "startSeconds": 53.16,
+      "durationSeconds": 6.059,
+      "text": "is inside the root of our demo"
+    },
+    {
+      "startSeconds": 56.3,
+      "durationSeconds": 5.2,
+      "text": "component where I have the counter the"
+    },
+    {
+      "startSeconds": 59.219,
+      "durationSeconds": 6.241,
+      "text": "countries used inside the counter comner"
+    },
+    {
+      "startSeconds": 61.5,
+      "durationSeconds": 6.36,
+      "text": "which is effectively just a button that"
+    },
+    {
+      "startSeconds": 65.46,
+      "durationSeconds": 6.12,
+      "text": "when it gets click set counting set is"
+    },
+    {
+      "startSeconds": 67.86,
+      "durationSeconds": 6.119,
+      "text": "set to set count plus one then I have"
+    },
+    {
+      "startSeconds": 71.58,
+      "durationSeconds": 4.38,
+      "text": "um then I have this provider which"
+    },
+    {
+      "startSeconds": 73.979,
+      "durationSeconds": 5.64,
+      "text": "essentially has a welcome message and"
+    },
+    {
+      "startSeconds": 75.96,
+      "durationSeconds": 5.159,
+      "text": "set welcome message and is used so that"
+    },
+    {
+      "startSeconds": 79.619,
+      "durationSeconds": 3.901,
+      "text": "I can use this values throughout the"
+    },
+    {
+      "startSeconds": 81.119,
+      "durationSeconds": 5.701,
+      "text": "application in particular I can you know"
+    },
+    {
+      "startSeconds": 83.52,
+      "durationSeconds": 5.22,
+      "text": "take this value when I display the"
+    },
+    {
+      "startSeconds": 86.82,
+      "durationSeconds": 6.299,
+      "text": "welcome input"
+    },
+    {
+      "startSeconds": 88.74,
+      "durationSeconds": 6.66,
+      "text": "um and the demo is what you've seen so"
+    },
+    {
+      "startSeconds": 93.119,
+      "durationSeconds": 4.201,
+      "text": "let's have a look again every time I"
+    },
+    {
+      "startSeconds": 95.4,
+      "durationSeconds": 4.44,
+      "text": "click the hello button the welcome input"
+    },
+    {
+      "startSeconds": 97.32,
+      "durationSeconds": 5.52,
+      "text": "renders when I change the welcome input"
+    },
+    {
+      "startSeconds": 99.84,
+      "durationSeconds": 6.599,
+      "text": "also renders so let's have a look at"
+    },
+    {
+      "startSeconds": 102.84,
+      "durationSeconds": 6.54,
+      "text": "things one by one why is the input being"
+    },
+    {
+      "startSeconds": 106.439,
+      "durationSeconds": 4.68,
+      "text": "rendered when react says that it's only"
+    },
+    {
+      "startSeconds": 109.38,
+      "durationSeconds": 3.059,
+      "text": "going to re-render things when the props"
+    },
+    {
+      "startSeconds": 111.119,
+      "durationSeconds": 3.841,
+      "text": "is going to change"
+    },
+    {
+      "startSeconds": 112.439,
+      "durationSeconds": 4.441,
+      "text": "all right so the reason why this is"
+    },
+    {
+      "startSeconds": 114.96,
+      "durationSeconds": 3.479,
+      "text": "happening this first welcome input to"
+    },
+    {
+      "startSeconds": 116.88,
+      "durationSeconds": 2.099,
+      "text": "the render"
+    },
+    {
+      "startSeconds": 118.439,
+      "durationSeconds": 2.22,
+      "text": "um"
+    },
+    {
+      "startSeconds": 118.979,
+      "durationSeconds": 3.78,
+      "text": "and you're welcome to post the video and"
+    },
+    {
+      "startSeconds": 120.659,
+      "durationSeconds": 4.401,
+      "text": "try to figure it out yourself if you"
+    },
+    {
+      "startSeconds": 122.759,
+      "durationSeconds": 2.301,
+      "text": "want to"
+    },
+    {
+      "startSeconds": 125.34,
+      "durationSeconds": 5.699,
+      "text": "all right let's go on and let's see why"
+    },
+    {
+      "startSeconds": 127.92,
+      "durationSeconds": 5.7,
+      "text": "happens here in the choose a provider we"
+    },
+    {
+      "startSeconds": 131.039,
+      "durationSeconds": 5.34,
+      "text": "provide those value welcome message and"
+    },
+    {
+      "startSeconds": 133.62,
+      "durationSeconds": 4.979,
+      "text": "set welcome message those two values are"
+    },
+    {
+      "startSeconds": 136.379,
+      "durationSeconds": 5.101,
+      "text": "a complex object and not a simple"
+    },
+    {
+      "startSeconds": 138.599,
+      "durationSeconds": 4.581,
+      "text": "variable they're an object and the react"
+    },
+    {
+      "startSeconds": 141.48,
+      "durationSeconds": 4.5,
+      "text": "cannot"
+    },
+    {
+      "startSeconds": 143.18,
+      "durationSeconds": 5.199,
+      "text": "inferior whether this value has changed"
+    },
+    {
+      "startSeconds": 145.98,
+      "durationSeconds": 5.04,
+      "text": "because it's an object and the reason is"
+    },
+    {
+      "startSeconds": 148.379,
+      "durationSeconds": 4.401,
+      "text": "that in JavaScript object comparison"
+    },
+    {
+      "startSeconds": 151.02,
+      "durationSeconds": 6.54,
+      "text": "only happens"
+    },
+    {
+      "startSeconds": 152.78,
+      "durationSeconds": 6.58,
+      "text": "through reference not true value so to"
+    },
+    {
+      "startSeconds": 157.56,
+      "durationSeconds": 4.92,
+      "text": "explain it I'm going to use the console"
+    },
+    {
+      "startSeconds": 159.36,
+      "durationSeconds": 7.94,
+      "text": "I'm going to use a const a equal to a"
+    },
+    {
+      "startSeconds": 162.48,
+      "durationSeconds": 8.339,
+      "text": "equal to 1 const b equal a equal to one"
+    },
+    {
+      "startSeconds": 167.3,
+      "durationSeconds": 6.04,
+      "text": "so as you can see A and B are basically"
+    },
+    {
+      "startSeconds": 170.819,
+      "durationSeconds": 5.7,
+      "text": "effectively they have the same value but"
+    },
+    {
+      "startSeconds": 173.34,
+      "durationSeconds": 5.94,
+      "text": "if I do equal a equal to B I actually"
+    },
+    {
+      "startSeconds": 176.519,
+      "durationSeconds": 4.981,
+      "text": "get false as a statement this is what"
+    },
+    {
+      "startSeconds": 179.28,
+      "durationSeconds": 5.4,
+      "text": "the react is using to do the comparison"
+    },
+    {
+      "startSeconds": 181.5,
+      "durationSeconds": 5.64,
+      "text": "we need to tell a react somehow that the"
+    },
+    {
+      "startSeconds": 184.68,
+      "durationSeconds": 6,
+      "text": "way the comparison is going to work for"
+    },
+    {
+      "startSeconds": 187.14,
+      "durationSeconds": 6.84,
+      "text": "the object in this provider"
+    },
+    {
+      "startSeconds": 190.68,
+      "durationSeconds": 5.22,
+      "text": "needs to come"
+    },
+    {
+      "startSeconds": 193.98,
+      "durationSeconds": 4.92,
+      "text": "need to be converted in a different way"
+    },
+    {
+      "startSeconds": 195.9,
+      "durationSeconds": 5.64,
+      "text": "how can we do this well reactor offers"
+    },
+    {
+      "startSeconds": 198.9,
+      "durationSeconds": 5.699,
+      "text": "us something called use memo which is a"
+    },
+    {
+      "startSeconds": 201.54,
+      "durationSeconds": 5.22,
+      "text": "memorization component but it doesn't"
+    },
+    {
+      "startSeconds": 204.599,
+      "durationSeconds": 4.321,
+      "text": "just do memorization meaning that you do"
+    },
+    {
+      "startSeconds": 206.76,
+      "durationSeconds": 5.1,
+      "text": "a long computation actually have a video"
+    },
+    {
+      "startSeconds": 208.92,
+      "durationSeconds": 5.64,
+      "text": "about this that you can check out"
+    },
+    {
+      "startSeconds": 211.86,
+      "durationSeconds": 5.459,
+      "text": "um it does not do a memorization of"
+    },
+    {
+      "startSeconds": 214.56,
+      "durationSeconds": 7.56,
+      "text": "values it actually Compares these values"
+    },
+    {
+      "startSeconds": 217.319,
+      "durationSeconds": 7.801,
+      "text": "on through an object called react use"
+    },
+    {
+      "startSeconds": 222.12,
+      "durationSeconds": 6.36,
+      "text": "memo what does it look like"
+    },
+    {
+      "startSeconds": 225.12,
+      "durationSeconds": 6.479,
+      "text": "it basically looks like this"
+    },
+    {
+      "startSeconds": 228.48,
+      "durationSeconds": 6.179,
+      "text": "it's a react use memo"
+    },
+    {
+      "startSeconds": 231.599,
+      "durationSeconds": 4.5,
+      "text": "in which we are sent to reactor that the"
+    },
+    {
+      "startSeconds": 234.659,
+      "durationSeconds": 3.181,
+      "text": "value"
+    },
+    {
+      "startSeconds": 236.099,
+      "durationSeconds": 3.841,
+      "text": "this value that we pass through only"
+    },
+    {
+      "startSeconds": 237.84,
+      "durationSeconds": 5.1,
+      "text": "changes when either welcome message or a"
+    },
+    {
+      "startSeconds": 239.94,
+      "durationSeconds": 6.659,
+      "text": "set welcome message changes"
+    },
+    {
+      "startSeconds": 242.94,
+      "durationSeconds": 5.76,
+      "text": "okay so now with this change with this"
+    },
+    {
+      "startSeconds": 246.599,
+      "durationSeconds": 5.64,
+      "text": "change we went from value being a plane"
+    },
+    {
+      "startSeconds": 248.7,
+      "durationSeconds": 5.58,
+      "text": "object to Value being a react. memo we"
+    },
+    {
+      "startSeconds": 252.239,
+      "durationSeconds": 4.74,
+      "text": "are we should get"
+    },
+    {
+      "startSeconds": 254.28,
+      "durationSeconds": 4.22,
+      "text": "that this component should not re-render"
+    },
+    {
+      "startSeconds": 256.979,
+      "durationSeconds": 4.141,
+      "text": "again"
+    },
+    {
+      "startSeconds": 258.5,
+      "durationSeconds": 6.639,
+      "text": "when they"
+    },
+    {
+      "startSeconds": 261.12,
+      "durationSeconds": 6.78,
+      "text": "counter changes why because we told it"
+    },
+    {
+      "startSeconds": 265.139,
+      "durationSeconds": 5.761,
+      "text": "that the provider re-renders only when"
+    },
+    {
+      "startSeconds": 267.9,
+      "durationSeconds": 5.76,
+      "text": "welcome message changes so when method"
+    },
+    {
+      "startSeconds": 270.9,
+      "durationSeconds": 5.34,
+      "text": "when I do a modification to the input is"
+    },
+    {
+      "startSeconds": 273.66,
+      "durationSeconds": 5.28,
+      "text": "going to render and we should see the"
+    },
+    {
+      "startSeconds": 276.24,
+      "durationSeconds": 5.76,
+      "text": "welcome input is rendering in the"
+    },
+    {
+      "startSeconds": 278.94,
+      "durationSeconds": 3.78,
+      "text": "console but then when I do it"
+    },
+    {
+      "startSeconds": 282,
+      "durationSeconds": 3.419,
+      "text": "um"
+    },
+    {
+      "startSeconds": 282.72,
+      "durationSeconds": 5.88,
+      "text": "when actually click the counter button"
+    },
+    {
+      "startSeconds": 285.419,
+      "durationSeconds": 6.301,
+      "text": "and welcome messages just used then"
+    },
+    {
+      "startSeconds": 288.6,
+      "durationSeconds": 5.28,
+      "text": "count is what is increased then I should"
+    },
+    {
+      "startSeconds": 291.72,
+      "durationSeconds": 4.919,
+      "text": "get no"
+    },
+    {
+      "startSeconds": 293.88,
+      "durationSeconds": 5.039,
+      "text": "um now we render all right so let's have"
+    },
+    {
+      "startSeconds": 296.639,
+      "durationSeconds": 4.681,
+      "text": "a look let's refresh the page welcome"
+    },
+    {
+      "startSeconds": 298.919,
+      "durationSeconds": 5.401,
+      "text": "input is rendered the second render is"
+    },
+    {
+      "startSeconds": 301.32,
+      "durationSeconds": 4.14,
+      "text": "because we are using a reacting strict"
+    },
+    {
+      "startSeconds": 304.32,
+      "durationSeconds": 3.659,
+      "text": "mode"
+    },
+    {
+      "startSeconds": 305.46,
+      "durationSeconds": 6.06,
+      "text": "so let's clear the console click hello"
+    },
+    {
+      "startSeconds": 307.979,
+      "durationSeconds": 5.581,
+      "text": "one one two and as you can see the"
+    },
+    {
+      "startSeconds": 311.52,
+      "durationSeconds": 5.64,
+      "text": "welcome input"
+    },
+    {
+      "startSeconds": 313.56,
+      "durationSeconds": 6.06,
+      "text": "is being re-rendered okay so what's"
+    },
+    {
+      "startSeconds": 317.16,
+      "durationSeconds": 4.68,
+      "text": "going on here did not say that this"
+    },
+    {
+      "startSeconds": 319.62,
+      "durationSeconds": 5.7,
+      "text": "should not happen again"
+    },
+    {
+      "startSeconds": 321.84,
+      "durationSeconds": 6.48,
+      "text": "well yes however"
+    },
+    {
+      "startSeconds": 325.32,
+      "durationSeconds": 4.98,
+      "text": "we do this for the values and then we"
+    },
+    {
+      "startSeconds": 328.32,
+      "durationSeconds": 4.86,
+      "text": "pass through all the children's"
+    },
+    {
+      "startSeconds": 330.3,
+      "durationSeconds": 4.44,
+      "text": "all right so if you actually see"
+    },
+    {
+      "startSeconds": 333.18,
+      "durationSeconds": 4.68,
+      "text": "the counter"
+    },
+    {
+      "startSeconds": 334.74,
+      "durationSeconds": 6.06,
+      "text": "the demo we actually have the provider"
+    },
+    {
+      "startSeconds": 337.86,
+      "durationSeconds": 5.88,
+      "text": "but then we also have discount variable"
+    },
+    {
+      "startSeconds": 340.8,
+      "durationSeconds": 5.76,
+      "text": "that is happening and we are telling"
+    },
+    {
+      "startSeconds": 343.74,
+      "durationSeconds": 6.08,
+      "text": "react well actually"
+    },
+    {
+      "startSeconds": 346.56,
+      "durationSeconds": 3.26,
+      "text": "um make me"
+    },
+    {
+      "startSeconds": 350.479,
+      "durationSeconds": 4.421,
+      "text": "update this variable and because I am"
+    },
+    {
+      "startSeconds": 353.4,
+      "durationSeconds": 6.239,
+      "text": "updating this variable then the welcome"
+    },
+    {
+      "startSeconds": 354.9,
+      "durationSeconds": 7.079,
+      "text": "input has to refresh because in here I"
+    },
+    {
+      "startSeconds": 359.639,
+      "durationSeconds": 5.101,
+      "text": "might have like a user factor or a set"
+    },
+    {
+      "startSeconds": 361.979,
+      "durationSeconds": 3.78,
+      "text": "data for example I'm displaying the time"
+    },
+    {
+      "startSeconds": 364.74,
+      "durationSeconds": 3.54,
+      "text": "of the day"
+    },
+    {
+      "startSeconds": 365.759,
+      "durationSeconds": 4.681,
+      "text": "so react is going to also refresh this"
+    },
+    {
+      "startSeconds": 368.28,
+      "durationSeconds": 4.68,
+      "text": "component here"
+    },
+    {
+      "startSeconds": 370.44,
+      "durationSeconds": 3.84,
+      "text": "all right so how can I tell react that"
+    },
+    {
+      "startSeconds": 372.96,
+      "durationSeconds": 3.959,
+      "text": "this component is actually pure"
+    },
+    {
+      "startSeconds": 374.28,
+      "durationSeconds": 5.22,
+      "text": "component than when I want to refresh it"
+    },
+    {
+      "startSeconds": 376.919,
+      "durationSeconds": 4.801,
+      "text": "only when some of the state variables"
+    },
+    {
+      "startSeconds": 379.5,
+      "durationSeconds": 5.1,
+      "text": "actually change so actual react comes to"
+    },
+    {
+      "startSeconds": 381.72,
+      "durationSeconds": 5.52,
+      "text": "us and we have another utility method"
+    },
+    {
+      "startSeconds": 384.6,
+      "durationSeconds": 5.4,
+      "text": "which is called react"
+    },
+    {
+      "startSeconds": 387.24,
+      "durationSeconds": 6.42,
+      "text": "dot memo and this erectile memo"
+    },
+    {
+      "startSeconds": 390,
+      "durationSeconds": 7.44,
+      "text": "essentially works the same way as"
+    },
+    {
+      "startSeconds": 393.66,
+      "durationSeconds": 7.379,
+      "text": "the provider where we use the react.use"
+    },
+    {
+      "startSeconds": 397.44,
+      "durationSeconds": 5.099,
+      "text": "memo however in this case it's a for a"
+    },
+    {
+      "startSeconds": 401.039,
+      "durationSeconds": 3.72,
+      "text": "component so we're telling react this is"
+    },
+    {
+      "startSeconds": 402.539,
+      "durationSeconds": 4.981,
+      "text": "a pure component which you should only"
+    },
+    {
+      "startSeconds": 404.759,
+      "durationSeconds": 4.801,
+      "text": "refresh when the state variables are"
+    },
+    {
+      "startSeconds": 407.52,
+      "durationSeconds": 4.619,
+      "text": "actually changing so let's have a look"
+    },
+    {
+      "startSeconds": 409.56,
+      "durationSeconds": 5.699,
+      "text": "again at the demo let's refresh the page"
+    },
+    {
+      "startSeconds": 412.139,
+      "durationSeconds": 5.821,
+      "text": "clear the console and as you can see now"
+    },
+    {
+      "startSeconds": 415.259,
+      "durationSeconds": 5.28,
+      "text": "this component is not anymore being"
+    },
+    {
+      "startSeconds": 417.96,
+      "durationSeconds": 5.82,
+      "text": "re-rendered"
+    },
+    {
+      "startSeconds": 420.539,
+      "durationSeconds": 5.16,
+      "text": "all right so we have the counter"
+    },
+    {
+      "startSeconds": 423.78,
+      "durationSeconds": 4.62,
+      "text": "we have the welcome message with the"
+    },
+    {
+      "startSeconds": 425.699,
+      "durationSeconds": 4.981,
+      "text": "button and now in here let's have"
+    },
+    {
+      "startSeconds": 428.4,
+      "durationSeconds": 4.739,
+      "text": "another look at what is going on with"
+    },
+    {
+      "startSeconds": 430.68,
+      "durationSeconds": 4.62,
+      "text": "this component so I'm going to create a"
+    },
+    {
+      "startSeconds": 433.139,
+      "durationSeconds": 6,
+      "text": "new component called stateless component"
+    },
+    {
+      "startSeconds": 435.3,
+      "durationSeconds": 7.32,
+      "text": "and I'm gonna add it to My Demo"
+    },
+    {
+      "startSeconds": 439.139,
+      "durationSeconds": 6.361,
+      "text": "performance just outside of the state"
+    },
+    {
+      "startSeconds": 442.62,
+      "durationSeconds": 5.4,
+      "text": "the stateless component I just render a"
+    },
+    {
+      "startSeconds": 445.5,
+      "durationSeconds": 5.819,
+      "text": "div that says I do not ever change"
+    },
+    {
+      "startSeconds": 448.02,
+      "durationSeconds": 7.619,
+      "text": "uh pardon the layout"
+    },
+    {
+      "startSeconds": 451.319,
+      "durationSeconds": 7.261,
+      "text": "so what happens is that every time in"
+    },
+    {
+      "startSeconds": 455.639,
+      "durationSeconds": 3.541,
+      "text": "this page is changing"
+    },
+    {
+      "startSeconds": 458.58,
+      "durationSeconds": 5.78,
+      "text": "um"
+    },
+    {
+      "startSeconds": 459.18,
+      "durationSeconds": 8.76,
+      "text": "of course in the subtree uh of the pages"
+    },
+    {
+      "startSeconds": 464.36,
+      "durationSeconds": 6.16,
+      "text": "it's changing that is iranda is"
+    },
+    {
+      "startSeconds": 467.94,
+      "durationSeconds": 3.9,
+      "text": "rendering why is this happening well for"
+    },
+    {
+      "startSeconds": 470.52,
+      "durationSeconds": 3.78,
+      "text": "a very similar reason to what was"
+    },
+    {
+      "startSeconds": 471.84,
+      "durationSeconds": 5.04,
+      "text": "happening before the status component"
+    },
+    {
+      "startSeconds": 474.3,
+      "durationSeconds": 5.22,
+      "text": "because the counter is changing in the"
+    },
+    {
+      "startSeconds": 476.88,
+      "durationSeconds": 4.259,
+      "text": "other state reactor doesn't know if in"
+    },
+    {
+      "startSeconds": 479.52,
+      "durationSeconds": 2.7,
+      "text": "here I'm doing some set effects"
+    },
+    {
+      "startSeconds": 481.139,
+      "durationSeconds": 4.381,
+      "text": "therefore"
+    },
+    {
+      "startSeconds": 482.22,
+      "durationSeconds": 5.4,
+      "text": "it's trying to say well to be safe I'm"
+    },
+    {
+      "startSeconds": 485.52,
+      "durationSeconds": 5.04,
+      "text": "going to render it is some of the props"
+    },
+    {
+      "startSeconds": 487.62,
+      "durationSeconds": 5.639,
+      "text": "inside of it have changed then I will be"
+    },
+    {
+      "startSeconds": 490.56,
+      "durationSeconds": 4.979,
+      "text": "able to handle the scenario so how can"
+    },
+    {
+      "startSeconds": 493.259,
+      "durationSeconds": 5.041,
+      "text": "we fix this problem again you can pause"
+    },
+    {
+      "startSeconds": 495.539,
+      "durationSeconds": 6.421,
+      "text": "the video and go on on your own if you"
+    },
+    {
+      "startSeconds": 498.3,
+      "durationSeconds": 6.42,
+      "text": "want to give it a try but"
+    },
+    {
+      "startSeconds": 501.96,
+      "durationSeconds": 5.4,
+      "text": "that is how we're gonna do it we're"
+    },
+    {
+      "startSeconds": 504.72,
+      "durationSeconds": 4.02,
+      "text": "going to add a react memo around the"
+    },
+    {
+      "startSeconds": 507.36,
+      "durationSeconds": 4.619,
+      "text": "component so that's with the react"
+    },
+    {
+      "startSeconds": 508.74,
+      "durationSeconds": 5.64,
+      "text": "disease a component that we only want to"
+    },
+    {
+      "startSeconds": 511.979,
+      "durationSeconds": 5.281,
+      "text": "re-render when some of the state inside"
+    },
+    {
+      "startSeconds": 514.38,
+      "durationSeconds": 4.68,
+      "text": "the component is going to change so if I"
+    },
+    {
+      "startSeconds": 517.26,
+      "durationSeconds": 4.68,
+      "text": "go back to My Demo"
+    },
+    {
+      "startSeconds": 519.06,
+      "durationSeconds": 4.859,
+      "text": "I refresh the page I render we see a"
+    },
+    {
+      "startSeconds": 521.94,
+      "durationSeconds": 4.8,
+      "text": "render Happening Here"
+    },
+    {
+      "startSeconds": 523.919,
+      "durationSeconds": 4.681,
+      "text": "and then when I click the button we do"
+    },
+    {
+      "startSeconds": 526.74,
+      "durationSeconds": 4.5,
+      "text": "not see it rendering even though the"
+    },
+    {
+      "startSeconds": 528.6,
+      "durationSeconds": 6.239,
+      "text": "counter is changing here and here and"
+    },
+    {
+      "startSeconds": 531.24,
+      "durationSeconds": 6.84,
+      "text": "when I change the input it's only"
+    },
+    {
+      "startSeconds": 534.839,
+      "durationSeconds": 5.841,
+      "text": "rendering the inside of the input"
+    },
+    {
+      "startSeconds": 538.08,
+      "durationSeconds": 6,
+      "text": "so that's everything for today I hope"
+    },
+    {
+      "startSeconds": 540.68,
+      "durationSeconds": 4.839,
+      "text": "this was a useful demonstration to you"
+    },
+    {
+      "startSeconds": 544.08,
+      "durationSeconds": 3.54,
+      "text": "if you liked the video please leave a"
+    },
+    {
+      "startSeconds": 545.519,
+      "durationSeconds": 4.32,
+      "text": "thumbs up and if you have any questions"
+    },
+    {
+      "startSeconds": 547.62,
+      "durationSeconds": 3.54,
+      "text": "please leave a message and if there is"
+    },
+    {
+      "startSeconds": 549.839,
+      "durationSeconds": 3.06,
+      "text": "something you would like to be discussed"
+    },
+    {
+      "startSeconds": 551.16,
+      "durationSeconds": 3.72,
+      "text": "in next video leave a message below"
+    },
+    {
+      "startSeconds": 552.899,
+      "durationSeconds": 3.12,
+      "text": "thank you very much and see you next"
+    },
+    {
+      "startSeconds": 554.88,
+      "durationSeconds": 3.98,
+      "text": "time"
+    },
+    {
+      "startSeconds": 556.019,
+      "durationSeconds": 2.841,
+      "text": "bye bye"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:22:42.008Z"
+}

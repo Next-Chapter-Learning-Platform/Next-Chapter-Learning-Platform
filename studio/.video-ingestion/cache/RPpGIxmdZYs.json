@@ -1,0 +1,1432 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "RPpGIxmdZYs",
+  "url": "https://www.youtube.com/watch?v=RPpGIxmdZYs",
+  "title": "LangExtract + RAG: Smarter Retrieval with Metadata Filtering",
+  "description": "In this video, I show you how to use LangExtract to generate high-quality metadata for your Retrieval Augmented Generation (RAG) system. By extracting structured data from unstructured documents, we can filter results more effectively and drastically improve retrieval accuracy. I’ll walk you through a complete example, from setting up LangExtract to integrating metadata filtering into your RAG pipeline.\n\nLangExtract Video: https://youtu.be/dPL2vRDunMw\nGithub: https://github.com/PromtEngineer/LangExtract-RAG.git\n\nWebsite: https://engineerprompt.ai/\n\nRAG Beyond Basics Course:\nhttps://prompt-s-site.thinkific.com/courses/rag\n\nLet's Connect: \n🦾 Discord: https://discord.com/invite/t4eYQRUcXB\n☕ Buy me a Coffee: https://ko-fi.com/promptengineering\n|🔴 Patreon: https://www.patreon.com/PromptEngineering\n💼Consulting: https://calendly.com/engineerprompt/consulting-call\n📧 Business Contact: engineerprompt@gmail.com\nBecome Member: http://tinyurl.com/y5h28s6h\n\n💻 Pre-configured localGPT VM: https://bit.ly/localGPT (use Code: PromptEngineering for 50% off).  \n\nSignup for Newsletter, localgpt:\nhttps://tally.so/r/3y9bb0\n\n00:00 Metadata problem with RAG\n00:45 Using Lang Extract for Metadata Extraction\n01:46 Building the Retrieval Augmented Generation System\n02:22 Setting Up the Environment and Sample Data\n03:27 Creating the Metadata Extraction Pipeline\n06:56 Implementing Metadata Filters in Vector Store\n08:51 Running the Example and Viewing Results",
+  "expectedDurationSeconds": 744,
+  "transcript": [
+    {
+      "startSeconds": 0.48,
+      "durationSeconds": 4.08,
+      "text": "You probably have seen this issue with"
+    },
+    {
+      "startSeconds": 2.399,
+      "durationSeconds": 4.801,
+      "text": "retrieval augmented generation systems."
+    },
+    {
+      "startSeconds": 4.56,
+      "durationSeconds": 4.88,
+      "text": "Let's say you have a document with"
+    },
+    {
+      "startSeconds": 7.2,
+      "durationSeconds": 5.6,
+      "text": "different versions. You create text"
+    },
+    {
+      "startSeconds": 9.44,
+      "durationSeconds": 6.88,
+      "text": "chunks and store them in a vector store."
+    },
+    {
+      "startSeconds": 12.8,
+      "durationSeconds": 5.52,
+      "text": "But at query or retrieval time, you get"
+    },
+    {
+      "startSeconds": 16.32,
+      "durationSeconds": 4.719,
+      "text": "chunks from all of these documents based"
+    },
+    {
+      "startSeconds": 18.32,
+      "durationSeconds": 5.84,
+      "text": "on your query. That will confuse your"
+    },
+    {
+      "startSeconds": 21.039,
+      "durationSeconds": 4.32,
+      "text": "LLM because it has no way of"
+    },
+    {
+      "startSeconds": 24.16,
+      "durationSeconds": 4.08,
+      "text": "differentiating between different"
+    },
+    {
+      "startSeconds": 25.359,
+      "durationSeconds": 5.76,
+      "text": "documents. A simple solution is to add"
+    },
+    {
+      "startSeconds": 28.24,
+      "durationSeconds": 4.72,
+      "text": "reliable metadata to each chunk. But the"
+    },
+    {
+      "startSeconds": 31.119,
+      "durationSeconds": 4.401,
+      "text": "question is how do you get that"
+    },
+    {
+      "startSeconds": 32.96,
+      "durationSeconds": 4.72,
+      "text": "metadata? There are multiple different"
+    },
+    {
+      "startSeconds": 35.52,
+      "durationSeconds": 5.6,
+      "text": "approaches. But one of the simpler one"
+    },
+    {
+      "startSeconds": 37.68,
+      "durationSeconds": 5.84,
+      "text": "is to extract metadata"
+    },
+    {
+      "startSeconds": 41.12,
+      "durationSeconds": 5.2,
+      "text": "directly from the unstructured data that"
+    },
+    {
+      "startSeconds": 43.52,
+      "durationSeconds": 5.039,
+      "text": "is present in your text documents. And"
+    },
+    {
+      "startSeconds": 46.32,
+      "durationSeconds": 5.36,
+      "text": "for that you can use something like lang"
+    },
+    {
+      "startSeconds": 48.559,
+      "durationSeconds": 5.761,
+      "text": "extract which will convert unstructured"
+    },
+    {
+      "startSeconds": 51.68,
+      "durationSeconds": 5.199,
+      "text": "data into structured data using the"
+    },
+    {
+      "startSeconds": 54.32,
+      "durationSeconds": 4.879,
+      "text": "power of large language models. I"
+    },
+    {
+      "startSeconds": 56.879,
+      "durationSeconds": 4.961,
+      "text": "personally like lang extract because you"
+    },
+    {
+      "startSeconds": 59.199,
+      "durationSeconds": 4.481,
+      "text": "can define a custom schema which is"
+    },
+    {
+      "startSeconds": 61.84,
+      "durationSeconds": 5.279,
+      "text": "extremely helpful if you want to control"
+    },
+    {
+      "startSeconds": 63.68,
+      "durationSeconds": 6,
+      "text": "the quality of your metadata. I created"
+    },
+    {
+      "startSeconds": 67.119,
+      "durationSeconds": 4.961,
+      "text": "a detailed video on this, but in this"
+    },
+    {
+      "startSeconds": 69.68,
+      "durationSeconds": 5.439,
+      "text": "video I'm going to show you how you can"
+    },
+    {
+      "startSeconds": 72.08,
+      "durationSeconds": 6.24,
+      "text": "add metadata to your retrieval augmented"
+    },
+    {
+      "startSeconds": 75.119,
+      "durationSeconds": 5.201,
+      "text": "generation system and improve its"
+    },
+    {
+      "startSeconds": 78.32,
+      "durationSeconds": 4.56,
+      "text": "retrieval accuracy."
+    },
+    {
+      "startSeconds": 80.32,
+      "durationSeconds": 4.159,
+      "text": "So this is an opensource project from"
+    },
+    {
+      "startSeconds": 82.88,
+      "durationSeconds": 6.96,
+      "text": "Google. It's not an official Google"
+    },
+    {
+      "startSeconds": 84.479,
+      "durationSeconds": 8.161,
+      "text": "product, but it uses powerful LLMs like"
+    },
+    {
+      "startSeconds": 89.84,
+      "durationSeconds": 4.4,
+      "text": "Gemini series for extraction of"
+    },
+    {
+      "startSeconds": 92.64,
+      "durationSeconds": 4.64,
+      "text": "structured data from unstructured"
+    },
+    {
+      "startSeconds": 94.24,
+      "durationSeconds": 5.919,
+      "text": "documents. And it also has this very"
+    },
+    {
+      "startSeconds": 97.28,
+      "durationSeconds": 5.199,
+      "text": "neat visualization tool. They just added"
+    },
+    {
+      "startSeconds": 100.159,
+      "durationSeconds": 5.041,
+      "text": "support for other API providers"
+    },
+    {
+      "startSeconds": 102.479,
+      "durationSeconds": 5.521,
+      "text": "including local models that you can run"
+    },
+    {
+      "startSeconds": 105.2,
+      "durationSeconds": 4.239,
+      "text": "through Olama. Okay, so in this video"
+    },
+    {
+      "startSeconds": 108,
+      "durationSeconds": 3.119,
+      "text": "we're going to build a retrieval"
+    },
+    {
+      "startSeconds": 109.439,
+      "durationSeconds": 4,
+      "text": "augmented generation system that is"
+    },
+    {
+      "startSeconds": 111.119,
+      "durationSeconds": 5.201,
+      "text": "going to be using lang extract to"
+    },
+    {
+      "startSeconds": 113.439,
+      "durationSeconds": 4.64,
+      "text": "enhance both the metadata and hence"
+    },
+    {
+      "startSeconds": 116.32,
+      "durationSeconds": 5.439,
+      "text": "filtering the documents that are going"
+    },
+    {
+      "startSeconds": 118.079,
+      "durationSeconds": 6.32,
+      "text": "to be used by the LLM to process the"
+    },
+    {
+      "startSeconds": 121.759,
+      "durationSeconds": 3.921,
+      "text": "user query. In the rest of the video,"
+    },
+    {
+      "startSeconds": 124.399,
+      "durationSeconds": 4.241,
+      "text": "we're going to look at a concrete"
+    },
+    {
+      "startSeconds": 125.68,
+      "durationSeconds": 7.44,
+      "text": "example of how you can use lang extract"
+    },
+    {
+      "startSeconds": 128.64,
+      "durationSeconds": 6.8,
+      "text": "to convert unstructured text files into"
+    },
+    {
+      "startSeconds": 133.12,
+      "durationSeconds": 5.28,
+      "text": "structured metadata."
+    },
+    {
+      "startSeconds": 135.44,
+      "durationSeconds": 5.76,
+      "text": "and then how do you use this metadata to"
+    },
+    {
+      "startSeconds": 138.4,
+      "durationSeconds": 5.6,
+      "text": "filter out results for your retrieval"
+    },
+    {
+      "startSeconds": 141.2,
+      "durationSeconds": 5.039,
+      "text": "augmented generation system. Okay, so we"
+    },
+    {
+      "startSeconds": 144,
+      "durationSeconds": 4,
+      "text": "needed to import certain packages."
+    },
+    {
+      "startSeconds": 146.239,
+      "durationSeconds": 3.841,
+      "text": "Details are going to be in the video"
+    },
+    {
+      "startSeconds": 148,
+      "durationSeconds": 5.28,
+      "text": "description. This code is going to be"
+    },
+    {
+      "startSeconds": 150.08,
+      "durationSeconds": 6.72,
+      "text": "available to you through a GitHub link."
+    },
+    {
+      "startSeconds": 153.28,
+      "durationSeconds": 6,
+      "text": "But right now, we're going to load our"
+    },
+    {
+      "startSeconds": 156.8,
+      "durationSeconds": 5.76,
+      "text": "API keys. Specifically, I'm going to be"
+    },
+    {
+      "startSeconds": 159.28,
+      "durationSeconds": 5.679,
+      "text": "using Gemini 2.5 Flash. So you will need"
+    },
+    {
+      "startSeconds": 162.56,
+      "durationSeconds": 6.48,
+      "text": "to get your Gemini API key for this to"
+    },
+    {
+      "startSeconds": 164.959,
+      "durationSeconds": 6.961,
+      "text": "work. Next, we need sample data. So in"
+    },
+    {
+      "startSeconds": 169.04,
+      "durationSeconds": 4,
+      "text": "this case, I created the sample data."
+    },
+    {
+      "startSeconds": 171.92,
+      "durationSeconds": 4,
+      "text": "There are a couple of different"
+    },
+    {
+      "startSeconds": 173.04,
+      "durationSeconds": 6.64,
+      "text": "examples. So this is the API reference"
+    },
+    {
+      "startSeconds": 175.92,
+      "durationSeconds": 5.76,
+      "text": "documentation version 2.0. There is also"
+    },
+    {
+      "startSeconds": 179.68,
+      "durationSeconds": 4,
+      "text": "a legacy documentation. So this is going"
+    },
+    {
+      "startSeconds": 181.68,
+      "durationSeconds": 4.639,
+      "text": "to be an example of a document having"
+    },
+    {
+      "startSeconds": 183.68,
+      "durationSeconds": 4.639,
+      "text": "multiple different version. And then"
+    },
+    {
+      "startSeconds": 186.319,
+      "durationSeconds": 5.28,
+      "text": "there are a couple of other files. So"
+    },
+    {
+      "startSeconds": 188.319,
+      "durationSeconds": 5.361,
+      "text": "this is storage services guide. and"
+    },
+    {
+      "startSeconds": 191.599,
+      "durationSeconds": 4.64,
+      "text": "troubleshooting guide for authentication"
+    },
+    {
+      "startSeconds": 193.68,
+      "durationSeconds": 6.96,
+      "text": "errors. [snorts] Each of this"
+    },
+    {
+      "startSeconds": 196.239,
+      "durationSeconds": 7.841,
+      "text": "unstructured file has ID, title, and"
+    },
+    {
+      "startSeconds": 200.64,
+      "durationSeconds": 7.12,
+      "text": "then raw unstructured text. So think of"
+    },
+    {
+      "startSeconds": 204.08,
+      "durationSeconds": 6.159,
+      "text": "these as your chunks or your documents."
+    },
+    {
+      "startSeconds": 207.76,
+      "durationSeconds": 5.28,
+      "text": "Okay. Next, we're going to create our"
+    },
+    {
+      "startSeconds": 210.239,
+      "durationSeconds": 5.36,
+      "text": "main processing pipeline. So for this, I"
+    },
+    {
+      "startSeconds": 213.04,
+      "durationSeconds": 4.559,
+      "text": "created this class called fixed lang"
+    },
+    {
+      "startSeconds": 215.599,
+      "durationSeconds": 4.481,
+      "text": "extract processor."
+    },
+    {
+      "startSeconds": 217.599,
+      "durationSeconds": 6.72,
+      "text": "This is going to be our basis for"
+    },
+    {
+      "startSeconds": 220.08,
+      "durationSeconds": 6.4,
+      "text": "creating the lang extract pipeline that"
+    },
+    {
+      "startSeconds": 224.319,
+      "durationSeconds": 5.2,
+      "text": "is going to convert our raw text into"
+    },
+    {
+      "startSeconds": 226.48,
+      "durationSeconds": 5.92,
+      "text": "structured data based on the userdefined"
+    },
+    {
+      "startSeconds": 229.519,
+      "durationSeconds": 6.8,
+      "text": "schema. Now this is the most important"
+    },
+    {
+      "startSeconds": 232.4,
+      "durationSeconds": 6.8,
+      "text": "part because the quality of your"
+    },
+    {
+      "startSeconds": 236.319,
+      "durationSeconds": 6.56,
+      "text": "metadata is going to be dependent on how"
+    },
+    {
+      "startSeconds": 239.2,
+      "durationSeconds": 5.759,
+      "text": "good the extraction pipeline is. Make"
+    },
+    {
+      "startSeconds": 242.879,
+      "durationSeconds": 4.72,
+      "text": "sure to watch my previous video on lang"
+    },
+    {
+      "startSeconds": 244.959,
+      "durationSeconds": 6.161,
+      "text": "extract to get a better sense of how it"
+    },
+    {
+      "startSeconds": 247.599,
+      "durationSeconds": 5.84,
+      "text": "works. But essentially, you need three"
+    },
+    {
+      "startSeconds": 251.12,
+      "durationSeconds": 7.92,
+      "text": "pieces of information. One is your raw"
+    },
+    {
+      "startSeconds": 253.439,
+      "durationSeconds": 8.48,
+      "text": "text. Second is an LLM call with a"
+    },
+    {
+      "startSeconds": 259.04,
+      "durationSeconds": 5.2,
+      "text": "schema that is going to extract"
+    },
+    {
+      "startSeconds": 261.919,
+      "durationSeconds": 3.921,
+      "text": "information from this raw text. And the"
+    },
+    {
+      "startSeconds": 264.24,
+      "durationSeconds": 4.72,
+      "text": "third piece of information that you need"
+    },
+    {
+      "startSeconds": 265.84,
+      "durationSeconds": 6,
+      "text": "to provide is really good few short"
+    },
+    {
+      "startSeconds": 268.96,
+      "durationSeconds": 5.679,
+      "text": "examples of how that structured data"
+    },
+    {
+      "startSeconds": 271.84,
+      "durationSeconds": 4.799,
+      "text": "actually looks like. So here's the"
+    },
+    {
+      "startSeconds": 274.639,
+      "durationSeconds": 4.401,
+      "text": "example prompt that we're going to be"
+    },
+    {
+      "startSeconds": 276.639,
+      "durationSeconds": 3.921,
+      "text": "using for this example. So extract these"
+    },
+    {
+      "startSeconds": 279.04,
+      "durationSeconds": 4.08,
+      "text": "specific fields and technical"
+    },
+    {
+      "startSeconds": 280.56,
+      "durationSeconds": 5.04,
+      "text": "documentation. We need service name,"
+    },
+    {
+      "startSeconds": 283.12,
+      "durationSeconds": 6.24,
+      "text": "version number, document category, rate"
+    },
+    {
+      "startSeconds": 285.6,
+      "durationSeconds": 7.28,
+      "text": "limits of any duplicated items. Right?"
+    },
+    {
+      "startSeconds": 289.36,
+      "durationSeconds": 6.8,
+      "text": "And now this is highly dependent on your"
+    },
+    {
+      "startSeconds": 292.88,
+      "durationSeconds": 5.84,
+      "text": "specific use case. And to help the LLM"
+    },
+    {
+      "startSeconds": 296.16,
+      "durationSeconds": 5.84,
+      "text": "extract better metadata, we're going to"
+    },
+    {
+      "startSeconds": 298.72,
+      "durationSeconds": 5.84,
+      "text": "provide few short examples as well. So"
+    },
+    {
+      "startSeconds": 302,
+      "durationSeconds": 5.44,
+      "text": "this is an example text or example"
+    },
+    {
+      "startSeconds": 304.56,
+      "durationSeconds": 5.84,
+      "text": "document that is going to go in to the"
+    },
+    {
+      "startSeconds": 307.44,
+      "durationSeconds": 5.28,
+      "text": "LLM and from here we want to extract"
+    },
+    {
+      "startSeconds": 310.4,
+      "durationSeconds": 5.28,
+      "text": "multiple different things. So service"
+    },
+    {
+      "startSeconds": 312.72,
+      "durationSeconds": 4.64,
+      "text": "class or this is the service name"
+    },
+    {
+      "startSeconds": 315.68,
+      "durationSeconds": 4.079,
+      "text": "extraction text what is going to be"
+    },
+    {
+      "startSeconds": 317.36,
+      "durationSeconds": 6.399,
+      "text": "extracted for this specific field and"
+    },
+    {
+      "startSeconds": 319.759,
+      "durationSeconds": 7.041,
+      "text": "these corresponds to the items or keys"
+    },
+    {
+      "startSeconds": 323.759,
+      "durationSeconds": 5.681,
+      "text": "that you want to extract from your data."
+    },
+    {
+      "startSeconds": 326.8,
+      "durationSeconds": 6,
+      "text": "So for example version name I think we"
+    },
+    {
+      "startSeconds": 329.44,
+      "durationSeconds": 5.039,
+      "text": "have the payment API version 3.0. So all"
+    },
+    {
+      "startSeconds": 332.8,
+      "durationSeconds": 4.64,
+      "text": "the information that we need is going to"
+    },
+    {
+      "startSeconds": 334.479,
+      "durationSeconds": 6.241,
+      "text": "be provided in this example uh text or"
+    },
+    {
+      "startSeconds": 337.44,
+      "durationSeconds": 5.92,
+      "text": "example document. So next we're going to"
+    },
+    {
+      "startSeconds": 340.72,
+      "durationSeconds": 4.4,
+      "text": "pass on our documents through this lang"
+    },
+    {
+      "startSeconds": 343.36,
+      "durationSeconds": 4.96,
+      "text": "extract object that we're going to"
+    },
+    {
+      "startSeconds": 345.12,
+      "durationSeconds": 6.88,
+      "text": "create. We provide our prompt the"
+    },
+    {
+      "startSeconds": 348.32,
+      "durationSeconds": 5.439,
+      "text": "examples that we have here. Then the LLM"
+    },
+    {
+      "startSeconds": 352,
+      "durationSeconds": 4.8,
+      "text": "that we want to use. So right now by"
+    },
+    {
+      "startSeconds": 353.759,
+      "durationSeconds": 6.081,
+      "text": "default I want to use Gemini 2.5 flash."
+    },
+    {
+      "startSeconds": 356.8,
+      "durationSeconds": 6,
+      "text": "But you can also use other proprietary"
+    },
+    {
+      "startSeconds": 359.84,
+      "durationSeconds": 5.68,
+      "text": "APIs or local models as well. You can"
+    },
+    {
+      "startSeconds": 362.8,
+      "durationSeconds": 5.44,
+      "text": "also set the extraction passes. By"
+    },
+    {
+      "startSeconds": 365.52,
+      "durationSeconds": 5.519,
+      "text": "default, I would either set it to one or"
+    },
+    {
+      "startSeconds": 368.24,
+      "durationSeconds": 5.76,
+      "text": "two. Make sure to also consider the cost"
+    },
+    {
+      "startSeconds": 371.039,
+      "durationSeconds": 4.72,
+      "text": "associated with the number of passes. If"
+    },
+    {
+      "startSeconds": 374,
+      "durationSeconds": 4.72,
+      "text": "you increase the number of passes, that"
+    },
+    {
+      "startSeconds": 375.759,
+      "durationSeconds": 5.201,
+      "text": "means you're going to be making more API"
+    },
+    {
+      "startSeconds": 378.72,
+      "durationSeconds": 4.479,
+      "text": "calls, but the results are going to be"
+    },
+    {
+      "startSeconds": 380.96,
+      "durationSeconds": 4.88,
+      "text": "much more accurate. Okay. So, we are"
+    },
+    {
+      "startSeconds": 383.199,
+      "durationSeconds": 5.361,
+      "text": "going to pass on our document that is"
+    },
+    {
+      "startSeconds": 385.84,
+      "durationSeconds": 4.639,
+      "text": "going to come from an external source"
+    },
+    {
+      "startSeconds": 388.56,
+      "durationSeconds": 4.479,
+      "text": "along with the prompt and then we are"
+    },
+    {
+      "startSeconds": 390.479,
+      "durationSeconds": 4.321,
+      "text": "going to extract the metadata. I have a"
+    },
+    {
+      "startSeconds": 393.039,
+      "durationSeconds": 3.841,
+      "text": "couple of other functions which is"
+    },
+    {
+      "startSeconds": 394.8,
+      "durationSeconds": 3.839,
+      "text": "making sure that we normalize the data."
+    },
+    {
+      "startSeconds": 396.88,
+      "durationSeconds": 4.08,
+      "text": "So if there are any missing fields, we"
+    },
+    {
+      "startSeconds": 398.639,
+      "durationSeconds": 6.241,
+      "text": "have proper default values for those."
+    },
+    {
+      "startSeconds": 400.96,
+      "durationSeconds": 6.239,
+      "text": "Also there is a regular expressionbased"
+    },
+    {
+      "startSeconds": 404.88,
+      "durationSeconds": 4.56,
+      "text": "extraction if everything fails. Now in"
+    },
+    {
+      "startSeconds": 407.199,
+      "durationSeconds": 5.12,
+      "text": "general you want to run this metadata"
+    },
+    {
+      "startSeconds": 409.44,
+      "durationSeconds": 7.039,
+      "text": "extraction at document level and then"
+    },
+    {
+      "startSeconds": 412.319,
+      "durationSeconds": 6.481,
+      "text": "enhance your chunks using this metadata."
+    },
+    {
+      "startSeconds": 416.479,
+      "durationSeconds": 4.241,
+      "text": "Once we have the metadata extraction"
+    },
+    {
+      "startSeconds": 418.8,
+      "durationSeconds": 5.28,
+      "text": "mechanism, the next step is going to be"
+    },
+    {
+      "startSeconds": 420.72,
+      "durationSeconds": 6,
+      "text": "to add this metadata to your existing"
+    },
+    {
+      "startSeconds": 424.08,
+      "durationSeconds": 5.839,
+      "text": "chunks that you're creating and storing"
+    },
+    {
+      "startSeconds": 426.72,
+      "durationSeconds": 5.28,
+      "text": "them in a vector store. So this is the"
+    },
+    {
+      "startSeconds": 429.919,
+      "durationSeconds": 3.84,
+      "text": "class that takes care of creation of the"
+    },
+    {
+      "startSeconds": 432,
+      "durationSeconds": 4.639,
+      "text": "vector store plus addition of the"
+    },
+    {
+      "startSeconds": 433.759,
+      "durationSeconds": 5.681,
+      "text": "documents along with the metadata that"
+    },
+    {
+      "startSeconds": 436.639,
+      "durationSeconds": 5.761,
+      "text": "we are creating. So for every document"
+    },
+    {
+      "startSeconds": 439.44,
+      "durationSeconds": 5.52,
+      "text": "we add the corresponding metadata"
+    },
+    {
+      "startSeconds": 442.4,
+      "durationSeconds": 5.519,
+      "text": "filters. Now in this function just"
+    },
+    {
+      "startSeconds": 444.96,
+      "durationSeconds": 5.92,
+      "text": "extracts metadata filters from the"
+    },
+    {
+      "startSeconds": 447.919,
+      "durationSeconds": 5.12,
+      "text": "query. In this example setup, we're not"
+    },
+    {
+      "startSeconds": 450.88,
+      "durationSeconds": 4.56,
+      "text": "doing any embedding based semantic"
+    },
+    {
+      "startSeconds": 453.039,
+      "durationSeconds": 5.841,
+      "text": "search. But I want to show you how you"
+    },
+    {
+      "startSeconds": 455.44,
+      "durationSeconds": 6.879,
+      "text": "can use this in a hierarchical approach"
+    },
+    {
+      "startSeconds": 458.88,
+      "durationSeconds": 6.319,
+      "text": "where you do initial retrieval based on"
+    },
+    {
+      "startSeconds": 462.319,
+      "durationSeconds": 6.081,
+      "text": "specific metadata filters and then you"
+    },
+    {
+      "startSeconds": 465.199,
+      "durationSeconds": 6.321,
+      "text": "can use a dense embedding based search"
+    },
+    {
+      "startSeconds": 468.4,
+      "durationSeconds": 6.32,
+      "text": "on the filtered documents. So that will"
+    },
+    {
+      "startSeconds": 471.52,
+      "durationSeconds": 5.28,
+      "text": "reduce your search space. Now at the end"
+    },
+    {
+      "startSeconds": 474.72,
+      "durationSeconds": 4,
+      "text": "we're going to add the main comparison"
+    },
+    {
+      "startSeconds": 476.8,
+      "durationSeconds": 3.6,
+      "text": "loop. So let me walk you through how"
+    },
+    {
+      "startSeconds": 478.72,
+      "durationSeconds": 4.4,
+      "text": "this is going to work. So first we're"
+    },
+    {
+      "startSeconds": 480.4,
+      "durationSeconds": 4.88,
+      "text": "going to load all our sample documents."
+    },
+    {
+      "startSeconds": 483.12,
+      "durationSeconds": 3.6,
+      "text": "Then we're going to create an extractor"
+    },
+    {
+      "startSeconds": 485.28,
+      "durationSeconds": 3.359,
+      "text": "that is going to extract all the"
+    },
+    {
+      "startSeconds": 486.72,
+      "durationSeconds": 4.56,
+      "text": "metadata from the documents that we've"
+    },
+    {
+      "startSeconds": 488.639,
+      "durationSeconds": 5.601,
+      "text": "provide. We are going to normalize"
+    },
+    {
+      "startSeconds": 491.28,
+      "durationSeconds": 5.599,
+      "text": "everything. So if there are any missing"
+    },
+    {
+      "startSeconds": 494.24,
+      "durationSeconds": 5.519,
+      "text": "pieces or missing metadata, we're going"
+    },
+    {
+      "startSeconds": 496.879,
+      "durationSeconds": 5.121,
+      "text": "to populate that. Then we create our"
+    },
+    {
+      "startSeconds": 499.759,
+      "durationSeconds": 5.12,
+      "text": "vector store. Add our document to the"
+    },
+    {
+      "startSeconds": 502,
+      "durationSeconds": 5.199,
+      "text": "vector store. We have four example"
+    },
+    {
+      "startSeconds": 504.879,
+      "durationSeconds": 5.681,
+      "text": "queries that we're going to run through"
+    },
+    {
+      "startSeconds": 507.199,
+      "durationSeconds": 5.921,
+      "text": "both using filtering through metadata"
+    },
+    {
+      "startSeconds": 510.56,
+      "durationSeconds": 5.919,
+      "text": "and without that. In this case, I am"
+    },
+    {
+      "startSeconds": 513.12,
+      "durationSeconds": 5.68,
+      "text": "just showing you how to do the retrieval"
+    },
+    {
+      "startSeconds": 516.479,
+      "durationSeconds": 6.161,
+      "text": "part. You can just pass these documents"
+    },
+    {
+      "startSeconds": 518.8,
+      "durationSeconds": 5.68,
+      "text": "to an LLM for subsequent generation. So"
+    },
+    {
+      "startSeconds": 522.64,
+      "durationSeconds": 4,
+      "text": "in each case we're going to look at the"
+    },
+    {
+      "startSeconds": 524.48,
+      "durationSeconds": 4.479,
+      "text": "filters that it creates plus the"
+    },
+    {
+      "startSeconds": 526.64,
+      "durationSeconds": 5.44,
+      "text": "documents that are being returned both"
+    },
+    {
+      "startSeconds": 528.959,
+      "durationSeconds": 6,
+      "text": "with and without metadata extract. Okay."
+    },
+    {
+      "startSeconds": 532.08,
+      "durationSeconds": 4.96,
+      "text": "So I'm going to run python"
+    },
+    {
+      "startSeconds": 534.959,
+      "durationSeconds": 5.121,
+      "text": "lang extract"
+    },
+    {
+      "startSeconds": 537.04,
+      "durationSeconds": 5.84,
+      "text": "rag.py that's the example python file"
+    },
+    {
+      "startSeconds": 540.08,
+      "durationSeconds": 5.36,
+      "text": "that we created and let's look at the"
+    },
+    {
+      "startSeconds": 542.88,
+      "durationSeconds": 5.6,
+      "text": "whole process. So initially loading the"
+    },
+    {
+      "startSeconds": 545.44,
+      "durationSeconds": 6.16,
+      "text": "documents right now it's running the"
+    },
+    {
+      "startSeconds": 548.48,
+      "durationSeconds": 5.12,
+      "text": "metadata extraction using lang extract."
+    },
+    {
+      "startSeconds": 551.6,
+      "durationSeconds": 3.76,
+      "text": "Since these are much smaller documents"
+    },
+    {
+      "startSeconds": 553.6,
+      "durationSeconds": 4.16,
+      "text": "so for each one of them you're going to"
+    },
+    {
+      "startSeconds": 555.36,
+      "durationSeconds": 4.96,
+      "text": "see a single chunk. For the first"
+    },
+    {
+      "startSeconds": 557.76,
+      "durationSeconds": 5.44,
+      "text": "document it extracted five different"
+    },
+    {
+      "startSeconds": 560.32,
+      "durationSeconds": 5.199,
+      "text": "entities. For the second we again"
+    },
+    {
+      "startSeconds": 563.2,
+      "durationSeconds": 4.639,
+      "text": "extracted five entities. For third there"
+    },
+    {
+      "startSeconds": 565.519,
+      "durationSeconds": 4.641,
+      "text": "are three entities. And for the last one"
+    },
+    {
+      "startSeconds": 567.839,
+      "durationSeconds": 5.841,
+      "text": "again three entities. Okay. And if you"
+    },
+    {
+      "startSeconds": 570.16,
+      "durationSeconds": 7.92,
+      "text": "look at what these looks like. So here's"
+    },
+    {
+      "startSeconds": 573.68,
+      "durationSeconds": 7.2,
+      "text": "the service version type for the second"
+    },
+    {
+      "startSeconds": 578.08,
+      "durationSeconds": 4.72,
+      "text": "document. This is the type is reference"
+    },
+    {
+      "startSeconds": 580.88,
+      "durationSeconds": 3.84,
+      "text": "version is 1.0. This is the third"
+    },
+    {
+      "startSeconds": 582.8,
+      "durationSeconds": 4.56,
+      "text": "document. And then we have the fourth"
+    },
+    {
+      "startSeconds": 584.72,
+      "durationSeconds": 4.96,
+      "text": "document. And since we did the"
+    },
+    {
+      "startSeconds": 587.36,
+      "durationSeconds": 4.72,
+      "text": "normalization for version that is"
+    },
+    {
+      "startSeconds": 589.68,
+      "durationSeconds": 6.32,
+      "text": "missing in the troubleshooting guide, we"
+    },
+    {
+      "startSeconds": 592.08,
+      "durationSeconds": 5.439,
+      "text": "assign it the default version. But let's"
+    },
+    {
+      "startSeconds": 596,
+      "durationSeconds": 4.16,
+      "text": "look at the results. So the first"
+    },
+    {
+      "startSeconds": 597.519,
+      "durationSeconds": 5.921,
+      "text": "question was how do I authenticate with"
+    },
+    {
+      "startSeconds": 600.16,
+      "durationSeconds": 5.2,
+      "text": "oath in version 2.0? 0 with small"
+    },
+    {
+      "startSeconds": 603.44,
+      "durationSeconds": 6,
+      "text": "filters. The first thing that it"
+    },
+    {
+      "startSeconds": 605.36,
+      "durationSeconds": 8.24,
+      "text": "generated was version 2.0 and the second"
+    },
+    {
+      "startSeconds": 609.44,
+      "durationSeconds": 6.639,
+      "text": "filter is services. Then there is a"
+    },
+    {
+      "startSeconds": 613.6,
+      "durationSeconds": 6,
+      "text": "document with version 2.0 plus the"
+    },
+    {
+      "startSeconds": 616.079,
+      "durationSeconds": 6.88,
+      "text": "services with authentication API. So"
+    },
+    {
+      "startSeconds": 619.6,
+      "durationSeconds": 5.919,
+      "text": "here are the metadata actually created."
+    },
+    {
+      "startSeconds": 622.959,
+      "durationSeconds": 5.761,
+      "text": "So it's going to use these to filter the"
+    },
+    {
+      "startSeconds": 625.519,
+      "durationSeconds": 5.44,
+      "text": "documents and as a result this is the"
+    },
+    {
+      "startSeconds": 628.72,
+      "durationSeconds": 5.119,
+      "text": "only document that is going to be passed"
+    },
+    {
+      "startSeconds": 630.959,
+      "durationSeconds": 6.081,
+      "text": "on to the LLM for final response"
+    },
+    {
+      "startSeconds": 633.839,
+      "durationSeconds": 6.081,
+      "text": "generation. Now if you don't use this"
+    },
+    {
+      "startSeconds": 637.04,
+      "durationSeconds": 5.359,
+      "text": "metadata based filtering you end up with"
+    },
+    {
+      "startSeconds": 639.92,
+      "durationSeconds": 4.24,
+      "text": "four documents. Here's the second"
+    },
+    {
+      "startSeconds": 642.399,
+      "durationSeconds": 6.081,
+      "text": "question. What are the rate limits for"
+    },
+    {
+      "startSeconds": 644.16,
+      "durationSeconds": 6.56,
+      "text": "authentication? Again with smart filters"
+    },
+    {
+      "startSeconds": 648.48,
+      "durationSeconds": 4.56,
+      "text": "we figured out that we're talking about"
+    },
+    {
+      "startSeconds": 650.72,
+      "durationSeconds": 4,
+      "text": "authentication service. Now in this case"
+    },
+    {
+      "startSeconds": 653.04,
+      "durationSeconds": 4.799,
+      "text": "the"
+    },
+    {
+      "startSeconds": 654.72,
+      "durationSeconds": 7.76,
+      "text": "API version is missing right? So it"
+    },
+    {
+      "startSeconds": 657.839,
+      "durationSeconds": 8.641,
+      "text": "picks up both of the versions but since"
+    },
+    {
+      "startSeconds": 662.48,
+      "durationSeconds": 6.24,
+      "text": "we have the service type we are able to"
+    },
+    {
+      "startSeconds": 666.48,
+      "durationSeconds": 4.479,
+      "text": "reduce the search space to three"
+    },
+    {
+      "startSeconds": 668.72,
+      "durationSeconds": 3.679,
+      "text": "documents rather than four without"
+    },
+    {
+      "startSeconds": 670.959,
+      "durationSeconds": 3.601,
+      "text": "filter. We're going to be again using"
+    },
+    {
+      "startSeconds": 672.399,
+      "durationSeconds": 5.601,
+      "text": "all of the documents. Now how do I"
+    },
+    {
+      "startSeconds": 674.56,
+      "durationSeconds": 5.839,
+      "text": "troubleshoot 401 errors? So this"
+    },
+    {
+      "startSeconds": 678,
+      "durationSeconds": 4.72,
+      "text": "document type is troubleshooting where"
+    },
+    {
+      "startSeconds": 680.399,
+      "durationSeconds": 4.321,
+      "text": "the model is able to create proper"
+    },
+    {
+      "startSeconds": 682.72,
+      "durationSeconds": 4.48,
+      "text": "filters. Again, we're going to reduce"
+    },
+    {
+      "startSeconds": 684.72,
+      "durationSeconds": 4.88,
+      "text": "the search space. Similarly, for the"
+    },
+    {
+      "startSeconds": 687.2,
+      "durationSeconds": 5.04,
+      "text": "fourth one, this one is storage"
+    },
+    {
+      "startSeconds": 689.6,
+      "durationSeconds": 5.919,
+      "text": "services. So you can see that for this"
+    },
+    {
+      "startSeconds": 692.24,
+      "durationSeconds": 7.36,
+      "text": "example, the model is able to create"
+    },
+    {
+      "startSeconds": 695.519,
+      "durationSeconds": 6.641,
+      "text": "proper filters using lang extract. Now"
+    },
+    {
+      "startSeconds": 699.6,
+      "durationSeconds": 4.4,
+      "text": "for example like this where it's able to"
+    },
+    {
+      "startSeconds": 702.16,
+      "durationSeconds": 4.32,
+      "text": "reduce the search space to three"
+    },
+    {
+      "startSeconds": 704,
+      "durationSeconds": 6.24,
+      "text": "documents you will still need a"
+    },
+    {
+      "startSeconds": 706.48,
+      "durationSeconds": 6.56,
+      "text": "secondary dense embedding space or maybe"
+    },
+    {
+      "startSeconds": 710.24,
+      "durationSeconds": 6.48,
+      "text": "multi vector representation based"
+    },
+    {
+      "startSeconds": 713.04,
+      "durationSeconds": 6.88,
+      "text": "retrieval system but using proper"
+    },
+    {
+      "startSeconds": 716.72,
+      "durationSeconds": 5.2,
+      "text": "metadata filters will help you and"
+    },
+    {
+      "startSeconds": 719.92,
+      "durationSeconds": 4.08,
+      "text": "you're reducing the amount of data"
+    },
+    {
+      "startSeconds": 721.92,
+      "durationSeconds": 4.159,
+      "text": "you're processing. So this was a quick"
+    },
+    {
+      "startSeconds": 724,
+      "durationSeconds": 4.72,
+      "text": "example of how you would use a system"
+    },
+    {
+      "startSeconds": 726.079,
+      "durationSeconds": 4.241,
+      "text": "like lang extract for meta data"
+    },
+    {
+      "startSeconds": 728.72,
+      "durationSeconds": 3.6,
+      "text": "generation and then subsequent"
+    },
+    {
+      "startSeconds": 730.32,
+      "durationSeconds": 4.4,
+      "text": "filtering. The code is going to be"
+    },
+    {
+      "startSeconds": 732.32,
+      "durationSeconds": 4.4,
+      "text": "available in the description. If you"
+    },
+    {
+      "startSeconds": 734.72,
+      "durationSeconds": 4.32,
+      "text": "like the video, make sure you subscribe"
+    },
+    {
+      "startSeconds": 736.72,
+      "durationSeconds": 3.76,
+      "text": "to the channel. Anyways, I hope you"
+    },
+    {
+      "startSeconds": 739.04,
+      "durationSeconds": 3.52,
+      "text": "found this video useful. Thanks for"
+    },
+    {
+      "startSeconds": 740.48,
+      "durationSeconds": 4.72,
+      "text": "watching and as always, see you in the"
+    },
+    {
+      "startSeconds": 742.56,
+      "durationSeconds": 2.64,
+      "text": "next one."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Metadata problem with RAG"
+    },
+    {
+      "startSeconds": 45,
+      "label": "Using Lang Extract for Metadata Extraction"
+    },
+    {
+      "startSeconds": 106,
+      "label": "Building the Retrieval Augmented Generation System"
+    },
+    {
+      "startSeconds": 142,
+      "label": "Setting Up the Environment and Sample Data"
+    },
+    {
+      "startSeconds": 207,
+      "label": "Creating the Metadata Extraction Pipeline"
+    },
+    {
+      "startSeconds": 416,
+      "label": "Implementing Metadata Filters in Vector Store"
+    },
+    {
+      "startSeconds": 531,
+      "label": "Running the Example and Viewing Results"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:53.816Z"
+}

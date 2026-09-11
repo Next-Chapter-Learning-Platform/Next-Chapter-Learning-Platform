@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "5kiMg7GXAsY",
+  "url": "https://www.youtube.com/watch?v=5kiMg7GXAsY",
+  "title": "What is a Foreign Key Constraint? Understanding Primary & Foreign Keys",
+  "description": "In this short video we'll cover what foreign keys are, why they are important, how they differ from Primary Keys and how they function in a relational database. \n\n00:00 Introduction\n0:21 Example of Foreign Keys in a database\n0:32 What is a Primary key?\n1:19 What is a foreign key?\n2:02 What do foreign keys do?\n3:27 Review of Foreign Keys\n\nIn this video, we are focusing on foreign keys that link one column in a table to one column (the primary key) in another table for the sake of simplicity. Your own use of a foreign key can be more complex: foreign keys can link to a compound (more than one column) in another table, and foreign keys do not have to link to another table's primary key. \n\nJust keep in mind that whatever your foreign key is referencing in the other table must have a unique constraint (this is why using a foreign key to reference another table's primary key is often a good idea, since we know that has a unique constraint by default). \n\nNext video: how to use foreign keys in SQL: https://www.youtube.com/watch?v=mFQk1VsIkZA\n\nMore documentation on foreign keys: https://www.cockroachlabs.com/docs/stable/foreign-key.html\n\n#ForeignKeys #PrimaryKeys #RelationalDatabase #CockroachDB",
+  "expectedDurationSeconds": 233,
+  "transcript": [
+    {
+      "startSeconds": 4.88,
+      "durationSeconds": 3.28,
+      "text": "Foreign keys are part of what \nmakes a relational database"
+    },
+    {
+      "startSeconds": 8.16,
+      "durationSeconds": 5.6,
+      "text": "relational by creating clear relationships \nbetween tables. But more importantly,"
+    },
+    {
+      "startSeconds": 13.76,
+      "durationSeconds": 5.44,
+      "text": "foreign keys help us ensure that all of the data \nentering our database is consistent and valid."
+    },
+    {
+      "startSeconds": 20.24,
+      "durationSeconds": 4.88,
+      "text": "Let’s take a look at an example database \nto illustrate what foreign keys are and how"
+    },
+    {
+      "startSeconds": 25.12,
+      "durationSeconds": 7.2,
+      "text": "they’re used. This fictional bookstore database \nhas three tables: users, orders, and books."
+    },
+    {
+      "startSeconds": 33.52,
+      "durationSeconds": 5.44,
+      "text": "Each table has one column with a unique \nidentifier. This is the primary key."
+    },
+    {
+      "startSeconds": 40.16,
+      "durationSeconds": 6.56,
+      "text": "Primary keys are kind of like ID numbers. In the \nsame way an ID number identifies you uniquely"
+    },
+    {
+      "startSeconds": 46.72,
+      "durationSeconds": 4.24,
+      "text": "even if someone else has the same name as \nyou, or shares the same mailing address,"
+    },
+    {
+      "startSeconds": 51.52,
+      "durationSeconds": 3.92,
+      "text": "a table’s primary key allows \nthe database to identify"
+    },
+    {
+      "startSeconds": 55.44,
+      "durationSeconds": 5.2,
+      "text": "a unique row even if the other columns \nin that row don’t have unique values."
+    },
+    {
+      "startSeconds": 62.08,
+      "durationSeconds": 6.96,
+      "text": "Every table in a SQL database must have a \nprimary key. In our bookseller database, user_id,"
+    },
+    {
+      "startSeconds": 69.68,
+      "durationSeconds": 7.52,
+      "text": "order_no, and product_sku are the primary keys for \nthe users, orders, and books tables, respectively."
+    },
+    {
+      "startSeconds": 78.56,
+      "durationSeconds": 6,
+      "text": "Now that we understand primary keys, let’s talk \nabout foreign keys. Take a closer look at the"
+    },
+    {
+      "startSeconds": 84.56,
+      "durationSeconds": 7.2,
+      "text": "orders table. Each row is an order. Each order \nhas an order number, a user_id that represents"
+    },
+    {
+      "startSeconds": 91.76,
+      "durationSeconds": 5.12,
+      "text": "the user who placed the order, and a product_sku \nthat represents the book they purchased."
+    },
+    {
+      "startSeconds": 98,
+      "durationSeconds": 5.92,
+      "text": "We can see that user_id and product_sku also \ncorrespond with the primary key columns in the"
+    },
+    {
+      "startSeconds": 103.92,
+      "durationSeconds": 6.48,
+      "text": "users and books tables, respectively. But right \nnow, that’s just an informal relationship. They"
+    },
+    {
+      "startSeconds": 110.4,
+      "durationSeconds": 4.08,
+      "text": "aren’t connected in any meaningful way, \nthey just happen to share the same data."
+    },
+    {
+      "startSeconds": 115.28,
+      "durationSeconds": 4.88,
+      "text": "We can formalize that connection and add \nsome important rules at the same time"
+    },
+    {
+      "startSeconds": 120.16,
+      "durationSeconds": 4.16,
+      "text": "by adding foreign keys.\nWhen we add foreign keys,"
+    },
+    {
+      "startSeconds": 124.32,
+      "durationSeconds": 8.08,
+      "text": "we’re establishing that orders.user_id column \nreferences users.user_id, and orders.product_sku"
+    },
+    {
+      "startSeconds": 132.4,
+      "durationSeconds": 5.52,
+      "text": "references books.product_sku. But we’re \nalso doing something more important:"
+    },
+    {
+      "startSeconds": 137.92,
+      "durationSeconds": 3.84,
+      "text": "creating rules that say a row can \nonly be added to the orders table"
+    },
+    {
+      "startSeconds": 141.76,
+      "durationSeconds": 6.48,
+      "text": "if its user_id value exists in the users table \nand its product_sku exists in the books table."
+    },
+    {
+      "startSeconds": 149.28,
+      "durationSeconds": 4.56,
+      "text": "In other words, with our new foreign key \nrules, we can only add a new order if its"
+    },
+    {
+      "startSeconds": 153.84,
+      "durationSeconds": 6.32,
+      "text": "user really exists in the users table, and the \nproduct_sku really exists in the books table."
+    },
+    {
+      "startSeconds": 160.96,
+      "durationSeconds": 4.96,
+      "text": "So, foreign keys aren’t just about linking tables \ntogether with clear relationships – they actually"
+    },
+    {
+      "startSeconds": 165.92,
+      "durationSeconds": 5.12,
+      "text": "help us ensure that our data is accurate by \nrejecting insertions that don’t make sense,"
+    },
+    {
+      "startSeconds": 171.04,
+      "durationSeconds": 4.32,
+      "text": "like an order with no user attached, or \nan order for a book that doesn’t exist."
+    },
+    {
+      "startSeconds": 176.8,
+      "durationSeconds": 5.36,
+      "text": "One important rule for foreign keys is that the \ncolumn in the table we’re referencing must have"
+    },
+    {
+      "startSeconds": 182.16,
+      "durationSeconds": 6.8,
+      "text": "only unique values. That’s because when we create \na foreign key for orders.user_id, for example,"
+    },
+    {
+      "startSeconds": 188.96,
+      "durationSeconds": 6.64,
+      "text": "we’re linking each row in the orders table to a \nspecific user. You may have noticed that both of"
+    },
+    {
+      "startSeconds": 195.6,
+      "durationSeconds": 4.88,
+      "text": "the foreign keys we added to the orders table \nlink to the primary keys in the other tables."
+    },
+    {
+      "startSeconds": 201.04,
+      "durationSeconds": 5.6,
+      "text": "It’s good practice to make sure all of our foreign \nkeys are referencing primary keys in other tables."
+    },
+    {
+      "startSeconds": 207.84,
+      "durationSeconds": 2.96,
+      "text": "In this video, we’ve covered \na lot! We’ve talked about how"
+    },
+    {
+      "startSeconds": 210.8,
+      "durationSeconds": 3.68,
+      "text": "foreign keys create links between \ntables and how they help ensure"
+    },
+    {
+      "startSeconds": 214.48,
+      "durationSeconds": 4.8,
+      "text": "accuracy by only entering data with a valid \nconnection to the table being referenced."
+    },
+    {
+      "startSeconds": 219.28,
+      "durationSeconds": 4.08,
+      "text": "Hit subscribe to make sure you don’t miss \nan upcoming video on how to put all of this"
+    },
+    {
+      "startSeconds": 223.36,
+      "durationSeconds": 8.64,
+      "text": "into action by adding foreign keys \nto your database tables with SQL."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction"
+    },
+    {
+      "startSeconds": 21,
+      "label": "Example of Foreign Keys in a database"
+    },
+    {
+      "startSeconds": 32,
+      "label": "What is a Primary key?"
+    },
+    {
+      "startSeconds": 79,
+      "label": "What is a foreign key?"
+    },
+    {
+      "startSeconds": 122,
+      "label": "What do foreign keys do?"
+    },
+    {
+      "startSeconds": 207,
+      "label": "Review of Foreign Keys"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:23:06.758Z"
+}

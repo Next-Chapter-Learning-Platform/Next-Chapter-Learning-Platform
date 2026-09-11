@@ -1,0 +1,1475 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "eZfD6x9FJ4E",
+  "url": "https://www.youtube.com/watch?v=eZfD6x9FJ4E",
+  "title": "How to build and automate your Python ETL pipeline with Airflow | Data pipeline | Python",
+  "description": "In this video, we will cover how to automate your Python ETL (Extract, Transform, Load) with Apache Airflow. In this session, we will use the TaskFlow API introduced in Airflow 2.0.  TaskFlow API makes it much easier to author clean ETL code without extra boilerplate, by using the @task decorator. Airflow organizes your workflows as Directed Acyclic Graphs (DAGs) composed of tasks. \n \n\nIn this tutorial, we will see how to design a ETL Pipeline with Python. We will use SQL Server’s AdventureWorks database as a source and load data in PostgreSQL with Python. We will focus on Product's hierarchy and enhance our initial data pipeline to give you a complete overview of the extract, load and transform process. \n\nLink to medium article on this topic:  https://medium.com/@hnawaz100/how-to-automate-etl-pipelines-with-airflow-62484ee5ef4c\n\nLink to previous video: https://www.youtube.com/watch?v=dfouoh9QdUw\n\nLink to Pandas video: https://www.youtube.com/watch?v=-jerzfh2bS0\n\nLink to GitHub repo: https://github.com/hnawaz007/pythondataanalysis/blob/main/ETL%20Pipeline/automate_etl_with_airflow.py\n\nLink to Cron Expressions: https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm\n\nSubscribe to our channel:\nhttps://www.youtube.com/c/HaqNawaz\n\n---------------------------------------------\nFollow me on social media!\n\nGitHub: https://github.com/hnawaz007\nInstagram: https://www.instagram.com/bi_insights_inc\nLinkedIn: https://www.linkedin.com/in/haq-nawaz/\n\n---------------------------------------------\n\n#ETL #Python #Airflow\n\nTopics covered in this video:\n0:00 - Introduction to Airflow\n2:49 - The Setup\n3:40 - Script ETL pipeline: Extract\n5:52 - Transform\n7:39 - Load\n8:00 - Define Direct Acyclic Graph (DAG)\n9:36 - Airflow UI: Dag enable & run\n10:09 - DAG Overview\n10:29 - Test ETL Pipeline",
+  "expectedDurationSeconds": 690,
+  "transcript": [
+    {
+      "startSeconds": 0.16,
+      "durationSeconds": 8.72,
+      "text": "[Music]"
+    },
+    {
+      "startSeconds": 6.319,
+      "durationSeconds": 6.081,
+      "text": "hello and uh welcome one and all today"
+    },
+    {
+      "startSeconds": 8.88,
+      "durationSeconds": 5.759,
+      "text": "we will automate our python etl pipeline"
+    },
+    {
+      "startSeconds": 12.4,
+      "durationSeconds": 4.56,
+      "text": "we developed an etl pipeline in the"
+    },
+    {
+      "startSeconds": 14.639,
+      "durationSeconds": 5.281,
+      "text": "previous session we will build on it"
+    },
+    {
+      "startSeconds": 16.96,
+      "durationSeconds": 5.6,
+      "text": "today to give you a complete overview of"
+    },
+    {
+      "startSeconds": 19.92,
+      "durationSeconds": 4.24,
+      "text": "extract transform and load"
+    },
+    {
+      "startSeconds": 22.56,
+      "durationSeconds": 3.44,
+      "text": "link to the previous video is in the"
+    },
+    {
+      "startSeconds": 24.16,
+      "durationSeconds": 4.56,
+      "text": "description below"
+    },
+    {
+      "startSeconds": 26,
+      "durationSeconds": 4.64,
+      "text": "we will use apache airflow to automate"
+    },
+    {
+      "startSeconds": 28.72,
+      "durationSeconds": 4.8,
+      "text": "our etl pipeline"
+    },
+    {
+      "startSeconds": 30.64,
+      "durationSeconds": 5.439,
+      "text": "apache airflow is a widely used open"
+    },
+    {
+      "startSeconds": 33.52,
+      "durationSeconds": 4.64,
+      "text": "source workflow management system"
+    },
+    {
+      "startSeconds": 36.079,
+      "durationSeconds": 4.48,
+      "text": "it provides data engineer with an"
+    },
+    {
+      "startSeconds": 38.16,
+      "durationSeconds": 5.2,
+      "text": "intuitive platform to create"
+    },
+    {
+      "startSeconds": 40.559,
+      "durationSeconds": 4.801,
+      "text": "schedule monitor and maintain their"
+    },
+    {
+      "startSeconds": 43.36,
+      "durationSeconds": 4,
+      "text": "complex data pipelines"
+    },
+    {
+      "startSeconds": 45.36,
+      "durationSeconds": 5.12,
+      "text": "airflow enables you to manage your data"
+    },
+    {
+      "startSeconds": 47.36,
+      "durationSeconds": 6.32,
+      "text": "pipelines by altering workflow as"
+    },
+    {
+      "startSeconds": 50.48,
+      "durationSeconds": 5.04,
+      "text": "directed acyclic graphs also known as"
+    },
+    {
+      "startSeconds": 53.68,
+      "durationSeconds": 4.48,
+      "text": "dags of task"
+    },
+    {
+      "startSeconds": 55.52,
+      "durationSeconds": 4.559,
+      "text": "you manage tasks schedule as code and"
+    },
+    {
+      "startSeconds": 58.16,
+      "durationSeconds": 6.399,
+      "text": "you can visualize your data pipeline's"
+    },
+    {
+      "startSeconds": 60.079,
+      "durationSeconds": 6.4,
+      "text": "dependency progress logs code and status"
+    },
+    {
+      "startSeconds": 64.559,
+      "durationSeconds": 4.081,
+      "text": "via the user interface"
+    },
+    {
+      "startSeconds": 66.479,
+      "durationSeconds": 4.481,
+      "text": "airflow enables you to set up data"
+    },
+    {
+      "startSeconds": 68.64,
+      "durationSeconds": 5.68,
+      "text": "pipelines over data stores and data"
+    },
+    {
+      "startSeconds": 70.96,
+      "durationSeconds": 6,
+      "text": "warehouses run workloads at a schedule"
+    },
+    {
+      "startSeconds": 74.32,
+      "durationSeconds": 4.479,
+      "text": "create and manage script data pipelines"
+    },
+    {
+      "startSeconds": 76.96,
+      "durationSeconds": 3.76,
+      "text": "as python code"
+    },
+    {
+      "startSeconds": 78.799,
+      "durationSeconds": 5.921,
+      "text": "in this session we will use the task"
+    },
+    {
+      "startSeconds": 80.72,
+      "durationSeconds": 6.56,
+      "text": "flow api introduced in airflow 2.0 task"
+    },
+    {
+      "startSeconds": 84.72,
+      "durationSeconds": 5.439,
+      "text": "flow api feature allows data sharing"
+    },
+    {
+      "startSeconds": 87.28,
+      "durationSeconds": 5.44,
+      "text": "functionality between tasks however the"
+    },
+    {
+      "startSeconds": 90.159,
+      "durationSeconds": 5.521,
+      "text": "data exchange is limited only to small"
+    },
+    {
+      "startSeconds": 92.72,
+      "durationSeconds": 5.52,
+      "text": "json serializable objects such as"
+    },
+    {
+      "startSeconds": 95.68,
+      "durationSeconds": 5.04,
+      "text": "dictionaries we can't share large data"
+    },
+    {
+      "startSeconds": 98.24,
+      "durationSeconds": 4.4,
+      "text": "frames from one task to another without"
+    },
+    {
+      "startSeconds": 100.72,
+      "durationSeconds": 4.64,
+      "text": "serializing it first"
+    },
+    {
+      "startSeconds": 102.64,
+      "durationSeconds": 5.759,
+      "text": "task flow api makes it easier to author"
+    },
+    {
+      "startSeconds": 105.36,
+      "durationSeconds": 5.68,
+      "text": "clean dags without extra boilerplates by"
+    },
+    {
+      "startSeconds": 108.399,
+      "durationSeconds": 5.36,
+      "text": "using the task decorator airflow"
+    },
+    {
+      "startSeconds": 111.04,
+      "durationSeconds": 4.24,
+      "text": "organizes your workflow in dags composed"
+    },
+    {
+      "startSeconds": 113.759,
+      "durationSeconds": 4.561,
+      "text": "of tasks"
+    },
+    {
+      "startSeconds": 115.28,
+      "durationSeconds": 6,
+      "text": "so what is dag a dag directed a cyclic"
+    },
+    {
+      "startSeconds": 118.32,
+      "durationSeconds": 5.68,
+      "text": "graph is the core concept of airflow it"
+    },
+    {
+      "startSeconds": 121.28,
+      "durationSeconds": 4.64,
+      "text": "represents a group of tasks it is"
+    },
+    {
+      "startSeconds": 124,
+      "durationSeconds": 4.72,
+      "text": "organized with dependencies and"
+    },
+    {
+      "startSeconds": 125.92,
+      "durationSeconds": 5.44,
+      "text": "relationship to say how they should run"
+    },
+    {
+      "startSeconds": 128.72,
+      "durationSeconds": 5.28,
+      "text": "tag is defined as python script that"
+    },
+    {
+      "startSeconds": 131.36,
+      "durationSeconds": 5.84,
+      "text": "represents the dag's structure tasks and"
+    },
+    {
+      "startSeconds": 134,
+      "durationSeconds": 6.16,
+      "text": "their dependencies as code to run a dag"
+    },
+    {
+      "startSeconds": 137.2,
+      "durationSeconds": 5.44,
+      "text": "with any service we can use airflow's ui"
+    },
+    {
+      "startSeconds": 140.16,
+      "durationSeconds": 5.12,
+      "text": "to set up connections such as"
+    },
+    {
+      "startSeconds": 142.64,
+      "durationSeconds": 4.72,
+      "text": "configuring our database credentials so"
+    },
+    {
+      "startSeconds": 145.28,
+      "durationSeconds": 4.959,
+      "text": "we can connect to sql server and"
+    },
+    {
+      "startSeconds": 147.36,
+      "durationSeconds": 4.959,
+      "text": "postgres airflows ui enables you to"
+    },
+    {
+      "startSeconds": 150.239,
+      "durationSeconds": 4.961,
+      "text": "observe the pipeline running in your"
+    },
+    {
+      "startSeconds": 152.319,
+      "durationSeconds": 5.121,
+      "text": "environment monitor the progress and"
+    },
+    {
+      "startSeconds": 155.2,
+      "durationSeconds": 5.2,
+      "text": "troubleshoot issues when needed"
+    },
+    {
+      "startSeconds": 157.44,
+      "durationSeconds": 5.68,
+      "text": "airflow's visual tags also provide data"
+    },
+    {
+      "startSeconds": 160.4,
+      "durationSeconds": 5.6,
+      "text": "lineage which facilitates debugging of"
+    },
+    {
+      "startSeconds": 163.12,
+      "durationSeconds": 5.839,
+      "text": "data flows and aids in auditing and data"
+    },
+    {
+      "startSeconds": 166,
+      "durationSeconds": 5.76,
+      "text": "governance let's open pycharm and start"
+    },
+    {
+      "startSeconds": 168.959,
+      "durationSeconds": 5.761,
+      "text": "with our first tag i will refactor our"
+    },
+    {
+      "startSeconds": 171.76,
+      "durationSeconds": 6,
+      "text": "python etl script to make it compatible"
+    },
+    {
+      "startSeconds": 174.72,
+      "durationSeconds": 5.599,
+      "text": "with airflow as usual we will import the"
+    },
+    {
+      "startSeconds": 177.76,
+      "durationSeconds": 4.08,
+      "text": "required libraries at the top along with"
+    },
+    {
+      "startSeconds": 180.319,
+      "durationSeconds": 3.84,
+      "text": "usual libraries"
+    },
+    {
+      "startSeconds": 181.84,
+      "durationSeconds": 5.759,
+      "text": "we will import few airflow libraries"
+    },
+    {
+      "startSeconds": 184.159,
+      "durationSeconds": 5.601,
+      "text": "especially dag task and task group then"
+    },
+    {
+      "startSeconds": 187.599,
+      "durationSeconds": 4.961,
+      "text": "we import few hooks these will help us"
+    },
+    {
+      "startSeconds": 189.76,
+      "durationSeconds": 5.04,
+      "text": "establish connection to our databases"
+    },
+    {
+      "startSeconds": 192.56,
+      "durationSeconds": 3.2,
+      "text": "we define the connection in the airflow"
+    },
+    {
+      "startSeconds": 194.8,
+      "durationSeconds": 3.12,
+      "text": "ui"
+    },
+    {
+      "startSeconds": 195.76,
+      "durationSeconds": 4.64,
+      "text": "i have two connections defined here to"
+    },
+    {
+      "startSeconds": 197.92,
+      "durationSeconds": 5.2,
+      "text": "our source and destination databases"
+    },
+    {
+      "startSeconds": 200.4,
+      "durationSeconds": 5.199,
+      "text": "under admin console we can add a new"
+    },
+    {
+      "startSeconds": 203.12,
+      "durationSeconds": 4.72,
+      "text": "connection by clicking the plus icon"
+    },
+    {
+      "startSeconds": 205.599,
+      "durationSeconds": 4.72,
+      "text": "here we can select a database and define"
+    },
+    {
+      "startSeconds": 207.84,
+      "durationSeconds": 4.64,
+      "text": "connection details we reference the"
+    },
+    {
+      "startSeconds": 210.319,
+      "durationSeconds": 5.121,
+      "text": "connection in our code by the connection"
+    },
+    {
+      "startSeconds": 212.48,
+      "durationSeconds": 5.52,
+      "text": "id okay i'll move back to the code"
+    },
+    {
+      "startSeconds": 215.44,
+      "durationSeconds": 5.359,
+      "text": "and finally we import pandas and sql"
+    },
+    {
+      "startSeconds": 218,
+      "durationSeconds": 5.2,
+      "text": "alchemy we can use the task decorator to"
+    },
+    {
+      "startSeconds": 220.799,
+      "durationSeconds": 4.481,
+      "text": "define our tasks first we define a"
+    },
+    {
+      "startSeconds": 223.2,
+      "durationSeconds": 4.399,
+      "text": "function to get table names from sql"
+    },
+    {
+      "startSeconds": 225.28,
+      "durationSeconds": 4.319,
+      "text": "server just like the previous session"
+    },
+    {
+      "startSeconds": 227.599,
+      "durationSeconds": 4.401,
+      "text": "since our connection is defined in"
+    },
+    {
+      "startSeconds": 229.599,
+      "durationSeconds": 5.041,
+      "text": "airflow we can get a hold of it with"
+    },
+    {
+      "startSeconds": 232,
+      "durationSeconds": 3.92,
+      "text": "connection id and with the help of ms"
+    },
+    {
+      "startSeconds": 234.64,
+      "durationSeconds": 3.84,
+      "text": "sql hook"
+    },
+    {
+      "startSeconds": 235.92,
+      "durationSeconds": 4.8,
+      "text": "then we supply it a sql script that gets"
+    },
+    {
+      "startSeconds": 238.48,
+      "durationSeconds": 5.039,
+      "text": "the table name from the system schema in"
+    },
+    {
+      "startSeconds": 240.72,
+      "durationSeconds": 5.36,
+      "text": "sql server the sql hook has a built-in"
+    },
+    {
+      "startSeconds": 243.519,
+      "durationSeconds": 5.44,
+      "text": "function to get panda's data frame it"
+    },
+    {
+      "startSeconds": 246.08,
+      "durationSeconds": 5.2,
+      "text": "takes sql query as an argument we save"
+    },
+    {
+      "startSeconds": 248.959,
+      "durationSeconds": 3.441,
+      "text": "the data frame in a df variable and"
+    },
+    {
+      "startSeconds": 251.28,
+      "durationSeconds": 3.28,
+      "text": "print it"
+    },
+    {
+      "startSeconds": 252.4,
+      "durationSeconds": 5.119,
+      "text": "since we only can share serializable"
+    },
+    {
+      "startSeconds": 254.56,
+      "durationSeconds": 5.359,
+      "text": "data between tasks i'll convert it to a"
+    },
+    {
+      "startSeconds": 257.519,
+      "durationSeconds": 4.721,
+      "text": "dictionary and this function will return"
+    },
+    {
+      "startSeconds": 259.919,
+      "durationSeconds": 4.56,
+      "text": "a dictionary with table names we will"
+    },
+    {
+      "startSeconds": 262.24,
+      "durationSeconds": 5.44,
+      "text": "define our second task with a function"
+    },
+    {
+      "startSeconds": 264.479,
+      "durationSeconds": 5.361,
+      "text": "called load src data this function takes"
+    },
+    {
+      "startSeconds": 267.68,
+      "durationSeconds": 4.4,
+      "text": "a dictionary as an argument which is"
+    },
+    {
+      "startSeconds": 269.84,
+      "durationSeconds": 4.4,
+      "text": "returned from the previous function we"
+    },
+    {
+      "startSeconds": 272.08,
+      "durationSeconds": 4.16,
+      "text": "get the connection detail for postgres"
+    },
+    {
+      "startSeconds": 274.24,
+      "durationSeconds": 4.88,
+      "text": "with base hook remember connection"
+    },
+    {
+      "startSeconds": 276.24,
+      "durationSeconds": 5.44,
+      "text": "details are saved in the admin panel"
+    },
+    {
+      "startSeconds": 279.12,
+      "durationSeconds": 4.88,
+      "text": "and we save it in a con variable with"
+    },
+    {
+      "startSeconds": 281.68,
+      "durationSeconds": 4.56,
+      "text": "the help of sql alchemy we create a"
+    },
+    {
+      "startSeconds": 284,
+      "durationSeconds": 5.04,
+      "text": "connection and provide the connection"
+    },
+    {
+      "startSeconds": 286.24,
+      "durationSeconds": 5.12,
+      "text": "details via con variable"
+    },
+    {
+      "startSeconds": 289.04,
+      "durationSeconds": 5.12,
+      "text": "let's define an empty array"
+    },
+    {
+      "startSeconds": 291.36,
+      "durationSeconds": 5.44,
+      "text": "i'll call it all tbl name to store the"
+    },
+    {
+      "startSeconds": 294.16,
+      "durationSeconds": 4.88,
+      "text": "table names and we will return this at"
+    },
+    {
+      "startSeconds": 296.8,
+      "durationSeconds": 4.239,
+      "text": "the end of this function we iterate over"
+    },
+    {
+      "startSeconds": 299.04,
+      "durationSeconds": 4.08,
+      "text": "the dictionary items to get the table"
+    },
+    {
+      "startSeconds": 301.039,
+      "durationSeconds": 5.041,
+      "text": "names let's append the table names to"
+    },
+    {
+      "startSeconds": 303.12,
+      "durationSeconds": 4.96,
+      "text": "our all tbl name array to display the"
+    },
+    {
+      "startSeconds": 306.08,
+      "durationSeconds": 4.32,
+      "text": "number of rows we are importing i'll"
+    },
+    {
+      "startSeconds": 308.08,
+      "durationSeconds": 4.32,
+      "text": "declare a variable and we will set it to"
+    },
+    {
+      "startSeconds": 310.4,
+      "durationSeconds": 4.639,
+      "text": "the length of the data frame"
+    },
+    {
+      "startSeconds": 312.4,
+      "durationSeconds": 4.16,
+      "text": "we create a dynamic sql query here with"
+    },
+    {
+      "startSeconds": 315.039,
+      "durationSeconds": 4.081,
+      "text": "the table name coming from the"
+    },
+    {
+      "startSeconds": 316.56,
+      "durationSeconds": 5.28,
+      "text": "dictionary value and with the help of f"
+    },
+    {
+      "startSeconds": 319.12,
+      "durationSeconds": 5.68,
+      "text": "string and once again we will make use"
+    },
+    {
+      "startSeconds": 321.84,
+      "durationSeconds": 5.52,
+      "text": "of sql hook to query sql server with our"
+    },
+    {
+      "startSeconds": 324.8,
+      "durationSeconds": 5.04,
+      "text": "dynamic sql query and we will save the"
+    },
+    {
+      "startSeconds": 327.36,
+      "durationSeconds": 4.8,
+      "text": "output to a data frame we print a"
+    },
+    {
+      "startSeconds": 329.84,
+      "durationSeconds": 4.24,
+      "text": "message how many rows we are importing"
+    },
+    {
+      "startSeconds": 332.16,
+      "durationSeconds": 5.68,
+      "text": "and from which table"
+    },
+    {
+      "startSeconds": 334.08,
+      "durationSeconds": 6.24,
+      "text": "now is time to persist this data in"
+    },
+    {
+      "startSeconds": 337.84,
+      "durationSeconds": 5.28,
+      "text": "call the 2sql function and prefix the"
+    },
+    {
+      "startSeconds": 340.32,
+      "durationSeconds": 5.04,
+      "text": "table name with src to indicate that"
+    },
+    {
+      "startSeconds": 343.12,
+      "durationSeconds": 4.32,
+      "text": "this is a source table we print a"
+    },
+    {
+      "startSeconds": 345.36,
+      "durationSeconds": 4.16,
+      "text": "success message and return the table"
+    },
+    {
+      "startSeconds": 347.44,
+      "durationSeconds": 4.64,
+      "text": "names array at the end"
+    },
+    {
+      "startSeconds": 349.52,
+      "durationSeconds": 4.64,
+      "text": "we are done with data extract it's time"
+    },
+    {
+      "startSeconds": 352.08,
+      "durationSeconds": 3.92,
+      "text": "to transform this data and once we're"
+    },
+    {
+      "startSeconds": 354.16,
+      "durationSeconds": 4.479,
+      "text": "done with the transformation we will"
+    },
+    {
+      "startSeconds": 356,
+      "durationSeconds": 4.96,
+      "text": "persist the data in staging tables in"
+    },
+    {
+      "startSeconds": 358.639,
+      "durationSeconds": 4.481,
+      "text": "the first task we will transform dim"
+    },
+    {
+      "startSeconds": 360.96,
+      "durationSeconds": 4.72,
+      "text": "product table let's query the source"
+    },
+    {
+      "startSeconds": 363.12,
+      "durationSeconds": 5.28,
+      "text": "table to preview the data this will give"
+    },
+    {
+      "startSeconds": 365.68,
+      "durationSeconds": 4.959,
+      "text": "us an idea where to apply transformation"
+    },
+    {
+      "startSeconds": 368.4,
+      "durationSeconds": 4.96,
+      "text": "we see that there are columns in french"
+    },
+    {
+      "startSeconds": 370.639,
+      "durationSeconds": 4.801,
+      "text": "and spanish that we can get rid of there"
+    },
+    {
+      "startSeconds": 373.36,
+      "durationSeconds": 4.72,
+      "text": "are a lot of columns with nulls or"
+    },
+    {
+      "startSeconds": 375.44,
+      "durationSeconds": 3.52,
+      "text": "missing values we can set defaults for"
+    },
+    {
+      "startSeconds": 378.08,
+      "durationSeconds": 3.04,
+      "text": "these"
+    },
+    {
+      "startSeconds": 378.96,
+      "durationSeconds": 4.56,
+      "text": "also there's a large photo column that"
+    },
+    {
+      "startSeconds": 381.12,
+      "durationSeconds": 4,
+      "text": "we don't need for analysis so we can"
+    },
+    {
+      "startSeconds": 383.52,
+      "durationSeconds": 4,
+      "text": "delete this as well"
+    },
+    {
+      "startSeconds": 385.12,
+      "durationSeconds": 4.96,
+      "text": "last we'll rename few columns where the"
+    },
+    {
+      "startSeconds": 387.52,
+      "durationSeconds": 4.16,
+      "text": "name contains english for example the"
+    },
+    {
+      "startSeconds": 390.08,
+      "durationSeconds": 4.239,
+      "text": "description column is english"
+    },
+    {
+      "startSeconds": 391.68,
+      "durationSeconds": 4.959,
+      "text": "description so we can drop english since"
+    },
+    {
+      "startSeconds": 394.319,
+      "durationSeconds": 3.841,
+      "text": "we drop other language columns"
+    },
+    {
+      "startSeconds": 396.639,
+      "durationSeconds": 4.241,
+      "text": "let's see how we carry out these"
+    },
+    {
+      "startSeconds": 398.16,
+      "durationSeconds": 5.52,
+      "text": "transformation with pandas we will name"
+    },
+    {
+      "startSeconds": 400.88,
+      "durationSeconds": 4.96,
+      "text": "this task transform dim product let's"
+    },
+    {
+      "startSeconds": 403.68,
+      "durationSeconds": 4.799,
+      "text": "query the source table from postgres"
+    },
+    {
+      "startSeconds": 405.84,
+      "durationSeconds": 4.72,
+      "text": "into a data frame we will use pandas to"
+    },
+    {
+      "startSeconds": 408.479,
+      "durationSeconds": 4.481,
+      "text": "implement transformation if you need a"
+    },
+    {
+      "startSeconds": 410.56,
+      "durationSeconds": 5.52,
+      "text": "refresher on pandas i have covered this"
+    },
+    {
+      "startSeconds": 412.96,
+      "durationSeconds": 6.079,
+      "text": "in this video feel free to check it out"
+    },
+    {
+      "startSeconds": 416.08,
+      "durationSeconds": 4.959,
+      "text": "first let's drop the unwanted column we"
+    },
+    {
+      "startSeconds": 419.039,
+      "durationSeconds": 4.081,
+      "text": "will provide the list of columns we want"
+    },
+    {
+      "startSeconds": 421.039,
+      "durationSeconds": 4.16,
+      "text": "to keep from the data frame"
+    },
+    {
+      "startSeconds": 423.12,
+      "durationSeconds": 4.72,
+      "text": "let's save it into a new data frame"
+    },
+    {
+      "startSeconds": 425.199,
+      "durationSeconds": 5.44,
+      "text": "called revised then we replace nulls"
+    },
+    {
+      "startSeconds": 427.84,
+      "durationSeconds": 4.479,
+      "text": "with zeros for numeric columns and n a"
+    },
+    {
+      "startSeconds": 430.639,
+      "durationSeconds": 3.68,
+      "text": "for string columns"
+    },
+    {
+      "startSeconds": 432.319,
+      "durationSeconds": 4.72,
+      "text": "let's go ahead and rename columns where"
+    },
+    {
+      "startSeconds": 434.319,
+      "durationSeconds": 5.201,
+      "text": "name contains english since all of our"
+    },
+    {
+      "startSeconds": 437.039,
+      "durationSeconds": 4.801,
+      "text": "columns are in english now we are done"
+    },
+    {
+      "startSeconds": 439.52,
+      "durationSeconds": 4.72,
+      "text": "with transformations and let's save this"
+    },
+    {
+      "startSeconds": 441.84,
+      "durationSeconds": 3.359,
+      "text": "into a staging table with two sql"
+    },
+    {
+      "startSeconds": 444.24,
+      "durationSeconds": 3.28,
+      "text": "function"
+    },
+    {
+      "startSeconds": 445.199,
+      "durationSeconds": 5.28,
+      "text": "we perform similar operations in product"
+    },
+    {
+      "startSeconds": 447.52,
+      "durationSeconds": 5.679,
+      "text": "subcategory and product category"
+    },
+    {
+      "startSeconds": 450.479,
+      "durationSeconds": 5.28,
+      "text": "drop the unwanted column and rename few"
+    },
+    {
+      "startSeconds": 453.199,
+      "durationSeconds": 5.761,
+      "text": "columns and save the updated data to"
+    },
+    {
+      "startSeconds": 455.759,
+      "durationSeconds": 5.601,
+      "text": "tables with sdg prefix to build the"
+    },
+    {
+      "startSeconds": 458.96,
+      "durationSeconds": 4.639,
+      "text": "final product model we will query all"
+    },
+    {
+      "startSeconds": 461.36,
+      "durationSeconds": 4.559,
+      "text": "three tables there is a data type"
+    },
+    {
+      "startSeconds": 463.599,
+      "durationSeconds": 4.961,
+      "text": "mismatch here so we'll convert the"
+    },
+    {
+      "startSeconds": 465.919,
+      "durationSeconds": 5.201,
+      "text": "column to integer to match the data type"
+    },
+    {
+      "startSeconds": 468.56,
+      "durationSeconds": 4.72,
+      "text": "and join or merge the three tables into"
+    },
+    {
+      "startSeconds": 471.12,
+      "durationSeconds": 5.519,
+      "text": "a single data frame then we save this"
+    },
+    {
+      "startSeconds": 473.28,
+      "durationSeconds": 5.359,
+      "text": "data frame into a table with prd prefix"
+    },
+    {
+      "startSeconds": 476.639,
+      "durationSeconds": 4.96,
+      "text": "so this will be the final presentation"
+    },
+    {
+      "startSeconds": 478.639,
+      "durationSeconds": 4.481,
+      "text": "table let's declare a dag and define"
+    },
+    {
+      "startSeconds": 481.599,
+      "durationSeconds": 3.841,
+      "text": "some properties"
+    },
+    {
+      "startSeconds": 483.12,
+      "durationSeconds": 4.32,
+      "text": "first it is the schedule interval you"
+    },
+    {
+      "startSeconds": 485.44,
+      "durationSeconds": 4.4,
+      "text": "will set this to 9 am"
+    },
+    {
+      "startSeconds": 487.44,
+      "durationSeconds": 4.879,
+      "text": "with a cron expression if you need more"
+    },
+    {
+      "startSeconds": 489.84,
+      "durationSeconds": 4.799,
+      "text": "details on cron then i'll leave a link"
+    },
+    {
+      "startSeconds": 492.319,
+      "durationSeconds": 4.401,
+      "text": "in the description below then we define"
+    },
+    {
+      "startSeconds": 494.639,
+      "durationSeconds": 3.041,
+      "text": "a start date when this schedule should"
+    },
+    {
+      "startSeconds": 496.72,
+      "durationSeconds": 3.52,
+      "text": "start"
+    },
+    {
+      "startSeconds": 497.68,
+      "durationSeconds": 5.12,
+      "text": "and we will set the catch up to false"
+    },
+    {
+      "startSeconds": 500.24,
+      "durationSeconds": 4.799,
+      "text": "if you set a start date in the past and"
+    },
+    {
+      "startSeconds": 502.8,
+      "durationSeconds": 4.88,
+      "text": "catch up to true then the schedule will"
+    },
+    {
+      "startSeconds": 505.039,
+      "durationSeconds": 4.961,
+      "text": "run n numbers of time for each day it"
+    },
+    {
+      "startSeconds": 507.68,
+      "durationSeconds": 4.88,
+      "text": "missed till the current date it is"
+    },
+    {
+      "startSeconds": 510,
+      "durationSeconds": 4.64,
+      "text": "designed to backfill the job last we'll"
+    },
+    {
+      "startSeconds": 512.56,
+      "durationSeconds": 4.399,
+      "text": "set a tag for this tag"
+    },
+    {
+      "startSeconds": 514.64,
+      "durationSeconds": 5.36,
+      "text": "tags help us group together multiple"
+    },
+    {
+      "startSeconds": 516.959,
+      "durationSeconds": 4.64,
+      "text": "dags and you can use tags to filter tags"
+    },
+    {
+      "startSeconds": 520,
+      "durationSeconds": 4,
+      "text": "from the ui"
+    },
+    {
+      "startSeconds": 521.599,
+      "durationSeconds": 5.36,
+      "text": "under dag we define task group to call"
+    },
+    {
+      "startSeconds": 524,
+      "durationSeconds": 5.44,
+      "text": "our tasks we group the extract and load"
+    },
+    {
+      "startSeconds": 526.959,
+      "durationSeconds": 4.88,
+      "text": "task under one group we call the first"
+    },
+    {
+      "startSeconds": 529.44,
+      "durationSeconds": 5.2,
+      "text": "task and save its return value in a"
+    },
+    {
+      "startSeconds": 531.839,
+      "durationSeconds": 4.641,
+      "text": "variable then follows the next task and"
+    },
+    {
+      "startSeconds": 534.64,
+      "durationSeconds": 4.56,
+      "text": "supply at the return value from the"
+    },
+    {
+      "startSeconds": 536.48,
+      "durationSeconds": 5.12,
+      "text": "first task we set the dependency between"
+    },
+    {
+      "startSeconds": 539.2,
+      "durationSeconds": 4.24,
+      "text": "them and define the order in which they"
+    },
+    {
+      "startSeconds": 541.6,
+      "durationSeconds": 4.799,
+      "text": "should run we will see the visual"
+    },
+    {
+      "startSeconds": 543.44,
+      "durationSeconds": 4.64,
+      "text": "representation of this in the ui"
+    },
+    {
+      "startSeconds": 546.399,
+      "durationSeconds": 4.161,
+      "text": "we group the transformation tasks"
+    },
+    {
+      "startSeconds": 548.08,
+      "durationSeconds": 5.04,
+      "text": "together let's call this group transform"
+    },
+    {
+      "startSeconds": 550.56,
+      "durationSeconds": 5.52,
+      "text": "product we will call the three tasks"
+    },
+    {
+      "startSeconds": 553.12,
+      "durationSeconds": 5.6,
+      "text": "here we group the task as a list and"
+    },
+    {
+      "startSeconds": 556.08,
+      "durationSeconds": 5.12,
+      "text": "these can run in parallel in the last"
+    },
+    {
+      "startSeconds": 558.72,
+      "durationSeconds": 4.4,
+      "text": "group we call the product model task and"
+    },
+    {
+      "startSeconds": 561.2,
+      "durationSeconds": 4.96,
+      "text": "this will execute once transformation"
+    },
+    {
+      "startSeconds": 563.12,
+      "durationSeconds": 5.279,
+      "text": "tasks are complete we define the order"
+    },
+    {
+      "startSeconds": 566.16,
+      "durationSeconds": 4.72,
+      "text": "of the task group and the airflow will"
+    },
+    {
+      "startSeconds": 568.399,
+      "durationSeconds": 5.12,
+      "text": "execute these groups in this order"
+    },
+    {
+      "startSeconds": 570.88,
+      "durationSeconds": 5.92,
+      "text": "let's go ahead and save our work just an"
+    },
+    {
+      "startSeconds": 573.519,
+      "durationSeconds": 5.841,
+      "text": "fyi once you save a new dag it takes a"
+    },
+    {
+      "startSeconds": 576.8,
+      "durationSeconds": 5.84,
+      "text": "while for airflow to pick it up so it"
+    },
+    {
+      "startSeconds": 579.36,
+      "durationSeconds": 6.24,
+      "text": "may not show up in the ui right away"
+    },
+    {
+      "startSeconds": 582.64,
+      "durationSeconds": 4.4,
+      "text": "i will open the ui our dag is disabled"
+    },
+    {
+      "startSeconds": 585.6,
+      "durationSeconds": 3.76,
+      "text": "by default"
+    },
+    {
+      "startSeconds": 587.04,
+      "durationSeconds": 3.44,
+      "text": "i'll locate it and enable it with the"
+    },
+    {
+      "startSeconds": 589.36,
+      "durationSeconds": 3.28,
+      "text": "slider"
+    },
+    {
+      "startSeconds": 590.48,
+      "durationSeconds": 4.88,
+      "text": "we see the dependencies between our"
+    },
+    {
+      "startSeconds": 592.64,
+      "durationSeconds": 4.24,
+      "text": "tasks we can get a better picture under"
+    },
+    {
+      "startSeconds": 595.36,
+      "durationSeconds": 4.32,
+      "text": "the graph ui"
+    },
+    {
+      "startSeconds": 596.88,
+      "durationSeconds": 4.8,
+      "text": "this is the directed acyclic graph this"
+    },
+    {
+      "startSeconds": 599.68,
+      "durationSeconds": 5.279,
+      "text": "gives us the visual representation of"
+    },
+    {
+      "startSeconds": 601.68,
+      "durationSeconds": 5.44,
+      "text": "the order in which our task will execute"
+    },
+    {
+      "startSeconds": 604.959,
+      "durationSeconds": 4.481,
+      "text": "these are the overarching groups of"
+    },
+    {
+      "startSeconds": 607.12,
+      "durationSeconds": 3.92,
+      "text": "tasks we can click on them to see the"
+    },
+    {
+      "startSeconds": 609.44,
+      "durationSeconds": 3.839,
+      "text": "underlying task"
+    },
+    {
+      "startSeconds": 611.04,
+      "durationSeconds": 3.359,
+      "text": "and we see the dependencies with the"
+    },
+    {
+      "startSeconds": 613.279,
+      "durationSeconds": 2.961,
+      "text": "arrows"
+    },
+    {
+      "startSeconds": 614.399,
+      "durationSeconds": 4.321,
+      "text": "on the top right we have the schedule"
+    },
+    {
+      "startSeconds": 616.24,
+      "durationSeconds": 5.039,
+      "text": "information for this tag we can wait for"
+    },
+    {
+      "startSeconds": 618.72,
+      "durationSeconds": 5.119,
+      "text": "it to run on schedule or we can manually"
+    },
+    {
+      "startSeconds": 621.279,
+      "durationSeconds": 4.961,
+      "text": "trigger it with run button we can see it"
+    },
+    {
+      "startSeconds": 623.839,
+      "durationSeconds": 5.201,
+      "text": "in action under the tree tab"
+    },
+    {
+      "startSeconds": 626.24,
+      "durationSeconds": 4.96,
+      "text": "so we'll head there and see it execute"
+    },
+    {
+      "startSeconds": 629.04,
+      "durationSeconds": 3.84,
+      "text": "there are different statuses here and"
+    },
+    {
+      "startSeconds": 631.2,
+      "durationSeconds": 4.56,
+      "text": "they are color coded"
+    },
+    {
+      "startSeconds": 632.88,
+      "durationSeconds": 5.44,
+      "text": "we click on individual tasks and see the"
+    },
+    {
+      "startSeconds": 635.76,
+      "durationSeconds": 5.36,
+      "text": "logs for it the logs provide us with all"
+    },
+    {
+      "startSeconds": 638.32,
+      "durationSeconds": 5.759,
+      "text": "the details and they also log errors if"
+    },
+    {
+      "startSeconds": 641.12,
+      "durationSeconds": 5.839,
+      "text": "there are any i'll let this tag complete"
+    },
+    {
+      "startSeconds": 644.079,
+      "durationSeconds": 5.521,
+      "text": "okay our etl load is complete"
+    },
+    {
+      "startSeconds": 646.959,
+      "durationSeconds": 5.841,
+      "text": "i will refresh our schema in postgres to"
+    },
+    {
+      "startSeconds": 649.6,
+      "durationSeconds": 6.479,
+      "text": "see our source staging and final model"
+    },
+    {
+      "startSeconds": 652.8,
+      "durationSeconds": 6.159,
+      "text": "is persisted i'll query the final prd"
+    },
+    {
+      "startSeconds": 656.079,
+      "durationSeconds": 5.521,
+      "text": "product table to see the transformation"
+    },
+    {
+      "startSeconds": 658.959,
+      "durationSeconds": 4.961,
+      "text": "we don't see any nulls which is good and"
+    },
+    {
+      "startSeconds": 661.6,
+      "durationSeconds": 4.08,
+      "text": "the column names are updated"
+    },
+    {
+      "startSeconds": 663.92,
+      "durationSeconds": 3.68,
+      "text": "at the end we see category and"
+    },
+    {
+      "startSeconds": 665.68,
+      "durationSeconds": 3.839,
+      "text": "subcategory columns"
+    },
+    {
+      "startSeconds": 667.6,
+      "durationSeconds": 3.12,
+      "text": "so we have denormalized the product"
+    },
+    {
+      "startSeconds": 669.519,
+      "durationSeconds": 3.201,
+      "text": "dimension"
+    },
+    {
+      "startSeconds": 670.72,
+      "durationSeconds": 4.48,
+      "text": "our transformations are successfully"
+    },
+    {
+      "startSeconds": 672.72,
+      "durationSeconds": 3.92,
+      "text": "executed and persisted in the final"
+    },
+    {
+      "startSeconds": 675.2,
+      "durationSeconds": 4,
+      "text": "product model"
+    },
+    {
+      "startSeconds": 676.64,
+      "durationSeconds": 4.96,
+      "text": "this is how we automate our etl pipeline"
+    },
+    {
+      "startSeconds": 679.2,
+      "durationSeconds": 3.36,
+      "text": "with airflow i hope you enjoyed this"
+    },
+    {
+      "startSeconds": 681.6,
+      "durationSeconds": 3.44,
+      "text": "session"
+    },
+    {
+      "startSeconds": 682.56,
+      "durationSeconds": 3.6,
+      "text": "this is all for now share like and"
+    },
+    {
+      "startSeconds": 685.04,
+      "durationSeconds": 3.2,
+      "text": "subscribe"
+    },
+    {
+      "startSeconds": 686.16,
+      "durationSeconds": 4.72,
+      "text": "take care and i'll see you in the next"
+    },
+    {
+      "startSeconds": 688.24,
+      "durationSeconds": 2.64,
+      "text": "video"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction to Airflow"
+    },
+    {
+      "startSeconds": 169,
+      "label": "The Setup"
+    },
+    {
+      "startSeconds": 220,
+      "label": "Script ETL pipeline: Extract"
+    },
+    {
+      "startSeconds": 352,
+      "label": "Transform"
+    },
+    {
+      "startSeconds": 459,
+      "label": "Load"
+    },
+    {
+      "startSeconds": 480,
+      "label": "Define Direct Acyclic Graph (DAG)"
+    },
+    {
+      "startSeconds": 576,
+      "label": "Airflow UI: Dag enable & run"
+    },
+    {
+      "startSeconds": 609,
+      "label": "DAG Overview"
+    },
+    {
+      "startSeconds": 629,
+      "label": "Test ETL Pipeline"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:23:01.847Z"
+}

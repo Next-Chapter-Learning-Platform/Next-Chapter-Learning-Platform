@@ -1,0 +1,646 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "lYxGYXjfrNI",
+  "url": "https://www.youtube.com/watch?v=lYxGYXjfrNI",
+  "title": "Advanced RAG 03 - Hybrid Search BM25 & Ensembles",
+  "description": "Colab: https://drp.li/biRYp\n\nFor more tutorials on using LLMs and building Agents, check out my Patreon:\nPatreon: https://www.patreon.com/SamWitteveen\nTwitter: https://twitter.com/Sam_Witteveen\n\nMy Links:\nLinkedin: https://www.linkedin.com/in/samwitteveen/\n\nGithub:\nhttps://github.com/samwit/langchain-tutorials  (updated)\nhttps://github.com/samwit/llm-tutorials\n\n00:00 Intro\n00:06 BM 25\n01:25 Code Time\n\n#langchain #openai #llm",
+  "expectedDurationSeconds": 407,
+  "transcript": [
+    {
+      "startSeconds": 0.049,
+      "durationSeconds": 0.331,
+      "text": "Okay."
+    },
+    {
+      "startSeconds": 0.38,
+      "durationSeconds": 3.72,
+      "text": "So one of the things that people want\nto do often is have hybrid search"
+    },
+    {
+      "startSeconds": 4.13,
+      "durationSeconds": 2.07,
+      "text": "in their particular retrievers."
+    },
+    {
+      "startSeconds": 6.505,
+      "durationSeconds": 1.8,
+      "text": "So what is hybrid search?"
+    },
+    {
+      "startSeconds": 8.665,
+      "durationSeconds": 6.75,
+      "text": "Hybrid search is basically the combination\nof having both a keyword style search"
+    },
+    {
+      "startSeconds": 15.805,
+      "durationSeconds": 2.34,
+      "text": "along with a vector style search."
+    },
+    {
+      "startSeconds": 18.355,
+      "durationSeconds": 3.48,
+      "text": "So we've got the advantages of\ndoing sort of keyword lookup."
+    },
+    {
+      "startSeconds": 22.135,
+      "durationSeconds": 3.27,
+      "text": "but also the advantage of doing\nthe semantic lookup that we get"
+    },
+    {
+      "startSeconds": 25.405,
+      "durationSeconds": 2.52,
+      "text": "from embeddings and a vector search"
+    },
+    {
+      "startSeconds": 28.356,
+      "durationSeconds": 2.94,
+      "text": "So this makes use of a tool called BM 25."
+    },
+    {
+      "startSeconds": 31.696,
+      "durationSeconds": 0.94,
+      "text": "now BM 25."
+    },
+    {
+      "startSeconds": 32.656,
+      "durationSeconds": 1.89,
+      "text": "Is not a new algorithm at all."
+    },
+    {
+      "startSeconds": 34.546,
+      "durationSeconds": 4.71,
+      "text": "This has been around from, through the\nseventies, eighties for a long time."
+    },
+    {
+      "startSeconds": 39.676,
+      "durationSeconds": 3.03,
+      "text": "And to be really honest as someone\nwho's battled against this,"
+    },
+    {
+      "startSeconds": 42.706,
+      "durationSeconds": 1.77,
+      "text": "this is a really good algorithm."
+    },
+    {
+      "startSeconds": 44.786,
+      "durationSeconds": 3.84,
+      "text": "meaning that for a long time, as\npeople have worked on trying to"
+    },
+    {
+      "startSeconds": 48.626,
+      "durationSeconds": 1.71,
+      "text": "come up with better embeddings."
+    },
+    {
+      "startSeconds": 50.556,
+      "durationSeconds": 3.63,
+      "text": "and using deep learning, often\nmany techniques were actually just"
+    },
+    {
+      "startSeconds": 54.186,
+      "durationSeconds": 3.06,
+      "text": "beaten by this BM 25  algorithm."
+    },
+    {
+      "startSeconds": 57.606,
+      "durationSeconds": 1.83,
+      "text": "So I'm not going to go\ninto depth about this."
+    },
+    {
+      "startSeconds": 59.436,
+      "durationSeconds": 3.06,
+      "text": "You can certainly look it up on the\nweb and read a little bit about it."
+    },
+    {
+      "startSeconds": 62.796,
+      "durationSeconds": 4.14,
+      "text": "But basically this is all\nabout creating sparse vectors."
+    },
+    {
+      "startSeconds": 67.176,
+      "durationSeconds": 4.44,
+      "text": "So where you're counting words or\nN grams in here, and you're doing"
+    },
+    {
+      "startSeconds": 71.826,
+      "durationSeconds": 2.99,
+      "text": "a whole bunch of things with TFIDF"
+    },
+    {
+      "startSeconds": 75.276,
+      "durationSeconds": 4.98,
+      "text": "So if you've come across Term frequency\nor inverse document frequency stuff"
+    },
+    {
+      "startSeconds": 80.286,
+      "durationSeconds": 4.81,
+      "text": "before so you'll know that this\nis the driving force behind BM 25."
+    },
+    {
+      "startSeconds": 85.436,
+      "durationSeconds": 3.9,
+      "text": "one of the things that's really good\nwith BM 25 is it's very quick to compute."
+    },
+    {
+      "startSeconds": 89.696,
+      "durationSeconds": 6.27,
+      "text": "So often where using vectors and using\ndense methods, which are embeddings"
+    },
+    {
+      "startSeconds": 96.246,
+      "durationSeconds": 4.3,
+      "text": "they will be, slower than just doing\nthis kind of, counting of words"
+    },
+    {
+      "startSeconds": 100.766,
+      "durationSeconds": 1.68,
+      "text": "and working things out that way."
+    },
+    {
+      "startSeconds": 102.836,
+      "durationSeconds": 3.09,
+      "text": "So one of the cool things that\nyou can do in LangChain is you can"
+    },
+    {
+      "startSeconds": 105.926,
+      "durationSeconds": 3.58,
+      "text": "actually make a BM 25 sparse retriever"
+    },
+    {
+      "startSeconds": 109.742,
+      "durationSeconds": 3.73,
+      "text": "And what it does is actually\nsort of, hides a lot of what's"
+    },
+    {
+      "startSeconds": 113.472,
+      "durationSeconds": 1.32,
+      "text": "going on in the background."
+    },
+    {
+      "startSeconds": 115.092,
+      "durationSeconds": 4.744,
+      "text": "it uses the BM 25 package that you\ncan put in here To do your lookups."
+    },
+    {
+      "startSeconds": 119.993,
+      "durationSeconds": 3.03,
+      "text": "But you'll see in LangChain, it's\nactually very easy to implement."
+    },
+    {
+      "startSeconds": 123.023,
+      "durationSeconds": 3.28,
+      "text": "So we basically just have, you\nknow, from LangChain retrievers, we"
+    },
+    {
+      "startSeconds": 126.333,
+      "durationSeconds": 2.31,
+      "text": "import the BM 25 retriever in here."
+    },
+    {
+      "startSeconds": 129.093,
+      "durationSeconds": 3.23,
+      "text": "Now, what we're going to do is I'm\ngoing to go through the BM 25 stuff"
+    },
+    {
+      "startSeconds": 132.443,
+      "durationSeconds": 3.84,
+      "text": "and then we're going to combine it\nwith just a simple sort of embedding"
+    },
+    {
+      "startSeconds": 136.413,
+      "durationSeconds": 4.98,
+      "text": "retriever and combine them together in\nan ensemble retriever so that you've"
+    },
+    {
+      "startSeconds": 141.423,
+      "durationSeconds": 4.98,
+      "text": "got both keyword look up and you've got,\nyou know, the sort of normal embedding"
+    },
+    {
+      "startSeconds": 146.403,
+      "durationSeconds": 2.22,
+      "text": "lookup for semantic lookup as well."
+    },
+    {
+      "startSeconds": 148.83,
+      "durationSeconds": 2.817,
+      "text": "so here I'm just bringing\nin some vector stores."
+    },
+    {
+      "startSeconds": 151.977,
+      "durationSeconds": 1.71,
+      "text": "I've got, I'm using open embeddings here."
+    },
+    {
+      "startSeconds": 153.687,
+      "durationSeconds": 3.38,
+      "text": "We're only using open embeddings\nfor the vector store part with the"
+    },
+    {
+      "startSeconds": 157.067,
+      "durationSeconds": 3.1,
+      "text": "ensemble retriever, not for the BM 25."
+    },
+    {
+      "startSeconds": 160.313,
+      "durationSeconds": 3.97,
+      "text": "BM 25 will calculate its\nsparse vectors by itself here."
+    },
+    {
+      "startSeconds": 164.577,
+      "durationSeconds": 0.27,
+      "text": "All right."
+    },
+    {
+      "startSeconds": 164.847,
+      "durationSeconds": 3.37,
+      "text": "So you can see that I've made a\nsimple sort of list of documents."
+    },
+    {
+      "startSeconds": 168.997,
+      "durationSeconds": 2.91,
+      "text": "And you can see here one of the things\nI'm trying to do with this, and this"
+    },
+    {
+      "startSeconds": 171.907,
+      "durationSeconds": 3.43,
+      "text": "is taken from their example, on the\nLangChain side, I've just played"
+    },
+    {
+      "startSeconds": 175.337,
+      "durationSeconds": 1.23,
+      "text": "around with it a little bit more."
+    },
+    {
+      "startSeconds": 176.83,
+      "durationSeconds": 2.82,
+      "text": "And what I want to sort of show you\nhere is that we've got you know,"
+    },
+    {
+      "startSeconds": 179.68,
+      "durationSeconds": 3.9,
+      "text": "I like apples, I like oranges,\napples and oranges are fruits."
+    },
+    {
+      "startSeconds": 183.58,
+      "durationSeconds": 1.84,
+      "text": "I like computers by Apple."
+    },
+    {
+      "startSeconds": 185.42,
+      "durationSeconds": 1.59,
+      "text": "I like, I love fruit juice."
+    },
+    {
+      "startSeconds": 187.01,
+      "durationSeconds": 0.3,
+      "text": "Right."
+    },
+    {
+      "startSeconds": 187.49,
+      "durationSeconds": 3.6,
+      "text": "So we've got sort of the word\napple here but it's got some"
+    },
+    {
+      "startSeconds": 191.09,
+      "durationSeconds": 1.86,
+      "text": "different meanings in some ways."
+    },
+    {
+      "startSeconds": 192.98,
+      "durationSeconds": 5.083,
+      "text": "So, the key word retrieval will\ntend to just retrieve the keyword."
+    },
+    {
+      "startSeconds": 198.063,
+      "durationSeconds": 3.11,
+      "text": "So if a word matches,\nit will be brought back."
+    },
+    {
+      "startSeconds": 201.413,
+      "durationSeconds": 4.1,
+      "text": "And we can see this if we sort of\ninstantiate our BM 25 retriever."
+    },
+    {
+      "startSeconds": 205.813,
+      "durationSeconds": 1.74,
+      "text": "We pass in this doc list."
+    },
+    {
+      "startSeconds": 207.853,
+      "durationSeconds": 2.28,
+      "text": "We set, our K returns to be two."
+    },
+    {
+      "startSeconds": 210.133,
+      "durationSeconds": 1.38,
+      "text": "And I give it the word apple."
+    },
+    {
+      "startSeconds": 211.723,
+      "durationSeconds": 0.63,
+      "text": "Sure enough."
+    },
+    {
+      "startSeconds": 212.433,
+      "durationSeconds": 3.18,
+      "text": "It comes back with, I\nlike computers by apple."
+    },
+    {
+      "startSeconds": 215.963,
+      "durationSeconds": 4.24,
+      "text": "and it's actually surprising that\nit's not getting the other ones, cause"
+    },
+    {
+      "startSeconds": 220.203,
+      "durationSeconds": 2.47,
+      "text": "they're not direct matches in here."
+    },
+    {
+      "startSeconds": 223.123,
+      "durationSeconds": 4.87,
+      "text": "If I ask you it a green fruit, it gives us\nfruit juice cause it's got fruit, I guess."
+    },
+    {
+      "startSeconds": 228.273,
+      "durationSeconds": 4.41,
+      "text": "and I'm not sure exactly why it's giving\nback, I like computers by Apple in here."
+    },
+    {
+      "startSeconds": 233.253,
+      "durationSeconds": 3.35,
+      "text": "but you can see that when we look at\nthis, in the dictionary, this is just"
+    },
+    {
+      "startSeconds": 236.603,
+      "durationSeconds": 2.13,
+      "text": "passing in our documents are in here."
+    },
+    {
+      "startSeconds": 239.363,
+      "durationSeconds": 2.76,
+      "text": "So, this is sort of\nlike a key word search."
+    },
+    {
+      "startSeconds": 242.333,
+      "durationSeconds": 3.66,
+      "text": "So BM 25 is used in things\nlike elastic search."
+    },
+    {
+      "startSeconds": 246.023,
+      "durationSeconds": 4.57,
+      "text": "It's used in a lot of very quick\nsearch algorithms that are out there."
+    },
+    {
+      "startSeconds": 251.103,
+      "durationSeconds": 4.22,
+      "text": "The embedding or the dense,\nretriever here, we're just using"
+    },
+    {
+      "startSeconds": 255.323,
+      "durationSeconds": 1.71,
+      "text": "a normal sort of embedding lookup."
+    },
+    {
+      "startSeconds": 257.063,
+      "durationSeconds": 2.37,
+      "text": "Now, in this case, I'm\nusing OpenAI embeddings."
+    },
+    {
+      "startSeconds": 259.773,
+      "durationSeconds": 2.82,
+      "text": "but really any embeddings\ndo the same sort of thing."
+    },
+    {
+      "startSeconds": 262.923,
+      "durationSeconds": 4.157,
+      "text": "And I'm just going to bring this\ninto a faiss or a faiss vector store."
+    },
+    {
+      "startSeconds": 267.47,
+      "durationSeconds": 3.72,
+      "text": "and we can see that here again we're\njust setting up to K equals two."
+    },
+    {
+      "startSeconds": 271.67,
+      "durationSeconds": 2.85,
+      "text": "And you'll see that this time,\nwhen I say a green fruit."
+    },
+    {
+      "startSeconds": 274.99,
+      "durationSeconds": 3.22,
+      "text": "straightaway, it gets, you\nknow, apples and, yeah as"
+    },
+    {
+      "startSeconds": 278.23,
+      "durationSeconds": 2.16,
+      "text": "fruits and also, I like apples."
+    },
+    {
+      "startSeconds": 280.57,
+      "durationSeconds": 2.67,
+      "text": "We don't get the computer one in here."
+    },
+    {
+      "startSeconds": 283.6,
+      "durationSeconds": 3.18,
+      "text": "So this is doing a more\nof a semantic lookup."
+    },
+    {
+      "startSeconds": 287.32,
+      "durationSeconds": 2.73,
+      "text": "So the thing that we can\ndo is we can combine these."
+    },
+    {
+      "startSeconds": 290.38,
+      "durationSeconds": 4.8,
+      "text": "So what happens if we combine them is\nwe basically make an ensemble retriever."
+    },
+    {
+      "startSeconds": 296.01,
+      "durationSeconds": 3.34,
+      "text": "An ensemble retriever we just pass\nin the retrievers that we want to"
+    },
+    {
+      "startSeconds": 299.35,
+      "durationSeconds": 4.44,
+      "text": "have, normally you probably going to\nuse this for a sparse retriever and"
+    },
+    {
+      "startSeconds": 303.79,
+      "durationSeconds": 3.33,
+      "text": "a dense retriever, but there's no\nreason why you couldn't use it for"
+    },
+    {
+      "startSeconds": 307.12,
+      "durationSeconds": 2.17,
+      "text": "different, Retriever's as you go through."
+    },
+    {
+      "startSeconds": 309.68,
+      "durationSeconds": 2.07,
+      "text": "And then we set up a weighting system."
+    },
+    {
+      "startSeconds": 312,
+      "durationSeconds": 3.94,
+      "text": "so this is going to help with\ndetermining how it re ranks the"
+    },
+    {
+      "startSeconds": 315.94,
+      "durationSeconds": 1.92,
+      "text": "results from the two of these."
+    },
+    {
+      "startSeconds": 318.46,
+      "durationSeconds": 3.42,
+      "text": "You can see now when I put this\nin and I say a green fruit."
+    },
+    {
+      "startSeconds": 322.16,
+      "durationSeconds": 3.89,
+      "text": "the first thing I get back here\nis, you know, I love fruit juice,"
+    },
+    {
+      "startSeconds": 326.08,
+      "durationSeconds": 1.38,
+      "text": "apples and oranges or fruits."
+    },
+    {
+      "startSeconds": 327.49,
+      "durationSeconds": 1.02,
+      "text": "I like apples."
+    },
+    {
+      "startSeconds": 328.57,
+      "durationSeconds": 2.54,
+      "text": "And the final one is the you\nknow, Apple computer one."
+    },
+    {
+      "startSeconds": 331.5,
+      "durationSeconds": 4.14,
+      "text": "Whereas if I put in Apple phones,\nso this is not you know, computers,"
+    },
+    {
+      "startSeconds": 335.76,
+      "durationSeconds": 3.93,
+      "text": "but semantically, it can work\nout straight away that, ah, okay."
+    },
+    {
+      "startSeconds": 339.72,
+      "durationSeconds": 3.7,
+      "text": "I like computers by Apple is the\none that goes at the top here."
+    },
+    {
+      "startSeconds": 343.78,
+      "durationSeconds": 4.12,
+      "text": "So here we're getting the advantage of,\nthis hybrid search system where we're"
+    },
+    {
+      "startSeconds": 347.9,
+      "durationSeconds": 5.01,
+      "text": "getting both the keyword search look up\nand we're getting the semantic look up."
+    },
+    {
+      "startSeconds": 353.24,
+      "durationSeconds": 3.42,
+      "text": "This is something that you can try\nout for different projects and see"
+    },
+    {
+      "startSeconds": 356.66,
+      "durationSeconds": 5.4,
+      "text": "when does having hybrid search for\nyour use case actually help as opposed"
+    },
+    {
+      "startSeconds": 362.06,
+      "durationSeconds": 2.5,
+      "text": "to just purely semantic search."
+    },
+    {
+      "startSeconds": 364.811,
+      "durationSeconds": 4.95,
+      "text": "It certainly becomes useful for things\nwhere people know exact words that are"
+    },
+    {
+      "startSeconds": 369.761,
+      "durationSeconds": 1.74,
+      "text": "going to appear in a text or something."
+    },
+    {
+      "startSeconds": 371.501,
+      "durationSeconds": 3.93,
+      "text": "And they're looking for someone's\nname or something like that."
+    },
+    {
+      "startSeconds": 375.651,
+      "durationSeconds": 4.08,
+      "text": "then the hybrid search can actually be\nreally beneficial for that kind of thing."
+    },
+    {
+      "startSeconds": 380.241,
+      "durationSeconds": 2.6,
+      "text": "So, anyway, This is a very\nsimplified example of this."
+    },
+    {
+      "startSeconds": 383.141,
+      "durationSeconds": 1.47,
+      "text": "have a play with it yourself."
+    },
+    {
+      "startSeconds": 384.641,
+      "durationSeconds": 3.87,
+      "text": "Try it out for some of your own\nuse cases and see how you get on."
+    },
+    {
+      "startSeconds": 388.811,
+      "durationSeconds": 0.6,
+      "text": "As always."
+    },
+    {
+      "startSeconds": 389.461,
+      "durationSeconds": 2.76,
+      "text": "if you've got questions, please\nput them in the comments below."
+    },
+    {
+      "startSeconds": 392.531,
+      "durationSeconds": 3.78,
+      "text": "if you found this video, check out\nmore in the series of different"
+    },
+    {
+      "startSeconds": 396.311,
+      "durationSeconds": 3.54,
+      "text": "sorts of retrievers and different\ntechniques that you can use for"
+    },
+    {
+      "startSeconds": 399.851,
+      "durationSeconds": 1.71,
+      "text": "retrieval augmented generation."
+    },
+    {
+      "startSeconds": 402.161,
+      "durationSeconds": 1.38,
+      "text": "I will talk to you in the next video."
+    },
+    {
+      "startSeconds": 403.751,
+      "durationSeconds": 0.72,
+      "text": "Bye for now."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Intro"
+    },
+    {
+      "startSeconds": 6,
+      "label": "BM 25"
+    },
+    {
+      "startSeconds": 85,
+      "label": "Code Time"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:54.375Z"
+}

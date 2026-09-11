@@ -1,0 +1,2677 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "nskIP1iyrAo",
+  "url": "https://www.youtube.com/watch?v=nskIP1iyrAo",
+  "title": "TypeScript Template Literal Types",
+  "description": "TypeScript template literals is one of the newest, biggest, and most exciting new features to come to TypeScript in a long time. It's a little confusing to understand why they're so exciting, so I'm hoping this video shows you why!\n\nhttps://www.typescriptlang.org/docs/handbook/2/template-literal-types.html\nhttps://github.com/ghoullier/awesome-template-literal-types\n\n0:00 Intro\n1:25 String literals refresher\n4:46 Template Literal Types\n5:28 Expanding Unions\n6:38 Operating on objects\n12:33 String manipulation types\n13:20 Awesome advanced examples",
+  "expectedDurationSeconds": 1151,
+  "transcript": [
+    {
+      "startSeconds": 0,
+      "durationSeconds": 3.76,
+      "text": "hello everybody welcome back to my"
+    },
+    {
+      "startSeconds": 1.92,
+      "durationSeconds": 5.52,
+      "text": "channel my name is harry wolf"
+    },
+    {
+      "startSeconds": 3.76,
+      "durationSeconds": 6.24,
+      "text": "and i like to talk about coding"
+    },
+    {
+      "startSeconds": 7.44,
+      "durationSeconds": 4.72,
+      "text": "today's coding segment we're going to"
+    },
+    {
+      "startSeconds": 10,
+      "durationSeconds": 5.679,
+      "text": "delve into the world of typescript"
+    },
+    {
+      "startSeconds": 12.16,
+      "durationSeconds": 4.08,
+      "text": "and one of its newest most exciting"
+    },
+    {
+      "startSeconds": 15.679,
+      "durationSeconds": 4.241,
+      "text": "newest"
+    },
+    {
+      "startSeconds": 16.24,
+      "durationSeconds": 7.6,
+      "text": "feature i said newest twice right yeah"
+    },
+    {
+      "startSeconds": 19.92,
+      "durationSeconds": 7.359,
+      "text": "in typescript 4.1 a"
+    },
+    {
+      "startSeconds": 23.84,
+      "durationSeconds": 7.12,
+      "text": "under sung new feature was added"
+    },
+    {
+      "startSeconds": 27.279,
+      "durationSeconds": 7.041,
+      "text": "called template literal types"
+    },
+    {
+      "startSeconds": 30.96,
+      "durationSeconds": 5.439,
+      "text": "and the world of creativity"
+    },
+    {
+      "startSeconds": 34.32,
+      "durationSeconds": 3.6,
+      "text": "and possibility that this new feature"
+    },
+    {
+      "startSeconds": 36.399,
+      "durationSeconds": 4.961,
+      "text": "added to typescript"
+    },
+    {
+      "startSeconds": 37.92,
+      "durationSeconds": 5.68,
+      "text": "is actually astonishing"
+    },
+    {
+      "startSeconds": 41.36,
+      "durationSeconds": 3.359,
+      "text": "so i figured i'd take a little of your"
+    },
+    {
+      "startSeconds": 43.6,
+      "durationSeconds": 4.4,
+      "text": "time today"
+    },
+    {
+      "startSeconds": 44.719,
+      "durationSeconds": 4.081,
+      "text": "to tell you what is a template literal"
+    },
+    {
+      "startSeconds": 48,
+      "durationSeconds": 2.879,
+      "text": "type"
+    },
+    {
+      "startSeconds": 48.8,
+      "durationSeconds": 3.279,
+      "text": "and to give you a high level overview"
+    },
+    {
+      "startSeconds": 50.879,
+      "durationSeconds": 3.121,
+      "text": "about how they work"
+    },
+    {
+      "startSeconds": 52.079,
+      "durationSeconds": 4.241,
+      "text": "on a basic level and then we're going to"
+    },
+    {
+      "startSeconds": 54,
+      "durationSeconds": 5.359,
+      "text": "kind of delve into some examples"
+    },
+    {
+      "startSeconds": 56.32,
+      "durationSeconds": 4.239,
+      "text": "online of people pushing this feature to"
+    },
+    {
+      "startSeconds": 59.359,
+      "durationSeconds": 4.8,
+      "text": "its limit"
+    },
+    {
+      "startSeconds": 60.559,
+      "durationSeconds": 4.401,
+      "text": "uh the literal limit of this feature"
+    },
+    {
+      "startSeconds": 64.159,
+      "durationSeconds": 4.161,
+      "text": "with things"
+    },
+    {
+      "startSeconds": 64.96,
+      "durationSeconds": 4.64,
+      "text": "and typing things that i didn't even"
+    },
+    {
+      "startSeconds": 68.32,
+      "durationSeconds": 3.36,
+      "text": "know were possible"
+    },
+    {
+      "startSeconds": 69.6,
+      "durationSeconds": 3.28,
+      "text": "so kind of seating you with an idea like"
+    },
+    {
+      "startSeconds": 71.68,
+      "durationSeconds": 4.079,
+      "text": "what you can do"
+    },
+    {
+      "startSeconds": 72.88,
+      "durationSeconds": 4.16,
+      "text": "if you spend all month playing with"
+    },
+    {
+      "startSeconds": 75.759,
+      "durationSeconds": 4.321,
+      "text": "template literal types"
+    },
+    {
+      "startSeconds": 77.04,
+      "durationSeconds": 4.079,
+      "text": "enough gap enough chatter let's get to"
+    },
+    {
+      "startSeconds": 80.08,
+      "durationSeconds": 4,
+      "text": "the chowder"
+    },
+    {
+      "startSeconds": 81.119,
+      "durationSeconds": 3.841,
+      "text": "chowder what uh and let's start talking"
+    },
+    {
+      "startSeconds": 84.08,
+      "durationSeconds": 3.92,
+      "text": "about template"
+    },
+    {
+      "startSeconds": 84.96,
+      "durationSeconds": 6,
+      "text": "literal types okay here we are"
+    },
+    {
+      "startSeconds": 88,
+      "durationSeconds": 3.6,
+      "text": "on the documentation page for template"
+    },
+    {
+      "startSeconds": 90.96,
+      "durationSeconds": 4.08,
+      "text": "literal"
+    },
+    {
+      "startSeconds": 91.6,
+      "durationSeconds": 5.04,
+      "text": "types there's also the blog post from"
+    },
+    {
+      "startSeconds": 95.04,
+      "durationSeconds": 3.439,
+      "text": "typescript 4.1"
+    },
+    {
+      "startSeconds": 96.64,
+      "durationSeconds": 4,
+      "text": "that talks about template literal types"
+    },
+    {
+      "startSeconds": 98.479,
+      "durationSeconds": 3.6,
+      "text": "but for today's video"
+    },
+    {
+      "startSeconds": 100.64,
+      "durationSeconds": 3.92,
+      "text": "we're going to stay in the documentation"
+    },
+    {
+      "startSeconds": 102.079,
+      "durationSeconds": 4,
+      "text": "page i was thinking about making my own"
+    },
+    {
+      "startSeconds": 104.56,
+      "durationSeconds": 3.36,
+      "text": "examples and kind of"
+    },
+    {
+      "startSeconds": 106.079,
+      "durationSeconds": 3.761,
+      "text": "showing you what you can do with this"
+    },
+    {
+      "startSeconds": 107.92,
+      "durationSeconds": 5.6,
+      "text": "and i read this documentation page"
+    },
+    {
+      "startSeconds": 109.84,
+      "durationSeconds": 4.319,
+      "text": "and i was so thoroughly impressed by it"
+    },
+    {
+      "startSeconds": 113.52,
+      "durationSeconds": 2.559,
+      "text": "that i"
+    },
+    {
+      "startSeconds": 114.159,
+      "durationSeconds": 3.121,
+      "text": "figured i wouldn't really try to do"
+    },
+    {
+      "startSeconds": 116.079,
+      "durationSeconds": 2.801,
+      "text": "better than it because this"
+    },
+    {
+      "startSeconds": 117.28,
+      "durationSeconds": 3.68,
+      "text": "documentation page is great"
+    },
+    {
+      "startSeconds": 118.88,
+      "durationSeconds": 3.839,
+      "text": "so after you're done watching this video"
+    },
+    {
+      "startSeconds": 120.96,
+      "durationSeconds": 2.799,
+      "text": "you can refer to this page i'll have the"
+    },
+    {
+      "startSeconds": 122.719,
+      "durationSeconds": 2.72,
+      "text": "same information"
+    },
+    {
+      "startSeconds": 123.759,
+      "durationSeconds": 3.521,
+      "text": "they've done a great job explaining this"
+    },
+    {
+      "startSeconds": 125.439,
+      "durationSeconds": 5.761,
+      "text": "feature you're not going to get it"
+    },
+    {
+      "startSeconds": 127.28,
+      "durationSeconds": 7.36,
+      "text": "in video form um a template literal type"
+    },
+    {
+      "startSeconds": 131.2,
+      "durationSeconds": 4.88,
+      "text": "is similar to it has the same syntax"
+    },
+    {
+      "startSeconds": 134.64,
+      "durationSeconds": 2.8,
+      "text": "this is the thing this is where it gets"
+    },
+    {
+      "startSeconds": 136.08,
+      "durationSeconds": 3.44,
+      "text": "its name from"
+    },
+    {
+      "startSeconds": 137.44,
+      "durationSeconds": 3.12,
+      "text": "as a template literal string in"
+    },
+    {
+      "startSeconds": 139.52,
+      "durationSeconds": 2.88,
+      "text": "javascript"
+    },
+    {
+      "startSeconds": 140.56,
+      "durationSeconds": 3.36,
+      "text": "if you're not aware about a template"
+    },
+    {
+      "startSeconds": 142.4,
+      "durationSeconds": 4.559,
+      "text": "little string that's a"
+    },
+    {
+      "startSeconds": 143.92,
+      "durationSeconds": 4.24,
+      "text": "es 2020 feature of some sort essentially"
+    },
+    {
+      "startSeconds": 146.959,
+      "durationSeconds": 3.761,
+      "text": "it's a string"
+    },
+    {
+      "startSeconds": 148.16,
+      "durationSeconds": 4.079,
+      "text": "written with backticks and one of the"
+    },
+    {
+      "startSeconds": 150.72,
+      "durationSeconds": 4.08,
+      "text": "exciting features of it"
+    },
+    {
+      "startSeconds": 152.239,
+      "durationSeconds": 4.401,
+      "text": "is it makes the ability to interpolate"
+    },
+    {
+      "startSeconds": 154.8,
+      "durationSeconds": 4.079,
+      "text": "variables inside that string"
+    },
+    {
+      "startSeconds": 156.64,
+      "durationSeconds": 3.12,
+      "text": "easy essentially what you would normally"
+    },
+    {
+      "startSeconds": 158.879,
+      "durationSeconds": 2.961,
+      "text": "use"
+    },
+    {
+      "startSeconds": 159.76,
+      "durationSeconds": 3.6,
+      "text": "templating languages like mustache or"
+    },
+    {
+      "startSeconds": 161.84,
+      "durationSeconds": 4,
+      "text": "handleballs for"
+    },
+    {
+      "startSeconds": 163.36,
+      "durationSeconds": 3.2,
+      "text": "handle bars for you can now pretty much"
+    },
+    {
+      "startSeconds": 165.84,
+      "durationSeconds": 2.72,
+      "text": "do"
+    },
+    {
+      "startSeconds": 166.56,
+      "durationSeconds": 3.84,
+      "text": "easily built into javascript where if"
+    },
+    {
+      "startSeconds": 168.56,
+      "durationSeconds": 3.44,
+      "text": "you have some variable i'm sure there's"
+    },
+    {
+      "startSeconds": 170.4,
+      "durationSeconds": 4.64,
+      "text": "gonna be an example here"
+    },
+    {
+      "startSeconds": 172,
+      "durationSeconds": 5.36,
+      "text": "um right so here is"
+    },
+    {
+      "startSeconds": 175.04,
+      "durationSeconds": 3.04,
+      "text": "the old way where you just concatenate"
+    },
+    {
+      "startSeconds": 177.36,
+      "durationSeconds": 2.879,
+      "text": "strings"
+    },
+    {
+      "startSeconds": 178.08,
+      "durationSeconds": 3.84,
+      "text": "and here with a string with a template"
+    },
+    {
+      "startSeconds": 180.239,
+      "durationSeconds": 3.841,
+      "text": "literally you can just put it in line"
+    },
+    {
+      "startSeconds": 181.92,
+      "durationSeconds": 3.2,
+      "text": "so that's kind of where the idea comes"
+    },
+    {
+      "startSeconds": 184.08,
+      "durationSeconds": 3.2,
+      "text": "from"
+    },
+    {
+      "startSeconds": 185.12,
+      "durationSeconds": 3.759,
+      "text": "and another thing to be aware of is"
+    },
+    {
+      "startSeconds": 187.28,
+      "durationSeconds": 3.36,
+      "text": "before you delve into template little"
+    },
+    {
+      "startSeconds": 188.879,
+      "durationSeconds": 5.36,
+      "text": "types is you have to understand"
+    },
+    {
+      "startSeconds": 190.64,
+      "durationSeconds": 4.48,
+      "text": "string literal types bit of a yak shape"
+    },
+    {
+      "startSeconds": 194.239,
+      "durationSeconds": 3.601,
+      "text": "here because"
+    },
+    {
+      "startSeconds": 195.12,
+      "durationSeconds": 4.64,
+      "text": "template literal types are a very"
+    },
+    {
+      "startSeconds": 197.84,
+      "durationSeconds": 4,
+      "text": "advanced feature in typescript"
+    },
+    {
+      "startSeconds": 199.76,
+      "durationSeconds": 3.68,
+      "text": "if i'm being honest and i am being"
+    },
+    {
+      "startSeconds": 201.84,
+      "durationSeconds": 5.36,
+      "text": "honest i think with you"
+    },
+    {
+      "startSeconds": 203.44,
+      "durationSeconds": 7.04,
+      "text": "but not with myself who a literal type"
+    },
+    {
+      "startSeconds": 207.2,
+      "durationSeconds": 5.679,
+      "text": "in typescript is the literal value"
+    },
+    {
+      "startSeconds": 210.48,
+      "durationSeconds": 3.119,
+      "text": "that you're typing so in touchscript you"
+    },
+    {
+      "startSeconds": 212.879,
+      "durationSeconds": 3.841,
+      "text": "have"
+    },
+    {
+      "startSeconds": 213.599,
+      "durationSeconds": 6,
+      "text": "the types of string and number where"
+    },
+    {
+      "startSeconds": 216.72,
+      "durationSeconds": 3.599,
+      "text": "let me try this move this new tab um"
+    },
+    {
+      "startSeconds": 219.599,
+      "durationSeconds": 5.441,
+      "text": "where"
+    },
+    {
+      "startSeconds": 220.319,
+      "durationSeconds": 7.92,
+      "text": "if you have let foo string equals harry"
+    },
+    {
+      "startSeconds": 225.04,
+      "durationSeconds": 4.72,
+      "text": "so this is saying that the type of foo"
+    },
+    {
+      "startSeconds": 228.239,
+      "durationSeconds": 3.841,
+      "text": "is a string which means that i can"
+    },
+    {
+      "startSeconds": 229.76,
+      "durationSeconds": 5.759,
+      "text": "reassign foo to equal"
+    },
+    {
+      "startSeconds": 232.08,
+      "durationSeconds": 6.719,
+      "text": "um barry my evil"
+    },
+    {
+      "startSeconds": 235.519,
+      "durationSeconds": 6,
+      "text": "evil twin so this is just a plain string"
+    },
+    {
+      "startSeconds": 238.799,
+      "durationSeconds": 3.36,
+      "text": "type it's not really exciting you've"
+    },
+    {
+      "startSeconds": 241.519,
+      "durationSeconds": 2.161,
+      "text": "probably"
+    },
+    {
+      "startSeconds": 242.159,
+      "durationSeconds": 3.521,
+      "text": "dealt with it if you've used typescript"
+    },
+    {
+      "startSeconds": 243.68,
+      "durationSeconds": 4.639,
+      "text": "in the past super common"
+    },
+    {
+      "startSeconds": 245.68,
+      "durationSeconds": 4.4,
+      "text": "instead what we could do is make a"
+    },
+    {
+      "startSeconds": 248.319,
+      "durationSeconds": 4.961,
+      "text": "literal type we can say"
+    },
+    {
+      "startSeconds": 250.08,
+      "durationSeconds": 6.96,
+      "text": "bar has the literal type"
+    },
+    {
+      "startSeconds": 253.28,
+      "durationSeconds": 6.88,
+      "text": "of harry which is saying that bar"
+    },
+    {
+      "startSeconds": 257.04,
+      "durationSeconds": 6.24,
+      "text": "the type of bar is the string of"
+    },
+    {
+      "startSeconds": 260.16,
+      "durationSeconds": 5.599,
+      "text": "harry such that if i were to try to do"
+    },
+    {
+      "startSeconds": 263.28,
+      "durationSeconds": 4.72,
+      "text": "bar equals my equal twin barry"
+    },
+    {
+      "startSeconds": 265.759,
+      "durationSeconds": 5.761,
+      "text": "typescript says oh no no no evil"
+    },
+    {
+      "startSeconds": 268,
+      "durationSeconds": 6.4,
+      "text": "twin i know you you can't assign the"
+    },
+    {
+      "startSeconds": 271.52,
+      "durationSeconds": 3.52,
+      "text": "type barry either this is going to be a"
+    },
+    {
+      "startSeconds": 274.4,
+      "durationSeconds": 3.92,
+      "text": "string"
+    },
+    {
+      "startSeconds": 275.04,
+      "durationSeconds": 5.84,
+      "text": "or a literal type of berry to one that"
+    },
+    {
+      "startSeconds": 278.32,
+      "durationSeconds": 4.879,
+      "text": "already says harry has to be"
+    },
+    {
+      "startSeconds": 280.88,
+      "durationSeconds": 4.319,
+      "text": "harry to make things happy and that's"
+    },
+    {
+      "startSeconds": 283.199,
+      "durationSeconds": 2.641,
+      "text": "how i don't get my credit card stolen"
+    },
+    {
+      "startSeconds": 285.199,
+      "durationSeconds": 2.161,
+      "text": "anymore"
+    },
+    {
+      "startSeconds": 285.84,
+      "durationSeconds": 2.88,
+      "text": "with typescript so that's the two kind"
+    },
+    {
+      "startSeconds": 287.36,
+      "durationSeconds": 2.48,
+      "text": "of building blocks for temple little"
+    },
+    {
+      "startSeconds": 288.72,
+      "durationSeconds": 3.44,
+      "text": "types is the temperate"
+    },
+    {
+      "startSeconds": 289.84,
+      "durationSeconds": 3.919,
+      "text": "template literal string from javascript"
+    },
+    {
+      "startSeconds": 292.16,
+      "durationSeconds": 3.039,
+      "text": "and string literal types"
+    },
+    {
+      "startSeconds": 293.759,
+      "durationSeconds": 3.761,
+      "text": "so you can kind of combine those two"
+    },
+    {
+      "startSeconds": 295.199,
+      "durationSeconds": 2.801,
+      "text": "things together where you can make a"
+    },
+    {
+      "startSeconds": 297.52,
+      "durationSeconds": 2.08,
+      "text": "type"
+    },
+    {
+      "startSeconds": 298,
+      "durationSeconds": 3.12,
+      "text": "which in typescript to type is just an"
+    },
+    {
+      "startSeconds": 299.6,
+      "durationSeconds": 4.159,
+      "text": "alias to something so"
+    },
+    {
+      "startSeconds": 301.12,
+      "durationSeconds": 3.28,
+      "text": "the type of world is the literal the"
+    },
+    {
+      "startSeconds": 303.759,
+      "durationSeconds": 5.041,
+      "text": "string"
+    },
+    {
+      "startSeconds": 304.4,
+      "durationSeconds": 6.639,
+      "text": "literal of world and then using template"
+    },
+    {
+      "startSeconds": 308.8,
+      "durationSeconds": 3.92,
+      "text": "syntax you can interpolate that value"
+    },
+    {
+      "startSeconds": 311.039,
+      "durationSeconds": 5.521,
+      "text": "into here"
+    },
+    {
+      "startSeconds": 312.72,
+      "durationSeconds": 6.96,
+      "text": "and get the new type of hello world"
+    },
+    {
+      "startSeconds": 316.56,
+      "durationSeconds": 4.639,
+      "text": "uh it's kind of adding the functionality"
+    },
+    {
+      "startSeconds": 319.68,
+      "durationSeconds": 2.239,
+      "text": "that you have in javascript with"
+    },
+    {
+      "startSeconds": 321.199,
+      "durationSeconds": 2.961,
+      "text": "template"
+    },
+    {
+      "startSeconds": 321.919,
+      "durationSeconds": 3.441,
+      "text": "literal strings right into the type"
+    },
+    {
+      "startSeconds": 324.16,
+      "durationSeconds": 4.24,
+      "text": "systems you can essentially"
+    },
+    {
+      "startSeconds": 325.36,
+      "durationSeconds": 5.6,
+      "text": "operate with template"
+    },
+    {
+      "startSeconds": 328.4,
+      "durationSeconds": 3.92,
+      "text": "types and what's really cool about"
+    },
+    {
+      "startSeconds": 330.96,
+      "durationSeconds": 4.88,
+      "text": "template literal strings"
+    },
+    {
+      "startSeconds": 332.32,
+      "durationSeconds": 6.319,
+      "text": "is that it will expand unions so"
+    },
+    {
+      "startSeconds": 335.84,
+      "durationSeconds": 3.76,
+      "text": "the better example i have here is so"
+    },
+    {
+      "startSeconds": 338.639,
+      "durationSeconds": 4.081,
+      "text": "here we have"
+    },
+    {
+      "startSeconds": 339.6,
+      "durationSeconds": 5.039,
+      "text": "email ids so the email can be a welcome"
+    },
+    {
+      "startSeconds": 342.72,
+      "durationSeconds": 4.319,
+      "text": "email or an email heading and the footer"
+    },
+    {
+      "startSeconds": 344.639,
+      "durationSeconds": 3.84,
+      "text": "can be footer title or twitter send off"
+    },
+    {
+      "startSeconds": 347.039,
+      "durationSeconds": 4.16,
+      "text": "and if you want to actually make if"
+    },
+    {
+      "startSeconds": 348.479,
+      "durationSeconds": 4.801,
+      "text": "you're making you know a email"
+    },
+    {
+      "startSeconds": 351.199,
+      "durationSeconds": 4.081,
+      "text": "library you want to see what all the"
+    },
+    {
+      "startSeconds": 353.28,
+      "durationSeconds": 5.84,
+      "text": "local ids can be"
+    },
+    {
+      "startSeconds": 355.28,
+      "durationSeconds": 7.68,
+      "text": "you can make a union of email and footer"
+    },
+    {
+      "startSeconds": 359.12,
+      "durationSeconds": 6.88,
+      "text": "and suffix on that interpolation"
+    },
+    {
+      "startSeconds": 362.96,
+      "durationSeconds": 5.76,
+      "text": "the id value such that when"
+    },
+    {
+      "startSeconds": 366,
+      "durationSeconds": 3.44,
+      "text": "typescript evaluates this it'll expand"
+    },
+    {
+      "startSeconds": 368.72,
+      "durationSeconds": 3.919,
+      "text": "it to"
+    },
+    {
+      "startSeconds": 369.44,
+      "durationSeconds": 5.52,
+      "text": "welcome email id email heading id"
+    },
+    {
+      "startSeconds": 372.639,
+      "durationSeconds": 3.84,
+      "text": "all those things for you you kind of get"
+    },
+    {
+      "startSeconds": 374.96,
+      "durationSeconds": 2.48,
+      "text": "an idea of what you can do here you kind"
+    },
+    {
+      "startSeconds": 376.479,
+      "durationSeconds": 3.28,
+      "text": "of just"
+    },
+    {
+      "startSeconds": 377.44,
+      "durationSeconds": 3.199,
+      "text": "dynamically which is very strange to"
+    },
+    {
+      "startSeconds": 379.759,
+      "durationSeconds": 2.56,
+      "text": "stay with"
+    },
+    {
+      "startSeconds": 380.639,
+      "durationSeconds": 3.201,
+      "text": "typescript which is static typing but"
+    },
+    {
+      "startSeconds": 382.319,
+      "durationSeconds": 5.521,
+      "text": "you can dynamically"
+    },
+    {
+      "startSeconds": 383.84,
+      "durationSeconds": 6.24,
+      "text": "create new static types which is"
+    },
+    {
+      "startSeconds": 387.84,
+      "durationSeconds": 3.04,
+      "text": "why it's so crazy to me this is a"
+    },
+    {
+      "startSeconds": 390.08,
+      "durationSeconds": 2.959,
+      "text": "similar idea"
+    },
+    {
+      "startSeconds": 390.88,
+      "durationSeconds": 3.92,
+      "text": "idea here where you have a union of"
+    },
+    {
+      "startSeconds": 393.039,
+      "durationSeconds": 3.921,
+      "text": "values of languages"
+    },
+    {
+      "startSeconds": 394.8,
+      "durationSeconds": 4.16,
+      "text": "the locale ids and it'll expand this to"
+    },
+    {
+      "startSeconds": 396.96,
+      "durationSeconds": 5.519,
+      "text": "all that for you"
+    },
+    {
+      "startSeconds": 398.96,
+      "durationSeconds": 6.799,
+      "text": "what's even more advanced to me"
+    },
+    {
+      "startSeconds": 402.479,
+      "durationSeconds": 5.84,
+      "text": "is how and probably more practical is"
+    },
+    {
+      "startSeconds": 405.759,
+      "durationSeconds": 4.321,
+      "text": "when you're kind of taking an object and"
+    },
+    {
+      "startSeconds": 408.319,
+      "durationSeconds": 4.561,
+      "text": "making"
+    },
+    {
+      "startSeconds": 410.08,
+      "durationSeconds": 4.64,
+      "text": "operations on top of it so before this"
+    },
+    {
+      "startSeconds": 412.88,
+      "durationSeconds": 3.36,
+      "text": "was impossible to do but not possible"
+    },
+    {
+      "startSeconds": 414.72,
+      "durationSeconds": 2.4,
+      "text": "with template literal types so if you"
+    },
+    {
+      "startSeconds": 416.24,
+      "durationSeconds": 1.92,
+      "text": "want to have"
+    },
+    {
+      "startSeconds": 417.12,
+      "durationSeconds": 3.44,
+      "text": "let's say you're making you're trying to"
+    },
+    {
+      "startSeconds": 418.16,
+      "durationSeconds": 3.12,
+      "text": "make an event emitter on an object this"
+    },
+    {
+      "startSeconds": 420.56,
+      "durationSeconds": 2.24,
+      "text": "function"
+    },
+    {
+      "startSeconds": 421.28,
+      "durationSeconds": 4,
+      "text": "that will make an event emitter on the"
+    },
+    {
+      "startSeconds": 422.8,
+      "durationSeconds": 5.6,
+      "text": "person object such that you can say"
+    },
+    {
+      "startSeconds": 425.28,
+      "durationSeconds": 6.16,
+      "text": "when first name change the property here"
+    },
+    {
+      "startSeconds": 428.4,
+      "durationSeconds": 6.4,
+      "text": "call my callback before"
+    },
+    {
+      "startSeconds": 431.44,
+      "durationSeconds": 6.319,
+      "text": "string literals template literals"
+    },
+    {
+      "startSeconds": 434.8,
+      "durationSeconds": 4.56,
+      "text": "there was no way to actually uh that's"
+    },
+    {
+      "startSeconds": 437.759,
+      "durationSeconds": 4.56,
+      "text": "fine"
+    },
+    {
+      "startSeconds": 439.36,
+      "durationSeconds": 4.16,
+      "text": "there was no way to actually type check"
+    },
+    {
+      "startSeconds": 442.319,
+      "durationSeconds": 2.961,
+      "text": "this first argument"
+    },
+    {
+      "startSeconds": 443.52,
+      "durationSeconds": 3.679,
+      "text": "there is really no way to do it you"
+    },
+    {
+      "startSeconds": 445.28,
+      "durationSeconds": 3.6,
+      "text": "could just put whatever you want in here"
+    },
+    {
+      "startSeconds": 447.199,
+      "durationSeconds": 3.601,
+      "text": "and text would have no way of knowing if"
+    },
+    {
+      "startSeconds": 448.88,
+      "durationSeconds": 4.08,
+      "text": "it was valid or not"
+    },
+    {
+      "startSeconds": 450.8,
+      "durationSeconds": 3.2,
+      "text": "our event mirror function here is saying"
+    },
+    {
+      "startSeconds": 452.96,
+      "durationSeconds": 4.079,
+      "text": "it needs to have the"
+    },
+    {
+      "startSeconds": 454,
+      "durationSeconds": 4.319,
+      "text": "first name as the key plus changed and"
+    },
+    {
+      "startSeconds": 457.039,
+      "durationSeconds": 2.641,
+      "text": "no more"
+    },
+    {
+      "startSeconds": 458.319,
+      "durationSeconds": 3.521,
+      "text": "so instead what you can do with"
+    },
+    {
+      "startSeconds": 459.68,
+      "durationSeconds": 5.199,
+      "text": "typescript and this is some"
+    },
+    {
+      "startSeconds": 461.84,
+      "durationSeconds": 6.479,
+      "text": "fancy work over here"
+    },
+    {
+      "startSeconds": 464.879,
+      "durationSeconds": 6.16,
+      "text": "is when you're declaring this function"
+    },
+    {
+      "startSeconds": 468.319,
+      "durationSeconds": 4,
+      "text": "it takes in a generic which is just a"
+    },
+    {
+      "startSeconds": 471.039,
+      "durationSeconds": 2.801,
+      "text": "variable for a type"
+    },
+    {
+      "startSeconds": 472.319,
+      "durationSeconds": 3.521,
+      "text": "if you've seen my previous videos that's"
+    },
+    {
+      "startSeconds": 473.84,
+      "durationSeconds": 4.88,
+      "text": "the easiest way to think about"
+    },
+    {
+      "startSeconds": 475.84,
+      "durationSeconds": 4.96,
+      "text": "it takes an argument where the first"
+    },
+    {
+      "startSeconds": 478.72,
+      "durationSeconds": 4.319,
+      "text": "argument has the shape of"
+    },
+    {
+      "startSeconds": 480.8,
+      "durationSeconds": 4.16,
+      "text": "whatever the type is so one let's"
+    },
+    {
+      "startSeconds": 483.039,
+      "durationSeconds": 5.84,
+      "text": "actually combine this together"
+    },
+    {
+      "startSeconds": 484.96,
+      "durationSeconds": 3.919,
+      "text": "let's bring this back over here"
+    },
+    {
+      "startSeconds": 489.12,
+      "durationSeconds": 6.16,
+      "text": "okay so let's see this section complains"
+    },
+    {
+      "startSeconds": 493.84,
+      "durationSeconds": 3.759,
+      "text": "yes cool so this is going to be a"
+    },
+    {
+      "startSeconds": 495.28,
+      "durationSeconds": 3.759,
+      "text": "working example some live coding it's"
+    },
+    {
+      "startSeconds": 497.599,
+      "durationSeconds": 4.961,
+      "text": "always scary"
+    },
+    {
+      "startSeconds": 499.039,
+      "durationSeconds": 7.44,
+      "text": "um where was i oh yeah so this is the"
+    },
+    {
+      "startSeconds": 502.56,
+      "durationSeconds": 5.919,
+      "text": "watch object the argument is any"
+    },
+    {
+      "startSeconds": 506.479,
+      "durationSeconds": 3.84,
+      "text": "arbitrary object which is why it's an"
+    },
+    {
+      "startSeconds": 508.479,
+      "durationSeconds": 2.881,
+      "text": "object a shape of type we don't really"
+    },
+    {
+      "startSeconds": 510.319,
+      "durationSeconds": 4.481,
+      "text": "care about typing it"
+    },
+    {
+      "startSeconds": 511.36,
+      "durationSeconds": 6.799,
+      "text": "it's just saying that this is a"
+    },
+    {
+      "startSeconds": 514.8,
+      "durationSeconds": 5.359,
+      "text": "type variable that's being put here"
+    },
+    {
+      "startSeconds": 518.159,
+      "durationSeconds": 3.68,
+      "text": "and the return value this cone says the"
+    },
+    {
+      "startSeconds": 520.159,
+      "durationSeconds": 4.561,
+      "text": "return value from this function"
+    },
+    {
+      "startSeconds": 521.839,
+      "durationSeconds": 4.081,
+      "text": "is one that is the shape of type right"
+    },
+    {
+      "startSeconds": 524.72,
+      "durationSeconds": 4.16,
+      "text": "because it's still going to be"
+    },
+    {
+      "startSeconds": 525.92,
+      "durationSeconds": 4.32,
+      "text": "this person will still let you actually"
+    },
+    {
+      "startSeconds": 528.88,
+      "durationSeconds": 1.76,
+      "text": "access the properties it's still going"
+    },
+    {
+      "startSeconds": 530.24,
+      "durationSeconds": 1.599,
+      "text": "to be"
+    },
+    {
+      "startSeconds": 530.64,
+      "durationSeconds": 3.759,
+      "text": "an object that just has more"
+    },
+    {
+      "startSeconds": 531.839,
+      "durationSeconds": 3.68,
+      "text": "functionality added on top and then also"
+    },
+    {
+      "startSeconds": 534.399,
+      "durationSeconds": 3.201,
+      "text": "it's going to be"
+    },
+    {
+      "startSeconds": 535.519,
+      "durationSeconds": 3.281,
+      "text": "having the properties of prop event"
+    },
+    {
+      "startSeconds": 537.6,
+      "durationSeconds": 5.04,
+      "text": "source"
+    },
+    {
+      "startSeconds": 538.8,
+      "durationSeconds": 5.2,
+      "text": "such that this on operator which is here"
+    },
+    {
+      "startSeconds": 542.64,
+      "durationSeconds": 4.16,
+      "text": "is being typed as"
+    },
+    {
+      "startSeconds": 544,
+      "durationSeconds": 3.279,
+      "text": "the event name this first argument is so"
+    },
+    {
+      "startSeconds": 546.8,
+      "durationSeconds": 2.32,
+      "text": "here's"
+    },
+    {
+      "startSeconds": 547.279,
+      "durationSeconds": 3.841,
+      "text": "some interpolation right a template"
+    },
+    {
+      "startSeconds": 549.12,
+      "durationSeconds": 3.44,
+      "text": "literal it's a string"
+    },
+    {
+      "startSeconds": 551.12,
+      "durationSeconds": 3.04,
+      "text": "so it has to be a string because that's"
+    },
+    {
+      "startSeconds": 552.56,
+      "durationSeconds": 4.88,
+      "text": "the common denominator"
+    },
+    {
+      "startSeconds": 554.16,
+      "durationSeconds": 6.56,
+      "text": "and all the keys of type now remember"
+    },
+    {
+      "startSeconds": 557.44,
+      "durationSeconds": 5.2,
+      "text": "type is a being passed into here this"
+    },
+    {
+      "startSeconds": 560.72,
+      "durationSeconds": 3.76,
+      "text": "object just being assigned to type"
+    },
+    {
+      "startSeconds": 562.64,
+      "durationSeconds": 3.36,
+      "text": "so you get all the keys of type it's"
+    },
+    {
+      "startSeconds": 564.48,
+      "durationSeconds": 3.44,
+      "text": "taking all the keys"
+    },
+    {
+      "startSeconds": 566,
+      "durationSeconds": 3.12,
+      "text": "of this object here so first name last"
+    },
+    {
+      "startSeconds": 567.92,
+      "durationSeconds": 4.479,
+      "text": "name age"
+    },
+    {
+      "startSeconds": 569.12,
+      "durationSeconds": 5.36,
+      "text": "so this is actually being expanded to"
+    },
+    {
+      "startSeconds": 572.399,
+      "durationSeconds": 3.44,
+      "text": "first name last name age and then"
+    },
+    {
+      "startSeconds": 574.48,
+      "durationSeconds": 3.28,
+      "text": "because of how"
+    },
+    {
+      "startSeconds": 575.839,
+      "durationSeconds": 3.921,
+      "text": "unions are expanded it's going to have"
+    },
+    {
+      "startSeconds": 577.76,
+      "durationSeconds": 4.4,
+      "text": "first name change concatenated"
+    },
+    {
+      "startSeconds": 579.76,
+      "durationSeconds": 3.28,
+      "text": "last name changed age concatenated such"
+    },
+    {
+      "startSeconds": 582.16,
+      "durationSeconds": 3.04,
+      "text": "that here"
+    },
+    {
+      "startSeconds": 583.04,
+      "durationSeconds": 4,
+      "text": "this is all happy but if i were to just"
+    },
+    {
+      "startSeconds": 585.2,
+      "durationSeconds": 4.319,
+      "text": "remove change from it"
+    },
+    {
+      "startSeconds": 587.04,
+      "durationSeconds": 3.76,
+      "text": "typescript will yell because argument of"
+    },
+    {
+      "startSeconds": 589.519,
+      "durationSeconds": 3.44,
+      "text": "type first name"
+    },
+    {
+      "startSeconds": 590.8,
+      "durationSeconds": 4.24,
+      "text": "is not assignable to parameter of type"
+    },
+    {
+      "startSeconds": 592.959,
+      "durationSeconds": 3.601,
+      "text": "first name change last name changed age"
+    },
+    {
+      "startSeconds": 595.04,
+      "durationSeconds": 3.76,
+      "text": "changed"
+    },
+    {
+      "startSeconds": 596.56,
+      "durationSeconds": 3.76,
+      "text": "so let that sink in for a moment because"
+    },
+    {
+      "startSeconds": 598.8,
+      "durationSeconds": 4.88,
+      "text": "the ability to dynamically"
+    },
+    {
+      "startSeconds": 600.32,
+      "durationSeconds": 6.16,
+      "text": "change string literal"
+    },
+    {
+      "startSeconds": 603.68,
+      "durationSeconds": 4.32,
+      "text": "values with the template literal opens"
+    },
+    {
+      "startSeconds": 606.48,
+      "durationSeconds": 4.32,
+      "text": "up a whole world"
+    },
+    {
+      "startSeconds": 608,
+      "durationSeconds": 3.76,
+      "text": "of possibility dare i say a whole new"
+    },
+    {
+      "startSeconds": 610.8,
+      "durationSeconds": 2.8,
+      "text": "world"
+    },
+    {
+      "startSeconds": 611.76,
+      "durationSeconds": 4.88,
+      "text": "don't watch this video disney i don't"
+    },
+    {
+      "startSeconds": 613.6,
+      "durationSeconds": 7.2,
+      "text": "have enough money to be sued by you"
+    },
+    {
+      "startSeconds": 616.64,
+      "durationSeconds": 7.12,
+      "text": "now what's even cooler is"
+    },
+    {
+      "startSeconds": 620.8,
+      "durationSeconds": 4.96,
+      "text": "you can do inference now this is where"
+    },
+    {
+      "startSeconds": 623.76,
+      "durationSeconds": 2.639,
+      "text": "my mind starts to melt because this is"
+    },
+    {
+      "startSeconds": 625.76,
+      "durationSeconds": 2.72,
+      "text": "some"
+    },
+    {
+      "startSeconds": 626.399,
+      "durationSeconds": 3.361,
+      "text": "real fancy typescript let's open up this"
+    },
+    {
+      "startSeconds": 628.48,
+      "durationSeconds": 2.4,
+      "text": "example"
+    },
+    {
+      "startSeconds": 629.76,
+      "durationSeconds": 3.28,
+      "text": "so this is the same thing that we had"
+    },
+    {
+      "startSeconds": 630.88,
+      "durationSeconds": 5.519,
+      "text": "before right"
+    },
+    {
+      "startSeconds": 633.04,
+      "durationSeconds": 5.52,
+      "text": "if you remember before the value of"
+    },
+    {
+      "startSeconds": 636.399,
+      "durationSeconds": 3.281,
+      "text": "new value is being typed as any because"
+    },
+    {
+      "startSeconds": 638.56,
+      "durationSeconds": 2.56,
+      "text": "in this callback"
+    },
+    {
+      "startSeconds": 639.68,
+      "durationSeconds": 3.44,
+      "text": "we're just saying any like we're not"
+    },
+    {
+      "startSeconds": 641.12,
+      "durationSeconds": 5.04,
+      "text": "really being that fancy with ourselves"
+    },
+    {
+      "startSeconds": 643.12,
+      "durationSeconds": 3.839,
+      "text": "but we can be here you can kind of see"
+    },
+    {
+      "startSeconds": 646.16,
+      "durationSeconds": 2.88,
+      "text": "the difference"
+    },
+    {
+      "startSeconds": 646.959,
+      "durationSeconds": 3.521,
+      "text": "things changing a little bit this"
+    },
+    {
+      "startSeconds": 649.04,
+      "durationSeconds": 3.84,
+      "text": "callback is saying"
+    },
+    {
+      "startSeconds": 650.48,
+      "durationSeconds": 3.76,
+      "text": "devout the new value because this is the"
+    },
+    {
+      "startSeconds": 652.88,
+      "durationSeconds": 1.76,
+      "text": "argument the first argument being given"
+    },
+    {
+      "startSeconds": 654.24,
+      "durationSeconds": 3.2,
+      "text": "to the"
+    },
+    {
+      "startSeconds": 654.64,
+      "durationSeconds": 5.68,
+      "text": "to the callback so this type remember is"
+    },
+    {
+      "startSeconds": 657.44,
+      "durationSeconds": 6.079,
+      "text": "here so the type is the object itself"
+    },
+    {
+      "startSeconds": 660.32,
+      "durationSeconds": 6.32,
+      "text": "and then the key is being defined on"
+    },
+    {
+      "startSeconds": 663.519,
+      "durationSeconds": 7.281,
+      "text": "here it's a new"
+    },
+    {
+      "startSeconds": 666.64,
+      "durationSeconds": 7.28,
+      "text": "generic on the on function"
+    },
+    {
+      "startSeconds": 670.8,
+      "durationSeconds": 4.56,
+      "text": "so this is doing some informant this is"
+    },
+    {
+      "startSeconds": 673.92,
+      "durationSeconds": 3.039,
+      "text": "this is"
+    },
+    {
+      "startSeconds": 675.36,
+      "durationSeconds": 3.84,
+      "text": "if you would if you were to ask me how"
+    },
+    {
+      "startSeconds": 676.959,
+      "durationSeconds": 4.081,
+      "text": "to write this i wouldn't know how"
+    },
+    {
+      "startSeconds": 679.2,
+      "durationSeconds": 3.36,
+      "text": "but i can read it so hopefully that"
+    },
+    {
+      "startSeconds": 681.04,
+      "durationSeconds": 2.16,
+      "text": "helps you kind of get half the battle"
+    },
+    {
+      "startSeconds": 682.56,
+      "durationSeconds": 2.24,
+      "text": "here"
+    },
+    {
+      "startSeconds": 683.2,
+      "durationSeconds": 3.52,
+      "text": "you i always have to look it up for and"
+    },
+    {
+      "startSeconds": 684.8,
+      "durationSeconds": 3.599,
+      "text": "from it it's a very fancy feature for me"
+    },
+    {
+      "startSeconds": 686.72,
+      "durationSeconds": 2.559,
+      "text": "so i don't really know exactly how to do"
+    },
+    {
+      "startSeconds": 688.399,
+      "durationSeconds": 4.241,
+      "text": "it but"
+    },
+    {
+      "startSeconds": 689.279,
+      "durationSeconds": 7.201,
+      "text": "this is a new generic"
+    },
+    {
+      "startSeconds": 692.64,
+      "durationSeconds": 7.28,
+      "text": "variable key that has to be a string"
+    },
+    {
+      "startSeconds": 696.48,
+      "durationSeconds": 4.72,
+      "text": "and all the keys of type so the keys of"
+    },
+    {
+      "startSeconds": 699.92,
+      "durationSeconds": 3.2,
+      "text": "type remember again"
+    },
+    {
+      "startSeconds": 701.2,
+      "durationSeconds": 3.04,
+      "text": "are all of these all the keys is first"
+    },
+    {
+      "startSeconds": 703.12,
+      "durationSeconds": 5.12,
+      "text": "and last name so"
+    },
+    {
+      "startSeconds": 704.24,
+      "durationSeconds": 5.2,
+      "text": "key is a string and all these keys"
+    },
+    {
+      "startSeconds": 708.24,
+      "durationSeconds": 2.96,
+      "text": "which means that when you actually do"
+    },
+    {
+      "startSeconds": 709.44,
+      "durationSeconds": 2.399,
+      "text": "this interpolated value here you're"
+    },
+    {
+      "startSeconds": 711.2,
+      "durationSeconds": 3.52,
+      "text": "saying"
+    },
+    {
+      "startSeconds": 711.839,
+      "durationSeconds": 3.68,
+      "text": "take those values first name last name"
+    },
+    {
+      "startSeconds": 714.72,
+      "durationSeconds": 4.08,
+      "text": "age"
+    },
+    {
+      "startSeconds": 715.519,
+      "durationSeconds": 5.601,
+      "text": "and get the value from"
+    },
+    {
+      "startSeconds": 718.8,
+      "durationSeconds": 4.96,
+      "text": "the object here so it's saying type key"
+    },
+    {
+      "startSeconds": 721.12,
+      "durationSeconds": 5.12,
+      "text": "so let's say this is going to be"
+    },
+    {
+      "startSeconds": 723.76,
+      "durationSeconds": 3.04,
+      "text": "first name so first name is the key on"
+    },
+    {
+      "startSeconds": 726.24,
+      "durationSeconds": 3.039,
+      "text": "type"
+    },
+    {
+      "startSeconds": 726.8,
+      "durationSeconds": 4.24,
+      "text": "on this object so first name on this"
+    },
+    {
+      "startSeconds": 729.279,
+      "durationSeconds": 5.12,
+      "text": "object is going to be cersei"
+    },
+    {
+      "startSeconds": 731.04,
+      "durationSeconds": 6.239,
+      "text": "which is going to be a string so here"
+    },
+    {
+      "startSeconds": 734.399,
+      "durationSeconds": 4.161,
+      "text": "this is being typed as string age is"
+    },
+    {
+      "startSeconds": 737.279,
+      "durationSeconds": 4.8,
+      "text": "going to be typed as"
+    },
+    {
+      "startSeconds": 738.56,
+      "durationSeconds": 6.719,
+      "text": "a number so it's inferring based"
+    },
+    {
+      "startSeconds": 742.079,
+      "durationSeconds": 6.161,
+      "text": "on the argument to the the first"
+    },
+    {
+      "startSeconds": 745.279,
+      "durationSeconds": 5.441,
+      "text": "value to the first argument it'll infer"
+    },
+    {
+      "startSeconds": 748.24,
+      "durationSeconds": 5.76,
+      "text": "what type the second one will be"
+    },
+    {
+      "startSeconds": 750.72,
+      "durationSeconds": 4.799,
+      "text": "which is wild really cool"
+    },
+    {
+      "startSeconds": 754,
+      "durationSeconds": 3.279,
+      "text": "uh what else is on this page then"
+    },
+    {
+      "startSeconds": 755.519,
+      "durationSeconds": 4.801,
+      "text": "there's also some fun"
+    },
+    {
+      "startSeconds": 757.279,
+      "durationSeconds": 4.721,
+      "text": "built-in string manipulation types"
+    },
+    {
+      "startSeconds": 760.32,
+      "durationSeconds": 3.28,
+      "text": "which these actually made me laugh i"
+    },
+    {
+      "startSeconds": 762,
+      "durationSeconds": 2.72,
+      "text": "mean these are helpful there's uppercase"
+    },
+    {
+      "startSeconds": 763.6,
+      "durationSeconds": 2.32,
+      "text": "so you can convert"
+    },
+    {
+      "startSeconds": 764.72,
+      "durationSeconds": 4.32,
+      "text": "each character in the string to"
+    },
+    {
+      "startSeconds": 765.92,
+      "durationSeconds": 5.84,
+      "text": "uppercase so great hello world"
+    },
+    {
+      "startSeconds": 769.04,
+      "durationSeconds": 4.32,
+      "text": "lowercase all lowercase when i actually"
+    },
+    {
+      "startSeconds": 771.76,
+      "durationSeconds": 2.56,
+      "text": "looked up in the code base how these are"
+    },
+    {
+      "startSeconds": 773.36,
+      "durationSeconds": 3.12,
+      "text": "implemented"
+    },
+    {
+      "startSeconds": 774.32,
+      "durationSeconds": 3.12,
+      "text": "um i saw that they were typed with this"
+    },
+    {
+      "startSeconds": 776.48,
+      "durationSeconds": 4.159,
+      "text": "intrinsic"
+    },
+    {
+      "startSeconds": 777.44,
+      "durationSeconds": 5.839,
+      "text": "value value value which is a little bit"
+    },
+    {
+      "startSeconds": 780.639,
+      "durationSeconds": 4.961,
+      "text": "of magic when you actually go down here"
+    },
+    {
+      "startSeconds": 783.279,
+      "durationSeconds": 4.481,
+      "text": "in the documentation you can say that uh"
+    },
+    {
+      "startSeconds": 785.6,
+      "durationSeconds": 4.4,
+      "text": "these types are built into the compiler"
+    },
+    {
+      "startSeconds": 787.76,
+      "durationSeconds": 3.84,
+      "text": "for performance and can't be found"
+    },
+    {
+      "startSeconds": 790,
+      "durationSeconds": 3.04,
+      "text": "in the files included with typescript"
+    },
+    {
+      "startSeconds": 791.6,
+      "durationSeconds": 3.2,
+      "text": "you actually go to the bottom"
+    },
+    {
+      "startSeconds": 793.04,
+      "durationSeconds": 3.76,
+      "text": "and you can see the technical details on"
+    },
+    {
+      "startSeconds": 794.8,
+      "durationSeconds": 4,
+      "text": "how these are being implemented"
+    },
+    {
+      "startSeconds": 796.8,
+      "durationSeconds": 4.24,
+      "text": "and it's just some nice simple switch"
+    },
+    {
+      "startSeconds": 798.8,
+      "durationSeconds": 5.039,
+      "text": "statements with some string manipulation"
+    },
+    {
+      "startSeconds": 801.04,
+      "durationSeconds": 4.56,
+      "text": "so that's just what these are kind of"
+    },
+    {
+      "startSeconds": 803.839,
+      "durationSeconds": 4.56,
+      "text": "helpful for you to dynamically create"
+    },
+    {
+      "startSeconds": 805.6,
+      "durationSeconds": 4.72,
+      "text": "new string literal values in your"
+    },
+    {
+      "startSeconds": 808.399,
+      "durationSeconds": 5.041,
+      "text": "typescript applications"
+    },
+    {
+      "startSeconds": 810.32,
+      "durationSeconds": 5.759,
+      "text": "now let's get"
+    },
+    {
+      "startSeconds": 813.44,
+      "durationSeconds": 4.16,
+      "text": "advanced now this part is where your"
+    },
+    {
+      "startSeconds": 816.079,
+      "durationSeconds": 5.521,
+      "text": "dreams can come"
+    },
+    {
+      "startSeconds": 817.6,
+      "durationSeconds": 7.679,
+      "text": "reality this is a curated list of"
+    },
+    {
+      "startSeconds": 821.6,
+      "durationSeconds": 5.84,
+      "text": "awesome template literal type examples"
+    },
+    {
+      "startSeconds": 825.279,
+      "durationSeconds": 4.161,
+      "text": "some more useful than others but some"
+    },
+    {
+      "startSeconds": 827.44,
+      "durationSeconds": 4.8,
+      "text": "super useful and some that i"
+    },
+    {
+      "startSeconds": 829.44,
+      "durationSeconds": 4.56,
+      "text": "wish i had 10 years ago before"
+    },
+    {
+      "startSeconds": 832.24,
+      "durationSeconds": 5.2,
+      "text": "typescript even existed"
+    },
+    {
+      "startSeconds": 834,
+      "durationSeconds": 7.12,
+      "text": "weird the first one is dot"
+    },
+    {
+      "startSeconds": 837.44,
+      "durationSeconds": 7.12,
+      "text": "notation string type save so"
+    },
+    {
+      "startSeconds": 841.12,
+      "durationSeconds": 4.24,
+      "text": "if you've ever used underscore low dash"
+    },
+    {
+      "startSeconds": 844.56,
+      "durationSeconds": 4.48,
+      "text": "and use their"
+    },
+    {
+      "startSeconds": 845.36,
+      "durationSeconds": 4.96,
+      "text": "get operator where you can dynamically"
+    },
+    {
+      "startSeconds": 849.04,
+      "durationSeconds": 3.68,
+      "text": "construct"
+    },
+    {
+      "startSeconds": 850.32,
+      "durationSeconds": 3.84,
+      "text": "the path like if you have some object"
+    },
+    {
+      "startSeconds": 852.72,
+      "durationSeconds": 4.559,
+      "text": "here that's deeply nested"
+    },
+    {
+      "startSeconds": 854.16,
+      "durationSeconds": 6.56,
+      "text": "you can dynamically reference"
+    },
+    {
+      "startSeconds": 857.279,
+      "durationSeconds": 5.521,
+      "text": "values inside of it so you do uh project"
+    },
+    {
+      "startSeconds": 860.72,
+      "durationSeconds": 4.32,
+      "text": "i know where to do object we do first"
+    },
+    {
+      "startSeconds": 862.8,
+      "durationSeconds": 2.24,
+      "text": "name"
+    },
+    {
+      "startSeconds": 865.519,
+      "durationSeconds": 3.76,
+      "text": "yeah first name so this is going to say"
+    },
+    {
+      "startSeconds": 868.079,
+      "durationSeconds": 3.2,
+      "text": "that on this object"
+    },
+    {
+      "startSeconds": 869.279,
+      "durationSeconds": 4.481,
+      "text": "get me the value for the property on"
+    },
+    {
+      "startSeconds": 871.279,
+      "durationSeconds": 4.081,
+      "text": "first name and what becomes really"
+    },
+    {
+      "startSeconds": 873.76,
+      "durationSeconds": 3.68,
+      "text": "valuable is when you actually want to"
+    },
+    {
+      "startSeconds": 875.36,
+      "durationSeconds": 3.599,
+      "text": "delve deeply in this is useful if you"
+    },
+    {
+      "startSeconds": 877.44,
+      "durationSeconds": 3.44,
+      "text": "have some ui that you're dynamically"
+    },
+    {
+      "startSeconds": 878.959,
+      "durationSeconds": 3.12,
+      "text": "showing values from a deeply nested json"
+    },
+    {
+      "startSeconds": 880.88,
+      "durationSeconds": 3.12,
+      "text": "object"
+    },
+    {
+      "startSeconds": 882.079,
+      "durationSeconds": 3.44,
+      "text": "and before you couldn't really type this"
+    },
+    {
+      "startSeconds": 884,
+      "durationSeconds": 4.24,
+      "text": "it was just going to be a string"
+    },
+    {
+      "startSeconds": 885.519,
+      "durationSeconds": 3.201,
+      "text": "and that's all you could do but now due"
+    },
+    {
+      "startSeconds": 888.24,
+      "durationSeconds": 2.56,
+      "text": "to"
+    },
+    {
+      "startSeconds": 888.72,
+      "durationSeconds": 3.2,
+      "text": "the powers of template literals it can"
+    },
+    {
+      "startSeconds": 890.8,
+      "durationSeconds": 3.279,
+      "text": "actually read"
+    },
+    {
+      "startSeconds": 891.92,
+      "durationSeconds": 6.719,
+      "text": "the object being passed in and"
+    },
+    {
+      "startSeconds": 894.079,
+      "durationSeconds": 6.481,
+      "text": "dynamically construct the entire"
+    },
+    {
+      "startSeconds": 898.639,
+      "durationSeconds": 3.041,
+      "text": "paths that are valid so here i can"
+    },
+    {
+      "startSeconds": 900.56,
+      "durationSeconds": 2.639,
+      "text": "actually be"
+    },
+    {
+      "startSeconds": 901.68,
+      "durationSeconds": 3.839,
+      "text": "helped by intellisense because it"
+    },
+    {
+      "startSeconds": 903.199,
+      "durationSeconds": 5.44,
+      "text": "understands the object to actually pull"
+    },
+    {
+      "startSeconds": 905.519,
+      "durationSeconds": 6.32,
+      "text": "in projects the first one in the array"
+    },
+    {
+      "startSeconds": 908.639,
+      "durationSeconds": 3.521,
+      "text": "the name value i can't say foo because"
+    },
+    {
+      "startSeconds": 911.839,
+      "durationSeconds": 2.721,
+      "text": "it"
+    },
+    {
+      "startSeconds": 912.16,
+      "durationSeconds": 3.76,
+      "text": "typescript knows that doesn't exist when"
+    },
+    {
+      "startSeconds": 914.56,
+      "durationSeconds": 2,
+      "text": "you look at the actual implementation"
+    },
+    {
+      "startSeconds": 915.92,
+      "durationSeconds": 3.279,
+      "text": "here"
+    },
+    {
+      "startSeconds": 916.56,
+      "durationSeconds": 3.44,
+      "text": "uh it's this and i'm not even going to"
+    },
+    {
+      "startSeconds": 919.199,
+      "durationSeconds": 2.32,
+      "text": "pretend"
+    },
+    {
+      "startSeconds": 920,
+      "durationSeconds": 3.44,
+      "text": "to try to read that with you because"
+    },
+    {
+      "startSeconds": 921.519,
+      "durationSeconds": 3.12,
+      "text": "that's going to be a very long video of"
+    },
+    {
+      "startSeconds": 923.44,
+      "durationSeconds": 2.639,
+      "text": "itself but"
+    },
+    {
+      "startSeconds": 924.639,
+      "durationSeconds": 3.841,
+      "text": "as soon that's possible with this"
+    },
+    {
+      "startSeconds": 926.079,
+      "durationSeconds": 5.841,
+      "text": "feature another thing very cool is"
+    },
+    {
+      "startSeconds": 928.48,
+      "durationSeconds": 4.64,
+      "text": "document typing document query selector"
+    },
+    {
+      "startSeconds": 931.92,
+      "durationSeconds": 2.479,
+      "text": "if you're unfamiliar this is kind of"
+    },
+    {
+      "startSeconds": 933.12,
+      "durationSeconds": 4.719,
+      "text": "like the jquery"
+    },
+    {
+      "startSeconds": 934.399,
+      "durationSeconds": 5.841,
+      "text": "um lookup but this will actually"
+    },
+    {
+      "startSeconds": 937.839,
+      "durationSeconds": 3.281,
+      "text": "tell you the type of the object that"
+    },
+    {
+      "startSeconds": 940.24,
+      "durationSeconds": 4.08,
+      "text": "you're fetching"
+    },
+    {
+      "startSeconds": 941.12,
+      "durationSeconds": 4.959,
+      "text": "based upon the strings so here"
+    },
+    {
+      "startSeconds": 944.32,
+      "durationSeconds": 3.199,
+      "text": "because it knows this is an anchor this"
+    },
+    {
+      "startSeconds": 946.079,
+      "durationSeconds": 4.641,
+      "text": "knows that this is going to be an"
+    },
+    {
+      "startSeconds": 947.519,
+      "durationSeconds": 5.12,
+      "text": "anchor element this is a input or a div"
+    },
+    {
+      "startSeconds": 950.72,
+      "durationSeconds": 4.4,
+      "text": "it knows this could be an input element"
+    },
+    {
+      "startSeconds": 952.639,
+      "durationSeconds": 4.481,
+      "text": "or dim you'll get the code to do that"
+    },
+    {
+      "startSeconds": 955.12,
+      "durationSeconds": 3.6,
+      "text": "and somebody knows typescript much"
+    },
+    {
+      "startSeconds": 957.12,
+      "durationSeconds": 4.56,
+      "text": "better than me"
+    },
+    {
+      "startSeconds": 958.72,
+      "durationSeconds": 3.919,
+      "text": "um this is also super useful router"
+    },
+    {
+      "startSeconds": 961.68,
+      "durationSeconds": 4.24,
+      "text": "param"
+    },
+    {
+      "startSeconds": 962.639,
+      "durationSeconds": 4.241,
+      "text": "parsing such that i was looking at the"
+    },
+    {
+      "startSeconds": 965.92,
+      "durationSeconds": 4.08,
+      "text": "examples because they're"
+    },
+    {
+      "startSeconds": 966.88,
+      "durationSeconds": 7.04,
+      "text": "live if you have some param"
+    },
+    {
+      "startSeconds": 970,
+      "durationSeconds": 8.48,
+      "text": "like this where is this"
+    },
+    {
+      "startSeconds": 973.92,
+      "durationSeconds": 7.359,
+      "text": "um where is the example ah so handle get"
+    },
+    {
+      "startSeconds": 978.48,
+      "durationSeconds": 5.039,
+      "text": "is parsing this the path this params"
+    },
+    {
+      "startSeconds": 981.279,
+      "durationSeconds": 5.841,
+      "text": "object knows that there's one param"
+    },
+    {
+      "startSeconds": 983.519,
+      "durationSeconds": 4.24,
+      "text": "of post id which is string and this has"
+    },
+    {
+      "startSeconds": 987.12,
+      "durationSeconds": 2.159,
+      "text": "post id"
+    },
+    {
+      "startSeconds": 987.759,
+      "durationSeconds": 4.161,
+      "text": "and comment and it knows both of those"
+    },
+    {
+      "startSeconds": 989.279,
+      "durationSeconds": 5.041,
+      "text": "things are valid and before"
+    },
+    {
+      "startSeconds": 991.92,
+      "durationSeconds": 4.8,
+      "text": "template literals not possible to type"
+    },
+    {
+      "startSeconds": 994.32,
+      "durationSeconds": 4.8,
+      "text": "this one could actually probably be"
+    },
+    {
+      "startSeconds": 996.72,
+      "durationSeconds": 4.479,
+      "text": "red there's some inferment going on with"
+    },
+    {
+      "startSeconds": 999.12,
+      "durationSeconds": 3.519,
+      "text": "extends and infer"
+    },
+    {
+      "startSeconds": 1001.199,
+      "durationSeconds": 4.64,
+      "text": "some conditionals depending upon what"
+    },
+    {
+      "startSeconds": 1002.639,
+      "durationSeconds": 6.64,
+      "text": "the type is but it's parsing the actual"
+    },
+    {
+      "startSeconds": 1005.839,
+      "durationSeconds": 6.161,
+      "text": "string path and extracting the"
+    },
+    {
+      "startSeconds": 1009.279,
+      "durationSeconds": 3.521,
+      "text": "parameters for you to make it type safe"
+    },
+    {
+      "startSeconds": 1012,
+      "durationSeconds": 4,
+      "text": "so there's never"
+    },
+    {
+      "startSeconds": 1012.8,
+      "durationSeconds": 6.159,
+      "text": "an issue of you doing post ld"
+    },
+    {
+      "startSeconds": 1016,
+      "durationSeconds": 4.16,
+      "text": "by mistake and it knows that it doesn't"
+    },
+    {
+      "startSeconds": 1018.959,
+      "durationSeconds": 4.32,
+      "text": "exist"
+    },
+    {
+      "startSeconds": 1020.16,
+      "durationSeconds": 6.159,
+      "text": "very cool expression parser to actually"
+    },
+    {
+      "startSeconds": 1023.279,
+      "durationSeconds": 5.68,
+      "text": "parse javascript expressions which is"
+    },
+    {
+      "startSeconds": 1026.319,
+      "durationSeconds": 3.921,
+      "text": "cool but not helpful json parsers"
+    },
+    {
+      "startSeconds": 1028.959,
+      "durationSeconds": 5.041,
+      "text": "similarly"
+    },
+    {
+      "startSeconds": 1030.24,
+      "durationSeconds": 7.199,
+      "text": "this thing is rediculous this is"
+    },
+    {
+      "startSeconds": 1034,
+      "durationSeconds": 4.16,
+      "text": "a sql database implemented purely in"
+    },
+    {
+      "startSeconds": 1037.439,
+      "durationSeconds": 5.201,
+      "text": "typescript"
+    },
+    {
+      "startSeconds": 1038.16,
+      "durationSeconds": 7.6,
+      "text": "type annotations where you have some"
+    },
+    {
+      "startSeconds": 1042.64,
+      "durationSeconds": 5.6,
+      "text": "js object that's implementing a type"
+    },
+    {
+      "startSeconds": 1045.76,
+      "durationSeconds": 3.2,
+      "text": "and you have the type of that object and"
+    },
+    {
+      "startSeconds": 1048.24,
+      "durationSeconds": 3.439,
+      "text": "you can actually"
+    },
+    {
+      "startSeconds": 1048.96,
+      "durationSeconds": 4.16,
+      "text": "query types from there and get the"
+    },
+    {
+      "startSeconds": 1051.679,
+      "durationSeconds": 3.761,
+      "text": "values back"
+    },
+    {
+      "startSeconds": 1053.12,
+      "durationSeconds": 3.679,
+      "text": "like who even thinks that you can do"
+    },
+    {
+      "startSeconds": 1055.44,
+      "durationSeconds": 4.08,
+      "text": "these things"
+    },
+    {
+      "startSeconds": 1056.799,
+      "durationSeconds": 4.161,
+      "text": "css parser so here's some css string"
+    },
+    {
+      "startSeconds": 1059.52,
+      "durationSeconds": 4.8,
+      "text": "it'll know that"
+    },
+    {
+      "startSeconds": 1060.96,
+      "durationSeconds": 5.04,
+      "text": "the body needs to have max"
+    },
+    {
+      "startSeconds": 1064.32,
+      "durationSeconds": 4.4,
+      "text": "width because that's what was defined up"
+    },
+    {
+      "startSeconds": 1066,
+      "durationSeconds": 4.08,
+      "text": "here uh what else is in here"
+    },
+    {
+      "startSeconds": 1068.72,
+      "durationSeconds": 4.16,
+      "text": "i think that was the most ones that were"
+    },
+    {
+      "startSeconds": 1070.08,
+      "durationSeconds": 6.08,
+      "text": "most cool yeah so that's kind of like to"
+    },
+    {
+      "startSeconds": 1072.88,
+      "durationSeconds": 6.88,
+      "text": "seed those examples into your mind"
+    },
+    {
+      "startSeconds": 1076.16,
+      "durationSeconds": 4.24,
+      "text": "okay that was kind of a intermediate"
+    },
+    {
+      "startSeconds": 1079.76,
+      "durationSeconds": 3.44,
+      "text": "tour"
+    },
+    {
+      "startSeconds": 1080.4,
+      "durationSeconds": 4.8,
+      "text": "of typescript template literal types a"
+    },
+    {
+      "startSeconds": 1083.2,
+      "durationSeconds": 4.88,
+      "text": "feature that i myself have not"
+    },
+    {
+      "startSeconds": 1085.2,
+      "durationSeconds": 3.28,
+      "text": "used in my day-to-day coding but one"
+    },
+    {
+      "startSeconds": 1088.08,
+      "durationSeconds": 3.28,
+      "text": "that"
+    },
+    {
+      "startSeconds": 1088.48,
+      "durationSeconds": 4.4,
+      "text": "is useful to be aware about in case you"
+    },
+    {
+      "startSeconds": 1091.36,
+      "durationSeconds": 4.64,
+      "text": "see yourself having a"
+    },
+    {
+      "startSeconds": 1092.88,
+      "durationSeconds": 4.96,
+      "text": "need that is only fit by this feature"
+    },
+    {
+      "startSeconds": 1096,
+      "durationSeconds": 3.52,
+      "text": "there are some things that you can only"
+    },
+    {
+      "startSeconds": 1097.84,
+      "durationSeconds": 4.32,
+      "text": "do with typescript"
+    },
+    {
+      "startSeconds": 1099.52,
+      "durationSeconds": 3.36,
+      "text": "template literal types and the fact that"
+    },
+    {
+      "startSeconds": 1102.16,
+      "durationSeconds": 4,
+      "text": "this"
+    },
+    {
+      "startSeconds": 1102.88,
+      "durationSeconds": 6.32,
+      "text": "feature now exists open those doors"
+    },
+    {
+      "startSeconds": 1106.16,
+      "durationSeconds": 4.399,
+      "text": "to you so i'm curious if you have used"
+    },
+    {
+      "startSeconds": 1109.2,
+      "durationSeconds": 2.88,
+      "text": "it in your day job let me know in the"
+    },
+    {
+      "startSeconds": 1110.559,
+      "durationSeconds": 4.321,
+      "text": "comments i'd be very curious to hear"
+    },
+    {
+      "startSeconds": 1112.08,
+      "durationSeconds": 4.959,
+      "text": "what pragmatic concrete examples you've"
+    },
+    {
+      "startSeconds": 1114.88,
+      "durationSeconds": 5.039,
+      "text": "had rather than just writing a"
+    },
+    {
+      "startSeconds": 1117.039,
+      "durationSeconds": 4.241,
+      "text": "json parser for the fun of it which is"
+    },
+    {
+      "startSeconds": 1119.919,
+      "durationSeconds": 3.361,
+      "text": "definitely fun"
+    },
+    {
+      "startSeconds": 1121.28,
+      "durationSeconds": 4.32,
+      "text": "uh if you enjoyed this video leave a"
+    },
+    {
+      "startSeconds": 1123.28,
+      "durationSeconds": 2.88,
+      "text": "like and a subscribe and tell all your"
+    },
+    {
+      "startSeconds": 1125.6,
+      "durationSeconds": 3.36,
+      "text": "friends"
+    },
+    {
+      "startSeconds": 1126.16,
+      "durationSeconds": 3.6,
+      "text": "and plant friends because i don't have"
+    },
+    {
+      "startSeconds": 1128.96,
+      "durationSeconds": 3.52,
+      "text": "enough plant"
+    },
+    {
+      "startSeconds": 1129.76,
+      "durationSeconds": 4.159,
+      "text": "subscribers on this channel i need to"
+    },
+    {
+      "startSeconds": 1132.48,
+      "durationSeconds": 4,
+      "text": "get those numbers back up"
+    },
+    {
+      "startSeconds": 1133.919,
+      "durationSeconds": 3.601,
+      "text": "so subscribe if you aren't already and"
+    },
+    {
+      "startSeconds": 1136.48,
+      "durationSeconds": 14.079,
+      "text": "i'll catch you again"
+    },
+    {
+      "startSeconds": 1137.52,
+      "durationSeconds": 15.12,
+      "text": "next video stay happy stay coded"
+    },
+    {
+      "startSeconds": 1150.559,
+      "durationSeconds": 2.081,
+      "text": "you"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Intro"
+    },
+    {
+      "startSeconds": 85,
+      "label": "String literals refresher"
+    },
+    {
+      "startSeconds": 286,
+      "label": "Template Literal Types"
+    },
+    {
+      "startSeconds": 328,
+      "label": "Expanding Unions"
+    },
+    {
+      "startSeconds": 398,
+      "label": "Operating on objects"
+    },
+    {
+      "startSeconds": 753,
+      "label": "String manipulation types"
+    },
+    {
+      "startSeconds": 800,
+      "label": "Awesome advanced examples"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:47.977Z"
+}

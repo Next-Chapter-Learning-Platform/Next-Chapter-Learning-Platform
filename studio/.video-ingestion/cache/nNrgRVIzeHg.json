@@ -1,0 +1,688 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "nNrgRVIzeHg",
+  "url": "https://www.youtube.com/watch?v=nNrgRVIzeHg",
+  "title": "Advanced Aggregate Functions in SQL (GROUP BY, HAVING vs. WHERE)",
+  "description": "In this step-by-step video tutorial, you will learn some more advanced SQL aggregation concepts by using the GROUP BY, HAVING, and WHERE clauses!\n\nLearn about the BASIC aggregation Functions: https://youtu.be/jcoJuc5e3RE\n\nQueries:\n1) Pull aggregate information with the GROUP BY clause: SELECT column1, column2, COUNT(column3) FROM table GROUP BY column1, column2\n2) Use the HAVING clause to filter your aggregation: SELECT column1, COUNT(column2) FROM table GROUP BY column1 HAVING COUNT(column2) = 5\n3) Use WHERE and HAVING clauses in the same query: SELECT column1, COUNT(column2) FROM table WHERE column1 = 3 GROUP BY column1 HAVING COUNT(column2) = 5\n\nGet the Northwind Database: https://www.youtube.com/watch?v=nbIicI7K6Kk\n\nSupport the Channel:\n1) Subscribe: https://www.becomingads.com/o/youtube\n2) DataCamp: https://www.becomingads.com/o/datacamp\n3) Udacity: https://www.becomingads.com/o/udacity",
+  "expectedDurationSeconds": 360,
+  "transcript": [
+    {
+      "startSeconds": 0.03,
+      "durationSeconds": 3.899,
+      "text": "in this video we do more advanced"
+    },
+    {
+      "startSeconds": 1.56,
+      "durationSeconds": 8.67,
+      "text": "aggregation using the group by and"
+    },
+    {
+      "startSeconds": 3.929,
+      "durationSeconds": 8.101,
+      "text": "having causes all right so let's get"
+    },
+    {
+      "startSeconds": 10.23,
+      "durationSeconds": 3.239,
+      "text": "into it and I am using the Northwind"
+    },
+    {
+      "startSeconds": 12.03,
+      "durationSeconds": 3.33,
+      "text": "database if you want it link in the"
+    },
+    {
+      "startSeconds": 13.469,
+      "durationSeconds": 4.291,
+      "text": "description down below and I'll be using"
+    },
+    {
+      "startSeconds": 15.36,
+      "durationSeconds": 5.06,
+      "text": "the customers table for this particular"
+    },
+    {
+      "startSeconds": 17.76,
+      "durationSeconds": 5.939,
+      "text": "example so let's do a basic select all"
+    },
+    {
+      "startSeconds": 20.42,
+      "durationSeconds": 5.23,
+      "text": "from customers get all of our"
+    },
+    {
+      "startSeconds": 23.699,
+      "durationSeconds": 4.261,
+      "text": "information here I've got to spell it"
+    },
+    {
+      "startSeconds": 25.65,
+      "durationSeconds": 4.08,
+      "text": "correctly customers so there we go"
+    },
+    {
+      "startSeconds": 27.96,
+      "durationSeconds": 4.47,
+      "text": "here's a list of all of our customers"
+    },
+    {
+      "startSeconds": 29.73,
+      "durationSeconds": 4.11,
+      "text": "and we notice that they're in a bunch of"
+    },
+    {
+      "startSeconds": 32.43,
+      "durationSeconds": 3.12,
+      "text": "different countries but some people are"
+    },
+    {
+      "startSeconds": 33.84,
+      "durationSeconds": 3.54,
+      "text": "in the same countries and let's say that"
+    },
+    {
+      "startSeconds": 35.55,
+      "durationSeconds": 4.32,
+      "text": "we want to break down their information"
+    },
+    {
+      "startSeconds": 37.38,
+      "durationSeconds": 4.109,
+      "text": "see how many customers we have in each"
+    },
+    {
+      "startSeconds": 39.87,
+      "durationSeconds": 4.349,
+      "text": "country so that's what we want to try"
+    },
+    {
+      "startSeconds": 41.489,
+      "durationSeconds": 5.971,
+      "text": "and solve first right here so what we"
+    },
+    {
+      "startSeconds": 44.219,
+      "durationSeconds": 5.43,
+      "text": "might think doing is select country so"
+    },
+    {
+      "startSeconds": 47.46,
+      "durationSeconds": 6.81,
+      "text": "we get their country and then we can use"
+    },
+    {
+      "startSeconds": 49.649,
+      "durationSeconds": 7.381,
+      "text": "account aggregate function count to to"
+    },
+    {
+      "startSeconds": 54.27,
+      "durationSeconds": 4.53,
+      "text": "get the number of customers in each"
+    },
+    {
+      "startSeconds": 57.03,
+      "durationSeconds": 3.54,
+      "text": "country right that's what we're kind of"
+    },
+    {
+      "startSeconds": 58.8,
+      "durationSeconds": 4.169,
+      "text": "thinking so we launched that query and"
+    },
+    {
+      "startSeconds": 60.57,
+      "durationSeconds": 3.979,
+      "text": "we get an error message and it says that"
+    },
+    {
+      "startSeconds": 62.969,
+      "durationSeconds": 3.631,
+      "text": "we need to use the group by clause"
+    },
+    {
+      "startSeconds": 64.549,
+      "durationSeconds": 3.701,
+      "text": "because we're using an aggregate"
+    },
+    {
+      "startSeconds": 66.6,
+      "durationSeconds": 4.74,
+      "text": "function so if you have an aggregate"
+    },
+    {
+      "startSeconds": 68.25,
+      "durationSeconds": 7.89,
+      "text": "function up in your select statement as"
+    },
+    {
+      "startSeconds": 71.34,
+      "durationSeconds": 7.02,
+      "text": "well as a regular non aggregate column"
+    },
+    {
+      "startSeconds": 76.14,
+      "durationSeconds": 4.17,
+      "text": "name here you need you need to use the"
+    },
+    {
+      "startSeconds": 78.36,
+      "durationSeconds": 5.1,
+      "text": "group by clause so that way you're"
+    },
+    {
+      "startSeconds": 80.31,
+      "durationSeconds": 5.309,
+      "text": "essentially grouping by your column name"
+    },
+    {
+      "startSeconds": 83.46,
+      "durationSeconds": 4.979,
+      "text": "and it'll aggregate on that column name"
+    },
+    {
+      "startSeconds": 85.619,
+      "durationSeconds": 5.82,
+      "text": "for your aggregate function so I'll show"
+    },
+    {
+      "startSeconds": 88.439,
+      "durationSeconds": 5.761,
+      "text": "you what I mean by using it so we got"
+    },
+    {
+      "startSeconds": 91.439,
+      "durationSeconds": 6.081,
+      "text": "select country from count all from"
+    },
+    {
+      "startSeconds": 94.2,
+      "durationSeconds": 7.379,
+      "text": "customers and then we'll do our group by"
+    },
+    {
+      "startSeconds": 97.52,
+      "durationSeconds": 6.73,
+      "text": "country so if we run that we now see"
+    },
+    {
+      "startSeconds": 101.579,
+      "durationSeconds": 6.061,
+      "text": "that we have our country name and then"
+    },
+    {
+      "startSeconds": 104.25,
+      "durationSeconds": 6.03,
+      "text": "we have a count of how many customers we"
+    },
+    {
+      "startSeconds": 107.64,
+      "durationSeconds": 4.049,
+      "text": "have with the country name with that"
+    },
+    {
+      "startSeconds": 110.28,
+      "durationSeconds": 3.81,
+      "text": "particular country name so we have like"
+    },
+    {
+      "startSeconds": 111.689,
+      "durationSeconds": 4.5,
+      "text": "3 in Argentina five in Spain two in"
+    },
+    {
+      "startSeconds": 114.09,
+      "durationSeconds": 8.55,
+      "text": "Switzerland and we could also do an"
+    },
+    {
+      "startSeconds": 116.189,
+      "durationSeconds": 8.591,
+      "text": "order by order by count and five and let"
+    },
+    {
+      "startSeconds": 122.64,
+      "durationSeconds": 5.86,
+      "text": "me do it descending this Sunday"
+    },
+    {
+      "startSeconds": 124.78,
+      "durationSeconds": 5.82,
+      "text": "five so we see that USA has 13 customers"
+    },
+    {
+      "startSeconds": 128.5,
+      "durationSeconds": 4.74,
+      "text": "followed by Germany with 11 that France"
+    },
+    {
+      "startSeconds": 130.6,
+      "durationSeconds": 3.9,
+      "text": "with 11 Brazil 9 and so on and so that's"
+    },
+    {
+      "startSeconds": 133.24,
+      "durationSeconds": 2.94,
+      "text": "pretty cool you can see how that's"
+    },
+    {
+      "startSeconds": 134.5,
+      "durationSeconds": 4.83,
+      "text": "working there now let's say we also want"
+    },
+    {
+      "startSeconds": 136.18,
+      "durationSeconds": 5.85,
+      "text": "ad in city up here so countries city and"
+    },
+    {
+      "startSeconds": 139.33,
+      "durationSeconds": 4.26,
+      "text": "we'll run it and we got another air and"
+    },
+    {
+      "startSeconds": 142.03,
+      "durationSeconds": 3.99,
+      "text": "that's because we need to also include"
+    },
+    {
+      "startSeconds": 143.59,
+      "durationSeconds": 5.91,
+      "text": "city in our group by clause down here so"
+    },
+    {
+      "startSeconds": 146.02,
+      "durationSeconds": 6.12,
+      "text": "let's go in city 5 and boom so now we"
+    },
+    {
+      "startSeconds": 149.5,
+      "durationSeconds": 5.22,
+      "text": "have it broken down by country and then"
+    },
+    {
+      "startSeconds": 152.14,
+      "durationSeconds": 4.98,
+      "text": "city and then how many customers in that"
+    },
+    {
+      "startSeconds": 154.72,
+      "durationSeconds": 3.84,
+      "text": "particular city country combination"
+    },
+    {
+      "startSeconds": 157.12,
+      "durationSeconds": 3.27,
+      "text": "right so hopefully that's making some"
+    },
+    {
+      "startSeconds": 158.56,
+      "durationSeconds": 5.22,
+      "text": "sense all right now you can also apply"
+    },
+    {
+      "startSeconds": 160.39,
+      "durationSeconds": 6.72,
+      "text": "some filters so like a where clause as"
+    },
+    {
+      "startSeconds": 163.78,
+      "durationSeconds": 6.6,
+      "text": "well as a having clause to your query so"
+    },
+    {
+      "startSeconds": 167.11,
+      "durationSeconds": 6.75,
+      "text": "having comes after the group by clause"
+    },
+    {
+      "startSeconds": 170.38,
+      "durationSeconds": 5.46,
+      "text": "so it works similarly to a where clause"
+    },
+    {
+      "startSeconds": 173.86,
+      "durationSeconds": 7.37,
+      "text": "but you can this is how you can filter"
+    },
+    {
+      "startSeconds": 175.84,
+      "durationSeconds": 10.23,
+      "text": "on your aggregation so like having count"
+    },
+    {
+      "startSeconds": 181.23,
+      "durationSeconds": 6.4,
+      "text": "as greater than 1 right so let's say"
+    },
+    {
+      "startSeconds": 186.07,
+      "durationSeconds": 4.47,
+      "text": "that we're gonna send some salespeople"
+    },
+    {
+      "startSeconds": 187.63,
+      "durationSeconds": 4.38,
+      "text": "to these countries and these cities to"
+    },
+    {
+      "startSeconds": 190.54,
+      "durationSeconds": 3.96,
+      "text": "meet with their customers and we only"
+    },
+    {
+      "startSeconds": 192.01,
+      "durationSeconds": 4.92,
+      "text": "want to send our sales person to a city"
+    },
+    {
+      "startSeconds": 194.5,
+      "durationSeconds": 4.41,
+      "text": "that has multiple customers so that way"
+    },
+    {
+      "startSeconds": 196.93,
+      "durationSeconds": 5.16,
+      "text": "you know they're not flying all the way"
+    },
+    {
+      "startSeconds": 198.91,
+      "durationSeconds": 4.71,
+      "text": "across the world to visit one city with"
+    },
+    {
+      "startSeconds": 202.09,
+      "durationSeconds": 4.05,
+      "text": "one customer and we're trying to get"
+    },
+    {
+      "startSeconds": 203.62,
+      "durationSeconds": 5.7,
+      "text": "more bang for our buck so we have that"
+    },
+    {
+      "startSeconds": 206.14,
+      "durationSeconds": 5.28,
+      "text": "having there we can filter based off of"
+    },
+    {
+      "startSeconds": 209.32,
+      "durationSeconds": 5.21,
+      "text": "our aggregate function so if I run it"
+    },
+    {
+      "startSeconds": 211.42,
+      "durationSeconds": 7.49,
+      "text": "again we see all of the cities and"
+    },
+    {
+      "startSeconds": 214.53,
+      "durationSeconds": 7.78,
+      "text": "countries that have more than one a"
+    },
+    {
+      "startSeconds": 218.91,
+      "durationSeconds": 6.24,
+      "text": "customer in it right now if I threw this"
+    },
+    {
+      "startSeconds": 222.31,
+      "durationSeconds": 9.33,
+      "text": "up here in the where clause so where"
+    },
+    {
+      "startSeconds": 225.15,
+      "durationSeconds": 10.75,
+      "text": "count is greater than one and let me"
+    },
+    {
+      "startSeconds": 231.64,
+      "durationSeconds": 7.439,
+      "text": "delete it out of here we get an error"
+    },
+    {
+      "startSeconds": 235.9,
+      "durationSeconds": 5.67,
+      "text": "message because we can't do a where"
+    },
+    {
+      "startSeconds": 239.079,
+      "durationSeconds": 4.111,
+      "text": "statement of filter on an aggregate"
+    },
+    {
+      "startSeconds": 241.57,
+      "durationSeconds": 6.139,
+      "text": "function it doesn't work like that you"
+    },
+    {
+      "startSeconds": 243.19,
+      "durationSeconds": 8.519,
+      "text": "can only do a filter with the having a"
+    },
+    {
+      "startSeconds": 247.709,
+      "durationSeconds": 6.931,
+      "text": "filter on the aggregate function with"
+    },
+    {
+      "startSeconds": 251.709,
+      "durationSeconds": 6.09,
+      "text": "the having statement which comes after"
+    },
+    {
+      "startSeconds": 254.64,
+      "durationSeconds": 3.909,
+      "text": "the group by statement now that's not to"
+    },
+    {
+      "startSeconds": 257.799,
+      "durationSeconds": 3.71,
+      "text": "say you can't"
+    },
+    {
+      "startSeconds": 258.549,
+      "durationSeconds": 7.981,
+      "text": "we're lost for example we could do where"
+    },
+    {
+      "startSeconds": 261.509,
+      "durationSeconds": 7.541,
+      "text": "country like I don't know let's say one"
+    },
+    {
+      "startSeconds": 266.53,
+      "durationSeconds": 5.699,
+      "text": "that has an A and a in it for whatever"
+    },
+    {
+      "startSeconds": 269.05,
+      "durationSeconds": 5.07,
+      "text": "reason so I want a sort or filter for"
+    },
+    {
+      "startSeconds": 272.229,
+      "durationSeconds": 6.06,
+      "text": "countries that have an A in them and"
+    },
+    {
+      "startSeconds": 274.12,
+      "durationSeconds": 4.769,
+      "text": "then having and will leave leave that"
+    },
+    {
+      "startSeconds": 278.289,
+      "durationSeconds": 3.87,
+      "text": "out of there"
+    },
+    {
+      "startSeconds": 278.889,
+      "durationSeconds": 6.99,
+      "text": "so f5 so now we see all countries that"
+    },
+    {
+      "startSeconds": 282.159,
+      "durationSeconds": 5.641,
+      "text": "have an A in them feature here so you"
+    },
+    {
+      "startSeconds": 285.879,
+      "durationSeconds": 4.35,
+      "text": "see that you can use a where where"
+    },
+    {
+      "startSeconds": 287.8,
+      "durationSeconds": 8.91,
+      "text": "clause as well and if you wanted to"
+    },
+    {
+      "startSeconds": 290.229,
+      "durationSeconds": 10.801,
+      "text": "having count of let's say less than"
+    },
+    {
+      "startSeconds": 296.71,
+      "durationSeconds": 7.739,
+      "text": "three f5 so now we're looking for all"
+    },
+    {
+      "startSeconds": 301.03,
+      "durationSeconds": 6.03,
+      "text": "countries that have an A in them and we"
+    },
+    {
+      "startSeconds": 304.449,
+      "durationSeconds": 5.491,
+      "text": "have less than three customers in that"
+    },
+    {
+      "startSeconds": 307.06,
+      "durationSeconds": 5.31,
+      "text": "particular city over here city country"
+    },
+    {
+      "startSeconds": 309.94,
+      "durationSeconds": 4.86,
+      "text": "combination and for one last bit of a"
+    },
+    {
+      "startSeconds": 312.37,
+      "durationSeconds": 4.62,
+      "text": "shortcut we can also instead of doing"
+    },
+    {
+      "startSeconds": 314.8,
+      "durationSeconds": 4.829,
+      "text": "group by countries sitting and writing"
+    },
+    {
+      "startSeconds": 316.99,
+      "durationSeconds": 5.04,
+      "text": "out the the name of our columns we could"
+    },
+    {
+      "startSeconds": 319.629,
+      "durationSeconds": 5.641,
+      "text": "do some shorthand and just do one two"
+    },
+    {
+      "startSeconds": 322.03,
+      "durationSeconds": 5.669,
+      "text": "and run that and we get the same result"
+    },
+    {
+      "startSeconds": 325.27,
+      "durationSeconds": 3.69,
+      "text": "as when we typed in country city here"
+    },
+    {
+      "startSeconds": 327.699,
+      "durationSeconds": 3.391,
+      "text": "we're just doing a little bit of"
+    },
+    {
+      "startSeconds": 328.96,
+      "durationSeconds": 3.959,
+      "text": "shorthand just to keep things clean and"
+    },
+    {
+      "startSeconds": 331.09,
+      "durationSeconds": 4.199,
+      "text": "simple and also if you're selecting"
+    },
+    {
+      "startSeconds": 332.919,
+      "durationSeconds": 3.93,
+      "text": "multiple columns and you have like get"
+    },
+    {
+      "startSeconds": 335.289,
+      "durationSeconds": 3.12,
+      "text": "going like three or four deep you don't"
+    },
+    {
+      "startSeconds": 336.849,
+      "durationSeconds": 3.63,
+      "text": "have to type out you know three or four"
+    },
+    {
+      "startSeconds": 338.409,
+      "durationSeconds": 4.141,
+      "text": "different columns you can just use these"
+    },
+    {
+      "startSeconds": 340.479,
+      "durationSeconds": 3.361,
+      "text": "numbers to keep things straight and so"
+    },
+    {
+      "startSeconds": 342.55,
+      "durationSeconds": 3.06,
+      "text": "that's really it for this video we"
+    },
+    {
+      "startSeconds": 343.84,
+      "durationSeconds": 3.829,
+      "text": "covered more advanced aggregate"
+    },
+    {
+      "startSeconds": 345.61,
+      "durationSeconds": 5.1,
+      "text": "functions including using group by"
+    },
+    {
+      "startSeconds": 347.669,
+      "durationSeconds": 4.72,
+      "text": "having and where clauses and if you"
+    },
+    {
+      "startSeconds": 350.71,
+      "durationSeconds": 3.6,
+      "text": "found this video helpful in any way"
+    },
+    {
+      "startSeconds": 352.389,
+      "durationSeconds": 3.93,
+      "text": "shape or form I appreciate a like"
+    },
+    {
+      "startSeconds": 354.31,
+      "durationSeconds": 3.87,
+      "text": "comment subscribe anything like that and"
+    },
+    {
+      "startSeconds": 356.319,
+      "durationSeconds": 3.921,
+      "text": "I hope that you have a great rest of the"
+    },
+    {
+      "startSeconds": 358.18,
+      "durationSeconds": 2.06,
+      "text": "day"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:06.245Z"
+}

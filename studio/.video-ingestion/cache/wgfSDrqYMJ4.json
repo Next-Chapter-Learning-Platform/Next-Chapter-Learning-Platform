@@ -1,0 +1,678 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "wgfSDrqYMJ4",
+  "url": "https://www.youtube.com/watch?v=wgfSDrqYMJ4",
+  "title": "What are Word Embeddings?",
+  "description": "Want to play with the technology yourself? Explore our interactive demo → https://ibm.biz/BdKet3\nLearn more about the technology → https://ibm.biz/BdKetT\n\nWord Embeddings the means of turning natural language into numerical vectors for machine learning tasks. Martin Keen explains how this process works, the varies means of creating vectors like GLOVE, word2vec, CBOW, and the impact of new transformer models are having on completing natural language processing (NLP) tasks.\n\nAI news moves fast. Sign up for a monthly newsletter for AI updates from IBM → https://ibm.biz/BdKetQ",
+  "expectedDurationSeconds": 518,
+  "transcript": [
+    {
+      "startSeconds": 0.2,
+      "durationSeconds": 3.003,
+      "text": "A word on word embeddings."
+    },
+    {
+      "startSeconds": 3.837,
+      "durationSeconds": 1.301,
+      "text": "Maybe a few words."
+    },
+    {
+      "startSeconds": 5.138,
+      "durationSeconds": 3.111,
+      "text": "Word embeddings\nrepresent words as numbers,"
+    },
+    {
+      "startSeconds": 8.249,
+      "durationSeconds": 3.956,
+      "text": "specifically as numeric vectors,"
+    },
+    {
+      "startSeconds": 12.639,
+      "durationSeconds": 5.212,
+      "text": "in a way that captures the semantic relationships\nand contextual information."
+    },
+    {
+      "startSeconds": 17.851,
+      "durationSeconds": 3.036,
+      "text": "So that means words with similar\nmeanings are positioned"
+    },
+    {
+      "startSeconds": 20.887,
+      "durationSeconds": 3.737,
+      "text": "close to each other, and the distance\nand direction between vectors"
+    },
+    {
+      "startSeconds": 24.824,
+      "durationSeconds": 3.962,
+      "text": "encode the degree of similarity\nbetween words."
+    },
+    {
+      "startSeconds": 29.015,
+      "durationSeconds": 4.538,
+      "text": "But why do we need to transform words\ninto numbers?"
+    },
+    {
+      "startSeconds": 33.8,
+      "durationSeconds": 3.158,
+      "text": "The reason vectors are used to represent words is that"
+    },
+    {
+      "startSeconds": 36.958,
+      "durationSeconds": 3.311,
+      "text": "most machine learning algorithms are just incapable of processing"
+    },
+    {
+      "startSeconds": 40.269,
+      "durationSeconds": 2.031,
+      "text": "plain text in its raw form."
+    },
+    {
+      "startSeconds": 42.475,
+      "durationSeconds": 3.844,
+      "text": "They require numbers as input to perform any task,"
+    },
+    {
+      "startSeconds": 46.319,
+      "durationSeconds": 2.096,
+      "text": "and that's where word embeddings come in."
+    },
+    {
+      "startSeconds": 48.448,
+      "durationSeconds": 5.389,
+      "text": "So let's take a look at how word embeddings are used\nand the model is used to create them."
+    },
+    {
+      "startSeconds": 54.054,
+      "durationSeconds": 1.868,
+      "text": "And let's start with a\nlook at some applications."
+    },
+    {
+      "startSeconds": 55.922,
+      "durationSeconds": 2.97,
+      "text": "Now what embeddings have become\na fundamental tool"
+    },
+    {
+      "startSeconds": 59.097,
+      "durationSeconds": 3.003,
+      "text": "in the world of NLP."
+    },
+    {
+      "startSeconds": 62.39,
+      "durationSeconds": 3.303,
+      "text": "That's natural language processing."
+    },
+    {
+      "startSeconds": 66.674,
+      "durationSeconds": 3.871,
+      "text": "Natural language processing helps machines understand\nhuman language."
+    },
+    {
+      "startSeconds": 70.87,
+      "durationSeconds": 3.904,
+      "text": "Word embeddings are used in\nvarious NLP tasks, so for example,"
+    },
+    {
+      "startSeconds": 75.041,
+      "durationSeconds": 4.646,
+      "text": "you'll find them used in text classification very frequently."
+    },
+    {
+      "startSeconds": 79.687,
+      "durationSeconds": 4.528,
+      "text": "Now in text classification, word embeddings are often used in tasks such as"
+    },
+    {
+      "startSeconds": 84.215,
+      "durationSeconds": 3.238,
+      "text": "spam detection and topic categorization."
+    },
+    {
+      "startSeconds": 87.587,
+      "durationSeconds": 4.004,
+      "text": "Another common task is NER,"
+    },
+    {
+      "startSeconds": 91.591,
+      "durationSeconds": 3.003,
+      "text": "that's an acronym for named entity recognition,"
+    },
+    {
+      "startSeconds": 95.261,
+      "durationSeconds": 3.804,
+      "text": "and there is used to identify\nand classify entities in text."
+    },
+    {
+      "startSeconds": 99.065,
+      "durationSeconds": 4.138,
+      "text": "And an entity is like a name of a person\nor a place or an organization."
+    },
+    {
+      "startSeconds": 103.87,
+      "durationSeconds": 3.37,
+      "text": "Now, word embeddings can also help with tasks"
+    },
+    {
+      "startSeconds": 107.24,
+      "durationSeconds": 6.039,
+      "text": "related to word similarity and word analogy tasks."
+    },
+    {
+      "startSeconds": 113.279,
+      "durationSeconds": 4.471,
+      "text": "So, for example, the king is the queen\nas man is to a woman,"
+    },
+    {
+      "startSeconds": 118.384,
+      "durationSeconds": 3.07,
+      "text": "and then another example is in Q&A."
+    },
+    {
+      "startSeconds": 121.488,
+      "durationSeconds": 3.211,
+      "text": "So question and answering systems"
+    },
+    {
+      "startSeconds": 124.699,
+      "durationSeconds": 3.953,
+      "text": "they can benefit from word embeddings for measuring semantic"
+    },
+    {
+      "startSeconds": 128.652,
+      "durationSeconds": 3.125,
+      "text": "similarities between words or documents for tasks like"
+    },
+    {
+      "startSeconds": 131.777,
+      "durationSeconds": 3.689,
+      "text": "clustering related articles, or finding similar documents, or"
+    },
+    {
+      "startSeconds": 135.466,
+      "durationSeconds": 2.103,
+      "text": "recommending similar items."
+    },
+    {
+      "startSeconds": 137.804,
+      "durationSeconds": 5.205,
+      "text": "Now, word embeddings are created by\ntrained models on a large corpus of text."
+    },
+    {
+      "startSeconds": 143.009,
+      "durationSeconds": 2.612,
+      "text": "So maybe, like all of Wikipedia,"
+    },
+    {
+      "startSeconds": 145.621,
+      "durationSeconds": 2.324,
+      "text": "the process begins with preprocessing the text,"
+    },
+    {
+      "startSeconds": 147.945,
+      "durationSeconds": 2.772,
+      "text": "including tokenization and removing stopwords and punctuation."
+    },
+    {
+      "startSeconds": 151.251,
+      "durationSeconds": 3.503,
+      "text": "A sliding context window identifies target and context words,"
+    },
+    {
+      "startSeconds": 154.954,
+      "durationSeconds": 2.836,
+      "text": "allowing the model to learn word relationships."
+    },
+    {
+      "startSeconds": 157.79,
+      "durationSeconds": 3.137,
+      "text": "Then the model is trained to predict\nbased on their context."
+    },
+    {
+      "startSeconds": 160.927,
+      "durationSeconds": 2.532,
+      "text": "Positioning semantically similar words close together"
+    },
+    {
+      "startSeconds": 163.459,
+      "durationSeconds": 2.807,
+      "text": "in the vector space and throughout the training,"
+    },
+    {
+      "startSeconds": 166.566,
+      "durationSeconds": 3.637,
+      "text": "the model parameters are adjusted\nto minimize prediction errors."
+    },
+    {
+      "startSeconds": 170.503,
+      "durationSeconds": 2.803,
+      "text": "So what does this look like?"
+    },
+    {
+      "startSeconds": 173.306,
+      "durationSeconds": 4.805,
+      "text": "Well, let's start with a super small\ncorpus of just six words."
+    },
+    {
+      "startSeconds": 178.678,
+      "durationSeconds": 1.401,
+      "text": "Here they are."
+    },
+    {
+      "startSeconds": 180.079,
+      "durationSeconds": 4.238,
+      "text": "Now we'll represent each word\nas a three dimensional vector."
+    },
+    {
+      "startSeconds": 185.485,
+      "durationSeconds": 1.668,
+      "text": "So each dimension"
+    },
+    {
+      "startSeconds": 187.153,
+      "durationSeconds": 4.038,
+      "text": "has a numeric value\ncreating a unique vector for each word."
+    },
+    {
+      "startSeconds": 191.457,
+      "durationSeconds": 2.136,
+      "text": "And these values\nrepresent the word's position"
+    },
+    {
+      "startSeconds": 193.593,
+      "durationSeconds": 2.369,
+      "text": "in a continuous three dimensional vector space."
+    },
+    {
+      "startSeconds": 195.962,
+      "durationSeconds": 4.271,
+      "text": "And if you look closely, you can see that words with similar"
+    },
+    {
+      "startSeconds": 200.233,
+      "durationSeconds": 4.037,
+      "text": "meanings or contexts\nhave similar vector representations."
+    },
+    {
+      "startSeconds": 204.437,
+      "durationSeconds": 3.737,
+      "text": "So, for instance, the vectors for apple and for orange"
+    },
+    {
+      "startSeconds": 208.441,
+      "durationSeconds": 3.27,
+      "text": "are close together,\nreflecting this semantic relationship."
+    },
+    {
+      "startSeconds": 212.145,
+      "durationSeconds": 3.971,
+      "text": "Likewise, the vectors for happy\nand sad have opposite directions,"
+    },
+    {
+      "startSeconds": 216.116,
+      "durationSeconds": 2.202,
+      "text": "indicating their contrasting meanings."
+    },
+    {
+      "startSeconds": 218.685,
+      "durationSeconds": 3.303,
+      "text": "Now, of course, in real life, it's\nnot this simple."
+    },
+    {
+      "startSeconds": 222.088,
+      "durationSeconds": 3.37,
+      "text": "A corpus of six words isn't going to be too helpful in practice,"
+    },
+    {
+      "startSeconds": 225.758,
+      "durationSeconds": 4.138,
+      "text": "and actual word embeddings typically have\nhundreds of dimensions, not just three."
+    },
+    {
+      "startSeconds": 230.163,
+      "durationSeconds": 3.87,
+      "text": "To capture more intricate relationships\nand nuances in meaning."
+    },
+    {
+      "startSeconds": 234.701,
+      "durationSeconds": 3.37,
+      "text": "Now, there are two fundamental approaches\nto how word"
+    },
+    {
+      "startSeconds": 238.071,
+      "durationSeconds": 4.004,
+      "text": "embedding methods generate\neffective representations for words."
+    },
+    {
+      "startSeconds": 242.308,
+      "durationSeconds": 3.737,
+      "text": "So let's take a look\nat some of these embedding methods."
+    },
+    {
+      "startSeconds": 246.512,
+      "durationSeconds": 5.84,
+      "text": "And we'll start with the first one\nwhich is frequency."
+    },
+    {
+      "startSeconds": 252.552,
+      "durationSeconds": 3.37,
+      "text": "So frequency based embeddings."
+    },
+    {
+      "startSeconds": 256.923,
+      "durationSeconds": 2.869,
+      "text": "Now frequency based embeddings are word"
+    },
+    {
+      "startSeconds": 259.792,
+      "durationSeconds": 3.904,
+      "text": "representations that are derived\nfrom the frequency of words in a corpus."
+    },
+    {
+      "startSeconds": 264.197,
+      "durationSeconds": 3.27,
+      "text": "They're based on the idea that the\nimportance or the significance of a word"
+    },
+    {
+      "startSeconds": 267.467,
+      "durationSeconds": 3.847,
+      "text": "can be inferred from how frequently it occurs in the text."
+    },
+    {
+      "startSeconds": 271.314,
+      "durationSeconds": 7.303,
+      "text": "Now, one such embedding of frequency\nbased is called TF-IDF"
+    },
+    {
+      "startSeconds": 279.051,
+      "durationSeconds": 4.665,
+      "text": "that stands for Term Frequency Inverse Document Frequency."
+    },
+    {
+      "startSeconds": 283.716,
+      "durationSeconds": 3.504,
+      "text": "TF-IDF highlights words that are frequent"
+    },
+    {
+      "startSeconds": 287.22,
+      "durationSeconds": 4.538,
+      "text": "within a specific document,\nbut are rare across the entire corpus."
+    },
+    {
+      "startSeconds": 291.791,
+      "durationSeconds": 5.105,
+      "text": "So, for example, in a document\nabout coffee, TF-IDF would emphasize words"
+    },
+    {
+      "startSeconds": 296.896,
+      "durationSeconds": 3.837,
+      "text": "like espresso or cappuccino,\nwhich might appear often"
+    },
+    {
+      "startSeconds": 300.733,
+      "durationSeconds": 3.537,
+      "text": "in that document, but rarely in others\nabout different topics."
+    },
+    {
+      "startSeconds": 304.604,
+      "durationSeconds": 5.038,
+      "text": "Common words like the or and, which appear\nfrequently across all documents,"
+    },
+    {
+      "startSeconds": 309.809,
+      "durationSeconds": 3.837,
+      "text": "would receive low TF-IDF based scores."
+    },
+    {
+      "startSeconds": 314.614,
+      "durationSeconds": 2.569,
+      "text": "Now another embedding type"
+    },
+    {
+      "startSeconds": 317.183,
+      "durationSeconds": 3.871,
+      "text": "is called prediction based embeddings"
+    },
+    {
+      "startSeconds": 321.721,
+      "durationSeconds": 2.669,
+      "text": "and prediction based embeddings."
+    },
+    {
+      "startSeconds": 324.39,
+      "durationSeconds": 5.239,
+      "text": "They capture semantic relationships\nand contextual information between words."
+    },
+    {
+      "startSeconds": 329.762,
+      "durationSeconds": 6.84,
+      "text": "So, for example, in the sentences,\n\"the dog is barking loudly.\" and \"the dog is wagging its tail.\""
+    },
+    {
+      "startSeconds": 336.936,
+      "durationSeconds": 3.604,
+      "text": "A prediction based model would learn to associate dog"
+    },
+    {
+      "startSeconds": 340.74,
+      "durationSeconds": 3.003,
+      "text": "with words like bark, wag, and tail."
+    },
+    {
+      "startSeconds": 343.843,
+      "durationSeconds": 3.303,
+      "text": "This allows these models to create a single fixed representation"
+    },
+    {
+      "startSeconds": 347.146,
+      "durationSeconds": 4.071,
+      "text": "for dog that encompasses various, well, dog related concepts."
+    },
+    {
+      "startSeconds": 351.851,
+      "durationSeconds": 1.502,
+      "text": "Prediction based embeddings."
+    },
+    {
+      "startSeconds": 353.353,
+      "durationSeconds": 3.069,
+      "text": "They excel at separating words\nwith close meanings,"
+    },
+    {
+      "startSeconds": 356.422,
+      "durationSeconds": 3.404,
+      "text": "and can manage the various senses\nin which a word may be used."
+    },
+    {
+      "startSeconds": 360.66,
+      "durationSeconds": 3.97,
+      "text": "Now there are various models for generating word embeddings."
+    },
+    {
+      "startSeconds": 365.131,
+      "durationSeconds": 5.472,
+      "text": "One of the most popular\nis called word2vec"
+    },
+    {
+      "startSeconds": 370.87,
+      "durationSeconds": 3.003,
+      "text": "that was developed by Google in 2013."
+    },
+    {
+      "startSeconds": 373.906,
+      "durationSeconds": 3.304,
+      "text": "Now word2vec\nhas two main architectures."
+    },
+    {
+      "startSeconds": 377.543,
+      "durationSeconds": 3.27,
+      "text": "There's something called c b, o, w"
+    },
+    {
+      "startSeconds": 381.18,
+      "durationSeconds": 3.625,
+      "text": "and there's something called skip-gram,"
+    },
+    {
+      "startSeconds": 384.805,
+      "durationSeconds": 4.25,
+      "text": "and CBOW, that's an acronym\nfor Continuous Bag of Words."
+    },
+    {
+      "startSeconds": 389.355,
+      "durationSeconds": 5.272,
+      "text": "Now CBOW predicts a target word\nbased on its surrounding context words."
+    },
+    {
+      "startSeconds": 394.627,
+      "durationSeconds": 2.136,
+      "text": "Well, skip-gram does the opposite,"
+    },
+    {
+      "startSeconds": 396.763,
+      "durationSeconds": 3.003,
+      "text": "predicting the context words\ngiven a target word."
+    },
+    {
+      "startSeconds": 399.899,
+      "durationSeconds": 3.437,
+      "text": "Now another popular method is called\nGLOVE."
+    },
+    {
+      "startSeconds": 403.636,
+      "durationSeconds": 5.465,
+      "text": "Also an acronym, that one stands for Global Vectors for Word Representation."
+    },
+    {
+      "startSeconds": 409.101,
+      "durationSeconds": 2.943,
+      "text": "That was created at Stanford University in 2014"
+    },
+    {
+      "startSeconds": 412.378,
+      "durationSeconds": 3.771,
+      "text": "and that uses co-occurrence statistics\nto create word vectors."
+    },
+    {
+      "startSeconds": 416.582,
+      "durationSeconds": 2.503,
+      "text": "Now, these models, they differ in their approach."
+    },
+    {
+      "startSeconds": 419.085,
+      "durationSeconds": 4.504,
+      "text": "What's a vec that focuses on learning from\nthe immediate context around each word?"
+    },
+    {
+      "startSeconds": 423.856,
+      "durationSeconds": 2.536,
+      "text": "While glove takes a broader view\nby analyzing"
+    },
+    {
+      "startSeconds": 426.392,
+      "durationSeconds": 3.737,
+      "text": "how often words appear together\nacross the entire corpus,"
+    },
+    {
+      "startSeconds": 430.329,
+      "durationSeconds": 3.003,
+      "text": "then uses this information\nto create word vectors."
+    },
+    {
+      "startSeconds": 433.633,
+      "durationSeconds": 4.771,
+      "text": "Now, while these two word embedding models\ncontinue to be valuable tools in NLP,"
+    },
+    {
+      "startSeconds": 439.005,
+      "durationSeconds": 2.936,
+      "text": "the field has seen some\nsignificant advances with the emergence"
+    },
+    {
+      "startSeconds": 441.941,
+      "durationSeconds": 3.003,
+      "text": "of new tech, particularly transformers."
+    },
+    {
+      "startSeconds": 445.011,
+      "durationSeconds": 3.97,
+      "text": "While traditional word embeddings\nassign a fixed vector to each word,"
+    },
+    {
+      "startSeconds": 449.315,
+      "durationSeconds": 3.804,
+      "text": "transformer models use a different type of embedding,"
+    },
+    {
+      "startSeconds": 453.352,
+      "durationSeconds": 3.604,
+      "text": "and it's called a contextual based embedding."
+    },
+    {
+      "startSeconds": 457.59,
+      "durationSeconds": 3.237,
+      "text": "Now, contextual based embeddings are where"
+    },
+    {
+      "startSeconds": 460.827,
+      "durationSeconds": 4.337,
+      "text": "the representation of a word changes based on its surrounding context."
+    },
+    {
+      "startSeconds": 465.198,
+      "durationSeconds": 1.968,
+      "text": "So, for example, in a transformer model,"
+    },
+    {
+      "startSeconds": 467.166,
+      "durationSeconds": 3.537,
+      "text": "the word bank would have different\nrepresentations in the sentence"
+    },
+    {
+      "startSeconds": 470.97,
+      "durationSeconds": 4.872,
+      "text": "I'm going to the bank to deposit money\nand I'm sitting on the bank of a river."
+    },
+    {
+      "startSeconds": 476.576,
+      "durationSeconds": 2.736,
+      "text": "This context sensitivity\nallows these models to capture"
+    },
+    {
+      "startSeconds": 479.312,
+      "durationSeconds": 4.504,
+      "text": "more nuanced meanings and relationships\nbetween words, which has led to all sorts"
+    },
+    {
+      "startSeconds": 483.816,
+      "durationSeconds": 3.637,
+      "text": "of improvements in the various fields of NLP tasks."
+    },
+    {
+      "startSeconds": 488.12,
+      "durationSeconds": 2.084,
+      "text": "So that's word embeddings,"
+    },
+    {
+      "startSeconds": 490.204,
+      "durationSeconds": 4.59,
+      "text": "from simple numeric vectors to complex representations."
+    },
+    {
+      "startSeconds": 495.127,
+      "durationSeconds": 5.339,
+      "text": "Word embeddings have revolutionized how machines understand and process human language."
+    },
+    {
+      "startSeconds": 500.466,
+      "durationSeconds": 4.538,
+      "text": "Proving that transforming words\ninto numbers is indeed a powerful tool"
+    },
+    {
+      "startSeconds": 505.171,
+      "durationSeconds": 2.869,
+      "text": "for making sense of our linguistic world."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:22:52.618Z"
+}

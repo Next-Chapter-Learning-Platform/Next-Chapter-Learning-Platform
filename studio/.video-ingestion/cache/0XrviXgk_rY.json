@@ -1,0 +1,1317 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "0XrviXgk_rY",
+  "url": "https://www.youtube.com/watch?v=0XrviXgk_rY",
+  "title": "TypeScript tsconfig.json Explained: Strict Mode, Paths & More",
+  "description": "Ever opened a tsconfig.json file and felt completely lost? You're not alone. This beginner-friendly deep dive breaks down every important compiler option in TypeScript's configuration file — what each one does, why it matters, and how to set it up the right way. By the end, you'll never blindly copy a tsconfig from Stack Overflow again.\n\nWe walk through creating a tsconfig from scratch, then explore the options that actually matter: target and module for output control, strict mode and all the safety flags it unlocks, path aliases that kill those ugly '../../../' imports, the difference between include and exclude, source maps for debugging, and modern options recommended as of 2026. Every concept is shown with real code in VS Code and real terminal output so you can follow along.\n\nIf this helped TypeScript finally click for you, hit subscribe and check out the full TypeScript track playlist. Got a tsconfig option that still confuses you? Drop it in the comments and we'll explain it. Let's get started!\n\n─────────────────────────────\n📚 CHAPTERS\n\n00:00 Introduction\n00:00 What is tsconfig.json?\n00:45 Creating the file\n01:25 The basic structure\n02:15 target — which JavaScript version\n03:10 module — how imports work\n04:05 outDir and rootDir\n04:55 strict mode — the big one\n05:55 What strict actually turns on\n06:55 strictNullChecks in action\n07:50 noImplicitAny\n08:40 Path aliases — baseUrl and paths\n09:40 Using the alias in code\n10:25 include and exclude\n11:15 sourceMap and declaration\n12:05 Modern recommended options 2026\n13:00 Putting it all together\n13:55 Verify it works\n\n─────────────────────────────\n🔗 LINKS\n📺 Full Course Playlist: https://www.youtube.com/@SukridLearnHub\n🌐 Website: https://www.sukrid.com/learnhub\n\n─────────────────────────────\n⚡ SUKRID LEARNHUB\nFree technology education — AI, TypeScript, React, Next.js, Node.js, Golang, and Engineering.\nNew videos regularly. All content free, forever.\n\n#typescript #tsconfig #tsconfig.json tutorial #typescript strict mode #typescript compiler options",
+  "expectedDurationSeconds": 593,
+  "transcript": [
+    {
+      "startSeconds": 4.08,
+      "durationSeconds": 4.92,
+      "text": "This one file decides whether TypeScript"
+    },
+    {
+      "startSeconds": 6.16,
+      "durationSeconds": 4.36,
+      "text": "catches your bugs before your users do"
+    },
+    {
+      "startSeconds": 9,
+      "durationSeconds": 2.92,
+      "text": "or lets them slip straight into"
+    },
+    {
+      "startSeconds": 10.52,
+      "durationSeconds": 5.92,
+      "text": "production."
+    },
+    {
+      "startSeconds": 11.92,
+      "durationSeconds": 6.04,
+      "text": "Most developers copy a tsconfig.json"
+    },
+    {
+      "startSeconds": 16.44,
+      "durationSeconds": 3.44,
+      "text": "from the internet"
+    },
+    {
+      "startSeconds": 17.96,
+      "durationSeconds": 4.72,
+      "text": "and never understand a single line"
+    },
+    {
+      "startSeconds": 19.88,
+      "durationSeconds": 4.72,
+      "text": "inside it. That's the mistake."
+    },
+    {
+      "startSeconds": 22.68,
+      "durationSeconds": 4.16,
+      "text": "Master this file"
+    },
+    {
+      "startSeconds": 24.6,
+      "durationSeconds": 4.24,
+      "text": "and TypeScript becomes your most"
+    },
+    {
+      "startSeconds": 26.84,
+      "durationSeconds": 5,
+      "text": "powerful safety net."
+    },
+    {
+      "startSeconds": 28.84,
+      "durationSeconds": 5.56,
+      "text": "Let's actually understand it option by"
+    },
+    {
+      "startSeconds": 31.84,
+      "durationSeconds": 5.28,
+      "text": "option. So, what exactly is"
+    },
+    {
+      "startSeconds": 34.4,
+      "durationSeconds": 4.4,
+      "text": "tsconfig.json?"
+    },
+    {
+      "startSeconds": 37.12,
+      "durationSeconds": 3.48,
+      "text": "Think of it as the rulebook for the"
+    },
+    {
+      "startSeconds": 38.8,
+      "durationSeconds": 3.84,
+      "text": "TypeScript compiler."
+    },
+    {
+      "startSeconds": 40.6,
+      "durationSeconds": 4.24,
+      "text": "When you run TypeScript, it looks for"
+    },
+    {
+      "startSeconds": 42.64,
+      "durationSeconds": 4.2,
+      "text": "this file in your project root and"
+    },
+    {
+      "startSeconds": 44.84,
+      "durationSeconds": 3.28,
+      "text": "follows whatever instructions you put"
+    },
+    {
+      "startSeconds": 46.84,
+      "durationSeconds": 3.72,
+      "text": "inside."
+    },
+    {
+      "startSeconds": 48.12,
+      "durationSeconds": 4.88,
+      "text": "It controls how your code gets checked,"
+    },
+    {
+      "startSeconds": 50.56,
+      "durationSeconds": 4.32,
+      "text": "where the output goes, and how strict"
+    },
+    {
+      "startSeconds": 53,
+      "durationSeconds": 4.76,
+      "text": "the type checking should be."
+    },
+    {
+      "startSeconds": 54.88,
+      "durationSeconds": 4.32,
+      "text": "Without it, TypeScript just guesses with"
+    },
+    {
+      "startSeconds": 57.76,
+      "durationSeconds": 3.64,
+      "text": "defaults."
+    },
+    {
+      "startSeconds": 59.2,
+      "durationSeconds": 4.84,
+      "text": "And the defaults are rarely what you"
+    },
+    {
+      "startSeconds": 61.4,
+      "durationSeconds": 4.68,
+      "text": "want. Let's create one from scratch. The"
+    },
+    {
+      "startSeconds": 64.04,
+      "durationSeconds": 3.72,
+      "text": "easiest way is to let TypeScript"
+    },
+    {
+      "startSeconds": 66.08,
+      "durationSeconds": 5.64,
+      "text": "generate it for you."
+    },
+    {
+      "startSeconds": 67.76,
+      "durationSeconds": 5.36,
+      "text": "Open your terminal and run npx tsc"
+    },
+    {
+      "startSeconds": 71.72,
+      "durationSeconds": 4.64,
+      "text": "init."
+    },
+    {
+      "startSeconds": 73.12,
+      "durationSeconds": 6.12,
+      "text": "This creates a tsconfig."
+    },
+    {
+      "startSeconds": 76.36,
+      "durationSeconds": 4.6,
+      "text": "json with sensible defaults and tons of"
+    },
+    {
+      "startSeconds": 79.24,
+      "durationSeconds": 3.08,
+      "text": "commented-out options you can turn on"
+    },
+    {
+      "startSeconds": 80.96,
+      "durationSeconds": 3.12,
+      "text": "later."
+    },
+    {
+      "startSeconds": 82.32,
+      "durationSeconds": 3.24,
+      "text": "Notice it doesn't install anything"
+    },
+    {
+      "startSeconds": 84.08,
+      "durationSeconds": 3.88,
+      "text": "globally."
+    },
+    {
+      "startSeconds": 85.56,
+      "durationSeconds": 5,
+      "text": "npx grabs the TypeScript compiler on"
+    },
+    {
+      "startSeconds": 87.96,
+      "durationSeconds": 4.2,
+      "text": "demand. Here's the file it generates,"
+    },
+    {
+      "startSeconds": 90.56,
+      "durationSeconds": 3.56,
+      "text": "cleaned up."
+    },
+    {
+      "startSeconds": 92.16,
+      "durationSeconds": 4.04,
+      "text": "Everything important lives inside a key"
+    },
+    {
+      "startSeconds": 94.12,
+      "durationSeconds": 5.08,
+      "text": "called compilerOptions."
+    },
+    {
+      "startSeconds": 96.2,
+      "durationSeconds": 6.4,
+      "text": "That's where 90% of your settings go."
+    },
+    {
+      "startSeconds": 99.2,
+      "durationSeconds": 6.12,
+      "text": "Outside it, you'll often add include and"
+    },
+    {
+      "startSeconds": 102.6,
+      "durationSeconds": 4.2,
+      "text": "exclude arrays to tell TypeScript which"
+    },
+    {
+      "startSeconds": 105.32,
+      "durationSeconds": 3.12,
+      "text": "files to look at."
+    },
+    {
+      "startSeconds": 106.8,
+      "durationSeconds": 2.68,
+      "text": "Don't worry about memorizing all of"
+    },
+    {
+      "startSeconds": 108.44,
+      "durationSeconds": 2.92,
+      "text": "this."
+    },
+    {
+      "startSeconds": 109.48,
+      "durationSeconds": 4.44,
+      "text": "We'll break each piece down one at a"
+    },
+    {
+      "startSeconds": 111.36,
+      "durationSeconds": 4.48,
+      "text": "time. Let's start with target."
+    },
+    {
+      "startSeconds": 113.92,
+      "durationSeconds": 4.12,
+      "text": "TypeScript compiles down to plain"
+    },
+    {
+      "startSeconds": 115.84,
+      "durationSeconds": 5.56,
+      "text": "JavaScript, but which version of"
+    },
+    {
+      "startSeconds": 118.04,
+      "durationSeconds": 6.04,
+      "text": "JavaScript? That's what target controls."
+    },
+    {
+      "startSeconds": 121.4,
+      "durationSeconds": 4.96,
+      "text": "If you set it to ES2022,"
+    },
+    {
+      "startSeconds": 124.08,
+      "durationSeconds": 4.36,
+      "text": "modern features like optional chaining"
+    },
+    {
+      "startSeconds": 126.36,
+      "durationSeconds": 3.96,
+      "text": "stay as is."
+    },
+    {
+      "startSeconds": 128.44,
+      "durationSeconds": 3.56,
+      "text": "If you set it to a much older version"
+    },
+    {
+      "startSeconds": 130.32,
+      "durationSeconds": 4.08,
+      "text": "like ES5,"
+    },
+    {
+      "startSeconds": 132,
+      "durationSeconds": 4.32,
+      "text": "TypeScript rewrites your code to work on"
+    },
+    {
+      "startSeconds": 134.4,
+      "durationSeconds": 5.92,
+      "text": "ancient browsers."
+    },
+    {
+      "startSeconds": 136.32,
+      "durationSeconds": 6.84,
+      "text": "For most projects in 2026, ES2022"
+    },
+    {
+      "startSeconds": 140.32,
+      "durationSeconds": 4.6,
+      "text": "is a safe, modern choice."
+    },
+    {
+      "startSeconds": 143.16,
+      "durationSeconds": 4.84,
+      "text": "Pick the lowest version your users"
+    },
+    {
+      "startSeconds": 144.92,
+      "durationSeconds": 5.96,
+      "text": "actually run. Next up is module."
+    },
+    {
+      "startSeconds": 148,
+      "durationSeconds": 5.4,
+      "text": "This decides how your import and export"
+    },
+    {
+      "startSeconds": 150.88,
+      "durationSeconds": 5,
+      "text": "statements get compiled."
+    },
+    {
+      "startSeconds": 153.4,
+      "durationSeconds": 6.12,
+      "text": "Older code used commonjs, which is the"
+    },
+    {
+      "startSeconds": 155.88,
+      "durationSeconds": 6.68,
+      "text": "require style modules you see in node."
+    },
+    {
+      "startSeconds": 159.52,
+      "durationSeconds": 5.84,
+      "text": "Modern projects use node next or es"
+    },
+    {
+      "startSeconds": 162.56,
+      "durationSeconds": 4.36,
+      "text": "next, which keep the clean import export"
+    },
+    {
+      "startSeconds": 165.36,
+      "durationSeconds": 3.48,
+      "text": "syntax."
+    },
+    {
+      "startSeconds": 166.92,
+      "durationSeconds": 4.48,
+      "text": "As a beginner rule of thumb,"
+    },
+    {
+      "startSeconds": 168.84,
+      "durationSeconds": 4.16,
+      "text": "if you're building for modern node, use"
+    },
+    {
+      "startSeconds": 171.4,
+      "durationSeconds": 4.64,
+      "text": "node next."
+    },
+    {
+      "startSeconds": 173,
+      "durationSeconds": 5.2,
+      "text": "If you're using a bundler like Vite,"
+    },
+    {
+      "startSeconds": 176.04,
+      "durationSeconds": 4.4,
+      "text": "use es next."
+    },
+    {
+      "startSeconds": 178.2,
+      "durationSeconds": 4.56,
+      "text": "Pick the wrong one and your imports"
+    },
+    {
+      "startSeconds": 180.44,
+      "durationSeconds": 5.48,
+      "text": "simply won't resolve. Now, where does"
+    },
+    {
+      "startSeconds": 182.76,
+      "durationSeconds": 6.52,
+      "text": "the compiled JavaScript actually go?"
+    },
+    {
+      "startSeconds": 185.92,
+      "durationSeconds": 5.319,
+      "text": "That's the job of outdir and rootDir."
+    },
+    {
+      "startSeconds": 189.28,
+      "durationSeconds": 3.56,
+      "text": "rootDir tells TypeScript where your"
+    },
+    {
+      "startSeconds": 191.239,
+      "durationSeconds": 4.961,
+      "text": "source files live,"
+    },
+    {
+      "startSeconds": 192.84,
+      "durationSeconds": 5.28,
+      "text": "usually a folder called src."
+    },
+    {
+      "startSeconds": 196.2,
+      "durationSeconds": 3.72,
+      "text": "outdir tells it where to dump the"
+    },
+    {
+      "startSeconds": 198.12,
+      "durationSeconds": 5.08,
+      "text": "compiled output,"
+    },
+    {
+      "startSeconds": 199.92,
+      "durationSeconds": 5.68,
+      "text": "usually a folder called dist."
+    },
+    {
+      "startSeconds": 203.2,
+      "durationSeconds": 5.319,
+      "text": "This keeps your clean TypeScript source"
+    },
+    {
+      "startSeconds": 205.6,
+      "durationSeconds": 5,
+      "text": "separate from the generated JavaScript."
+    },
+    {
+      "startSeconds": 208.519,
+      "durationSeconds": 4.161,
+      "text": "Never commit your dist folder."
+    },
+    {
+      "startSeconds": 210.6,
+      "durationSeconds": 3.919,
+      "text": "That's why we exclude it. Now, for the"
+    },
+    {
+      "startSeconds": 212.68,
+      "durationSeconds": 2.8,
+      "text": "most important option in the entire"
+    },
+    {
+      "startSeconds": 214.519,
+      "durationSeconds": 4.161,
+      "text": "file,"
+    },
+    {
+      "startSeconds": 215.48,
+      "durationSeconds": 5.36,
+      "text": "strict. Setting strict to true is like"
+    },
+    {
+      "startSeconds": 218.68,
+      "durationSeconds": 4.72,
+      "text": "switching TypeScript from polite"
+    },
+    {
+      "startSeconds": 220.84,
+      "durationSeconds": 4.76,
+      "text": "suggestions to a strict teacher who"
+    },
+    {
+      "startSeconds": 223.4,
+      "durationSeconds": 4.8,
+      "text": "catches every mistake."
+    },
+    {
+      "startSeconds": 225.6,
+      "durationSeconds": 6.32,
+      "text": "It's actually a master switch that turns"
+    },
+    {
+      "startSeconds": 228.2,
+      "durationSeconds": 5.12,
+      "text": "on a whole family of stricter checks at"
+    },
+    {
+      "startSeconds": 231.92,
+      "durationSeconds": 3.96,
+      "text": "once."
+    },
+    {
+      "startSeconds": 233.32,
+      "durationSeconds": 4.36,
+      "text": "Honestly, you should keep this on for"
+    },
+    {
+      "startSeconds": 235.88,
+      "durationSeconds": 3.76,
+      "text": "every new project."
+    },
+    {
+      "startSeconds": 237.68,
+      "durationSeconds": 3.24,
+      "text": "Yes, it'll complain more in the"
+    },
+    {
+      "startSeconds": 239.64,
+      "durationSeconds": 4.28,
+      "text": "beginning."
+    },
+    {
+      "startSeconds": 240.92,
+      "durationSeconds": 5.28,
+      "text": "But, every complaint is a bug."
+    },
+    {
+      "startSeconds": 243.92,
+      "durationSeconds": 4.24,
+      "text": "It just stopped you from shipping. So,"
+    },
+    {
+      "startSeconds": 246.2,
+      "durationSeconds": 3.2,
+      "text": "what does strict actually enable behind"
+    },
+    {
+      "startSeconds": 248.16,
+      "durationSeconds": 3.92,
+      "text": "the scenes?"
+    },
+    {
+      "startSeconds": 249.4,
+      "durationSeconds": 4.44,
+      "text": "It flips on several flags together."
+    },
+    {
+      "startSeconds": 252.08,
+      "durationSeconds": 4.12,
+      "text": "No implicit"
+    },
+    {
+      "startSeconds": 253.84,
+      "durationSeconds": 4.88,
+      "text": "any stops TypeScript from silently"
+    },
+    {
+      "startSeconds": 256.2,
+      "durationSeconds": 4.879,
+      "text": "letting variables be any type."
+    },
+    {
+      "startSeconds": 258.72,
+      "durationSeconds": 5.28,
+      "text": "Strict null checks forces you to handle"
+    },
+    {
+      "startSeconds": 261.079,
+      "durationSeconds": 5.001,
+      "text": "null and undefined properly."
+    },
+    {
+      "startSeconds": 264,
+      "durationSeconds": 3.96,
+      "text": "This one catches a huge number of"
+    },
+    {
+      "startSeconds": 266.08,
+      "durationSeconds": 4.8,
+      "text": "real-world crashes."
+    },
+    {
+      "startSeconds": 267.96,
+      "durationSeconds": 5.4,
+      "text": "Strict function types and a few others"
+    },
+    {
+      "startSeconds": 270.88,
+      "durationSeconds": 4.88,
+      "text": "tighten up how functions are checked."
+    },
+    {
+      "startSeconds": 273.36,
+      "durationSeconds": 4.8,
+      "text": "You can toggle these individually, but"
+    },
+    {
+      "startSeconds": 275.76,
+      "durationSeconds": 4.56,
+      "text": "turning on strict is the clean shortcut"
+    },
+    {
+      "startSeconds": 278.16,
+      "durationSeconds": 4.4,
+      "text": "that gives you all of them. Let me show"
+    },
+    {
+      "startSeconds": 280.32,
+      "durationSeconds": 3.72,
+      "text": "you why strict null checks is a"
+    },
+    {
+      "startSeconds": 282.56,
+      "durationSeconds": 3.8,
+      "text": "lifesaver."
+    },
+    {
+      "startSeconds": 284.04,
+      "durationSeconds": 4.08,
+      "text": "Imagine you fetch a user, but the user"
+    },
+    {
+      "startSeconds": 286.36,
+      "durationSeconds": 3.24,
+      "text": "might not exist."
+    },
+    {
+      "startSeconds": 288.12,
+      "durationSeconds": 4.72,
+      "text": "Without this check,"
+    },
+    {
+      "startSeconds": 289.6,
+      "durationSeconds": 6.56,
+      "text": "TypeScript happily lets you access user."
+    },
+    {
+      "startSeconds": 292.84,
+      "durationSeconds": 5.64,
+      "text": "name even when user could be undefined,"
+    },
+    {
+      "startSeconds": 296.16,
+      "durationSeconds": 4.68,
+      "text": "and you get a crash at runtime."
+    },
+    {
+      "startSeconds": 298.48,
+      "durationSeconds": 3.6,
+      "text": "With it on, TypeScript forces you to"
+    },
+    {
+      "startSeconds": 300.84,
+      "durationSeconds": 3.64,
+      "text": "check first."
+    },
+    {
+      "startSeconds": 302.08,
+      "durationSeconds": 5.48,
+      "text": "This single flag has probably prevented"
+    },
+    {
+      "startSeconds": 304.48,
+      "durationSeconds": 5.24,
+      "text": "more billion-dollar null pointer bugs"
+    },
+    {
+      "startSeconds": 307.56,
+      "durationSeconds": 4.4,
+      "text": "than any other line of config. Here's"
+    },
+    {
+      "startSeconds": 309.72,
+      "durationSeconds": 4.76,
+      "text": "another flag worth understanding."
+    },
+    {
+      "startSeconds": 311.96,
+      "durationSeconds": 3.959,
+      "text": "No implicit any."
+    },
+    {
+      "startSeconds": 314.48,
+      "durationSeconds": 2.84,
+      "text": "When you write a function parameter"
+    },
+    {
+      "startSeconds": 315.919,
+      "durationSeconds": 4.081,
+      "text": "without a type,"
+    },
+    {
+      "startSeconds": 317.32,
+      "durationSeconds": 4.08,
+      "text": "TypeScript secretly assigns it the any"
+    },
+    {
+      "startSeconds": 320,
+      "durationSeconds": 3.84,
+      "text": "type."
+    },
+    {
+      "startSeconds": 321.4,
+      "durationSeconds": 3.96,
+      "text": "Which basically turns off all checking"
+    },
+    {
+      "startSeconds": 323.84,
+      "durationSeconds": 3.32,
+      "text": "for that value."
+    },
+    {
+      "startSeconds": 325.36,
+      "durationSeconds": 3.12,
+      "text": "That defeats the whole point of using"
+    },
+    {
+      "startSeconds": 327.16,
+      "durationSeconds": 4.2,
+      "text": "TypeScript."
+    },
+    {
+      "startSeconds": 328.48,
+      "durationSeconds": 4.92,
+      "text": "With no implicit any on, TypeScript"
+    },
+    {
+      "startSeconds": 331.36,
+      "durationSeconds": 4.04,
+      "text": "yells at you to add a type."
+    },
+    {
+      "startSeconds": 333.4,
+      "durationSeconds": 4.519,
+      "text": "It forces you to be intentional, and"
+    },
+    {
+      "startSeconds": 335.4,
+      "durationSeconds": 4.6,
+      "text": "your code becomes self-documenting. Now,"
+    },
+    {
+      "startSeconds": 337.919,
+      "durationSeconds": 3.681,
+      "text": "let's fix something that drives every"
+    },
+    {
+      "startSeconds": 340,
+      "durationSeconds": 4.16,
+      "text": "developer crazy."
+    },
+    {
+      "startSeconds": 341.6,
+      "durationSeconds": 5.92,
+      "text": "Those ugly relative imports with three"
+    },
+    {
+      "startSeconds": 344.16,
+      "durationSeconds": 6.24,
+      "text": "dots and slashes everywhere."
+    },
+    {
+      "startSeconds": 347.52,
+      "durationSeconds": 4.96,
+      "text": "Path aliases solve this."
+    },
+    {
+      "startSeconds": 350.4,
+      "durationSeconds": 6,
+      "text": "You set a base URL,"
+    },
+    {
+      "startSeconds": 352.48,
+      "durationSeconds": 5.56,
+      "text": "then define paths that map a clean alias"
+    },
+    {
+      "startSeconds": 356.4,
+      "durationSeconds": 3.84,
+      "text": "to a real folder."
+    },
+    {
+      "startSeconds": 358.04,
+      "durationSeconds": 5.2,
+      "text": "Now, instead of importing from dot dot"
+    },
+    {
+      "startSeconds": 360.24,
+      "durationSeconds": 6.32,
+      "text": "slash dot dot slash utils, you just"
+    },
+    {
+      "startSeconds": 363.24,
+      "durationSeconds": 6.16,
+      "text": "write at utils. It's cleaner, it"
+    },
+    {
+      "startSeconds": 366.56,
+      "durationSeconds": 5.4,
+      "text": "survives file moves, and it reads"
+    },
+    {
+      "startSeconds": 369.4,
+      "durationSeconds": 3.52,
+      "text": "beautifully. Here's that alias in real"
+    },
+    {
+      "startSeconds": 371.96,
+      "durationSeconds": 4.08,
+      "text": "code."
+    },
+    {
+      "startSeconds": 372.92,
+      "durationSeconds": 6.08,
+      "text": "Notice how clean the import looks now."
+    },
+    {
+      "startSeconds": 376.04,
+      "durationSeconds": 4.84,
+      "text": "at utils/format"
+    },
+    {
+      "startSeconds": 379,
+      "durationSeconds": 3.76,
+      "text": "No matter how deep this file is buried"
+    },
+    {
+      "startSeconds": 380.88,
+      "durationSeconds": 3.52,
+      "text": "in your folders."
+    },
+    {
+      "startSeconds": 382.76,
+      "durationSeconds": 4.2,
+      "text": "One important note,"
+    },
+    {
+      "startSeconds": 384.4,
+      "durationSeconds": 5,
+      "text": "TypeScript understands these aliases for"
+    },
+    {
+      "startSeconds": 386.96,
+      "durationSeconds": 5.24,
+      "text": "type checking, but your runtime or"
+    },
+    {
+      "startSeconds": 389.4,
+      "durationSeconds": 6.24,
+      "text": "bundler needs to know about them, too."
+    },
+    {
+      "startSeconds": 392.2,
+      "durationSeconds": 5.6,
+      "text": "Tools like Vite and TS Node handle this"
+    },
+    {
+      "startSeconds": 395.64,
+      "durationSeconds": 4.2,
+      "text": "with a small extra setting."
+    },
+    {
+      "startSeconds": 397.8,
+      "durationSeconds": 4.44,
+      "text": "We'll cover bundler setup in a future"
+    },
+    {
+      "startSeconds": 399.84,
+      "durationSeconds": 4.6,
+      "text": "video. Let's talk about which files"
+    },
+    {
+      "startSeconds": 402.24,
+      "durationSeconds": 4.36,
+      "text": "TypeScript even looks at."
+    },
+    {
+      "startSeconds": 404.44,
+      "durationSeconds": 4.28,
+      "text": "The include array tells the compiler"
+    },
+    {
+      "startSeconds": 406.6,
+      "durationSeconds": 4.56,
+      "text": "where to find your source, usually"
+    },
+    {
+      "startSeconds": 408.72,
+      "durationSeconds": 5.68,
+      "text": "everything inside src."
+    },
+    {
+      "startSeconds": 411.16,
+      "durationSeconds": 5.96,
+      "text": "The exclude array tells it what to skip."
+    },
+    {
+      "startSeconds": 414.4,
+      "durationSeconds": 4.88,
+      "text": "You almost always exclude node modules"
+    },
+    {
+      "startSeconds": 417.12,
+      "durationSeconds": 4.44,
+      "text": "and your output dist folder, because"
+    },
+    {
+      "startSeconds": 419.28,
+      "durationSeconds": 3.68,
+      "text": "compiling those would be slow and"
+    },
+    {
+      "startSeconds": 421.56,
+      "durationSeconds": 3.68,
+      "text": "pointless."
+    },
+    {
+      "startSeconds": 422.96,
+      "durationSeconds": 4.12,
+      "text": "A common beginner mistake is forgetting"
+    },
+    {
+      "startSeconds": 425.24,
+      "durationSeconds": 4,
+      "text": "include entirely,"
+    },
+    {
+      "startSeconds": 427.08,
+      "durationSeconds": 5.24,
+      "text": "which makes TypeScript scan your whole"
+    },
+    {
+      "startSeconds": 429.24,
+      "durationSeconds": 5.8,
+      "text": "project and slow to a crawl. Two more"
+    },
+    {
+      "startSeconds": 432.32,
+      "durationSeconds": 5.04,
+      "text": "options that make life easier."
+    },
+    {
+      "startSeconds": 435.04,
+      "durationSeconds": 4.64,
+      "text": "Source map generates a map file that"
+    },
+    {
+      "startSeconds": 437.36,
+      "durationSeconds": 4.72,
+      "text": "links your compiled JavaScript back to"
+    },
+    {
+      "startSeconds": 439.68,
+      "durationSeconds": 5.04,
+      "text": "your original TypeScript. So, when you"
+    },
+    {
+      "startSeconds": 442.08,
+      "durationSeconds": 6.04,
+      "text": "debug, you see your real source code,"
+    },
+    {
+      "startSeconds": 444.72,
+      "durationSeconds": 7.56,
+      "text": "not the messy compiled output."
+    },
+    {
+      "startSeconds": 448.12,
+      "durationSeconds": 6.48,
+      "text": "Declaration generates dot d.ts files,"
+    },
+    {
+      "startSeconds": 452.28,
+      "durationSeconds": 4.12,
+      "text": "which are type definition files."
+    },
+    {
+      "startSeconds": 454.6,
+      "durationSeconds": 3.84,
+      "text": "You only need declaration if you're"
+    },
+    {
+      "startSeconds": 456.4,
+      "durationSeconds": 3.24,
+      "text": "publishing a library that others will"
+    },
+    {
+      "startSeconds": 458.44,
+      "durationSeconds": 4.08,
+      "text": "import."
+    },
+    {
+      "startSeconds": 459.64,
+      "durationSeconds": 5.12,
+      "text": "For a regular app, skip it. Let me give"
+    },
+    {
+      "startSeconds": 462.52,
+      "durationSeconds": 4.04,
+      "text": "you a few modern flags worth turning on"
+    },
+    {
+      "startSeconds": 464.76,
+      "durationSeconds": 4.44,
+      "text": "in 2026."
+    },
+    {
+      "startSeconds": 466.56,
+      "durationSeconds": 5.36,
+      "text": "ES module interrupt makes importing"
+    },
+    {
+      "startSeconds": 469.2,
+      "durationSeconds": 5.2,
+      "text": "common JS packages painless."
+    },
+    {
+      "startSeconds": 471.92,
+      "durationSeconds": 5.6,
+      "text": "Skip lib check speeds up compilation by"
+    },
+    {
+      "startSeconds": 474.4,
+      "durationSeconds": 6.6,
+      "text": "skipping type checks on library files."
+    },
+    {
+      "startSeconds": 477.52,
+      "durationSeconds": 5.64,
+      "text": "Force consistent casing in file names"
+    },
+    {
+      "startSeconds": 481,
+      "durationSeconds": 4.6,
+      "text": "prevents headaches when your code works"
+    },
+    {
+      "startSeconds": 483.16,
+      "durationSeconds": 4.56,
+      "text": "on Mac, but breaks on a Linux server"
+    },
+    {
+      "startSeconds": 485.6,
+      "durationSeconds": 5.32,
+      "text": "because of capital letters."
+    },
+    {
+      "startSeconds": 487.72,
+      "durationSeconds": 5.56,
+      "text": "And verbatim module syntax is the modern"
+    },
+    {
+      "startSeconds": 490.92,
+      "durationSeconds": 4.48,
+      "text": "way to keep your import and export"
+    },
+    {
+      "startSeconds": 493.28,
+      "durationSeconds": 4.16,
+      "text": "handling predictable."
+    },
+    {
+      "startSeconds": 495.4,
+      "durationSeconds": 4.92,
+      "text": "These are all safe defaults. Here's a"
+    },
+    {
+      "startSeconds": 497.44,
+      "durationSeconds": 4.76,
+      "text": "complete production-ready tsconfig you"
+    },
+    {
+      "startSeconds": 500.32,
+      "durationSeconds": 3.44,
+      "text": "can actually use today."
+    },
+    {
+      "startSeconds": 502.2,
+      "durationSeconds": 3.6,
+      "text": "Strict mode on,"
+    },
+    {
+      "startSeconds": 503.76,
+      "durationSeconds": 4.04,
+      "text": "modern target and module,"
+    },
+    {
+      "startSeconds": 505.8,
+      "durationSeconds": 4.119,
+      "text": "clean path aliases,"
+    },
+    {
+      "startSeconds": 507.8,
+      "durationSeconds": 5.44,
+      "text": "source maps for debugging,"
+    },
+    {
+      "startSeconds": 509.919,
+      "durationSeconds": 5.961,
+      "text": "and proper include and exclude."
+    },
+    {
+      "startSeconds": 513.24,
+      "durationSeconds": 5,
+      "text": "Copy this, tweak the paths to match your"
+    },
+    {
+      "startSeconds": 515.88,
+      "durationSeconds": 4.88,
+      "text": "folders, and you've got a rock-solid"
+    },
+    {
+      "startSeconds": 518.24,
+      "durationSeconds": 5.6,
+      "text": "foundation. The difference now?"
+    },
+    {
+      "startSeconds": 520.76,
+      "durationSeconds": 6.32,
+      "text": "You understand every single line."
+    },
+    {
+      "startSeconds": 523.84,
+      "durationSeconds": 4.76,
+      "text": "No more blind copy-paste. Finally, let's"
+    },
+    {
+      "startSeconds": 527.08,
+      "durationSeconds": 5.48,
+      "text": "prove it works."
+    },
+    {
+      "startSeconds": 528.6,
+      "durationSeconds": 6.64,
+      "text": "Run npx tsc with the"
+    },
+    {
+      "startSeconds": 532.56,
+      "durationSeconds": 5.32,
+      "text": "no emit flag to type check your whole"
+    },
+    {
+      "startSeconds": 535.24,
+      "durationSeconds": 5.56,
+      "text": "project without producing any files."
+    },
+    {
+      "startSeconds": 537.88,
+      "durationSeconds": 5.16,
+      "text": "If you see no errors, your config and"
+    },
+    {
+      "startSeconds": 540.8,
+      "durationSeconds": 4.039,
+      "text": "your code are in great shape."
+    },
+    {
+      "startSeconds": 543.04,
+      "durationSeconds": 4.4,
+      "text": "This is the exact command you'd run in a"
+    },
+    {
+      "startSeconds": 544.839,
+      "durationSeconds": 4.081,
+      "text": "CI pipeline to catch bugs before they"
+    },
+    {
+      "startSeconds": 547.44,
+      "durationSeconds": 3.48,
+      "text": "ever reach users."
+    },
+    {
+      "startSeconds": 548.92,
+      "durationSeconds": 6.4,
+      "text": "And that's the whole point of mastering"
+    },
+    {
+      "startSeconds": 550.92,
+      "durationSeconds": 6.04,
+      "text": "this file. And that's tsconfig.json"
+    },
+    {
+      "startSeconds": 555.32,
+      "durationSeconds": 4.44,
+      "text": "fully decoded."
+    },
+    {
+      "startSeconds": 556.96,
+      "durationSeconds": 5.16,
+      "text": "Remember the three big takeaways. Always"
+    },
+    {
+      "startSeconds": 559.76,
+      "durationSeconds": 3.84,
+      "text": "turn on strict mode to catch bugs before"
+    },
+    {
+      "startSeconds": 562.12,
+      "durationSeconds": 4.4,
+      "text": "your users do."
+    },
+    {
+      "startSeconds": 563.6,
+      "durationSeconds": 4.52,
+      "text": "Use path aliases to kill those ugly"
+    },
+    {
+      "startSeconds": 566.52,
+      "durationSeconds": 4.24,
+      "text": "relative imports."
+    },
+    {
+      "startSeconds": 568.12,
+      "durationSeconds": 5.04,
+      "text": "And set your target and module to match"
+    },
+    {
+      "startSeconds": 570.76,
+      "durationSeconds": 4.88,
+      "text": "where your code actually runs."
+    },
+    {
+      "startSeconds": 573.16,
+      "durationSeconds": 5.84,
+      "text": "Next up in our TypeScript track, we're"
+    },
+    {
+      "startSeconds": 575.64,
+      "durationSeconds": 6.4,
+      "text": "diving into TypeScript generics."
+    },
+    {
+      "startSeconds": 579,
+      "durationSeconds": 4.76,
+      "text": "The feature that unlocks truly reusable,"
+    },
+    {
+      "startSeconds": 582.04,
+      "durationSeconds": 4.84,
+      "text": "type-safe code."
+    },
+    {
+      "startSeconds": 583.76,
+      "durationSeconds": 5.12,
+      "text": "If this made TSConfig finally click, hit"
+    },
+    {
+      "startSeconds": 586.88,
+      "durationSeconds": 4.16,
+      "text": "subscribe and drop your biggest"
+    },
+    {
+      "startSeconds": 588.88,
+      "durationSeconds": 5.48,
+      "text": "TypeScript question in the comments."
+    },
+    {
+      "startSeconds": 591.04,
+      "durationSeconds": 3.32,
+      "text": "We read every one."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction"
+    },
+    {
+      "startSeconds": 45,
+      "label": "Creating the file"
+    },
+    {
+      "startSeconds": 85,
+      "label": "The basic structure"
+    },
+    {
+      "startSeconds": 135,
+      "label": "target — which JavaScript version"
+    },
+    {
+      "startSeconds": 190,
+      "label": "module — how imports work"
+    },
+    {
+      "startSeconds": 245,
+      "label": "outDir and rootDir"
+    },
+    {
+      "startSeconds": 295,
+      "label": "strict mode — the big one"
+    },
+    {
+      "startSeconds": 355,
+      "label": "What strict actually turns on"
+    },
+    {
+      "startSeconds": 415,
+      "label": "strictNullChecks in action"
+    },
+    {
+      "startSeconds": 470,
+      "label": "noImplicitAny"
+    },
+    {
+      "startSeconds": 520,
+      "label": "Path aliases — baseUrl and paths"
+    },
+    {
+      "startSeconds": 580,
+      "label": "Using the alias in code"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:47.899Z"
+}

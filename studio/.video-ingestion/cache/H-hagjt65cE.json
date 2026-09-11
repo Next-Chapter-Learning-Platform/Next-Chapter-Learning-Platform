@@ -1,0 +1,812 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "H-hagjt65cE",
+  "url": "https://www.youtube.com/watch?v=H-hagjt65cE",
+  "title": "Learn HOW to Read CSV Files in Python!",
+  "description": "Earthly ➤ https://earthly.dev/youtube\n\nIn this Python Data Analysis tutorial, we explore the versatile techniques for reading and processing CSV files using Python's powerful libraries. We begin by leveraging the csv package to parse CSV files using both the standard reader and DictReader for optimized column access. Then, we delve into the pandas library for its robust data frame manipulation capabilities, enhancing our data analysis toolkit. Additionally, I'll guide you through handling various delimiter types, including reading tab-separated values (TSV) for diverse data parsing needs. Whether it's managing headers, row offsets, or different data types, this tutorial will equip you with the necessary skills to efficiently work with CSV data, a staple format in data storage representing \"Comma-Separated Values,\" and a foundational aspect of data science in Python.\n\nCSV stands for \"Comma-Separated Values.\" It is a common format for storing tabular information.\n\n## Timeline\n00:00 - Intro\n00:18 - What is a CSV file?\n01:06 - Read in Python using csv.reader\n02:24 - Skipping the CSV header\n03:33 - Read in Python using DictReader\n04:14 - Change Separator or Delimiter\n05:12 - Read CSV in Python by column using Pandas",
+  "expectedDurationSeconds": 395,
+  "transcript": [
+    {
+      "startSeconds": 0,
+      "durationSeconds": 4.68,
+      "text": "hey in this video I'm going to show you"
+    },
+    {
+      "startSeconds": 2.46,
+      "durationSeconds": 4.379,
+      "text": "how to read a CSV file using python it's"
+    },
+    {
+      "startSeconds": 4.68,
+      "durationSeconds": 5.1,
+      "text": "pretty easy I'll show you how to deal"
+    },
+    {
+      "startSeconds": 6.839,
+      "durationSeconds": 6.001,
+      "text": "with row offsets how to deal with the"
+    },
+    {
+      "startSeconds": 9.78,
+      "durationSeconds": 4.439,
+      "text": "header how to do it using pandas and if"
+    },
+    {
+      "startSeconds": 12.84,
+      "durationSeconds": 2.7,
+      "text": "you stay to the end of the video I'll"
+    },
+    {
+      "startSeconds": 14.219,
+      "durationSeconds": 3.06,
+      "text": "show you how to deal with different"
+    },
+    {
+      "startSeconds": 15.54,
+      "durationSeconds": 6.56,
+      "text": "types of delimiters"
+    },
+    {
+      "startSeconds": 17.279,
+      "durationSeconds": 8.521,
+      "text": "so here I'm in vs code I have a CSV file"
+    },
+    {
+      "startSeconds": 22.1,
+      "durationSeconds": 7.3,
+      "text": "bwq dot CSV that is the beach water"
+    },
+    {
+      "startSeconds": 25.8,
+      "durationSeconds": 5.52,
+      "text": "quality data from Chicago based on some"
+    },
+    {
+      "startSeconds": 29.4,
+      "durationSeconds": 3.659,
+      "text": "sensors I don't think it matters what"
+    },
+    {
+      "startSeconds": 31.32,
+      "durationSeconds": 5.94,
+      "text": "the data is but it gives you a good idea"
+    },
+    {
+      "startSeconds": 33.059,
+      "durationSeconds": 6.901,
+      "text": "of what a CSV file looks like CSV is for"
+    },
+    {
+      "startSeconds": 37.26,
+      "durationSeconds": 5.4,
+      "text": "comma separated values and here's the"
+    },
+    {
+      "startSeconds": 39.96,
+      "durationSeconds": 4.919,
+      "text": "values right we have a value then a"
+    },
+    {
+      "startSeconds": 42.66,
+      "durationSeconds": 4.86,
+      "text": "comma then a value then a comma and so"
+    },
+    {
+      "startSeconds": 44.879,
+      "durationSeconds": 5.881,
+      "text": "on and so forth and the the types of"
+    },
+    {
+      "startSeconds": 47.52,
+      "durationSeconds": 6.12,
+      "text": "values vary right we have dates we have"
+    },
+    {
+      "startSeconds": 50.76,
+      "durationSeconds": 5.76,
+      "text": "numbers we have strings in the top row"
+    },
+    {
+      "startSeconds": 53.64,
+      "durationSeconds": 5.939,
+      "text": "specifies what each column is"
+    },
+    {
+      "startSeconds": 56.52,
+      "durationSeconds": 6.24,
+      "text": "so this is a CSV value and they can be"
+    },
+    {
+      "startSeconds": 59.579,
+      "durationSeconds": 6.061,
+      "text": "quite large this one is wow I know it's"
+    },
+    {
+      "startSeconds": 62.76,
+      "durationSeconds": 5.28,
+      "text": "a lot it's a lot of data so we're going"
+    },
+    {
+      "startSeconds": 65.64,
+      "durationSeconds": 5.4,
+      "text": "to read this in Python which is going to"
+    },
+    {
+      "startSeconds": 68.04,
+      "durationSeconds": 5.84,
+      "text": "be pretty easy so uh first thing we're"
+    },
+    {
+      "startSeconds": 71.04,
+      "durationSeconds": 6.72,
+      "text": "just going to import the CSV package"
+    },
+    {
+      "startSeconds": 73.88,
+      "durationSeconds": 8.279,
+      "text": "then we're going to do with open our"
+    },
+    {
+      "startSeconds": 77.76,
+      "durationSeconds": 6.62,
+      "text": "file is called Beach water quality"
+    },
+    {
+      "startSeconds": 82.159,
+      "durationSeconds": 5.081,
+      "text": "dot CSV"
+    },
+    {
+      "startSeconds": 84.38,
+      "durationSeconds": 7.059,
+      "text": "we're gonna call that"
+    },
+    {
+      "startSeconds": 87.24,
+      "durationSeconds": 6.54,
+      "text": "file actually let's make sure"
+    },
+    {
+      "startSeconds": 91.439,
+      "durationSeconds": 6.18,
+      "text": "let's just open it for read only"
+    },
+    {
+      "startSeconds": 93.78,
+      "durationSeconds": 7.68,
+      "text": "then we're going to have our CSV reader"
+    },
+    {
+      "startSeconds": 97.619,
+      "durationSeconds": 7.14,
+      "text": "and the way we get that is we just do"
+    },
+    {
+      "startSeconds": 101.46,
+      "durationSeconds": 4.979,
+      "text": "CSV dot read"
+    },
+    {
+      "startSeconds": 104.759,
+      "durationSeconds": 4.441,
+      "text": "and we're going to read our file that"
+    },
+    {
+      "startSeconds": 106.439,
+      "durationSeconds": 4.081,
+      "text": "we've already opened the the width makes"
+    },
+    {
+      "startSeconds": 109.2,
+      "durationSeconds": 3.959,
+      "text": "sure that when we step out of the"
+    },
+    {
+      "startSeconds": 110.52,
+      "durationSeconds": 6.9,
+      "text": "context of the width the file will be"
+    },
+    {
+      "startSeconds": 113.159,
+      "durationSeconds": 9.121,
+      "text": "closed it closes our resources so now we"
+    },
+    {
+      "startSeconds": 117.42,
+      "durationSeconds": 9.5,
+      "text": "have our file open and we can just look"
+    },
+    {
+      "startSeconds": 122.28,
+      "durationSeconds": 8.1,
+      "text": "through it right so for row and CSV"
+    },
+    {
+      "startSeconds": 126.92,
+      "durationSeconds": 5.38,
+      "text": "reader let's just print"
+    },
+    {
+      "startSeconds": 130.38,
+      "durationSeconds": 3.84,
+      "text": "let's just print a row I'm always"
+    },
+    {
+      "startSeconds": 132.3,
+      "durationSeconds": 5.34,
+      "text": "hitting the wrong bracket here and let's"
+    },
+    {
+      "startSeconds": 134.22,
+      "durationSeconds": 4.62,
+      "text": "see what we got there so this is read"
+    },
+    {
+      "startSeconds": 137.64,
+      "durationSeconds": 3.36,
+      "text": "a pie"
+    },
+    {
+      "startSeconds": 138.84,
+      "durationSeconds": 4.259,
+      "text": "right and we can see all the data"
+    },
+    {
+      "startSeconds": 141,
+      "durationSeconds": 3.959,
+      "text": "printing out there is quite a lot of it"
+    },
+    {
+      "startSeconds": 143.099,
+      "durationSeconds": 4.321,
+      "text": "so it takes a while to print I actually"
+    },
+    {
+      "startSeconds": 144.959,
+      "durationSeconds": 4.261,
+      "text": "have a smaller version of the file"
+    },
+    {
+      "startSeconds": 147.42,
+      "durationSeconds": 2.94,
+      "text": "for just this purpose so let's just"
+    },
+    {
+      "startSeconds": 149.22,
+      "durationSeconds": 2.76,
+      "text": "switch"
+    },
+    {
+      "startSeconds": 150.36,
+      "durationSeconds": 3.54,
+      "text": "to that"
+    },
+    {
+      "startSeconds": 151.98,
+      "durationSeconds": 4.619,
+      "text": "there we go a little bit smaller data"
+    },
+    {
+      "startSeconds": 153.9,
+      "durationSeconds": 4.44,
+      "text": "one of the first things we can see now"
+    },
+    {
+      "startSeconds": 156.599,
+      "durationSeconds": 3.541,
+      "text": "that we're reading the data is that our"
+    },
+    {
+      "startSeconds": 158.34,
+      "durationSeconds": 3.6,
+      "text": "first row is actually our column names"
+    },
+    {
+      "startSeconds": 160.14,
+      "durationSeconds": 3.179,
+      "text": "it's probably not what we want like"
+    },
+    {
+      "startSeconds": 161.94,
+      "durationSeconds": 3.9,
+      "text": "imagine we're trying to do something"
+    },
+    {
+      "startSeconds": 163.319,
+      "durationSeconds": 6.42,
+      "text": "with this data aggregate it or something"
+    },
+    {
+      "startSeconds": 165.84,
+      "durationSeconds": 5.28,
+      "text": "right we don't want to use the top level"
+    },
+    {
+      "startSeconds": 169.739,
+      "durationSeconds": 3.901,
+      "text": "column especially if we're adding up"
+    },
+    {
+      "startSeconds": 171.12,
+      "durationSeconds": 3.66,
+      "text": "numbers and then our Top Value is water"
+    },
+    {
+      "startSeconds": 173.64,
+      "durationSeconds": 3.84,
+      "text": "temperature"
+    },
+    {
+      "startSeconds": 174.78,
+      "durationSeconds": 5.94,
+      "text": "so the way we're doing things now"
+    },
+    {
+      "startSeconds": 177.48,
+      "durationSeconds": 5.1,
+      "text": "it's just looping through we can just"
+    },
+    {
+      "startSeconds": 180.72,
+      "durationSeconds": 5.46,
+      "text": "skip the first row"
+    },
+    {
+      "startSeconds": 182.58,
+      "durationSeconds": 5.1,
+      "text": "that should make it easy uh to move past"
+    },
+    {
+      "startSeconds": 186.18,
+      "durationSeconds": 3.36,
+      "text": "that column"
+    },
+    {
+      "startSeconds": 187.68,
+      "durationSeconds": 4.62,
+      "text": "right so now we're starting with our"
+    },
+    {
+      "startSeconds": 189.54,
+      "durationSeconds": 5.22,
+      "text": "actual first row let's just verify"
+    },
+    {
+      "startSeconds": 192.3,
+      "durationSeconds": 3.6,
+      "text": "uh yeah you know once we're reading in"
+    },
+    {
+      "startSeconds": 194.76,
+      "durationSeconds": 2.88,
+      "text": "the data we might want to look at"
+    },
+    {
+      "startSeconds": 195.9,
+      "durationSeconds": 3.6,
+      "text": "specific columns so the way we can do"
+    },
+    {
+      "startSeconds": 197.64,
+      "durationSeconds": 5.04,
+      "text": "that is just use an offset so that gives"
+    },
+    {
+      "startSeconds": 199.5,
+      "durationSeconds": 7.08,
+      "text": "us the first value or the second value"
+    },
+    {
+      "startSeconds": 202.68,
+      "durationSeconds": 7.5,
+      "text": "or so on and so forth right you can do"
+    },
+    {
+      "startSeconds": 206.58,
+      "durationSeconds": 5.879,
+      "text": "how many are there there we go but I"
+    },
+    {
+      "startSeconds": 210.18,
+      "durationSeconds": 5.58,
+      "text": "mean that can be a little bit awkward at"
+    },
+    {
+      "startSeconds": 212.459,
+      "durationSeconds": 5.941,
+      "text": "times so there is a a preferred way at"
+    },
+    {
+      "startSeconds": 215.76,
+      "durationSeconds": 4.8,
+      "text": "least my preferred way to access this is"
+    },
+    {
+      "startSeconds": 218.4,
+      "durationSeconds": 3.66,
+      "text": "to use the dictionary reader so"
+    },
+    {
+      "startSeconds": 220.56,
+      "durationSeconds": 3.42,
+      "text": "dictionary reader will actually read it"
+    },
+    {
+      "startSeconds": 222.06,
+      "durationSeconds": 3.78,
+      "text": "in as a dictionary"
+    },
+    {
+      "startSeconds": 223.98,
+      "durationSeconds": 4.319,
+      "text": "and then we can access it by column name"
+    },
+    {
+      "startSeconds": 225.84,
+      "durationSeconds": 5.22,
+      "text": "since it's using that first row as the"
+    },
+    {
+      "startSeconds": 228.299,
+      "durationSeconds": 6.601,
+      "text": "column values we don't need to skip it"
+    },
+    {
+      "startSeconds": 231.06,
+      "durationSeconds": 5.7,
+      "text": "and then also here we can"
+    },
+    {
+      "startSeconds": 234.9,
+      "durationSeconds": 3.6,
+      "text": "specify"
+    },
+    {
+      "startSeconds": 236.76,
+      "durationSeconds": 5.1,
+      "text": "things by name"
+    },
+    {
+      "startSeconds": 238.5,
+      "durationSeconds": 5.7,
+      "text": "which is just a lot nicer a beach name"
+    },
+    {
+      "startSeconds": 241.86,
+      "durationSeconds": 4.019,
+      "text": "what else do we have"
+    },
+    {
+      "startSeconds": 244.2,
+      "durationSeconds": 3.3,
+      "text": "turbidity"
+    },
+    {
+      "startSeconds": 245.879,
+      "durationSeconds": 4.14,
+      "text": "I don't know what turbidity is"
+    },
+    {
+      "startSeconds": 247.5,
+      "durationSeconds": 3.72,
+      "text": "turbulence those are like the level of"
+    },
+    {
+      "startSeconds": 250.019,
+      "durationSeconds": 4.021,
+      "text": "waves"
+    },
+    {
+      "startSeconds": 251.22,
+      "durationSeconds": 5.88,
+      "text": "let's see there's our turbidity values"
+    },
+    {
+      "startSeconds": 254.04,
+      "durationSeconds": 5.819,
+      "text": "yeah so that way to access things I"
+    },
+    {
+      "startSeconds": 257.1,
+      "durationSeconds": 4.62,
+      "text": "think is a lot nicer another problem you"
+    },
+    {
+      "startSeconds": 259.859,
+      "durationSeconds": 4.581,
+      "text": "can have with CSV files they're called"
+    },
+    {
+      "startSeconds": 261.72,
+      "durationSeconds": 5.16,
+      "text": "comma separated values but actually"
+    },
+    {
+      "startSeconds": 264.44,
+      "durationSeconds": 3.94,
+      "text": "sometimes the type of values people use"
+    },
+    {
+      "startSeconds": 266.88,
+      "durationSeconds": 3.539,
+      "text": "varies"
+    },
+    {
+      "startSeconds": 268.38,
+      "durationSeconds": 5.94,
+      "text": "as the separator so we can actually"
+    },
+    {
+      "startSeconds": 270.419,
+      "durationSeconds": 4.981,
+      "text": "specify here that we have a is it"
+    },
+    {
+      "startSeconds": 274.32,
+      "durationSeconds": 4.74,
+      "text": "separator"
+    },
+    {
+      "startSeconds": 275.4,
+      "durationSeconds": 5.46,
+      "text": "delimiter right so we can specify"
+    },
+    {
+      "startSeconds": 279.06,
+      "durationSeconds": 4.5,
+      "text": "a different delimiter by default it's"
+    },
+    {
+      "startSeconds": 280.86,
+      "durationSeconds": 6.119,
+      "text": "going to be comma so this should fail"
+    },
+    {
+      "startSeconds": 283.56,
+      "durationSeconds": 6.9,
+      "text": "right we can see that doesn't work"
+    },
+    {
+      "startSeconds": 286.979,
+      "durationSeconds": 5.94,
+      "text": "but I actually have a tab separated"
+    },
+    {
+      "startSeconds": 290.46,
+      "durationSeconds": 5.04,
+      "text": "value here so it's the same data it's"
+    },
+    {
+      "startSeconds": 292.919,
+      "durationSeconds": 4.021,
+      "text": "just you can see my tabs here I think"
+    },
+    {
+      "startSeconds": 295.5,
+      "durationSeconds": 3.06,
+      "text": "it's just"
+    },
+    {
+      "startSeconds": 296.94,
+      "durationSeconds": 3.84,
+      "text": "tsv"
+    },
+    {
+      "startSeconds": 298.56,
+      "durationSeconds": 4.26,
+      "text": "and then there we go we're getting the"
+    },
+    {
+      "startSeconds": 300.78,
+      "durationSeconds": 5.04,
+      "text": "same value so this is how you specify a"
+    },
+    {
+      "startSeconds": 302.82,
+      "durationSeconds": 5.159,
+      "text": "delimiter delimiters can can vary so"
+    },
+    {
+      "startSeconds": 305.82,
+      "durationSeconds": 4.8,
+      "text": "we've covered accessing it by row"
+    },
+    {
+      "startSeconds": 307.979,
+      "durationSeconds": 5.94,
+      "text": "different delimiters oh another thing is"
+    },
+    {
+      "startSeconds": 310.62,
+      "durationSeconds": 6.56,
+      "text": "accessing it by column so if I"
+    },
+    {
+      "startSeconds": 313.919,
+      "durationSeconds": 6.241,
+      "text": "want to look at the data"
+    },
+    {
+      "startSeconds": 317.18,
+      "durationSeconds": 5.2,
+      "text": "and said this way by column slices"
+    },
+    {
+      "startSeconds": 320.16,
+      "durationSeconds": 4.319,
+      "text": "pandas is actually pretty good for that"
+    },
+    {
+      "startSeconds": 322.38,
+      "durationSeconds": 5.46,
+      "text": "so I can do"
+    },
+    {
+      "startSeconds": 324.479,
+      "durationSeconds": 6.06,
+      "text": "import pandas syntax is a little bit"
+    },
+    {
+      "startSeconds": 327.84,
+      "durationSeconds": 6.5,
+      "text": "different so I'm just going to do data"
+    },
+    {
+      "startSeconds": 330.539,
+      "durationSeconds": 10.38,
+      "text": "pandas I think it has yeah read CSV"
+    },
+    {
+      "startSeconds": 334.34,
+      "durationSeconds": 9.16,
+      "text": "uh So it's b w b w q p w q"
+    },
+    {
+      "startSeconds": 340.919,
+      "durationSeconds": 4.62,
+      "text": "that's CSV we can just actually print"
+    },
+    {
+      "startSeconds": 343.5,
+      "durationSeconds": 3.419,
+      "text": "out the thing in totality to take an"
+    },
+    {
+      "startSeconds": 345.539,
+      "durationSeconds": 4.801,
+      "text": "initial look"
+    },
+    {
+      "startSeconds": 346.919,
+      "durationSeconds": 5.34,
+      "text": "let's try that out and so um my head's a"
+    },
+    {
+      "startSeconds": 350.34,
+      "durationSeconds": 3.9,
+      "text": "little bit in the way but but I like the"
+    },
+    {
+      "startSeconds": 352.259,
+      "durationSeconds": 3.841,
+      "text": "way pandas presents this data it tells"
+    },
+    {
+      "startSeconds": 354.24,
+      "durationSeconds": 4.2,
+      "text": "you it's 10 columns wide how many rows"
+    },
+    {
+      "startSeconds": 356.1,
+      "durationSeconds": 5.4,
+      "text": "there are a selection from each and then"
+    },
+    {
+      "startSeconds": 358.44,
+      "durationSeconds": 6.62,
+      "text": "if we want to Loop through columns we"
+    },
+    {
+      "startSeconds": 361.5,
+      "durationSeconds": 6.72,
+      "text": "can say you know for a column"
+    },
+    {
+      "startSeconds": 365.06,
+      "durationSeconds": 4,
+      "text": "data Grant column that should work as"
+    },
+    {
+      "startSeconds": 368.22,
+      "durationSeconds": 2.759,
+      "text": "well"
+    },
+    {
+      "startSeconds": 369.06,
+      "durationSeconds": 3.18,
+      "text": "yeah so now we're we're looking at"
+    },
+    {
+      "startSeconds": 370.979,
+      "durationSeconds": 4.201,
+      "text": "things the other way Beach name"
+    },
+    {
+      "startSeconds": 372.24,
+      "durationSeconds": 5.7,
+      "text": "measurement data turbidity"
+    },
+    {
+      "startSeconds": 375.18,
+      "durationSeconds": 5.7,
+      "text": "there we go so that was reading CSV"
+    },
+    {
+      "startSeconds": 377.94,
+      "durationSeconds": 5.64,
+      "text": "values from python we did it a couple"
+    },
+    {
+      "startSeconds": 380.88,
+      "durationSeconds": 4.8,
+      "text": "ways we use the default CSV reader we"
+    },
+    {
+      "startSeconds": 383.58,
+      "durationSeconds": 5.88,
+      "text": "use the dictionary CSV reader use the"
+    },
+    {
+      "startSeconds": 385.68,
+      "durationSeconds": 5.76,
+      "text": "pandas reader and yeah tried some"
+    },
+    {
+      "startSeconds": 389.46,
+      "durationSeconds": 3.84,
+      "text": "different separators let me know if this"
+    },
+    {
+      "startSeconds": 391.44,
+      "durationSeconds": 4.52,
+      "text": "is useful and we'll tackle something"
+    },
+    {
+      "startSeconds": 393.3,
+      "durationSeconds": 2.66,
+      "text": "else next time"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Intro"
+    },
+    {
+      "startSeconds": 18,
+      "label": "What is a CSV file?"
+    },
+    {
+      "startSeconds": 66,
+      "label": "Read in Python using csv.reader"
+    },
+    {
+      "startSeconds": 144,
+      "label": "Skipping the CSV header"
+    },
+    {
+      "startSeconds": 213,
+      "label": "Read in Python using DictReader"
+    },
+    {
+      "startSeconds": 254,
+      "label": "Change Separator or Delimiter"
+    },
+    {
+      "startSeconds": 312,
+      "label": "Read CSV in Python by column using Pandas"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:56.887Z"
+}

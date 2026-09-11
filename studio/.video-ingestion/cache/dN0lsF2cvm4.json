@@ -1,0 +1,609 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "dN0lsF2cvm4",
+  "url": "https://www.youtube.com/watch?v=dN0lsF2cvm4",
+  "title": "Vector Databases simply explained! (Embeddings & Indexes)",
+  "description": "Vector Databases simply explained. Learn what vector databases and vector embeddings are and how they work. Then I'll go over some use cases for it and I briefly show you different options you can use.\n\nResources:\n- Gentle introduction: https://frankzliu.com/blog/a-gentle-introduction-to-vector-databases\n- What is a vector database: https://www.pinecone.io/learn/vector-database/\n\nGet your Free Token for AssemblyAI👇\nhttps://www.assemblyai.com/?utm_source=youtube&utm_medium=referral&utm_campaign=yt_pat_75\n\n00:00 - Intro\n00:44 - Why do we need vector databases\n01:29 - Vector embeddings and indexes\n02:58 - Use cases\n03:45 - Different vector databases\n\nVector Database Options:\n- Pinecone\n- Weaviate\n- Chroma\n- Redis\n- Qdrant\n- Milvus\n- Vespa\n\n▬▬▬▬▬▬▬▬▬▬▬▬ CONNECT ▬▬▬▬▬▬▬▬▬▬▬▬\n\n🖥️ Website: https://www.assemblyai.com\n🐦 Twitter: https://twitter.com/AssemblyAI\n👽 Reddit: https://reddit.com/r/assemblyai\n▶️  Subscribe: https://www.youtube.com/c/AssemblyAI?sub_confirmation=1\n🔥 We're hiring! Check our open roles: https://www.assemblyai.com/careers\n\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n#MachineLearning #DeepLearning",
+  "expectedDurationSeconds": 263,
+  "transcript": [
+    {
+      "startSeconds": 0,
+      "durationSeconds": 5.4,
+      "text": "recently Vector databases got a lot of"
+    },
+    {
+      "startSeconds": 2.94,
+      "durationSeconds": 4.919,
+      "text": "Fame with companies raising hundreds of"
+    },
+    {
+      "startSeconds": 5.4,
+      "durationSeconds": 4.98,
+      "text": "millions of dollars to build them and"
+    },
+    {
+      "startSeconds": 7.859,
+      "durationSeconds": 5.28,
+      "text": "people calling it a new kind of database"
+    },
+    {
+      "startSeconds": 10.38,
+      "durationSeconds": 4.919,
+      "text": "for the AI era on the other hand for"
+    },
+    {
+      "startSeconds": 13.139,
+      "durationSeconds": 4.14,
+      "text": "many projects it might be an Overkill"
+    },
+    {
+      "startSeconds": 15.299,
+      "durationSeconds": 4.98,
+      "text": "solution and using a traditional"
+    },
+    {
+      "startSeconds": 17.279,
+      "durationSeconds": 4.981,
+      "text": "database or even just a numpy ND array"
+    },
+    {
+      "startSeconds": 20.279,
+      "durationSeconds": 4.26,
+      "text": "might work just fine but there is no"
+    },
+    {
+      "startSeconds": 22.26,
+      "durationSeconds": 4.14,
+      "text": "doubt the vector databases are extremely"
+    },
+    {
+      "startSeconds": 24.539,
+      "durationSeconds": 4.261,
+      "text": "fascinating and allow many great"
+    },
+    {
+      "startSeconds": 26.4,
+      "durationSeconds": 5.1,
+      "text": "applications especially when you want to"
+    },
+    {
+      "startSeconds": 28.8,
+      "durationSeconds": 5.099,
+      "text": "give large language models like gpt4"
+    },
+    {
+      "startSeconds": 31.5,
+      "durationSeconds": 4.26,
+      "text": "long-term memory so in this video I will"
+    },
+    {
+      "startSeconds": 33.899,
+      "durationSeconds": 4.081,
+      "text": "explain in a very beginner friendly way"
+    },
+    {
+      "startSeconds": 35.76,
+      "durationSeconds": 4.5,
+      "text": "what Vector databases are and how they"
+    },
+    {
+      "startSeconds": 37.98,
+      "durationSeconds": 3.78,
+      "text": "work we will go over some use cases for"
+    },
+    {
+      "startSeconds": 40.26,
+      "durationSeconds": 3.78,
+      "text": "them and then I will briefly show you"
+    },
+    {
+      "startSeconds": 41.76,
+      "durationSeconds": 4.979,
+      "text": "some options you can use so let's get"
+    },
+    {
+      "startSeconds": 44.04,
+      "durationSeconds": 5.039,
+      "text": "started so let's start with the why over"
+    },
+    {
+      "startSeconds": 46.739,
+      "durationSeconds": 5.281,
+      "text": "80 percent of the data out there is"
+    },
+    {
+      "startSeconds": 49.079,
+      "durationSeconds": 5.82,
+      "text": "unstructured such as social media posts"
+    },
+    {
+      "startSeconds": 52.02,
+      "durationSeconds": 4.679,
+      "text": "images videos or audio data you cannot"
+    },
+    {
+      "startSeconds": 54.899,
+      "durationSeconds": 4.261,
+      "text": "easily fit them into a relational"
+    },
+    {
+      "startSeconds": 56.699,
+      "durationSeconds": 4.2,
+      "text": "database let's take an image as an"
+    },
+    {
+      "startSeconds": 59.16,
+      "durationSeconds": 4.02,
+      "text": "example if you want want to put this"
+    },
+    {
+      "startSeconds": 60.899,
+      "durationSeconds": 4.681,
+      "text": "into a relational database in order to"
+    },
+    {
+      "startSeconds": 63.18,
+      "durationSeconds": 4.5,
+      "text": "search for similar images what ends up"
+    },
+    {
+      "startSeconds": 65.58,
+      "durationSeconds": 4.8,
+      "text": "happening is that often we manually"
+    },
+    {
+      "startSeconds": 67.68,
+      "durationSeconds": 5.1,
+      "text": "assign keywords or tags to it because"
+    },
+    {
+      "startSeconds": 70.38,
+      "durationSeconds": 4.32,
+      "text": "from the pixel values alone we cannot"
+    },
+    {
+      "startSeconds": 72.78,
+      "durationSeconds": 3.72,
+      "text": "really search for similar images and the"
+    },
+    {
+      "startSeconds": 74.7,
+      "durationSeconds": 4.32,
+      "text": "same holds true for unstructured text"
+    },
+    {
+      "startSeconds": 76.5,
+      "durationSeconds": 4.92,
+      "text": "blobs or audio and video data so we"
+    },
+    {
+      "startSeconds": 79.02,
+      "durationSeconds": 5.22,
+      "text": "either have to assign tags or attributes"
+    },
+    {
+      "startSeconds": 81.42,
+      "durationSeconds": 4.62,
+      "text": "to it often manually or we can find a"
+    },
+    {
+      "startSeconds": 84.24,
+      "durationSeconds": 3.78,
+      "text": "different representation to store the"
+    },
+    {
+      "startSeconds": 86.04,
+      "durationSeconds": 4.38,
+      "text": "data and this brings us to vector"
+    },
+    {
+      "startSeconds": 88.02,
+      "durationSeconds": 5.16,
+      "text": "embeddings and Vector databases in short"
+    },
+    {
+      "startSeconds": 90.42,
+      "durationSeconds": 5.64,
+      "text": "a vector database indexes and stores"
+    },
+    {
+      "startSeconds": 93.18,
+      "durationSeconds": 5.46,
+      "text": "Vector embeddings for fast retrieval and"
+    },
+    {
+      "startSeconds": 96.06,
+      "durationSeconds": 4.5,
+      "text": "similarity search so let's take a step"
+    },
+    {
+      "startSeconds": 98.64,
+      "durationSeconds": 4.439,
+      "text": "back and look at those two important"
+    },
+    {
+      "startSeconds": 100.56,
+      "durationSeconds": 4.919,
+      "text": "components first it uses clever"
+    },
+    {
+      "startSeconds": 103.079,
+      "durationSeconds": 4.561,
+      "text": "algorithms to calculate the so-called"
+    },
+    {
+      "startSeconds": 105.479,
+      "durationSeconds": 3.96,
+      "text": "Vector embeddings this is done by"
+    },
+    {
+      "startSeconds": 107.64,
+      "durationSeconds": 4.32,
+      "text": "Machine learning models a vector"
+    },
+    {
+      "startSeconds": 109.439,
+      "durationSeconds": 4.201,
+      "text": "embedding is just a list of numbers that"
+    },
+    {
+      "startSeconds": 111.96,
+      "durationSeconds": 3.78,
+      "text": "represents the data in a different way"
+    },
+    {
+      "startSeconds": 113.64,
+      "durationSeconds": 4.2,
+      "text": "for example you can calculate an"
+    },
+    {
+      "startSeconds": 115.74,
+      "durationSeconds": 4.14,
+      "text": "embedding for a single word a whole"
+    },
+    {
+      "startSeconds": 117.84,
+      "durationSeconds": 4.5,
+      "text": "sentence or an image and now we have"
+    },
+    {
+      "startSeconds": 119.88,
+      "durationSeconds": 5.099,
+      "text": "numerical data that the computer can"
+    },
+    {
+      "startSeconds": 122.34,
+      "durationSeconds": 4.86,
+      "text": "understand one easy possibility we get"
+    },
+    {
+      "startSeconds": 124.979,
+      "durationSeconds": 4.801,
+      "text": "with vectors is to find similar vectors"
+    },
+    {
+      "startSeconds": 127.2,
+      "durationSeconds": 4.679,
+      "text": "by calculating the distances and doing a"
+    },
+    {
+      "startSeconds": 129.78,
+      "durationSeconds": 4.56,
+      "text": "nearest neighbor search so we can easily"
+    },
+    {
+      "startSeconds": 131.879,
+      "durationSeconds": 5.521,
+      "text": "find similar items for Simplicity I"
+    },
+    {
+      "startSeconds": 134.34,
+      "durationSeconds": 4.92,
+      "text": "display a 2d case here but in reality of"
+    },
+    {
+      "startSeconds": 137.4,
+      "durationSeconds": 4.08,
+      "text": "course those vectors can have hundreds"
+    },
+    {
+      "startSeconds": 139.26,
+      "durationSeconds": 4.68,
+      "text": "of Dimensions but just storing the data"
+    },
+    {
+      "startSeconds": 141.48,
+      "durationSeconds": 4.86,
+      "text": "as embeddings is not enough performing a"
+    },
+    {
+      "startSeconds": 143.94,
+      "durationSeconds": 4.019,
+      "text": "query across thousands of vectors based"
+    },
+    {
+      "startSeconds": 146.34,
+      "durationSeconds": 3.72,
+      "text": "on its distance metric would be"
+    },
+    {
+      "startSeconds": 147.959,
+      "durationSeconds": 4.86,
+      "text": "extremely slow and this is why those"
+    },
+    {
+      "startSeconds": 150.06,
+      "durationSeconds": 5.1,
+      "text": "vectors also need to be indexed so the"
+    },
+    {
+      "startSeconds": 152.819,
+      "durationSeconds": 4.981,
+      "text": "indexing process is the second key"
+    },
+    {
+      "startSeconds": 155.16,
+      "durationSeconds": 4.98,
+      "text": "element of a vector database an index is"
+    },
+    {
+      "startSeconds": 157.8,
+      "durationSeconds": 5.28,
+      "text": "a data structure that facilitates the"
+    },
+    {
+      "startSeconds": 160.14,
+      "durationSeconds": 5.64,
+      "text": "search process so the indexing step Maps"
+    },
+    {
+      "startSeconds": 163.08,
+      "durationSeconds": 5.519,
+      "text": "the vectors to a new data structure that"
+    },
+    {
+      "startSeconds": 165.78,
+      "durationSeconds": 4.739,
+      "text": "will enable faster searching this is a"
+    },
+    {
+      "startSeconds": 168.599,
+      "durationSeconds": 3.841,
+      "text": "whole research field on its own and"
+    },
+    {
+      "startSeconds": 170.519,
+      "durationSeconds": 4.141,
+      "text": "different ways to calculate indexes"
+    },
+    {
+      "startSeconds": 172.44,
+      "durationSeconds": 4.62,
+      "text": "exist so I won't go into details here"
+    },
+    {
+      "startSeconds": 174.66,
+      "durationSeconds": 4.62,
+      "text": "just know that indexes are needed for"
+    },
+    {
+      "startSeconds": 177.06,
+      "durationSeconds": 4.5,
+      "text": "efficient search so let's go over some"
+    },
+    {
+      "startSeconds": 179.28,
+      "durationSeconds": 4.679,
+      "text": "use cases I already mentioned that we"
+    },
+    {
+      "startSeconds": 181.56,
+      "durationSeconds": 4.5,
+      "text": "can use Vector databases to equip large"
+    },
+    {
+      "startSeconds": 183.959,
+      "durationSeconds": 4.14,
+      "text": "language models with long-term memory"
+    },
+    {
+      "startSeconds": 186.06,
+      "durationSeconds": 4.14,
+      "text": "this is for example what you can easily"
+    },
+    {
+      "startSeconds": 188.099,
+      "durationSeconds": 4.081,
+      "text": "Implement with Lang chain we can use it"
+    },
+    {
+      "startSeconds": 190.2,
+      "durationSeconds": 4.56,
+      "text": "for semantic search when we need to"
+    },
+    {
+      "startSeconds": 192.18,
+      "durationSeconds": 4.74,
+      "text": "search not for exact string matches but"
+    },
+    {
+      "startSeconds": 194.76,
+      "durationSeconds": 4.44,
+      "text": "rather based on the meaning or context"
+    },
+    {
+      "startSeconds": 196.92,
+      "durationSeconds": 4.739,
+      "text": "of our question we can also use it for"
+    },
+    {
+      "startSeconds": 199.2,
+      "durationSeconds": 5.22,
+      "text": "similarity search for images audio or"
+    },
+    {
+      "startSeconds": 201.659,
+      "durationSeconds": 4.561,
+      "text": "video data so we can say hey find me a"
+    },
+    {
+      "startSeconds": 204.42,
+      "durationSeconds": 4.08,
+      "text": "similar image to this one and we don't"
+    },
+    {
+      "startSeconds": 206.22,
+      "durationSeconds": 4.26,
+      "text": "need to use some keywords or text to"
+    },
+    {
+      "startSeconds": 208.5,
+      "durationSeconds": 3.9,
+      "text": "describe the image and we can use a"
+    },
+    {
+      "startSeconds": 210.48,
+      "durationSeconds": 3.96,
+      "text": "vector database as a ranking and"
+    },
+    {
+      "startSeconds": 212.4,
+      "durationSeconds": 4.199,
+      "text": "recommendation engine for example for"
+    },
+    {
+      "startSeconds": 214.44,
+      "durationSeconds": 4.799,
+      "text": "online retailers it can be used to"
+    },
+    {
+      "startSeconds": 216.599,
+      "durationSeconds": 4.86,
+      "text": "suggest items similar to past purchases"
+    },
+    {
+      "startSeconds": 219.239,
+      "durationSeconds": 4.441,
+      "text": "of a customer since we can simply"
+    },
+    {
+      "startSeconds": 221.459,
+      "durationSeconds": 4.321,
+      "text": "identify the nearest neighbors of an"
+    },
+    {
+      "startSeconds": 223.68,
+      "durationSeconds": 4.26,
+      "text": "item in our database so now that you"
+    },
+    {
+      "startSeconds": 225.78,
+      "durationSeconds": 4.319,
+      "text": "know some use cases let's go over some"
+    },
+    {
+      "startSeconds": 227.94,
+      "durationSeconds": 4.379,
+      "text": "options you can use as a vector database"
+    },
+    {
+      "startSeconds": 230.099,
+      "durationSeconds": 4.981,
+      "text": "there are a number of vector databases"
+    },
+    {
+      "startSeconds": 232.319,
+      "durationSeconds": 6.301,
+      "text": "available for example we have Pinecone"
+    },
+    {
+      "startSeconds": 235.08,
+      "durationSeconds": 7.2,
+      "text": "vv8 chroma redis also has a virtual"
+    },
+    {
+      "startSeconds": 238.62,
+      "durationSeconds": 6,
+      "text": "database cool trans milvis or Vespa AI"
+    },
+    {
+      "startSeconds": 242.28,
+      "durationSeconds": 4.26,
+      "text": "so I won't go into details here but if"
+    },
+    {
+      "startSeconds": 244.62,
+      "durationSeconds": 3.6,
+      "text": "you want to see a separate video with an"
+    },
+    {
+      "startSeconds": 246.54,
+      "durationSeconds": 3.36,
+      "text": "in-depth comparison then let me know in"
+    },
+    {
+      "startSeconds": 248.22,
+      "durationSeconds": 3.719,
+      "text": "the comments below alright I hope you"
+    },
+    {
+      "startSeconds": 249.9,
+      "durationSeconds": 4.199,
+      "text": "now have a good understanding of what"
+    },
+    {
+      "startSeconds": 251.939,
+      "durationSeconds": 4.02,
+      "text": "Vector databases are and what you can do"
+    },
+    {
+      "startSeconds": 254.099,
+      "durationSeconds": 4.26,
+      "text": "with them if you want to see more"
+    },
+    {
+      "startSeconds": 255.959,
+      "durationSeconds": 4.081,
+      "text": "explainer videos and AI tutorials then"
+    },
+    {
+      "startSeconds": 258.359,
+      "durationSeconds": 3.181,
+      "text": "make sure to subscribe to our Channel"
+    },
+    {
+      "startSeconds": 260.04,
+      "durationSeconds": 4.28,
+      "text": "and then I hope to see you in the next"
+    },
+    {
+      "startSeconds": 261.54,
+      "durationSeconds": 2.78,
+      "text": "video bye"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Intro"
+    },
+    {
+      "startSeconds": 44,
+      "label": "Why do we need vector databases"
+    },
+    {
+      "startSeconds": 89,
+      "label": "Vector embeddings and indexes"
+    },
+    {
+      "startSeconds": 178,
+      "label": "Use cases"
+    },
+    {
+      "startSeconds": 225,
+      "label": "Different vector databases"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:53.146Z"
+}

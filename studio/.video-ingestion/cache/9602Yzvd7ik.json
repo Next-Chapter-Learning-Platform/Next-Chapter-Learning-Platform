@@ -1,0 +1,792 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "9602Yzvd7ik",
+  "url": "https://www.youtube.com/watch?v=9602Yzvd7ik",
+  "title": "Next.js 15 Tutorial - 5 - Routing",
+  "description": "Understanding Next.js File based Routing\n\nIn this video, we dive into the core feature of routing in Next.js, focusing on its file system-based routing mechanism. Learn how to structure your files and folders to create accessible URLs. Follow along as we create a new Next.js project and build routes for a homepage, About page, and Profile page using key conventions. Discover the simplicity of not needing additional configuration for routing and understand how Next.js handles non-existing routes with a 404 response. Perfect for those looking to master routing in Next.js!\n\n📔 GitHub Repo - https://github.com/gopinav/Next.js-15-Tutorials\n📘 Frontend Interview Course - https://learn.codevolution.dev/\n💖 Support UPI - https://support.codevolution.dev/\n💖 Support Paypal - https://www.paypal.me/Codevolution\n💾 Github - https://github.com/gopinav\n\n📱 Follow Codevolution\n+ Twitter - https://twitter.com/CodevolutionWeb\n+ Facebook - https://www.facebook.com/codevolutionweb\n\n📫 Business - codevolution.business@gmail.com\n\n00:00 Introduction to Next.js Routing\n00:16 Setting Up a New Next.js Project\n00:43 Understanding File-Based Routing\n01:26 Creating Your First Route\n03:02 Implementing Additional Routes\n04:56 Handling Non-Existing Routes\n05:17 Conclusion and Next Steps",
+  "expectedDurationSeconds": 350,
+  "transcript": [
+    {
+      "startSeconds": 0,
+      "durationSeconds": 5.28,
+      "text": "Let's dive into one of NextJS's core"
+    },
+    {
+      "startSeconds": 2.28,
+      "durationSeconds": 5.52,
+      "text": "features, routing. NextJS uses a file"
+    },
+    {
+      "startSeconds": 5.28,
+      "durationSeconds": 4.64,
+      "text": "system-based routing system, meaning the"
+    },
+    {
+      "startSeconds": 7.8,
+      "durationSeconds": 3.96,
+      "text": "URLs you can access in your browser are"
+    },
+    {
+      "startSeconds": 9.92,
+      "durationSeconds": 4.28,
+      "text": "determined by how you organize your"
+    },
+    {
+      "startSeconds": 11.76,
+      "durationSeconds": 3.6,
+      "text": "files and folders in your code. Let me"
+    },
+    {
+      "startSeconds": 14.2,
+      "durationSeconds": 4.04,
+      "text": "show you how this works with some"
+    },
+    {
+      "startSeconds": 15.36,
+      "durationSeconds": 5.8,
+      "text": "practical examples. I have created a new"
+    },
+    {
+      "startSeconds": 18.24,
+      "durationSeconds": 5.08,
+      "text": "NextJS project using the command npx"
+    },
+    {
+      "startSeconds": 21.16,
+      "durationSeconds": 3.84,
+      "text": "create-next-app@latest"
+    },
+    {
+      "startSeconds": 23.32,
+      "durationSeconds": 4.08,
+      "text": "routing-demo."
+    },
+    {
+      "startSeconds": 25,
+      "durationSeconds": 4.16,
+      "text": "Routing-demo is the name of our project."
+    },
+    {
+      "startSeconds": 27.4,
+      "durationSeconds": 3.44,
+      "text": "When the command completes successfully,"
+    },
+    {
+      "startSeconds": 29.16,
+      "durationSeconds": 4.6,
+      "text": "you should have a project similar to"
+    },
+    {
+      "startSeconds": 30.84,
+      "durationSeconds": 5.2,
+      "text": "mine. Navigate to the source folder."
+    },
+    {
+      "startSeconds": 33.76,
+      "durationSeconds": 4.24,
+      "text": "Now, we will start fresh by deleting the"
+    },
+    {
+      "startSeconds": 36.04,
+      "durationSeconds": 5.52,
+      "text": "app folder, since we are going to build"
+    },
+    {
+      "startSeconds": 38,
+      "durationSeconds": 3.56,
+      "text": "our routes from scratch."
+    },
+    {
+      "startSeconds": 43.36,
+      "durationSeconds": 4.92,
+      "text": "I mentioned earlier that NextJS has a"
+    },
+    {
+      "startSeconds": 45.68,
+      "durationSeconds": 5.2,
+      "text": "file-based routing mechanism. You might"
+    },
+    {
+      "startSeconds": 48.28,
+      "durationSeconds": 5.68,
+      "text": "naturally wonder, does every file in our"
+    },
+    {
+      "startSeconds": 50.88,
+      "durationSeconds": 5.6,
+      "text": "app folder become a route? Not quite."
+    },
+    {
+      "startSeconds": 53.96,
+      "durationSeconds": 4.2,
+      "text": "NextJS is built around conventions, and"
+    },
+    {
+      "startSeconds": 56.48,
+      "durationSeconds": 4.44,
+      "text": "routing is one area where these"
+    },
+    {
+      "startSeconds": 58.16,
+      "durationSeconds": 4.72,
+      "text": "conventions are particularly important."
+    },
+    {
+      "startSeconds": 60.92,
+      "durationSeconds": 4.68,
+      "text": "There are three main conventions to"
+    },
+    {
+      "startSeconds": 62.88,
+      "durationSeconds": 5.76,
+      "text": "remember. First, all routes must live"
+    },
+    {
+      "startSeconds": 65.6,
+      "durationSeconds": 6.08,
+      "text": "inside the app folder. Second, route"
+    },
+    {
+      "startSeconds": 68.64,
+      "durationSeconds": 5.64,
+      "text": "files must be named either page.js"
+    },
+    {
+      "startSeconds": 71.68,
+      "durationSeconds": 5.16,
+      "text": "or page.tsx, depending on whether you're"
+    },
+    {
+      "startSeconds": 74.28,
+      "durationSeconds": 5.16,
+      "text": "using TypeScript. Third, each folder"
+    },
+    {
+      "startSeconds": 76.84,
+      "durationSeconds": 4.36,
+      "text": "represents a segment of the URL path."
+    },
+    {
+      "startSeconds": 79.44,
+      "durationSeconds": 4.08,
+      "text": "When these conventions are followed, the"
+    },
+    {
+      "startSeconds": 81.2,
+      "durationSeconds": 5.16,
+      "text": "file automatically becomes available as"
+    },
+    {
+      "startSeconds": 83.52,
+      "durationSeconds": 5.08,
+      "text": "a route. Let's put this into practice."
+    },
+    {
+      "startSeconds": 86.36,
+      "durationSeconds": 4.24,
+      "text": "For scenario one, we want to create a"
+    },
+    {
+      "startSeconds": 88.6,
+      "durationSeconds": 5.76,
+      "text": "home page that shows up when someone"
+    },
+    {
+      "startSeconds": 90.6,
+      "durationSeconds": 5.48,
+      "text": "visits our site at localhost:3000."
+    },
+    {
+      "startSeconds": 94.36,
+      "durationSeconds": 3.2,
+      "text": "Let's head back to VS Code and implement"
+    },
+    {
+      "startSeconds": 96.08,
+      "durationSeconds": 3.32,
+      "text": "the scenario."
+    },
+    {
+      "startSeconds": 97.56,
+      "durationSeconds": 4.08,
+      "text": "The first key convention in NextJS"
+    },
+    {
+      "startSeconds": 99.4,
+      "durationSeconds": 4.04,
+      "text": "routing is that all routes must be"
+    },
+    {
+      "startSeconds": 101.64,
+      "durationSeconds": 4.04,
+      "text": "placed in an app folder within the"
+    },
+    {
+      "startSeconds": 103.44,
+      "durationSeconds": 4.24,
+      "text": "source directory. Let's create this"
+    },
+    {
+      "startSeconds": 105.68,
+      "durationSeconds": 4.32,
+      "text": "folder."
+    },
+    {
+      "startSeconds": 107.68,
+      "durationSeconds": 4.4,
+      "text": "The second convention is that any file"
+    },
+    {
+      "startSeconds": 110,
+      "durationSeconds": 3.8,
+      "text": "meant to be a route must be named"
+    },
+    {
+      "startSeconds": 112.08,
+      "durationSeconds": 3.56,
+      "text": "page.tsx"
+    },
+    {
+      "startSeconds": 113.8,
+      "durationSeconds": 4.92,
+      "text": "or page.js if you're not using"
+    },
+    {
+      "startSeconds": 115.64,
+      "durationSeconds": 5.56,
+      "text": "TypeScript. Let's create a page.tsx file"
+    },
+    {
+      "startSeconds": 118.72,
+      "durationSeconds": 5.04,
+      "text": "in the app folder."
+    },
+    {
+      "startSeconds": 121.2,
+      "durationSeconds": 6,
+      "text": "From this file, we will default export a"
+    },
+    {
+      "startSeconds": 123.76,
+      "durationSeconds": 6.719,
+      "text": "simple React component. Export default"
+    },
+    {
+      "startSeconds": 127.2,
+      "durationSeconds": 6.6,
+      "text": "function home, and this returns an each"
+    },
+    {
+      "startSeconds": 130.479,
+      "durationSeconds": 5.001,
+      "text": "one tag that says welcome home."
+    },
+    {
+      "startSeconds": 133.8,
+      "durationSeconds": 5.04,
+      "text": "And just like that, we have created our"
+    },
+    {
+      "startSeconds": 135.48,
+      "durationSeconds": 6.28,
+      "text": "first Next.js route. In the terminal,"
+    },
+    {
+      "startSeconds": 138.84,
+      "durationSeconds": 4.32,
+      "text": "run the command npm run dev to start the"
+    },
+    {
+      "startSeconds": 141.76,
+      "durationSeconds": 4.36,
+      "text": "dev server."
+    },
+    {
+      "startSeconds": 143.16,
+      "durationSeconds": 5.36,
+      "text": "In the browser, visit localhost:3000,"
+    },
+    {
+      "startSeconds": 146.12,
+      "durationSeconds": 4.76,
+      "text": "and you will see welcome home displayed."
+    },
+    {
+      "startSeconds": 148.52,
+      "durationSeconds": 3.52,
+      "text": "This is our first key routing concept to"
+    },
+    {
+      "startSeconds": 150.88,
+      "durationSeconds": 3.96,
+      "text": "remember."
+    },
+    {
+      "startSeconds": 152.04,
+      "durationSeconds": 5.08,
+      "text": "page.tsx file inside the app folder"
+    },
+    {
+      "startSeconds": 154.84,
+      "durationSeconds": 3.48,
+      "text": "automatically maps to your site's root"
+    },
+    {
+      "startSeconds": 157.12,
+      "durationSeconds": 2.4,
+      "text": "URL."
+    },
+    {
+      "startSeconds": 158.32,
+      "durationSeconds": 3.32,
+      "text": "With that, we have successfully"
+    },
+    {
+      "startSeconds": 159.52,
+      "durationSeconds": 3.96,
+      "text": "implemented scenario one."
+    },
+    {
+      "startSeconds": 161.64,
+      "durationSeconds": 4.4,
+      "text": "Before we continue, let's talk about the"
+    },
+    {
+      "startSeconds": 163.48,
+      "durationSeconds": 4.44,
+      "text": "layout.tsx file."
+    },
+    {
+      "startSeconds": 166.04,
+      "durationSeconds": 3.64,
+      "text": "Even though we deleted this file when"
+    },
+    {
+      "startSeconds": 167.92,
+      "durationSeconds": 3.92,
+      "text": "removing the app folder,"
+    },
+    {
+      "startSeconds": 169.68,
+      "durationSeconds": 4.32,
+      "text": "Next.js will automatically create and"
+    },
+    {
+      "startSeconds": 171.84,
+      "durationSeconds": 3.36,
+      "text": "set it up when you first access the root"
+    },
+    {
+      "startSeconds": 174,
+      "durationSeconds": 3.72,
+      "text": "route."
+    },
+    {
+      "startSeconds": 175.2,
+      "durationSeconds": 4.08,
+      "text": "We will explore layouts in depth later,"
+    },
+    {
+      "startSeconds": 177.72,
+      "durationSeconds": 3.519,
+      "text": "but for now, just remember that this"
+    },
+    {
+      "startSeconds": 179.28,
+      "durationSeconds": 3.2,
+      "text": "file gets automatically created behind"
+    },
+    {
+      "startSeconds": 181.239,
+      "durationSeconds": 3.801,
+      "text": "the scenes."
+    },
+    {
+      "startSeconds": 182.48,
+      "durationSeconds": 4.4,
+      "text": "Now, let's tackle scenario number two."
+    },
+    {
+      "startSeconds": 185.04,
+      "durationSeconds": 4.12,
+      "text": "For this scenario, we need to create two"
+    },
+    {
+      "startSeconds": 186.88,
+      "durationSeconds": 5.079,
+      "text": "additional routes, one for the about"
+    },
+    {
+      "startSeconds": 189.16,
+      "durationSeconds": 6.16,
+      "text": "page, and one for the profile page. The"
+    },
+    {
+      "startSeconds": 191.959,
+      "durationSeconds": 6.081,
+      "text": "URL will read localhost:3000/about,"
+    },
+    {
+      "startSeconds": 195.32,
+      "durationSeconds": 4.639,
+      "text": "and localhost:3000/profile."
+    },
+    {
+      "startSeconds": 198.04,
+      "durationSeconds": 5,
+      "text": "Back in VS Code, let's create these"
+    },
+    {
+      "startSeconds": 199.959,
+      "durationSeconds": 5.761,
+      "text": "routes. There are three simple steps."
+    },
+    {
+      "startSeconds": 203.04,
+      "durationSeconds": 5.8,
+      "text": "First, create a new folder called about"
+    },
+    {
+      "startSeconds": 205.72,
+      "durationSeconds": 5.96,
+      "text": "inside the app folder."
+    },
+    {
+      "startSeconds": 208.84,
+      "durationSeconds": 5.48,
+      "text": "Second, inside this about folder, create"
+    },
+    {
+      "startSeconds": 211.68,
+      "durationSeconds": 5.12,
+      "text": "a page.tsx file."
+    },
+    {
+      "startSeconds": 214.32,
+      "durationSeconds": 4.4,
+      "text": "Third, from this file, default export a"
+    },
+    {
+      "startSeconds": 216.8,
+      "durationSeconds": 3.96,
+      "text": "React component."
+    },
+    {
+      "startSeconds": 218.72,
+      "durationSeconds": 4.72,
+      "text": "Export default function about, which"
+    },
+    {
+      "startSeconds": 220.76,
+      "durationSeconds": 5.12,
+      "text": "returns an each one about me."
+    },
+    {
+      "startSeconds": 223.44,
+      "durationSeconds": 5.799,
+      "text": "Similarly, create yet another folder in"
+    },
+    {
+      "startSeconds": 225.88,
+      "durationSeconds": 6.2,
+      "text": "the app folder called profile."
+    },
+    {
+      "startSeconds": 229.239,
+      "durationSeconds": 4.281,
+      "text": "Inside the folder, create a page.tsx"
+    },
+    {
+      "startSeconds": 232.08,
+      "durationSeconds": 3.36,
+      "text": "file."
+    },
+    {
+      "startSeconds": 233.52,
+      "durationSeconds": 4.16,
+      "text": "From this file, default export a React"
+    },
+    {
+      "startSeconds": 235.44,
+      "durationSeconds": 5.2,
+      "text": "component. Export default function"
+    },
+    {
+      "startSeconds": 237.68,
+      "durationSeconds": 4.32,
+      "text": "profile, return an H1 tag that says my"
+    },
+    {
+      "startSeconds": 240.64,
+      "durationSeconds": 3.44,
+      "text": "profile."
+    },
+    {
+      "startSeconds": 242,
+      "durationSeconds": 4.44,
+      "text": "After saving the files and heading back"
+    },
+    {
+      "startSeconds": 244.08,
+      "durationSeconds": 4.36,
+      "text": "to the browser, the home page will still"
+    },
+    {
+      "startSeconds": 246.44,
+      "durationSeconds": 4.2,
+      "text": "be displayed at the root route,"
+    },
+    {
+      "startSeconds": 248.44,
+      "durationSeconds": 3.24,
+      "text": "localhost:3000."
+    },
+    {
+      "startSeconds": 250.64,
+      "durationSeconds": 3.44,
+      "text": "When you navigate to"
+    },
+    {
+      "startSeconds": 251.68,
+      "durationSeconds": 4.64,
+      "text": "localhost:3000/about,"
+    },
+    {
+      "startSeconds": 254.08,
+      "durationSeconds": 5.279,
+      "text": "you will see the about me page, and"
+    },
+    {
+      "startSeconds": 256.32,
+      "durationSeconds": 5.76,
+      "text": "similarly, going to /profile"
+    },
+    {
+      "startSeconds": 259.359,
+      "durationSeconds": 5.281,
+      "text": "will show the my profile page. Scenario"
+    },
+    {
+      "startSeconds": 262.08,
+      "durationSeconds": 4.64,
+      "text": "two is now complete. The second key"
+    },
+    {
+      "startSeconds": 264.64,
+      "durationSeconds": 4.64,
+      "text": "routing concept to remember is that"
+    },
+    {
+      "startSeconds": 266.72,
+      "durationSeconds": 4.76,
+      "text": "routes are directly tied to their folder"
+    },
+    {
+      "startSeconds": 269.28,
+      "durationSeconds": 5,
+      "text": "names within the app directory. A"
+    },
+    {
+      "startSeconds": 271.48,
+      "durationSeconds": 6.24,
+      "text": "page.tsx file inside the about folder"
+    },
+    {
+      "startSeconds": 274.28,
+      "durationSeconds": 5.68,
+      "text": "maps to the /about route, and a page.tsx"
+    },
+    {
+      "startSeconds": 277.72,
+      "durationSeconds": 5.199,
+      "text": "file inside the profile folder maps to"
+    },
+    {
+      "startSeconds": 279.96,
+      "durationSeconds": 4.84,
+      "text": "the /profile route. Let me show you a"
+    },
+    {
+      "startSeconds": 282.919,
+      "durationSeconds": 3.681,
+      "text": "quick visualization of everything we"
+    },
+    {
+      "startSeconds": 284.8,
+      "durationSeconds": 4.44,
+      "text": "have covered so far. It is pretty"
+    },
+    {
+      "startSeconds": 286.6,
+      "durationSeconds": 5.28,
+      "text": "straightforward. page.tsx in the app"
+    },
+    {
+      "startSeconds": 289.24,
+      "durationSeconds": 4.679,
+      "text": "folder directly maps to the root route,"
+    },
+    {
+      "startSeconds": 291.88,
+      "durationSeconds": 4.88,
+      "text": "and each folder in the app folder"
+    },
+    {
+      "startSeconds": 293.919,
+      "durationSeconds": 4.681,
+      "text": "directly maps to a segment in your URL."
+    },
+    {
+      "startSeconds": 296.76,
+      "durationSeconds": 4.2,
+      "text": "Now, you might be wondering what happens"
+    },
+    {
+      "startSeconds": 298.6,
+      "durationSeconds": 4.36,
+      "text": "if someone tries to access a URL that"
+    },
+    {
+      "startSeconds": 300.96,
+      "durationSeconds": 4.52,
+      "text": "doesn't match any file in your app"
+    },
+    {
+      "startSeconds": 302.96,
+      "durationSeconds": 4.64,
+      "text": "folder. Let's say someone tries to visit"
+    },
+    {
+      "startSeconds": 305.48,
+      "durationSeconds": 3.76,
+      "text": "/dashboard."
+    },
+    {
+      "startSeconds": 307.6,
+      "durationSeconds": 3.88,
+      "text": "In this case, Next.js has got you"
+    },
+    {
+      "startSeconds": 309.24,
+      "durationSeconds": 5,
+      "text": "covered. It will automatically serve up"
+    },
+    {
+      "startSeconds": 311.48,
+      "durationSeconds": 4.48,
+      "text": "a 404 not found response. You don't need"
+    },
+    {
+      "startSeconds": 314.24,
+      "durationSeconds": 4.04,
+      "text": "to write any special code to handle"
+    },
+    {
+      "startSeconds": 315.96,
+      "durationSeconds": 4.48,
+      "text": "these non-existing routes. By now, you"
+    },
+    {
+      "startSeconds": 318.28,
+      "durationSeconds": 4.76,
+      "text": "should have a solid understanding of how"
+    },
+    {
+      "startSeconds": 320.44,
+      "durationSeconds": 4.64,
+      "text": "file-based routing works in Next.js. The"
+    },
+    {
+      "startSeconds": 323.04,
+      "durationSeconds": 3.92,
+      "text": "beauty of this system is that you don't"
+    },
+    {
+      "startSeconds": 325.08,
+      "durationSeconds": 4.2,
+      "text": "need to mess around with installing and"
+    },
+    {
+      "startSeconds": 326.96,
+      "durationSeconds": 4.24,
+      "text": "configuring a router in your code. Your"
+    },
+    {
+      "startSeconds": 329.28,
+      "durationSeconds": 4.84,
+      "text": "file and folder structure does all the"
+    },
+    {
+      "startSeconds": 331.2,
+      "durationSeconds": 5.2,
+      "text": "heavy lifting. This is a perfect example"
+    },
+    {
+      "startSeconds": 334.12,
+      "durationSeconds": 4.08,
+      "text": "of Next.js's philosophy of favoring"
+    },
+    {
+      "startSeconds": 336.4,
+      "durationSeconds": 3.72,
+      "text": "conventions over configuration when it"
+    },
+    {
+      "startSeconds": 338.2,
+      "durationSeconds": 3.44,
+      "text": "comes to routing. All right, let's"
+    },
+    {
+      "startSeconds": 340.12,
+      "durationSeconds": 3.96,
+      "text": "continue exploring more routing"
+    },
+    {
+      "startSeconds": 341.64,
+      "durationSeconds": 4.2,
+      "text": "concepts."
+    },
+    {
+      "startSeconds": 344.08,
+      "durationSeconds": 5.6,
+      "text": "Supporting the channel is free. Please"
+    },
+    {
+      "startSeconds": 345.84,
+      "durationSeconds": 3.84,
+      "text": "like and subscribe. It helps a lot."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction to Next.js Routing"
+    },
+    {
+      "startSeconds": 16,
+      "label": "Setting Up a New Next.js Project"
+    },
+    {
+      "startSeconds": 43,
+      "label": "Understanding File-Based Routing"
+    },
+    {
+      "startSeconds": 86,
+      "label": "Creating Your First Route"
+    },
+    {
+      "startSeconds": 182,
+      "label": "Implementing Additional Routes"
+    },
+    {
+      "startSeconds": 296,
+      "label": "Handling Non-Existing Routes"
+    },
+    {
+      "startSeconds": 317,
+      "label": "Conclusion and Next Steps"
+    }
+  ],
+  "fetchedAt": "2026-09-11T03:56:10.977Z"
+}

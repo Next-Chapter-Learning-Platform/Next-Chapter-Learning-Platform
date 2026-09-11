@@ -1,0 +1,558 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "PmA_0DT7zds",
+  "url": "https://www.youtube.com/watch?v=PmA_0DT7zds",
+  "title": "The Problem of Updating Embeddings in Vector Databases",
+  "description": "Frank Liu addresses the technical challenges of updating embeddings in vector databases, the need for re-indexing, focusing on potential solutions, and the importance of research in this area. \n\nWatch the full episode: https://youtu.be/E4rNTYN3aIg\n\nResources:\nFrank’s website: https://frankliucs.com/\nMilvus: https://milvus.io/\n\nFollow us & stay updated: \n► Vist our website: https://neptune.ai/?utm_source=youtube&utm_medium=video&utm_campaign=mlpp-09\n► Follow us on Linkedin: https://www.linkedin.com/company/neptuneai/ \n► Follow us on Twitter/X: https://twitter.com/neptune_ai \n► Check our Github: https://github.com/neptune-ai \n\nConnect with Piotr on Linkedin: https://www.linkedin.com/in/piotrniedzwiedz \nConnect with Aurimas on Linkedin: https://www.linkedin.com/in/aurimas-griciunas \nConnect with Frank on Linkedin: https://www.linkedin.com/in/fzliu/\nConnect with Frank on Twitter/X: https://twitter.com/frankzliu\n\nThe episode was recorded on 7 September 2023, and some information may not be up-to-date.\n\n#vectordatabases #milvus #mlops #ml",
+  "expectedDurationSeconds": 358,
+  "transcript": [
+    {
+      "startSeconds": 0,
+      "durationSeconds": 5.625,
+      "text": "So one of the big problem challenges\nin using vector"
+    },
+    {
+      "startSeconds": 5.625,
+      "durationSeconds": 4.333,
+      "text": "databases in machine learning applications\nis updating embeddings, right?"
+    },
+    {
+      "startSeconds": 9.958,
+      "durationSeconds": 4.292,
+      "text": "So you change a model, you need to\nbasically update the entire index."
+    },
+    {
+      "startSeconds": 14.25,
+      "durationSeconds": 4.708,
+      "text": "Is there any breakthroughs of being able\nto maybe do that"
+    },
+    {
+      "startSeconds": 18.958,
+      "durationSeconds": 4.583,
+      "text": "in place and maybe creating a new version\nof already existing index in place"
+    },
+    {
+      "startSeconds": 23.541,
+      "durationSeconds": 3.209,
+      "text": "and just committed at some point in time\nso that you don't need to create"
+    },
+    {
+      "startSeconds": 26.75,
+      "durationSeconds": 0.791,
+      "text": "a new one?"
+    },
+    {
+      "startSeconds": 27.541,
+      "durationSeconds": 1.5,
+      "text": "That's always a tough question."
+    },
+    {
+      "startSeconds": 29.041,
+      "durationSeconds": 2.667,
+      "text": "We actually get this question a lot now,"
+    },
+    {
+      "startSeconds": 31.708,
+      "durationSeconds": 2.833,
+      "text": "typically, if you use a vector database,\nyou’ll have an embedding model"
+    },
+    {
+      "startSeconds": 34.541,
+      "durationSeconds": 1.542,
+      "text": "that you want to use in mind."
+    },
+    {
+      "startSeconds": 36.083,
+      "durationSeconds": 2.542,
+      "text": "And that embedding model hopefully\nwon't change for a period of time."
+    },
+    {
+      "startSeconds": 38.625,
+      "durationSeconds": 3.791,
+      "text": "If you do get a V2\nor V3 of that embedding model,"
+    },
+    {
+      "startSeconds": 42.416,
+      "durationSeconds": 2.042,
+      "text": "yes you will have to reindex everything."
+    },
+    {
+      "startSeconds": 44.458,
+      "durationSeconds": 3.167,
+      "text": "There are ways around that."
+    },
+    {
+      "startSeconds": 47.625,
+      "durationSeconds": 2.916,
+      "text": "So for"
+    },
+    {
+      "startSeconds": 50.541,
+      "durationSeconds": 3.75,
+      "text": "example, if I have"
+    },
+    {
+      "startSeconds": 54.291,
+      "durationSeconds": 2.792,
+      "text": "an original domain of data\nand that domain of data is good"
+    },
+    {
+      "startSeconds": 57.083,
+      "durationSeconds": 4.125,
+      "text": "for very specific embedding, my embedding\nmodel fits that domain of data."
+    },
+    {
+      "startSeconds": 61.208,
+      "durationSeconds": 3.958,
+      "text": "And I want to extend now all of a sudden\nI have a new domain of data."
+    },
+    {
+      "startSeconds": 65.166,
+      "durationSeconds": 3.875,
+      "text": "And I want to train a new embedding\nmodel over that."
+    },
+    {
+      "startSeconds": 69.041,
+      "durationSeconds": 1.25,
+      "text": "I have two separate."
+    },
+    {
+      "startSeconds": 70.291,
+      "durationSeconds": 3,
+      "text": "I want to combine that\nwith my original domain of data."
+    },
+    {
+      "startSeconds": 73.458,
+      "durationSeconds": 7.042,
+      "text": "What I can do is I can train a new model"
+    },
+    {
+      "startSeconds": 80.5,
+      "durationSeconds": 4.208,
+      "text": "that learns to mimic\nthe embeddings of the old model."
+    },
+    {
+      "startSeconds": 84.708,
+      "durationSeconds": 2.625,
+      "text": "Yeah I have some type of L2 loss."
+    },
+    {
+      "startSeconds": 87.333,
+      "durationSeconds": 3.292,
+      "text": "I train a model that learns to mimic\nthe embeddings of my old model"
+    },
+    {
+      "startSeconds": 90.625,
+      "durationSeconds": 1.833,
+      "text": "over the old domain of data,"
+    },
+    {
+      "startSeconds": 92.458,
+      "durationSeconds": 3.417,
+      "text": "while still providing me\nwith useful, relevant information."
+    },
+    {
+      "startSeconds": 95.875,
+      "durationSeconds": 5,
+      "text": "Relevant embeddings\nfor my newer domain of data, right?"
+    },
+    {
+      "startSeconds": 100.875,
+      "durationSeconds": 0.833,
+      "text": "If I just have a"
+    },
+    {
+      "startSeconds": 101.708,
+      "durationSeconds": 3,
+      "text": "pure upgrade in terms\nof my embedding model, like one embedding"
+    },
+    {
+      "startSeconds": 104.708,
+      "durationSeconds": 5.25,
+      "text": "model is much better than the other over\nvery wide domain of data."
+    },
+    {
+      "startSeconds": 109.958,
+      "durationSeconds": 3.125,
+      "text": "You will have to reindex everything\nin your vector database."
+    },
+    {
+      "startSeconds": 113.083,
+      "durationSeconds": 3,
+      "text": "That's the unfortunate reality of it."
+    },
+    {
+      "startSeconds": 116.083,
+      "durationSeconds": 2.875,
+      "text": "There there might be some tricks\nthat we could use."
+    },
+    {
+      "startSeconds": 118.958,
+      "durationSeconds": 3,
+      "text": "So, you know,\nmaybe we could train some sort"
+    },
+    {
+      "startSeconds": 121.958,
+      "durationSeconds": 4.208,
+      "text": "of encoder\nor we could train some sort of multi-layer"
+    },
+    {
+      "startSeconds": 126.166,
+      "durationSeconds": 3.625,
+      "text": "perceptron\nto map old embeddings to new embeddings."
+    },
+    {
+      "startSeconds": 129.791,
+      "durationSeconds": 3.917,
+      "text": "But I would still have"
+    },
+    {
+      "startSeconds": 133.708,
+      "durationSeconds": 1.792,
+      "text": "to embed that into my vector database."
+    },
+    {
+      "startSeconds": 135.5,
+      "durationSeconds": 2.333,
+      "text": "And, you know,\nthings become a little more complicated."
+    },
+    {
+      "startSeconds": 137.833,
+      "durationSeconds": 1.708,
+      "text": "But long story short, yeah."
+    },
+    {
+      "startSeconds": 139.541,
+      "durationSeconds": 5.667,
+      "text": "If you have a pure upgrade for your data,\nand you have a completely new model,"
+    },
+    {
+      "startSeconds": 145.208,
+      "durationSeconds": 3.542,
+      "text": "you unfortunately\nwill have to reindex a lot of data."
+    },
+    {
+      "startSeconds": 148.75,
+      "durationSeconds": 3.875,
+      "text": "If instead what you're looking at\nis maybe potentially have a"
+    },
+    {
+      "startSeconds": 152.625,
+      "durationSeconds": 3.916,
+      "text": "new domain of data, and I want to be able\nto extend my old domain of data"
+    },
+    {
+      "startSeconds": 156.541,
+      "durationSeconds": 5.167,
+      "text": "to this new domain of data as well,\nI can simply apply some sort of L2 loss"
+    },
+    {
+      "startSeconds": 161.708,
+      "durationSeconds": 5,
+      "text": "to make sure that my old domain of data\nis there in line with my new domain too."
+    },
+    {
+      "startSeconds": 166.708,
+      "durationSeconds": 5.875,
+      "text": "I can imagine having optimize\nsuch cost function and do it like that."
+    },
+    {
+      "startSeconds": 172.583,
+      "durationSeconds": 1.792,
+      "text": "But I'm"
+    },
+    {
+      "startSeconds": 174.375,
+      "durationSeconds": 1.083,
+      "text": "skeptical about the"
+    },
+    {
+      "startSeconds": 175.458,
+      "durationSeconds": 3.333,
+      "text": "performance here, because"
+    },
+    {
+      "startSeconds": 178.791,
+      "durationSeconds": 4.5,
+      "text": "it would also mean that"
+    },
+    {
+      "startSeconds": 183.291,
+      "durationSeconds": 1.084,
+      "text": "the new model,"
+    },
+    {
+      "startSeconds": 184.375,
+      "durationSeconds": 3.166,
+      "text": "we'd be using a very similar feature\nspace."
+    },
+    {
+      "startSeconds": 187.541,
+      "durationSeconds": 1.792,
+      "text": "Otherwise"
+    },
+    {
+      "startSeconds": 189.333,
+      "durationSeconds": 1.875,
+      "text": "element of vector."
+    },
+    {
+      "startSeconds": 191.208,
+      "durationSeconds": 4.583,
+      "text": "If you can use the same feature space then"
+    },
+    {
+      "startSeconds": 195.791,
+      "durationSeconds": 3,
+      "text": "it sounds feasible that it should work."
+    },
+    {
+      "startSeconds": 198.791,
+      "durationSeconds": 5.042,
+      "text": "But if your problem requires,\nyou would get"
+    },
+    {
+      "startSeconds": 203.833,
+      "durationSeconds": 4.083,
+      "text": "significantly better performance\nif you can use"
+    },
+    {
+      "startSeconds": 207.916,
+      "durationSeconds": 3.959,
+      "text": "different features, like"
+    },
+    {
+      "startSeconds": 211.875,
+      "durationSeconds": 3.083,
+      "text": "your model will figure out what"
+    },
+    {
+      "startSeconds": 214.958,
+      "durationSeconds": 3.583,
+      "text": "those features will represent."
+    },
+    {
+      "startSeconds": 218.541,
+      "durationSeconds": 4.625,
+      "text": "But I think it is, Yeah\nfor some use cases, I think it can work."
+    },
+    {
+      "startSeconds": 223.166,
+      "durationSeconds": 1.25,
+      "text": "I totally agree with you."
+    },
+    {
+      "startSeconds": 224.416,
+      "durationSeconds": 4.375,
+      "text": "And that's why"
+    },
+    {
+      "startSeconds": 228.791,
+      "durationSeconds": 4.125,
+      "text": "if you have like a new domain of data and"
+    },
+    {
+      "startSeconds": 232.916,
+      "durationSeconds": 3.917,
+      "text": "if you have all this old data that you've\nbuilt an embedding model across,"
+    },
+    {
+      "startSeconds": 236.833,
+      "durationSeconds": 3.875,
+      "text": "and all of a sudden you have this new data\nand that new data is a different domain."
+    },
+    {
+      "startSeconds": 240.708,
+      "durationSeconds": 1.5,
+      "text": "Let's say"
+    },
+    {
+      "startSeconds": 242.208,
+      "durationSeconds": 3.833,
+      "text": "your old data is all financial documents\nand your new data is all legal documents."
+    },
+    {
+      "startSeconds": 246.041,
+      "durationSeconds": 5.042,
+      "text": "And you want a new model that can handle\nall those documents together."
+    },
+    {
+      "startSeconds": 251.083,
+      "durationSeconds": 1.375,
+      "text": "Then it makes sense."
+    },
+    {
+      "startSeconds": 252.458,
+      "durationSeconds": 4.833,
+      "text": "I think it makes\nsense to apply this loss to"
+    },
+    {
+      "startSeconds": 257.291,
+      "durationSeconds": 1.084,
+      "text": "use the old model as a"
+    },
+    {
+      "startSeconds": 258.375,
+      "durationSeconds": 3.833,
+      "text": "teacher in some way shape and form."
+    },
+    {
+      "startSeconds": 262.208,
+      "durationSeconds": 3.917,
+      "text": "The reason is because"
+    },
+    {
+      "startSeconds": 266.125,
+      "durationSeconds": 3.583,
+      "text": "at the end of the day\nthese embedding spaces are not"
+    },
+    {
+      "startSeconds": 269.708,
+      "durationSeconds": 1.792,
+      "text": "spherical. They're not spherical\nin these high dimensions."
+    },
+    {
+      "startSeconds": 271.5,
+      "durationSeconds": 3,
+      "text": "They're very, very isotropic."
+    },
+    {
+      "startSeconds": 274.5,
+      "durationSeconds": 4.708,
+      "text": "If we could visualize"
+    },
+    {
+      "startSeconds": 279.208,
+      "durationSeconds": 2.208,
+      "text": "768 dimensions, right?"
+    },
+    {
+      "startSeconds": 281.416,
+      "durationSeconds": 4.292,
+      "text": "You can imagine we do tSNE or UMAP and"
+    },
+    {
+      "startSeconds": 285.708,
+      "durationSeconds": 2.958,
+      "text": "we sort of shape them down to three\ndimensions so that we can visualize them."
+    },
+    {
+      "startSeconds": 288.666,
+      "durationSeconds": 3.084,
+      "text": "They're like very, very oblong\nand they're very oddly shaped."
+    },
+    {
+      "startSeconds": 291.75,
+      "durationSeconds": 2.916,
+      "text": "And there might be like a cluster here\nin this embedding space."
+    },
+    {
+      "startSeconds": 294.666,
+      "durationSeconds": 2.5,
+      "text": "And like a different bigger cluster\nhere in this embedding space."
+    },
+    {
+      "startSeconds": 297.166,
+      "durationSeconds": 3.584,
+      "text": "They're not spherical in high dimensions."
+    },
+    {
+      "startSeconds": 300.75,
+      "durationSeconds": 3.166,
+      "text": "And that's why"
+    },
+    {
+      "startSeconds": 303.916,
+      "durationSeconds": 4.25,
+      "text": "if you have a totally new domain of data,\nI think it's possible."
+    },
+    {
+      "startSeconds": 308.166,
+      "durationSeconds": 1.042,
+      "text": "I haven't actually tried."
+    },
+    {
+      "startSeconds": 309.208,
+      "durationSeconds": 3.958,
+      "text": "So don't take my word for it,\nbut that's why I think it's possible"
+    },
+    {
+      "startSeconds": 313.166,
+      "durationSeconds": 3.917,
+      "text": "to sort of have a new embedding model\nthat handles all of your data together,"
+    },
+    {
+      "startSeconds": 317.083,
+      "durationSeconds": 2.125,
+      "text": "not just your old data,\nbut also your new data."
+    },
+    {
+      "startSeconds": 319.208,
+      "durationSeconds": 2.542,
+      "text": "If that's assuming that"
+    },
+    {
+      "startSeconds": 321.75,
+      "durationSeconds": 0.916,
+      "text": "you have different domains."
+    },
+    {
+      "startSeconds": 322.666,
+      "durationSeconds": 4.209,
+      "text": "Getting pretty deep in ML here\nbut I imagine there is some research"
+    },
+    {
+      "startSeconds": 326.875,
+      "durationSeconds": 0.5,
+      "text": "about this."
+    },
+    {
+      "startSeconds": 327.375,
+      "durationSeconds": 1.833,
+      "text": "I guarantee you\nthere's research about this."
+    },
+    {
+      "startSeconds": 329.208,
+      "durationSeconds": 2.875,
+      "text": "I’m like 99.9% sure\nthere's research about this."
+    },
+    {
+      "startSeconds": 332.083,
+      "durationSeconds": 2.5,
+      "text": "I just haven't read any papers\nassociated with it."
+    },
+    {
+      "startSeconds": 334.583,
+      "durationSeconds": 4.167,
+      "text": "For anybody who's listening,\nif you are aware of some research,"
+    },
+    {
+      "startSeconds": 338.75,
+      "durationSeconds": 0.75,
+      "text": "feel free to reach out to me."
+    },
+    {
+      "startSeconds": 339.5,
+      "durationSeconds": 1.583,
+      "text": "I'd love"
+    },
+    {
+      "startSeconds": 341.083,
+      "durationSeconds": 2.375,
+      "text": "to sort of\ngo through some of those papers as well."
+    },
+    {
+      "startSeconds": 343.458,
+      "durationSeconds": 2.667,
+      "text": "But it's an open problem for sure."
+    },
+    {
+      "startSeconds": 346.125,
+      "durationSeconds": 1.625,
+      "text": "It's definitely an open problem."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:22:54.342Z"
+}

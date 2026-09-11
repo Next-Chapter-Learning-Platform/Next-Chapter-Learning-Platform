@@ -1,0 +1,513 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "9qdgEBVkWR4",
+  "url": "https://www.youtube.com/watch?v=9qdgEBVkWR4",
+  "title": "Discover Few-Shot Prompting | Google AI Essentials",
+  "description": "Including examples in your prompt can help an LLM better respond to your request and so you can get your desired output. Learn what few-shot prompting is and increase your understanding of LLMs.\n\nTake the Course HERE: https://www.coursera.org/specializations/ai-essentials-google?utm_source=google&utm_medium=institutions&utm_campaign=youtube-organic__geo--Global&utm_content=vid--9qdgEBVkWR4__topic--AIE&utm_term=youtube-description\n\nSubscribe HERE: https://goo.gle/subscribegcc\n\n#GoogleCareerCertificates #AI #GenerativeAI\n\nAbout Google Career Certificates: \nGoogle Career Certificates are lessons designed to prepare you for entry-level roles in career fields like cybersecurity, data analytics, digital marketing & e-commerce, IT support, project management, or user experience (UX) design. Google Career Certificates give learners the skills they need to apply for more than 2.4 million in-demand jobs with a median salary of $76,000+.\n\nGoogle Career Certificates\nhttps://www.youtube.com/@growwithgoogle\n\nDiscover Few-Shot Prompting | Google AI Essentials\nhttps://youtu.be/9qdgEBVkWR4",
+  "expectedDurationSeconds": 271,
+  "transcript": [
+    {
+      "startSeconds": 0.52,
+      "durationSeconds": 5.08,
+      "text": "have you ever created Something New by"
+    },
+    {
+      "startSeconds": 2.8,
+      "durationSeconds": 5.32,
+      "text": "building upon previous examples perhaps"
+    },
+    {
+      "startSeconds": 5.6,
+      "durationSeconds": 5.36,
+      "text": "you used a well-received report as a"
+    },
+    {
+      "startSeconds": 8.12,
+      "durationSeconds": 5,
+      "text": "reference when writing a similar report"
+    },
+    {
+      "startSeconds": 10.96,
+      "durationSeconds": 4.28,
+      "text": "or maybe you used a relevant and"
+    },
+    {
+      "startSeconds": 13.12,
+      "durationSeconds": 5.079,
+      "text": "engaging website as a model when"
+    },
+    {
+      "startSeconds": 15.24,
+      "durationSeconds": 6.52,
+      "text": "designing your own website examples are"
+    },
+    {
+      "startSeconds": 18.199,
+      "durationSeconds": 6.041,
+      "text": "also useful for llms including examples"
+    },
+    {
+      "startSeconds": 21.76,
+      "durationSeconds": 5.279,
+      "text": "in your prompt can help an llm better"
+    },
+    {
+      "startSeconds": 24.24,
+      "durationSeconds": 5.039,
+      "text": "respond to your request and can be an"
+    },
+    {
+      "startSeconds": 27.039,
+      "durationSeconds": 4.841,
+      "text": "especially effective strategy to get"
+    },
+    {
+      "startSeconds": 29.279,
+      "durationSeconds": 5.481,
+      "text": "your desire ired output we're going to"
+    },
+    {
+      "startSeconds": 31.88,
+      "durationSeconds": 4.96,
+      "text": "explore how to use examples in prompting"
+    },
+    {
+      "startSeconds": 34.76,
+      "durationSeconds": 4.639,
+      "text": "but first let's briefly discuss the"
+    },
+    {
+      "startSeconds": 36.84,
+      "durationSeconds": 5.36,
+      "text": "technical term shot in prompt"
+    },
+    {
+      "startSeconds": 39.399,
+      "durationSeconds": 6.081,
+      "text": "engineering the word shot is often used"
+    },
+    {
+      "startSeconds": 42.2,
+      "durationSeconds": 4.96,
+      "text": "as a synonym for the word example there"
+    },
+    {
+      "startSeconds": 45.48,
+      "durationSeconds": 3.599,
+      "text": "are different names for prompting"
+    },
+    {
+      "startSeconds": 47.16,
+      "durationSeconds": 5.719,
+      "text": "techniques based on the number of"
+    },
+    {
+      "startSeconds": 49.079,
+      "durationSeconds": 6.081,
+      "text": "examples given to the llm zero shot"
+    },
+    {
+      "startSeconds": 52.879,
+      "durationSeconds": 5.281,
+      "text": "prompting is a technique that provides"
+    },
+    {
+      "startSeconds": 55.16,
+      "durationSeconds": 6.559,
+      "text": "no examples in a prompt while oneshot"
+    },
+    {
+      "startSeconds": 58.16,
+      "durationSeconds": 5.999,
+      "text": "prompting provides one examp example and"
+    },
+    {
+      "startSeconds": 61.719,
+      "durationSeconds": 5.521,
+      "text": "fuse shot prompting is a technique that"
+    },
+    {
+      "startSeconds": 64.159,
+      "durationSeconds": 6.28,
+      "text": "provides two or more examples in a"
+    },
+    {
+      "startSeconds": 67.24,
+      "durationSeconds": 5.879,
+      "text": "prompt because examples aren't included"
+    },
+    {
+      "startSeconds": 70.439,
+      "durationSeconds": 5.561,
+      "text": "in zero shot prompts the model is"
+    },
+    {
+      "startSeconds": 73.119,
+      "durationSeconds": 4.881,
+      "text": "expected to perform the task based only"
+    },
+    {
+      "startSeconds": 76,
+      "durationSeconds": 4.72,
+      "text": "on its training data and the task"
+    },
+    {
+      "startSeconds": 78,
+      "durationSeconds": 4.799,
+      "text": "description included in the prompt zero"
+    },
+    {
+      "startSeconds": 80.72,
+      "durationSeconds": 4.92,
+      "text": "shot prompting is most likely to be"
+    },
+    {
+      "startSeconds": 82.799,
+      "durationSeconds": 6.241,
+      "text": "effective when you are seeking simple"
+    },
+    {
+      "startSeconds": 85.64,
+      "durationSeconds": 5.88,
+      "text": "direct responses zero shot prompting may"
+    },
+    {
+      "startSeconds": 89.04,
+      "durationSeconds": 5.68,
+      "text": "not be effective for tasks that require"
+    },
+    {
+      "startSeconds": 91.52,
+      "durationSeconds": 5.84,
+      "text": "the llm to respond in a more specific"
+    },
+    {
+      "startSeconds": 94.72,
+      "durationSeconds": 5.439,
+      "text": "nuanced way fuse shot prompting can"
+    },
+    {
+      "startSeconds": 97.36,
+      "durationSeconds": 5.92,
+      "text": "improve in lm's performance by providing"
+    },
+    {
+      "startSeconds": 100.159,
+      "durationSeconds": 5.401,
+      "text": "additional context and examples in your"
+    },
+    {
+      "startSeconds": 103.28,
+      "durationSeconds": 5.4,
+      "text": "prompt these additional examples can"
+    },
+    {
+      "startSeconds": 105.56,
+      "durationSeconds": 6,
+      "text": "help clarify the desired format phrasing"
+    },
+    {
+      "startSeconds": 108.68,
+      "durationSeconds": 5.84,
+      "text": "or general pattern F shot prompting can"
+    },
+    {
+      "startSeconds": 111.56,
+      "durationSeconds": 5.08,
+      "text": "be useful for a range of tasks for"
+    },
+    {
+      "startSeconds": 114.52,
+      "durationSeconds": 4.599,
+      "text": "example you might use f shot prompting"
+    },
+    {
+      "startSeconds": 116.64,
+      "durationSeconds": 5.2,
+      "text": "to generate content in a particular"
+    },
+    {
+      "startSeconds": 119.119,
+      "durationSeconds": 4.801,
+      "text": "style let's say you work for an online"
+    },
+    {
+      "startSeconds": 121.84,
+      "durationSeconds": 4.76,
+      "text": "retailer you need to write a product"
+    },
+    {
+      "startSeconds": 123.92,
+      "durationSeconds": 4.6,
+      "text": "description for a new skateboard you"
+    },
+    {
+      "startSeconds": 126.6,
+      "durationSeconds": 4.32,
+      "text": "already have descriptions for existing"
+    },
+    {
+      "startSeconds": 128.52,
+      "durationSeconds": 4.6,
+      "text": "products such as a bicycle and roller"
+    },
+    {
+      "startSeconds": 130.92,
+      "durationSeconds": 4.56,
+      "text": "blades you want the skateboard"
+    },
+    {
+      "startSeconds": 133.12,
+      "durationSeconds": 4.759,
+      "text": "description to follow a similar style"
+    },
+    {
+      "startSeconds": 135.48,
+      "durationSeconds": 4.479,
+      "text": "and format we'll start with a prompt"
+    },
+    {
+      "startSeconds": 137.879,
+      "durationSeconds": 4.44,
+      "text": "that begins with some general"
+    },
+    {
+      "startSeconds": 139.959,
+      "durationSeconds": 4.36,
+      "text": "instructions write a one- sentence"
+    },
+    {
+      "startSeconds": 142.319,
+      "durationSeconds": 4.92,
+      "text": "description of a product it should"
+    },
+    {
+      "startSeconds": 144.319,
+      "durationSeconds": 5.601,
+      "text": "contain two adjectives that describe the"
+    },
+    {
+      "startSeconds": 147.239,
+      "durationSeconds": 5.401,
+      "text": "product we also specify that we want gem"
+    },
+    {
+      "startSeconds": 149.92,
+      "durationSeconds": 4,
+      "text": "and I to review the examples we provide"
+    },
+    {
+      "startSeconds": 152.64,
+      "durationSeconds": 3.52,
+      "text": "and write the description of the"
+    },
+    {
+      "startSeconds": 153.92,
+      "durationSeconds": 6.16,
+      "text": "skateboard in the same"
+    },
+    {
+      "startSeconds": 156.16,
+      "durationSeconds": 6.079,
+      "text": "style because this is a few shot prompt"
+    },
+    {
+      "startSeconds": 160.08,
+      "durationSeconds": 5.36,
+      "text": "we need to provide examples that model"
+    },
+    {
+      "startSeconds": 162.239,
+      "durationSeconds": 5.761,
+      "text": "the style we want each example contains"
+    },
+    {
+      "startSeconds": 165.44,
+      "durationSeconds": 6.36,
+      "text": "a label indicating the product being"
+    },
+    {
+      "startSeconds": 168,
+      "durationSeconds": 6,
+      "text": "described a bicycle and roller blades"
+    },
+    {
+      "startSeconds": 171.8,
+      "durationSeconds": 5,
+      "text": "and each description is one sentence"
+    },
+    {
+      "startSeconds": 174,
+      "durationSeconds": 5.44,
+      "text": "long and contains two adjectives sleek"
+    },
+    {
+      "startSeconds": 176.8,
+      "durationSeconds": 5.12,
+      "text": "and durable for the bicycle and smooth"
+    },
+    {
+      "startSeconds": 179.44,
+      "durationSeconds": 6.56,
+      "text": "and sty stylish for the roller"
+    },
+    {
+      "startSeconds": 181.92,
+      "durationSeconds": 5.76,
+      "text": "blades next we type the label skateboard"
+    },
+    {
+      "startSeconds": 186,
+      "durationSeconds": 4.319,
+      "text": "when we add this label and leave the"
+    },
+    {
+      "startSeconds": 187.68,
+      "durationSeconds": 4.479,
+      "text": "product description blank we indicate to"
+    },
+    {
+      "startSeconds": 190.319,
+      "durationSeconds": 3.681,
+      "text": "Gemini that we want it to complete the"
+    },
+    {
+      "startSeconds": 192.159,
+      "durationSeconds": 4.36,
+      "text": "description of the skateboard like it"
+    },
+    {
+      "startSeconds": 194,
+      "durationSeconds": 4.76,
+      "text": "did with the other two product"
+    },
+    {
+      "startSeconds": 196.519,
+      "durationSeconds": 4.761,
+      "text": "descriptions let's review our"
+    },
+    {
+      "startSeconds": 198.76,
+      "durationSeconds": 4.28,
+      "text": "output the output offers a product"
+    },
+    {
+      "startSeconds": 201.28,
+      "durationSeconds": 4.76,
+      "text": "description of the skateboard that meets"
+    },
+    {
+      "startSeconds": 203.04,
+      "durationSeconds": 5.08,
+      "text": "the criteria we requested and is in the"
+    },
+    {
+      "startSeconds": 206.04,
+      "durationSeconds": 5.36,
+      "text": "same writing style and format as the"
+    },
+    {
+      "startSeconds": 208.12,
+      "durationSeconds": 5.72,
+      "text": "examples we included in our prompt in"
+    },
+    {
+      "startSeconds": 211.4,
+      "durationSeconds": 5.24,
+      "text": "this case two examples were enough to"
+    },
+    {
+      "startSeconds": 213.84,
+      "durationSeconds": 4.72,
+      "text": "obtain useful results but there is no"
+    },
+    {
+      "startSeconds": 216.64,
+      "durationSeconds": 4.92,
+      "text": "definitive rule for the optimal number"
+    },
+    {
+      "startSeconds": 218.56,
+      "durationSeconds": 5.599,
+      "text": "of examples to include in a prompt some"
+    },
+    {
+      "startSeconds": 221.56,
+      "durationSeconds": 5.28,
+      "text": "llms can accurately reproduce patterns"
+    },
+    {
+      "startSeconds": 224.159,
+      "durationSeconds": 6,
+      "text": "using only a few examples while other"
+    },
+    {
+      "startSeconds": 226.84,
+      "durationSeconds": 6.479,
+      "text": "llms need more at the same time if you"
+    },
+    {
+      "startSeconds": 230.159,
+      "durationSeconds": 5.881,
+      "text": "include too many examples an lm's"
+    },
+    {
+      "startSeconds": 233.319,
+      "durationSeconds": 5.241,
+      "text": "responses may become less flexible and"
+    },
+    {
+      "startSeconds": 236.04,
+      "durationSeconds": 4.279,
+      "text": "creative and they may reproduce the"
+    },
+    {
+      "startSeconds": 238.56,
+      "durationSeconds": 4.039,
+      "text": "examples to"
+    },
+    {
+      "startSeconds": 240.319,
+      "durationSeconds": 4.56,
+      "text": "closely experiment with the number of"
+    },
+    {
+      "startSeconds": 242.599,
+      "durationSeconds": 5.72,
+      "text": "examples to include to get the best"
+    },
+    {
+      "startSeconds": 244.879,
+      "durationSeconds": 5.401,
+      "text": "results for your specific task now you"
+    },
+    {
+      "startSeconds": 248.319,
+      "durationSeconds": 5.361,
+      "text": "know a prompting technique that will"
+    },
+    {
+      "startSeconds": 250.28,
+      "durationSeconds": 5.519,
+      "text": "help you get better quality output F"
+    },
+    {
+      "startSeconds": 253.68,
+      "durationSeconds": 4.519,
+      "text": "shot prompting is an effective strategy"
+    },
+    {
+      "startSeconds": 255.799,
+      "durationSeconds": 7,
+      "text": "that can help you guide an llm to"
+    },
+    {
+      "startSeconds": 258.199,
+      "durationSeconds": 4.6,
+      "text": "generate more useful responses"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:22:50.227Z"
+}

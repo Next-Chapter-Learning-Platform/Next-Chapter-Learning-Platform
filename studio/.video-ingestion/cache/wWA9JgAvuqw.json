@@ -1,0 +1,395 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "wWA9JgAvuqw",
+  "url": "https://www.youtube.com/watch?v=wWA9JgAvuqw",
+  "title": "Kubernetes Rolling Updates & Rollbacks | Zero Downtime Deployments Explained",
+  "description": "Learn how Kubernetes ensures zero downtime with Rolling Updates & Rollbacks!\n\nIn this step-by-step tutorial, I’ll show you how to safely update applications in production, monitor rollouts, and instantly rollback if something goes wrong. \n\nWhat you’ll learn in this video:\n- What Rolling Updates & Rollbacks are in Kubernetes\n- How Kubernetes ensures zero downtime with deployments\n- Step-by-step demo of rolling updates using kubectl\n- Rolling back to a stable version when things break\n- How Kubernetes manages pods behind the scenes (maxUnavailable, maxSurge)\n- Checking rollout history and deployment revisions\n- When to use Rolling Updates vs Rollbacks in real-world CI/CD\n\n\n▬▬▬▬▬▬▬ Timestamps  ▬▬▬▬▬▬▬\n00:00 - Introduction\n00:24 - Why Rolling Updates & Rollbacks matter in Kubernetes\n00:57 - Demo: Performing a Rolling Update with kubectl\n03:10 - Behind the Scenes: How Kubernetes manages Rolling Updates\n03:36 - Demo: Rolling Back to a Previous Deployment\n04:51 - Handling a Buggy Application with Rollback \n07:11 - Tracking Rollout History in Kubernetes\n07:36 - When to Use Rolling Updates vs Rollbacks\n08:18 - Conclusion & Best Practices\n\n\nRelated Kubernetes topics:\nKubernetes Deployments Explained: https://youtu.be/3Vl7n425h_4?si=7e_K_DZsXXYTfEy9\nKubernetes blogs: https://techinik.com/category/kubernetes/\n\nFor 1:1 mentorship, consultations, or career guidance, you can book a session with me here: https://topmate.io/nikhil_kumar811/\n\n🔗 Watch Related Playlists:\n- Kubernetes: https://www.youtube.com/playlist?list=PL-K2rw28HIwZVMo9CtbV0wDu548SN0h9Y\n- Github Actions: https://www.youtube.com/playlist?list=PL-K2rw28HIwYfq7SqYnBzAxlUhcYP7ldM\n- Ansible: https://www.youtube.com/playlist?list=PL-K2rw28HIwaavCXTYEWF4mP431KmKtEY\n- AWX: https://www.youtube.com/playlist?list=PL-K2rw28HIwbTtijpBMrOaHdnWGXdOkYa\n- AI: https://www.youtube.com/playlist?list=PL-K2rw28HIwaSvmI8oFeSQDl4cVTdxaGQ\n\n▬▬▬▬▬▬ Connect with me ▬▬▬▬▬▬\nLinkedIn: https://www.linkedin.com/in/kumar-nikhil811/\nWebsite: https://techinik.com\nMedium: https://medium.com/@kumarnikhil811\n\n#kubernetes  #cncf  #devops #linuxfoundation #k8s #k3s",
+  "expectedDurationSeconds": 524,
+  "transcript": [
+    {
+      "startSeconds": 0.16,
+      "durationSeconds": 5.44,
+      "text": "Hello everyone, welcome back to the channel. I am \nNikhil Kumar. Today we are diving into something"
+    },
+    {
+      "startSeconds": 5.6,
+      "durationSeconds": 6.64,
+      "text": "super useful when managing live applications \nin Kubernetes. That is rolling updates and"
+    },
+    {
+      "startSeconds": 12.24,
+      "durationSeconds": 7.12,
+      "text": "roll backs. This is how Kubernetes helps you \nupdate applications with zero downtime. And yes,"
+    },
+    {
+      "startSeconds": 19.36,
+      "durationSeconds": 6,
+      "text": "if something goes wrong, you can quickly roll \nback to a previous version. Let's dive in. Imagine"
+    },
+    {
+      "startSeconds": 25.36,
+      "durationSeconds": 6.24,
+      "text": "you are updating your application in production. \nYou don't want to take it down for users, right?"
+    },
+    {
+      "startSeconds": 31.6,
+      "durationSeconds": 6.56,
+      "text": "That's where rolling updates comes in. Kubernetes \nwill gradually replace old pod with a new ones."
+    },
+    {
+      "startSeconds": 38.16,
+      "durationSeconds": 5.44,
+      "text": "This ensures there's always a working version \nrunning and user will not face any disruption."
+    },
+    {
+      "startSeconds": 43.6,
+      "durationSeconds": 5.52,
+      "text": "Kubernetes handles this with deployments where \nyou define the image version you want to run,"
+    },
+    {
+      "startSeconds": 49.12,
+      "durationSeconds": 6.72,
+      "text": "the strategy for updates and by default Kubernetes \nuses a rolling update strategy. Now let's see it"
+    },
+    {
+      "startSeconds": 55.84,
+      "durationSeconds": 11.2,
+      "text": "in the action. So this is our Kubernetes cluster. \nSo this is our two node cluster. First let's"
+    },
+    {
+      "startSeconds": 67.04,
+      "durationSeconds": 5.52,
+      "text": "create a deployment. I have already covered a \ndeployment in very detail. I will add a link in"
+    },
+    {
+      "startSeconds": 72.56,
+      "durationSeconds": 5.6,
+      "text": "the description or the above I button so you can \ncheck it out as well. So to create a deployment"
+    },
+    {
+      "startSeconds": 78.16,
+      "durationSeconds": 11.28,
+      "text": "we can use a command kubectl create deployment \nrolling-demo and the image name that is equal"
+    },
+    {
+      "startSeconds": 89.44,
+      "durationSeconds": 10.96,
+      "text": "to nginx and the tag is 1.19. So deployment got \ncreated. Let's verify it very quickly. kubectl"
+    },
+    {
+      "startSeconds": 100.4,
+      "durationSeconds": 7.28,
+      "text": "get pods. We can see one pod is running with \nthe rolling-demo. And if we see the deployment,"
+    },
+    {
+      "startSeconds": 107.68,
+      "durationSeconds": 7.12,
+      "text": "we can see the rolling-demo deployment is running. \nNow suppose we want to update the image to a new"
+    },
+    {
+      "startSeconds": 114.8,
+      "durationSeconds": 9.12,
+      "text": "version. Let's say we want to update the image \nto 1.21. As of now, it's 1.29. But in the new"
+    },
+    {
+      "startSeconds": 123.92,
+      "durationSeconds": 5.76,
+      "text": "version, we need to update it to 1.21. Let's \ntry to do it very quickly. So for that we have"
+    },
+    {
+      "startSeconds": 129.68,
+      "durationSeconds": 12.4,
+      "text": "a command kubectl set image deployment and the \ndeployment name that is rolling-demo and the"
+    },
+    {
+      "startSeconds": 142.08,
+      "durationSeconds": 8.24,
+      "text": "image. So for that we are going to use nginx \nequal to nginx 1.21. This triggers a rolling"
+    },
+    {
+      "startSeconds": 150.32,
+      "durationSeconds": 6.96,
+      "text": "update and you can also monitor it live. So \nfor that we can use a command kubectl rollout"
+    },
+    {
+      "startSeconds": 157.28,
+      "durationSeconds": 10.32,
+      "text": "status and the deployment slash the deployment \nname. As we can see deployment rolling-demo"
+    },
+    {
+      "startSeconds": 167.6,
+      "durationSeconds": 6.64,
+      "text": "successfully rolled out. And if we describe the \ndeployment using the kubectl describe command"
+    },
+    {
+      "startSeconds": 174.24,
+      "durationSeconds": 8.88,
+      "text": "kubectl describe deployment and the deployment \nname. And if we scroll up a little bit, so the"
+    },
+    {
+      "startSeconds": 183.12,
+      "durationSeconds": 7.52,
+      "text": "image name got updated to the 1.21 because we just \nrolled out with the newer version of the image. So"
+    },
+    {
+      "startSeconds": 190.64,
+      "durationSeconds": 6.64,
+      "text": "what's happening behind the scenes? Kubernetes \nuses max Unavailable to control how many pod can"
+    },
+    {
+      "startSeconds": 197.28,
+      "durationSeconds": 7.36,
+      "text": "be down during the update and maxSurge to allow \ncreating extra pods temporarily. For example,"
+    },
+    {
+      "startSeconds": 204.64,
+      "durationSeconds": 6.88,
+      "text": "if you have three pods and max unavailable is one, \nit will update one pod at a time while keeping"
+    },
+    {
+      "startSeconds": 211.52,
+      "durationSeconds": 6,
+      "text": "at least two pods running. This makes the update \nsmooth and undisruptive. What if the new version"
+    },
+    {
+      "startSeconds": 217.52,
+      "durationSeconds": 5.36,
+      "text": "has a bug? No worries. Kubernetes has your back. \nYou can roll back to the previous working version"
+    },
+    {
+      "startSeconds": 222.88,
+      "durationSeconds": 6.32,
+      "text": "using the kubect rollout undo command. So, let's \nsee it in the action as well. So, right now we"
+    },
+    {
+      "startSeconds": 229.2,
+      "durationSeconds": 6.72,
+      "text": "just updated it to the 1.21. But let's say we \nhave some bugs in this particular version. So"
+    },
+    {
+      "startSeconds": 235.92,
+      "durationSeconds": 7.36,
+      "text": "we need to roll it back to the previous version \nthat is 1.19. So this is the version which is our"
+    },
+    {
+      "startSeconds": 243.28,
+      "durationSeconds": 10.56,
+      "text": "previous working version. For that we can use a \ncommand kubectl rollout undo and the deployment"
+    },
+    {
+      "startSeconds": 253.84,
+      "durationSeconds": 11.12,
+      "text": "name deployment and the deployment name that is \nrolling-demo. So it got rolled back and that's"
+    },
+    {
+      "startSeconds": 264.96,
+      "durationSeconds": 6.4,
+      "text": "it. Kubernetes will roll you back to the previous \nstable version. So let's check it very quickly."
+    },
+    {
+      "startSeconds": 271.36,
+      "durationSeconds": 12.72,
+      "text": "kubectl get pods pods in in the running state. And \nif we describe the deployment, we can see it got"
+    },
+    {
+      "startSeconds": 284.08,
+      "durationSeconds": 6.88,
+      "text": "updated to the 1.19 because we have we have rolled \nout it to the previous version. Now let's try this"
+    },
+    {
+      "startSeconds": 290.96,
+      "durationSeconds": 6.56,
+      "text": "out. Let's change the name to a faulty version. \nLet's say if we don't have any existing tag, we"
+    },
+    {
+      "startSeconds": 297.52,
+      "durationSeconds": 11.2,
+      "text": "will use it in the image. So for that we will use \nkubectl set image deploy and the deployment name"
+    },
+    {
+      "startSeconds": 308.72,
+      "durationSeconds": 11.04,
+      "text": "uh that is rolling-demo and I'm updating it to the \nimage tag which does not exist. So it's broken."
+    },
+    {
+      "startSeconds": 319.76,
+      "durationSeconds": 11.84,
+      "text": "Now let's check the status of the deployment. So \nit shows up and running pod it got failed because"
+    },
+    {
+      "startSeconds": 331.6,
+      "durationSeconds": 6.08,
+      "text": "if you can see it's not able to pull an image \nbecause that particular tag does not exist. But"
+    },
+    {
+      "startSeconds": 337.68,
+      "durationSeconds": 6.08,
+      "text": "if you see the older pod is working it's still \nin the running until and unless this particular"
+    },
+    {
+      "startSeconds": 343.76,
+      "durationSeconds": 6.32,
+      "text": "pod will comes in the running state this pod \nwill not go away. And let's check the status of"
+    },
+    {
+      "startSeconds": 350.08,
+      "durationSeconds": 14.08,
+      "text": "the rollout kubectl roll out status deployment and \nthe rolling hyphen demo. its demo. As you can see,"
+    },
+    {
+      "startSeconds": 364.16,
+      "durationSeconds": 5.36,
+      "text": "it's waiting for deployment to roll out to finish \nbecause if you notice our previous pod is in the"
+    },
+    {
+      "startSeconds": 369.52,
+      "durationSeconds": 5.28,
+      "text": "running state because our new pod we we just \ncreated, it's having some issues with the image"
+    },
+    {
+      "startSeconds": 374.8,
+      "durationSeconds": 6.16,
+      "text": "tag because that image tag does not exist. That's \nwhy it didn't deleted the previous pod. And now we"
+    },
+    {
+      "startSeconds": 380.96,
+      "durationSeconds": 5.84,
+      "text": "know it's a broken and it's not going to work. Now \nlet's roll it back to the previous stable version."
+    },
+    {
+      "startSeconds": 386.8,
+      "durationSeconds": 8.4,
+      "text": "For that we can use the same command kubectl roll \nout undo and the deployment and the deployment"
+    },
+    {
+      "startSeconds": 395.2,
+      "durationSeconds": 12.16,
+      "text": "name. It's rolling hyphen demo. It got rolled back \nto the previous working version. Let's do it very"
+    },
+    {
+      "startSeconds": 407.36,
+      "durationSeconds": 7.36,
+      "text": "quickly. As we can see, it's working fine. It just \ndeleted the newer pod which we just created with"
+    },
+    {
+      "startSeconds": 414.72,
+      "durationSeconds": 13.84,
+      "text": "the broken tag. And if we describe the deployment \nand rolling demo, we can see it's working with the"
+    },
+    {
+      "startSeconds": 428.56,
+      "durationSeconds": 9.92,
+      "text": "1.19 tag itself. If you want to check the rollout \nhistory, so you can use a command kubectl rollout"
+    },
+    {
+      "startSeconds": 438.48,
+      "durationSeconds": 10.24,
+      "text": "history and the deploy / deployment name. So we \ncan see the revisions of the application which"
+    },
+    {
+      "startSeconds": 448.72,
+      "durationSeconds": 6.72,
+      "text": "we did with the kubectl commands. This helps you \ntrack version and changes over the time as well."
+    },
+    {
+      "startSeconds": 455.44,
+      "durationSeconds": 5.84,
+      "text": "Now let's understand when to use rolling updates \nand the roll backs. Use rolling updates when you"
+    },
+    {
+      "startSeconds": 461.28,
+      "durationSeconds": 5.92,
+      "text": "need zero downtime deployments. And if you want \nsafe and gradual rollouts, you can use the rolling"
+    },
+    {
+      "startSeconds": 467.2,
+      "durationSeconds": 5.84,
+      "text": "updates over there. And if you need an easy way \nto roll back changes if something goes wrong,"
+    },
+    {
+      "startSeconds": 473.04,
+      "durationSeconds": 5.2,
+      "text": "just like we did for the broken tag, like \nthe broken tag does not exist and it's not"
+    },
+    {
+      "startSeconds": 478.24,
+      "durationSeconds": 5.76,
+      "text": "able to pull an image. So our application got \nstuck because we are not able to create a pod."
+    },
+    {
+      "startSeconds": 484,
+      "durationSeconds": 5.6,
+      "text": "So the older pod will remain up and running. \nBut we need to roll it back to the previous up"
+    },
+    {
+      "startSeconds": 489.6,
+      "durationSeconds": 5.36,
+      "text": "working version. So in that case we need to use \na roll backs. This is the perfect for production"
+    },
+    {
+      "startSeconds": 494.96,
+      "durationSeconds": 5.84,
+      "text": "environments especially when working in the CI/CD \npipeline. So now you know how to perform rolling"
+    },
+    {
+      "startSeconds": 500.8,
+      "durationSeconds": 5.6,
+      "text": "updates and the roll backs in the Kubernetes. This \nis one of the key reasons why Kubernetes is loved"
+    },
+    {
+      "startSeconds": 506.4,
+      "durationSeconds": 5.92,
+      "text": "in the production grade deployments. We updated a \nlive deployment, monitored it and rolled it back"
+    },
+    {
+      "startSeconds": 512.32,
+      "durationSeconds": 6.48,
+      "text": "safely all in a few commands. If this helped you, \nplease don't forget to like, share, and subscribe"
+    },
+    {
+      "startSeconds": 518.8,
+      "durationSeconds": 5.547,
+      "text": "to the channel for more content like this. \nThanks for watching. i will see you in next one."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction"
+    },
+    {
+      "startSeconds": 24,
+      "label": "Why Rolling Updates & Rollbacks matter in Kubernetes"
+    },
+    {
+      "startSeconds": 57,
+      "label": "Demo: Performing a Rolling Update with kubectl"
+    },
+    {
+      "startSeconds": 190,
+      "label": "Behind the Scenes: How Kubernetes manages Rolling Updates"
+    },
+    {
+      "startSeconds": 216,
+      "label": "Demo: Rolling Back to a Previous Deployment"
+    },
+    {
+      "startSeconds": 291,
+      "label": "Handling a Buggy Application with Rollback"
+    },
+    {
+      "startSeconds": 431,
+      "label": "Tracking Rollout History in Kubernetes"
+    },
+    {
+      "startSeconds": 456,
+      "label": "When to Use Rolling Updates vs Rollbacks"
+    },
+    {
+      "startSeconds": 498,
+      "label": "Conclusion & Best Practices"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:23:11.738Z"
+}

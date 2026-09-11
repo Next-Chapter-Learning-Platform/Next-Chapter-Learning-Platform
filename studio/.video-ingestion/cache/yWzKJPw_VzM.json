@@ -1,0 +1,378 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "yWzKJPw_VzM",
+  "url": "https://www.youtube.com/watch?v=yWzKJPw_VzM",
+  "title": "What Is GraphQL? REST vs. GraphQL",
+  "description": "To get better at system design, subscribe to our weekly newsletter: https://bit.ly/3tfAlYD\n\nCheckout our bestselling System Design Interview books: \nVolume 1: https://amzn.to/3Ou7gkd\nVolume 2: https://amzn.to/3HqGozy\n\nABOUT US: \nCovering topics and trends in large-scale system design, from the authors of the best-selling System Design Interview series.",
+  "expectedDurationSeconds": 315,
+  "transcript": [
+    {
+      "startSeconds": 8.106,
+      "durationSeconds": 1.403,
+      "text": "What is GraphQL?"
+    },
+    {
+      "startSeconds": 9.509,
+      "durationSeconds": 1.051,
+      "text": "When should we use it?"
+    },
+    {
+      "startSeconds": 10.56,
+      "durationSeconds": 1.02,
+      "text": "Let’s take a look."
+    },
+    {
+      "startSeconds": 12.42,
+      "durationSeconds": 3.6,
+      "text": "GraphQL is a query language \nfor API developed by Meta."
+    },
+    {
+      "startSeconds": 16.02,
+      "durationSeconds": 3.06,
+      "text": "It provides a schema of the data in the API"
+    },
+    {
+      "startSeconds": 19.08,
+      "durationSeconds": 3.54,
+      "text": "and gives clients the power to \nask for exactly what they need."
+    },
+    {
+      "startSeconds": 23.52,
+      "durationSeconds": 3.06,
+      "text": "GraphQL sits between the clients \nand the backend services."
+    },
+    {
+      "startSeconds": 26.58,
+      "durationSeconds": 4.32,
+      "text": "It could aggregate multiple resource \nrequests into a single query."
+    },
+    {
+      "startSeconds": 31.5,
+      "durationSeconds": 3.18,
+      "text": "It also supports mutations, and subscriptions."
+    },
+    {
+      "startSeconds": 34.68,
+      "durationSeconds": 5.82,
+      "text": "Mutations are GraphQL’s way of applying \ndata modifications to resources."
+    },
+    {
+      "startSeconds": 40.5,
+      "durationSeconds": 5.58,
+      "text": "Subscriptions are GraphQL’s way for clients to \nreceive notifications on data modifications."
+    },
+    {
+      "startSeconds": 47.22,
+      "durationSeconds": 1.92,
+      "text": "How is GraphQL the same as REST?"
+    },
+    {
+      "startSeconds": 49.14,
+      "durationSeconds": 1.26,
+      "text": "How are they different?"
+    },
+    {
+      "startSeconds": 50.4,
+      "durationSeconds": 1.44,
+      "text": "Let’s dive deeper."
+    },
+    {
+      "startSeconds": 52.74,
+      "durationSeconds": 5.7,
+      "text": "In practice, both GraphQL and REST send \nHTTP requests and receive HTTP responses."
+    },
+    {
+      "startSeconds": 59.04,
+      "durationSeconds": 3.96,
+      "text": "Let’s compare how simple REST \nand GraphQL operations look like."
+    },
+    {
+      "startSeconds": 63.72,
+      "durationSeconds": 5.58,
+      "text": "REST centers around resources. Each \nresource is identified by a URL."
+    },
+    {
+      "startSeconds": 69.3,
+      "durationSeconds": 4.86,
+      "text": "To fetch a book from a bookstore API, \nit could look something like this."
+    },
+    {
+      "startSeconds": 75.24,
+      "durationSeconds": 3.18,
+      "text": "Note that the authors field \nis implementation specific."
+    },
+    {
+      "startSeconds": 78.42,
+      "durationSeconds": 5.46,
+      "text": "Some REST API implementations might \nbreak them out into separate REST calls."
+    },
+    {
+      "startSeconds": 85.32,
+      "durationSeconds": 2.16,
+      "text": "With GraphQL, this looks different."
+    },
+    {
+      "startSeconds": 87.48,
+      "durationSeconds": 1.98,
+      "text": "We first define the types."
+    },
+    {
+      "startSeconds": 89.46,
+      "durationSeconds": 3.54,
+      "text": "In this example, we have \nthe Book and Author types."
+    },
+    {
+      "startSeconds": 94.8,
+      "durationSeconds": 2.7,
+      "text": "These types describe the kinds of data available."
+    },
+    {
+      "startSeconds": 97.5,
+      "durationSeconds": 3.78,
+      "text": "They don’t specify how the \ndata is retrieved via GraphQL."
+    },
+    {
+      "startSeconds": 102.3,
+      "durationSeconds": 2.82,
+      "text": "To do that, we need to define a Query, like this."
+    },
+    {
+      "startSeconds": 106.98,
+      "durationSeconds": 4.44,
+      "text": "Now we can send a request to the \nGraphQL endpoint to fetch the same data."
+    },
+    {
+      "startSeconds": 112.68,
+      "durationSeconds": 3.84,
+      "text": "As we can see, REST and GraphQL both use HTTP."
+    },
+    {
+      "startSeconds": 116.52,
+      "durationSeconds": 6.12,
+      "text": "Both make a request via a URL, and both can \nreturn a JSON response in the same shape."
+    },
+    {
+      "startSeconds": 123.48,
+      "durationSeconds": 1.2,
+      "text": "Here are the differences."
+    },
+    {
+      "startSeconds": 124.68,
+      "durationSeconds": 6.3,
+      "text": "With GraphQL, we specify the exact resources \nwe want, and also which fields we want."
+    },
+    {
+      "startSeconds": 131.7,
+      "durationSeconds": 4.02,
+      "text": "In the REST example, the API \nimplementer decided for us"
+    },
+    {
+      "startSeconds": 135.72,
+      "durationSeconds": 3,
+      "text": "that authors are included as related resources."
+    },
+    {
+      "startSeconds": 138.72,
+      "durationSeconds": 3.78,
+      "text": "With GraphQL, the client decides what to include."
+    },
+    {
+      "startSeconds": 143.34,
+      "durationSeconds": 3,
+      "text": "This brings up one of the \nmain benefits of GraphQL."
+    },
+    {
+      "startSeconds": 147,
+      "durationSeconds": 5.4,
+      "text": "GraphQL doesn’t use URLs to specify the \nresources that are available in the API."
+    },
+    {
+      "startSeconds": 152.4,
+      "durationSeconds": 2.94,
+      "text": "Instead, it uses a GraphQL schema."
+    },
+    {
+      "startSeconds": 156.06,
+      "durationSeconds": 3.3,
+      "text": "We can send a complex query \nthat fetches additional data"
+    },
+    {
+      "startSeconds": 159.36,
+      "durationSeconds": 3.12,
+      "text": "according to relationships defined in the schema."
+    },
+    {
+      "startSeconds": 163.2,
+      "durationSeconds": 2.28,
+      "text": "Doing the same in REST is more complicated."
+    },
+    {
+      "startSeconds": 165.48,
+      "durationSeconds": 4.2,
+      "text": "We would have to do that client \nside with multiple requests."
+    },
+    {
+      "startSeconds": 169.68,
+      "durationSeconds": 4.08,
+      "text": "This is a common problem resulting in N+1 queries."
+    },
+    {
+      "startSeconds": 174.9,
+      "durationSeconds": 2.88,
+      "text": "Next, let’s discuss some drawbacks of GraphQL."
+    },
+    {
+      "startSeconds": 178.62,
+      "durationSeconds": 5.04,
+      "text": "The beauty of REST is that we don’t need \nspecial libraries to consume someone else’s API."
+    },
+    {
+      "startSeconds": 184.38,
+      "durationSeconds": 5.94,
+      "text": "Requests can simply be sent using common \ntools like cURL or simply a web browser."
+    },
+    {
+      "startSeconds": 190.98,
+      "durationSeconds": 6.36,
+      "text": "In contrast, GraphQL requires heavier tooling \nsupport, both on the client and server sides."
+    },
+    {
+      "startSeconds": 197.34,
+      "durationSeconds": 3,
+      "text": "This requires a sizable upfront investment."
+    },
+    {
+      "startSeconds": 201,
+      "durationSeconds": 4.68,
+      "text": "This upfront cost might not be worth it, \nespecially for very simple CRUD APIs."
+    },
+    {
+      "startSeconds": 206.7,
+      "durationSeconds": 4.08,
+      "text": "Another criticism of GraphQL is \nthat it is more difficult to cache."
+    },
+    {
+      "startSeconds": 211.5,
+      "durationSeconds": 6.9,
+      "text": "REST uses HTTP GET for fetching resources, and \nHTTP GET has a well-defined caching behavior"
+    },
+    {
+      "startSeconds": 218.4,
+      "durationSeconds": 5.04,
+      "text": "that is leveraged by browsers, \nCDNs, proxies, and web servers."
+    },
+    {
+      "startSeconds": 224.04,
+      "durationSeconds": 5.46,
+      "text": "GraphQL has a single point of entry \nand uses HTTP POST by default."
+    },
+    {
+      "startSeconds": 229.5,
+      "durationSeconds": 3.24,
+      "text": "This prevents the full use of HTTP caching."
+    },
+    {
+      "startSeconds": 232.74,
+      "durationSeconds": 4.98,
+      "text": "With care, GraphQL could be configured \nto better leverage HTTP caching."
+    },
+    {
+      "startSeconds": 237.72,
+      "durationSeconds": 2.28,
+      "text": "The detail is very nuanced."
+    },
+    {
+      "startSeconds": 240,
+      "durationSeconds": 4.38,
+      "text": "For this video, it is important to \nunderstand that it is extra work,"
+    },
+    {
+      "startSeconds": 244.38,
+      "durationSeconds": 2.28,
+      "text": "and getting it right is not trivial."
+    },
+    {
+      "startSeconds": 247.8,
+      "durationSeconds": 5.16,
+      "text": "The final concern we have with GraphQL \nis that while GraphQL allows clients to"
+    },
+    {
+      "startSeconds": 252.96,
+      "durationSeconds": 4.08,
+      "text": "query for just the data they need, \nthis also poses a great danger."
+    },
+    {
+      "startSeconds": 258.12,
+      "durationSeconds": 4.32,
+      "text": "Imagine this example where a mobile \napplication shipped a new feature"
+    },
+    {
+      "startSeconds": 262.44,
+      "durationSeconds": 5.58,
+      "text": "that causes an unexpected table scan of a \ncritical database table of a backend service."
+    },
+    {
+      "startSeconds": 268.02,
+      "durationSeconds": 4.2,
+      "text": "This could bring the database down as \nsoon as the new application goes live."
+    },
+    {
+      "startSeconds": 273.24,
+      "durationSeconds": 2.64,
+      "text": "Yes, there are ways to mitigate this risk,"
+    },
+    {
+      "startSeconds": 275.88,
+      "durationSeconds": 3.78,
+      "text": "but it adds even more complexity \nto a GraphQL implementation."
+    },
+    {
+      "startSeconds": 280.5,
+      "durationSeconds": 5.16,
+      "text": "The cost to safeguard risks like this must \nbe factored in when considering GraphQL."
+    },
+    {
+      "startSeconds": 286.74,
+      "durationSeconds": 1.68,
+      "text": "So, should we use GraphQL?"
+    },
+    {
+      "startSeconds": 289.38,
+      "durationSeconds": 3.78,
+      "text": "We have repeatedly said that software \nengineering is about tradeoffs."
+    },
+    {
+      "startSeconds": 293.16,
+      "durationSeconds": 1.8,
+      "text": "There is no one right answer."
+    },
+    {
+      "startSeconds": 295.62,
+      "durationSeconds": 2.34,
+      "text": "We hope that this video gives you some things to"
+    },
+    {
+      "startSeconds": 297.96,
+      "durationSeconds": 4.02,
+      "text": "consider when exploring GraphQL \nfor high-scale production use."
+    },
+    {
+      "startSeconds": 303.54,
+      "durationSeconds": 4.86,
+      "text": "If you would like to learn more about system \ndesign, check out our books and weekly newsletter."
+    },
+    {
+      "startSeconds": 308.4,
+      "durationSeconds": 1.92,
+      "text": "Please subscribe if you learn something today."
+    },
+    {
+      "startSeconds": 310.32,
+      "durationSeconds": 2.46,
+      "text": "Thank you so much and we'll see you next time."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:03.894Z"
+}

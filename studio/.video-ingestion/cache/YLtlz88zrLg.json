@@ -1,0 +1,1083 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "YLtlz88zrLg",
+  "url": "https://www.youtube.com/watch?v=YLtlz88zrLg",
+  "title": "CI/CD Tutorial using GitHub Actions - Automated Testing & Automated Deployments",
+  "description": "STARTER PROJECT SOURCE CODE: https://github.com/IAmTomShaw/github-actions-demo-project\n\nWant to automate your testing and deployments? Discover how GitHub Actions can revolutionise your CI/CD workflow in this beginner-friendly tutorial!\n\nCI/CD (Continuous Integration/Continuous Deployment) is a game-changer for developers. By automating code integration, testing, and deployment, it not only reduces manual errors but also accelerates your development cycle. As a programmer, you'll benefit from consistent, high-quality releases and more time to focus on what really matters: coding and problem-solving.\n\nIn this video, you'll learn:\n\n• The fundamentals of CI/CD and its importance in modern development\n• Step-by-step guide to setting up GitHub Actions\n• How to create efficient workflows for testing and deploying your code\n• Practical tips to streamline your development process through automation\n\nBy the end of this tutorial, you'll have the skills to automate your code testing and deployment. This means less time wrestling with manual processes and more time crafting amazing code. Plus, you'll reduce errors and improve your overall code quality, making you a more efficient and valuable programmer.\n\nLearning CI/CD is one of the most important tips that I have for helping you to become a better programmer!",
+  "expectedDurationSeconds": 373,
+  "transcript": [
+    {
+      "startSeconds": 0.12,
+      "durationSeconds": 3.48,
+      "text": "nine out of 10 people hate this"
+    },
+    {
+      "startSeconds": 1.839,
+      "durationSeconds": 3.401,
+      "text": "developer the one that doesn't automate"
+    },
+    {
+      "startSeconds": 3.6,
+      "durationSeconds": 3.799,
+      "text": "anything and if you're watching this the"
+    },
+    {
+      "startSeconds": 5.24,
+      "durationSeconds": 4,
+      "text": "likelihood is that you're that developer"
+    },
+    {
+      "startSeconds": 7.399,
+      "durationSeconds": 3.2,
+      "text": "so how can you automate your deployment"
+    },
+    {
+      "startSeconds": 9.24,
+      "durationSeconds": 4.16,
+      "text": "so that you never have to deal with"
+    },
+    {
+      "startSeconds": 10.599,
+      "durationSeconds": 4.761,
+      "text": "another deployment error ever again cicd"
+    },
+    {
+      "startSeconds": 13.4,
+      "durationSeconds": 3.84,
+      "text": "or continuous integration and continuous"
+    },
+    {
+      "startSeconds": 15.36,
+      "durationSeconds": 3.8,
+      "text": "delivery is the practice of automating"
+    },
+    {
+      "startSeconds": 17.24,
+      "durationSeconds": 3.6,
+      "text": "the manual tasks that us M Mortals"
+    },
+    {
+      "startSeconds": 19.16,
+      "durationSeconds": 3.119,
+      "text": "usually have to do when we're deploying"
+    },
+    {
+      "startSeconds": 20.84,
+      "durationSeconds": 3.88,
+      "text": "our code to production things like"
+    },
+    {
+      "startSeconds": 22.279,
+      "durationSeconds": 3.84,
+      "text": "compiling our code or running tests or"
+    },
+    {
+      "startSeconds": 24.72,
+      "durationSeconds": 3.08,
+      "text": "uploading our code to our Cloud"
+    },
+    {
+      "startSeconds": 26.119,
+      "durationSeconds": 3.881,
+      "text": "infrastructure automating things not"
+    },
+    {
+      "startSeconds": 27.8,
+      "durationSeconds": 4.12,
+      "text": "only helps to save a lot of time it also"
+    },
+    {
+      "startSeconds": 30,
+      "durationSeconds": 3.76,
+      "text": "removes the possibility of human error"
+    },
+    {
+      "startSeconds": 31.92,
+      "durationSeconds": 3.4,
+      "text": "causing your entire system to burn to"
+    },
+    {
+      "startSeconds": 33.76,
+      "durationSeconds": 2.92,
+      "text": "the ground there are a bunch of tools"
+    },
+    {
+      "startSeconds": 35.32,
+      "durationSeconds": 3.759,
+      "text": "out there that can help you get started"
+    },
+    {
+      "startSeconds": 36.68,
+      "durationSeconds": 3.96,
+      "text": "with cicd and I've used a few of them"
+    },
+    {
+      "startSeconds": 39.079,
+      "durationSeconds": 2.881,
+      "text": "all of them are great at what they do"
+    },
+    {
+      "startSeconds": 40.64,
+      "durationSeconds": 3.88,
+      "text": "however in this video we're going to be"
+    },
+    {
+      "startSeconds": 41.96,
+      "durationSeconds": 4.52,
+      "text": "focusing specifically on GitHub actions"
+    },
+    {
+      "startSeconds": 44.52,
+      "durationSeconds": 3.519,
+      "text": "let's get started ultimately all you"
+    },
+    {
+      "startSeconds": 46.48,
+      "durationSeconds": 3.16,
+      "text": "need to get started is a GitHub"
+    },
+    {
+      "startSeconds": 48.039,
+      "durationSeconds": 2.961,
+      "text": "repository if you don't have one I'm"
+    },
+    {
+      "startSeconds": 49.64,
+      "durationSeconds": 3.12,
+      "text": "going to leave a link in the description"
+    },
+    {
+      "startSeconds": 51,
+      "durationSeconds": 3.64,
+      "text": "below to the one that I'm using for this"
+    },
+    {
+      "startSeconds": 52.76,
+      "durationSeconds": 3.72,
+      "text": "video at the top of your repository page"
+    },
+    {
+      "startSeconds": 54.64,
+      "durationSeconds": 3.48,
+      "text": "you should see the actions tab once you"
+    },
+    {
+      "startSeconds": 56.48,
+      "durationSeconds": 3.239,
+      "text": "have some automations running on your"
+    },
+    {
+      "startSeconds": 58.12,
+      "durationSeconds": 3.919,
+      "text": "repository this is where you can keep"
+    },
+    {
+      "startSeconds": 59.719,
+      "durationSeconds": 3.721,
+      "text": "track of the logs for each workflow"
+    },
+    {
+      "startSeconds": 62.039,
+      "durationSeconds": 3.08,
+      "text": "every time they are run when it's"
+    },
+    {
+      "startSeconds": 63.44,
+      "durationSeconds": 3.52,
+      "text": "running we can see the progress of each"
+    },
+    {
+      "startSeconds": 65.119,
+      "durationSeconds": 3.761,
+      "text": "step in the gift of actions workflow so"
+    },
+    {
+      "startSeconds": 66.96,
+      "durationSeconds": 3.519,
+      "text": "if the workflow fails during some tests"
+    },
+    {
+      "startSeconds": 68.88,
+      "durationSeconds": 3.52,
+      "text": "we know that the code is broken and"
+    },
+    {
+      "startSeconds": 70.479,
+      "durationSeconds": 3.881,
+      "text": "therefore we don't want to deploy it to"
+    },
+    {
+      "startSeconds": 72.4,
+      "durationSeconds": 3.2,
+      "text": "our server if the workflow is successful"
+    },
+    {
+      "startSeconds": 74.36,
+      "durationSeconds": 2.48,
+      "text": "we're going to see a big green check"
+    },
+    {
+      "startSeconds": 75.6,
+      "durationSeconds": 3,
+      "text": "mark telling us that everything is"
+    },
+    {
+      "startSeconds": 76.84,
+      "durationSeconds": 3.2,
+      "text": "working within our c-base one of the"
+    },
+    {
+      "startSeconds": 78.6,
+      "durationSeconds": 2.96,
+      "text": "great things that developers really like"
+    },
+    {
+      "startSeconds": 80.04,
+      "durationSeconds": 3.079,
+      "text": "about GitHub actions is that it comes"
+    },
+    {
+      "startSeconds": 81.56,
+      "durationSeconds": 3.64,
+      "text": "with a bunch of different templates that"
+    },
+    {
+      "startSeconds": 83.119,
+      "durationSeconds": 3.68,
+      "text": "you can use to easily run specific"
+    },
+    {
+      "startSeconds": 85.2,
+      "durationSeconds": 3.44,
+      "text": "actions however for this video we're"
+    },
+    {
+      "startSeconds": 86.799,
+      "durationSeconds": 3.561,
+      "text": "going to create our own from scratch to"
+    },
+    {
+      "startSeconds": 88.64,
+      "durationSeconds": 3.799,
+      "text": "do this you can create a new y file"
+    },
+    {
+      "startSeconds": 90.36,
+      "durationSeconds": 3.64,
+      "text": "inside of the GitHub workflows directory"
+    },
+    {
+      "startSeconds": 92.439,
+      "durationSeconds": 3.441,
+      "text": "of your project we're going to give our"
+    },
+    {
+      "startSeconds": 94,
+      "durationSeconds": 3.56,
+      "text": "workflow a name and create our trigger"
+    },
+    {
+      "startSeconds": 95.88,
+      "durationSeconds": 3.519,
+      "text": "which is going to tell GitHub actions"
+    },
+    {
+      "startSeconds": 97.56,
+      "durationSeconds": 3.44,
+      "text": "when we want to run our workflow you can"
+    },
+    {
+      "startSeconds": 99.399,
+      "durationSeconds": 3.68,
+      "text": "run workflows using a variety of"
+    },
+    {
+      "startSeconds": 101,
+      "durationSeconds": 3.719,
+      "text": "triggers for example every time we push"
+    },
+    {
+      "startSeconds": 103.079,
+      "durationSeconds": 3.281,
+      "text": "code to our main branch we might want to"
+    },
+    {
+      "startSeconds": 104.719,
+      "durationSeconds": 3,
+      "text": "deploy it to our production server"
+    },
+    {
+      "startSeconds": 106.36,
+      "durationSeconds": 3,
+      "text": "automatically so that we don't have to"
+    },
+    {
+      "startSeconds": 107.719,
+      "durationSeconds": 3.281,
+      "text": "do it ourselves or every time we create"
+    },
+    {
+      "startSeconds": 109.36,
+      "durationSeconds": 3.2,
+      "text": "a new pull request we might want to test"
+    },
+    {
+      "startSeconds": 111,
+      "durationSeconds": 3.799,
+      "text": "the code to make sure that everything is"
+    },
+    {
+      "startSeconds": 112.56,
+      "durationSeconds": 3.76,
+      "text": "working before we merge that code into"
+    },
+    {
+      "startSeconds": 114.799,
+      "durationSeconds": 2.881,
+      "text": "our main branch these are actually the"
+    },
+    {
+      "startSeconds": 116.32,
+      "durationSeconds": 2.839,
+      "text": "two examples that we're going to build"
+    },
+    {
+      "startSeconds": 117.68,
+      "durationSeconds": 3.079,
+      "text": "today there's a huge list of different"
+    },
+    {
+      "startSeconds": 119.159,
+      "durationSeconds": 3.401,
+      "text": "triggers that you can use within GitHub"
+    },
+    {
+      "startSeconds": 120.759,
+      "durationSeconds": 3.601,
+      "text": "actions so if you want to find out more"
+    },
+    {
+      "startSeconds": 122.56,
+      "durationSeconds": 4.08,
+      "text": "about them I'd recommend visiting this"
+    },
+    {
+      "startSeconds": 124.36,
+      "durationSeconds": 3.359,
+      "text": "page on the GitHub documentation anyway"
+    },
+    {
+      "startSeconds": 126.64,
+      "durationSeconds": 2.679,
+      "text": "because this workflow is going to be"
+    },
+    {
+      "startSeconds": 127.719,
+      "durationSeconds": 3.6,
+      "text": "used to test our code we're going to run"
+    },
+    {
+      "startSeconds": 129.319,
+      "durationSeconds": 3.961,
+      "text": "it every time a p request to the main"
+    },
+    {
+      "startSeconds": 131.319,
+      "durationSeconds": 3.28,
+      "text": "branch is created so let's say I've got"
+    },
+    {
+      "startSeconds": 133.28,
+      "durationSeconds": 3.16,
+      "text": "this really cool feature that I want to"
+    },
+    {
+      "startSeconds": 134.599,
+      "durationSeconds": 3.36,
+      "text": "merge into my main branch I'd create a"
+    },
+    {
+      "startSeconds": 136.44,
+      "durationSeconds": 3.12,
+      "text": "pull request which would trigger this"
+    },
+    {
+      "startSeconds": 137.959,
+      "durationSeconds": 2.841,
+      "text": "workflow next we can create a list of"
+    },
+    {
+      "startSeconds": 139.56,
+      "durationSeconds": 2.679,
+      "text": "jobs that we want to include in our"
+    },
+    {
+      "startSeconds": 140.8,
+      "durationSeconds": 2.84,
+      "text": "workflow we're going to call our job"
+    },
+    {
+      "startSeconds": 142.239,
+      "durationSeconds": 3.08,
+      "text": "test and then we're going to define the"
+    },
+    {
+      "startSeconds": 143.64,
+      "durationSeconds": 3.2,
+      "text": "operating system that we want the job to"
+    },
+    {
+      "startSeconds": 145.319,
+      "durationSeconds": 3.441,
+      "text": "run on there are other options that you"
+    },
+    {
+      "startSeconds": 146.84,
+      "durationSeconds": 3.52,
+      "text": "can use but realistically a buntu is the"
+    },
+    {
+      "startSeconds": 148.76,
+      "durationSeconds": 3.28,
+      "text": "most common one that people will use"
+    },
+    {
+      "startSeconds": 150.36,
+      "durationSeconds": 3.519,
+      "text": "within GitHub actions and we're going to"
+    },
+    {
+      "startSeconds": 152.04,
+      "durationSeconds": 3.72,
+      "text": "use a nodejs container because in this"
+    },
+    {
+      "startSeconds": 153.879,
+      "durationSeconds": 3.601,
+      "text": "example we're using nodejs for our"
+    },
+    {
+      "startSeconds": 155.76,
+      "durationSeconds": 3.52,
+      "text": "project that will automatically install"
+    },
+    {
+      "startSeconds": 157.48,
+      "durationSeconds": 3.24,
+      "text": "nodejs for us so that we don't have to"
+    },
+    {
+      "startSeconds": 159.28,
+      "durationSeconds": 3.08,
+      "text": "do it manually through the command line"
+    },
+    {
+      "startSeconds": 160.72,
+      "durationSeconds": 3.08,
+      "text": "using a buntu it just saves a bit of"
+    },
+    {
+      "startSeconds": 162.36,
+      "durationSeconds": 2.84,
+      "text": "time the first step is going to be"
+    },
+    {
+      "startSeconds": 163.8,
+      "durationSeconds": 3.56,
+      "text": "adding our code to our virtual"
+    },
+    {
+      "startSeconds": 165.2,
+      "durationSeconds": 3.48,
+      "text": "environments using the checkout action"
+    },
+    {
+      "startSeconds": 167.36,
+      "durationSeconds": 2.68,
+      "text": "now I want you to have a think about the"
+    },
+    {
+      "startSeconds": 168.68,
+      "durationSeconds": 3.24,
+      "text": "steps that you would take if you were"
+    },
+    {
+      "startSeconds": 170.04,
+      "durationSeconds": 3.04,
+      "text": "testing your code manually firstly you"
+    },
+    {
+      "startSeconds": 171.92,
+      "durationSeconds": 2.64,
+      "text": "want to make sure that all of your"
+    },
+    {
+      "startSeconds": 173.08,
+      "durationSeconds": 3.96,
+      "text": "dependencies have been install for your"
+    },
+    {
+      "startSeconds": 174.56,
+      "durationSeconds": 4.2,
+      "text": "project we can do this by running mpmi"
+    },
+    {
+      "startSeconds": 177.04,
+      "durationSeconds": 3.119,
+      "text": "which is going to run a clean install"
+    },
+    {
+      "startSeconds": 178.76,
+      "durationSeconds": 3.08,
+      "text": "once your dependencies have been stalled"
+    },
+    {
+      "startSeconds": 180.159,
+      "durationSeconds": 3.561,
+      "text": "you can run your tests using whatever"
+    },
+    {
+      "startSeconds": 181.84,
+      "durationSeconds": 3.399,
+      "text": "Library you're using in your project I"
+    },
+    {
+      "startSeconds": 183.72,
+      "durationSeconds": 3.28,
+      "text": "tend to use just when I'm working with a"
+    },
+    {
+      "startSeconds": 185.239,
+      "durationSeconds": 3.201,
+      "text": "JavaScript project and then finally I'm"
+    },
+    {
+      "startSeconds": 187,
+      "durationSeconds": 3,
+      "text": "going to run the build script which is"
+    },
+    {
+      "startSeconds": 188.44,
+      "durationSeconds": 3.159,
+      "text": "going to compile our project we can"
+    },
+    {
+      "startSeconds": 190,
+      "durationSeconds": 3.159,
+      "text": "commit this code to our repository and"
+    },
+    {
+      "startSeconds": 191.599,
+      "durationSeconds": 3.161,
+      "text": "then I'm going to create an example pull"
+    },
+    {
+      "startSeconds": 193.159,
+      "durationSeconds": 3,
+      "text": "request for this really cool feature"
+    },
+    {
+      "startSeconds": 194.76,
+      "durationSeconds": 2.96,
+      "text": "that I've just built as you can see the"
+    },
+    {
+      "startSeconds": 196.159,
+      "durationSeconds": 3.72,
+      "text": "GI of actions workflow is going to spin"
+    },
+    {
+      "startSeconds": 197.72,
+      "durationSeconds": 3.439,
+      "text": "up a virtual environment run our test"
+    },
+    {
+      "startSeconds": 199.879,
+      "durationSeconds": 3.321,
+      "text": "and then confirm that our code is"
+    },
+    {
+      "startSeconds": 201.159,
+      "durationSeconds": 3.681,
+      "text": "working as expected so automatically I"
+    },
+    {
+      "startSeconds": 203.2,
+      "durationSeconds": 3.599,
+      "text": "know the code is working without having"
+    },
+    {
+      "startSeconds": 204.84,
+      "durationSeconds": 3.28,
+      "text": "to pull the pull request onto my local"
+    },
+    {
+      "startSeconds": 206.799,
+      "durationSeconds": 2.72,
+      "text": "machine and then running the test"
+    },
+    {
+      "startSeconds": 208.12,
+      "durationSeconds": 2.92,
+      "text": "manually now that we know that our code"
+    },
+    {
+      "startSeconds": 209.519,
+      "durationSeconds": 3.121,
+      "text": "is going to be working when we merge it"
+    },
+    {
+      "startSeconds": 211.04,
+      "durationSeconds": 3.44,
+      "text": "into the main branch we want to figure"
+    },
+    {
+      "startSeconds": 212.64,
+      "durationSeconds": 3.72,
+      "text": "out how we can use GitHub actions to"
+    },
+    {
+      "startSeconds": 214.48,
+      "durationSeconds": 3.44,
+      "text": "automatically deploy our code to our"
+    },
+    {
+      "startSeconds": 216.36,
+      "durationSeconds": 3.84,
+      "text": "production infrastructure this is the"
+    },
+    {
+      "startSeconds": 217.92,
+      "durationSeconds": 3.959,
+      "text": "continuous delivery or cd part of the"
+    },
+    {
+      "startSeconds": 220.2,
+      "durationSeconds": 3.52,
+      "text": "process if we weren't automating"
+    },
+    {
+      "startSeconds": 221.879,
+      "durationSeconds": 3.481,
+      "text": "anything your deployment process may"
+    },
+    {
+      "startSeconds": 223.72,
+      "durationSeconds": 3.12,
+      "text": "look a little like this first I'm going"
+    },
+    {
+      "startSeconds": 225.36,
+      "durationSeconds": 3.239,
+      "text": "to run get pull to get the latest"
+    },
+    {
+      "startSeconds": 226.84,
+      "durationSeconds": 3.2,
+      "text": "version of my code from my repository"
+    },
+    {
+      "startSeconds": 228.599,
+      "durationSeconds": 3.161,
+      "text": "then I'm going to run get checkout to"
+    },
+    {
+      "startSeconds": 230.04,
+      "durationSeconds": 4.919,
+      "text": "make sure that I'm in my main branch run"
+    },
+    {
+      "startSeconds": 231.76,
+      "durationSeconds": 4.839,
+      "text": "mpm install mpm run build and then"
+    },
+    {
+      "startSeconds": 234.959,
+      "durationSeconds": 3.601,
+      "text": "deploy my code to the server using this"
+    },
+    {
+      "startSeconds": 236.599,
+      "durationSeconds": 3.92,
+      "text": "long command which I might get wrong oh"
+    },
+    {
+      "startSeconds": 238.56,
+      "durationSeconds": 4.12,
+      "text": "and then SSH into the server to install"
+    },
+    {
+      "startSeconds": 240.519,
+      "durationSeconds": 4.161,
+      "text": "the dependencies and restart the nodejs"
+    },
+    {
+      "startSeconds": 242.68,
+      "durationSeconds": 4.24,
+      "text": "process okay as you can see this took a"
+    },
+    {
+      "startSeconds": 244.68,
+      "durationSeconds": 4.04,
+      "text": "long time and it was pretty complicated"
+    },
+    {
+      "startSeconds": 246.92,
+      "durationSeconds": 3.239,
+      "text": "for such a small project so let's"
+    },
+    {
+      "startSeconds": 248.72,
+      "durationSeconds": 3.079,
+      "text": "automate this we're going to create"
+    },
+    {
+      "startSeconds": 250.159,
+      "durationSeconds": 3.28,
+      "text": "another yaml file inside of our GTO"
+    },
+    {
+      "startSeconds": 251.799,
+      "durationSeconds": 3.241,
+      "text": "workflows directory which is going to be"
+    },
+    {
+      "startSeconds": 253.439,
+      "durationSeconds": 3.48,
+      "text": "triggered every time some code gets"
+    },
+    {
+      "startSeconds": 255.04,
+      "durationSeconds": 3.4,
+      "text": "pushed to our main branch inside of this"
+    },
+    {
+      "startSeconds": 256.919,
+      "durationSeconds": 3.16,
+      "text": "workflow we're going to run a job which"
+    },
+    {
+      "startSeconds": 258.44,
+      "durationSeconds": 3.359,
+      "text": "is going to build our project and then"
+    },
+    {
+      "startSeconds": 260.079,
+      "durationSeconds": 3.361,
+      "text": "deploy it to our server like we did with"
+    },
+    {
+      "startSeconds": 261.799,
+      "durationSeconds": 3.96,
+      "text": "our testing workflow we're going to run"
+    },
+    {
+      "startSeconds": 263.44,
+      "durationSeconds": 4.64,
+      "text": "our job on auntu check out the code and"
+    },
+    {
+      "startSeconds": 265.759,
+      "durationSeconds": 3.961,
+      "text": "install nodejs we're going to run mpm C"
+    },
+    {
+      "startSeconds": 268.08,
+      "durationSeconds": 3.2,
+      "text": "to do a clean install of the project"
+    },
+    {
+      "startSeconds": 269.72,
+      "durationSeconds": 3.319,
+      "text": "dependencies and then run the build"
+    },
+    {
+      "startSeconds": 271.28,
+      "durationSeconds": 4.199,
+      "text": "script once the build is completed we're"
+    },
+    {
+      "startSeconds": 273.039,
+      "durationSeconds": 4.361,
+      "text": "going to deploy our code using SCP which"
+    },
+    {
+      "startSeconds": 275.479,
+      "durationSeconds": 3.72,
+      "text": "is going to upload all of our files to"
+    },
+    {
+      "startSeconds": 277.4,
+      "durationSeconds": 4.16,
+      "text": "the server because access to our server"
+    },
+    {
+      "startSeconds": 279.199,
+      "durationSeconds": 4.321,
+      "text": "is protected using SSH Keys we need to"
+    },
+    {
+      "startSeconds": 281.56,
+      "durationSeconds": 3.8,
+      "text": "take an SSH key that has access to our"
+    },
+    {
+      "startSeconds": 283.52,
+      "durationSeconds": 3.64,
+      "text": "server and add the content of it to our"
+    },
+    {
+      "startSeconds": 285.36,
+      "durationSeconds": 3.2,
+      "text": "GitHub action Secrets this is where you"
+    },
+    {
+      "startSeconds": 287.16,
+      "durationSeconds": 2.84,
+      "text": "can store sensitive credentials that"
+    },
+    {
+      "startSeconds": 288.56,
+      "durationSeconds": 3.359,
+      "text": "need to be used within your GitHub"
+    },
+    {
+      "startSeconds": 290,
+      "durationSeconds": 4.08,
+      "text": "actions but can't be stored within your"
+    },
+    {
+      "startSeconds": 291.919,
+      "durationSeconds": 4.601,
+      "text": "repository for security reasons for"
+    },
+    {
+      "startSeconds": 294.08,
+      "durationSeconds": 3.399,
+      "text": "example your stripe or open AI Keys you"
+    },
+    {
+      "startSeconds": 296.52,
+      "durationSeconds": 2.64,
+      "text": "wouldn't want to put them in your"
+    },
+    {
+      "startSeconds": 297.479,
+      "durationSeconds": 2.761,
+      "text": "repository I've also added the address"
+    },
+    {
+      "startSeconds": 299.16,
+      "durationSeconds": 2.72,
+      "text": "of the server that we're going to be"
+    },
+    {
+      "startSeconds": 300.24,
+      "durationSeconds": 3.519,
+      "text": "deploying our code to as well as the"
+    },
+    {
+      "startSeconds": 301.88,
+      "durationSeconds": 3.44,
+      "text": "username that I have on the server we"
+    },
+    {
+      "startSeconds": 303.759,
+      "durationSeconds": 3.801,
+      "text": "can then access our secrets within our"
+    },
+    {
+      "startSeconds": 305.32,
+      "durationSeconds": 3.92,
+      "text": "geub actions workflow and add our SSH"
+    },
+    {
+      "startSeconds": 307.56,
+      "durationSeconds": 3.52,
+      "text": "key to our virtual environment now we"
+    },
+    {
+      "startSeconds": 309.24,
+      "durationSeconds": 3.799,
+      "text": "can upload our files to our server using"
+    },
+    {
+      "startSeconds": 311.08,
+      "durationSeconds": 3.72,
+      "text": "SCP in the exact same way that we would"
+    },
+    {
+      "startSeconds": 313.039,
+      "durationSeconds": 3.561,
+      "text": "have done it using the command line the"
+    },
+    {
+      "startSeconds": 314.8,
+      "durationSeconds": 4.04,
+      "text": "final step in our deployment process is"
+    },
+    {
+      "startSeconds": 316.6,
+      "durationSeconds": 4.48,
+      "text": "to SSH into the server install the"
+    },
+    {
+      "startSeconds": 318.84,
+      "durationSeconds": 4.4,
+      "text": "dependencies and then restart the nodejs"
+    },
+    {
+      "startSeconds": 321.08,
+      "durationSeconds": 4.16,
+      "text": "process in this case I'm using pm2 to"
+    },
+    {
+      "startSeconds": 323.24,
+      "durationSeconds": 3.799,
+      "text": "manage the nodejs process you can test"
+    },
+    {
+      "startSeconds": 325.24,
+      "durationSeconds": 4.04,
+      "text": "your workflow using ACT which allows you"
+    },
+    {
+      "startSeconds": 327.039,
+      "durationSeconds": 3.841,
+      "text": "to run gift of action scripts offline to"
+    },
+    {
+      "startSeconds": 329.28,
+      "durationSeconds": 3.4,
+      "text": "do this need to have Docker running on"
+    },
+    {
+      "startSeconds": 330.88,
+      "durationSeconds": 3.599,
+      "text": "your local machine as well as create a"
+    },
+    {
+      "startSeconds": 332.68,
+      "durationSeconds": 3.4,
+      "text": "do Secrets file within your project"
+    },
+    {
+      "startSeconds": 334.479,
+      "durationSeconds": 3.241,
+      "text": "directory that Secrets file is then"
+    },
+    {
+      "startSeconds": 336.08,
+      "durationSeconds": 4,
+      "text": "going to be used to replace what would"
+    },
+    {
+      "startSeconds": 337.72,
+      "durationSeconds": 4.199,
+      "text": "be GitHub action secrets so make sure"
+    },
+    {
+      "startSeconds": 340.08,
+      "durationSeconds": 3.679,
+      "text": "you don't actually put your deployment"
+    },
+    {
+      "startSeconds": 341.919,
+      "durationSeconds": 3.041,
+      "text": "secrets in that file you need to put"
+    },
+    {
+      "startSeconds": 343.759,
+      "durationSeconds": 2.72,
+      "text": "some test ones in that you may be"
+    },
+    {
+      "startSeconds": 344.96,
+      "durationSeconds": 2.72,
+      "text": "deploying to different infrastructure"
+    },
+    {
+      "startSeconds": 346.479,
+      "durationSeconds": 3,
+      "text": "because you wouldn't want to run a test"
+    },
+    {
+      "startSeconds": 347.68,
+      "durationSeconds": 3.56,
+      "text": "on actual production infrastructure you"
+    },
+    {
+      "startSeconds": 349.479,
+      "durationSeconds": 3.121,
+      "text": "can then run the ACT command to test"
+    },
+    {
+      "startSeconds": 351.24,
+      "durationSeconds": 2.959,
+      "text": "your workflow and make sure that"
+    },
+    {
+      "startSeconds": 352.6,
+      "durationSeconds": 3.159,
+      "text": "everything is working correctly once"
+    },
+    {
+      "startSeconds": 354.199,
+      "durationSeconds": 3.401,
+      "text": "you're happy with your workflow you can"
+    },
+    {
+      "startSeconds": 355.759,
+      "durationSeconds": 3.321,
+      "text": "publish it to your getto repository now"
+    },
+    {
+      "startSeconds": 357.6,
+      "durationSeconds": 3.159,
+      "text": "if we merge that super cool feature that"
+    },
+    {
+      "startSeconds": 359.08,
+      "durationSeconds": 3.399,
+      "text": "we were testing earlier you can see that"
+    },
+    {
+      "startSeconds": 360.759,
+      "durationSeconds": 3.601,
+      "text": "we've triggered this automated workflow"
+    },
+    {
+      "startSeconds": 362.479,
+      "durationSeconds": 3.801,
+      "text": "which is going to deploy our code to our"
+    },
+    {
+      "startSeconds": 364.36,
+      "durationSeconds": 4.04,
+      "text": "production server so now you can say"
+    },
+    {
+      "startSeconds": 366.28,
+      "durationSeconds": 3.4,
+      "text": "that you understand cicd if you learned"
+    },
+    {
+      "startSeconds": 368.4,
+      "durationSeconds": 2.84,
+      "text": "something in today's video please do"
+    },
+    {
+      "startSeconds": 369.68,
+      "durationSeconds": 4.68,
+      "text": "leave a like down below and subscribe"
+    },
+    {
+      "startSeconds": 371.24,
+      "durationSeconds": 3.12,
+      "text": "for more coding videos"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:11.325Z"
+}

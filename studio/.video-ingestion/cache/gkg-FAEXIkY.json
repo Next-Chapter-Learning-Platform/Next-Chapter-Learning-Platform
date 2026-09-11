@@ -1,0 +1,1088 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "gkg-FAEXIkY",
+  "url": "https://www.youtube.com/watch?v=gkg-FAEXIkY",
+  "title": "Friendly Intro To the CAP Theorem (Consistency vs Availability vs Partition Tolerance)",
+  "description": "The CAP theorem is a useful principle in distributed systems that illustrates some of the difficult tradeoffs that distributed systems have to make. However, it has somehow solidified itself as the E = MC^2 of the software engineering world: a cool piece of jargon that many people know and rattle off during interviews to sound smart and knowledgeable, even when it’s not relevant. As it turns out, the CAP theorem is not an incredibly advanced concept that only the most engineers can comprehend. It’s fairly intuitive, and I’ll explain why in this video. Let’s go!\n\n00:00 Intro\n00:31 C, A, and P\n00:48 Consistency\n01:51 Availability\n02:17 Partition Tolerance\n02:54 C, A, and P Recap\n03:13 The CAP Theorem\n03:40 C & A\n04:08 One Must Choose Between C and A\n04:42 Why Must One Choose?\n05:38 Recap",
+  "expectedDurationSeconds": 408,
+  "transcript": [
+    {
+      "startSeconds": 0.48,
+      "durationSeconds": 3.52,
+      "text": "the cap theorem is a useful principle in"
+    },
+    {
+      "startSeconds": 2.24,
+      "durationSeconds": 2.88,
+      "text": "distributed systems that illustrate some"
+    },
+    {
+      "startSeconds": 4,
+      "durationSeconds": 3.68,
+      "text": "of the difficult trade-offs that"
+    },
+    {
+      "startSeconds": 5.12,
+      "durationSeconds": 4.479,
+      "text": "distributed systems have to make however"
+    },
+    {
+      "startSeconds": 7.68,
+      "durationSeconds": 3.999,
+      "text": "it has somehow solidified itself as the"
+    },
+    {
+      "startSeconds": 9.599,
+      "durationSeconds": 4.401,
+      "text": "e equals m c squared of the software"
+    },
+    {
+      "startSeconds": 11.679,
+      "durationSeconds": 4.241,
+      "text": "engineering world a cool piece of jargon"
+    },
+    {
+      "startSeconds": 14,
+      "durationSeconds": 3.279,
+      "text": "that many people know and rattle off"
+    },
+    {
+      "startSeconds": 15.92,
+      "durationSeconds": 3.199,
+      "text": "during interviews to sound smart and"
+    },
+    {
+      "startSeconds": 17.279,
+      "durationSeconds": 4.401,
+      "text": "knowledgeable even when it's not really"
+    },
+    {
+      "startSeconds": 19.119,
+      "durationSeconds": 4.801,
+      "text": "relevant as it turns out the cap theorem"
+    },
+    {
+      "startSeconds": 21.68,
+      "durationSeconds": 3.679,
+      "text": "is not an incredibly advanced concept"
+    },
+    {
+      "startSeconds": 23.92,
+      "durationSeconds": 3.439,
+      "text": "that only the best engineers can"
+    },
+    {
+      "startSeconds": 25.359,
+      "durationSeconds": 3.601,
+      "text": "comprehend it's actually fairly"
+    },
+    {
+      "startSeconds": 27.359,
+      "durationSeconds": 3.521,
+      "text": "intuitive and i'll explain why in this"
+    },
+    {
+      "startSeconds": 28.96,
+      "durationSeconds": 3.599,
+      "text": "video let's go"
+    },
+    {
+      "startSeconds": 30.88,
+      "durationSeconds": 3.839,
+      "text": "the cap theorem revolves around three"
+    },
+    {
+      "startSeconds": 32.559,
+      "durationSeconds": 4.321,
+      "text": "concepts which form the cap acronym"
+    },
+    {
+      "startSeconds": 34.719,
+      "durationSeconds": 3.281,
+      "text": "consistency availability and partition"
+    },
+    {
+      "startSeconds": 36.88,
+      "durationSeconds": 2.8,
+      "text": "tolerance"
+    },
+    {
+      "startSeconds": 38,
+      "durationSeconds": 3.6,
+      "text": "i've covered two of these in my software"
+    },
+    {
+      "startSeconds": 39.68,
+      "durationSeconds": 3.76,
+      "text": "engineering dictionary series but they"
+    },
+    {
+      "startSeconds": 41.6,
+      "durationSeconds": 4.16,
+      "text": "have slightly different meanings here so"
+    },
+    {
+      "startSeconds": 43.44,
+      "durationSeconds": 4.24,
+      "text": "i'm going to cover them again after that"
+    },
+    {
+      "startSeconds": 45.76,
+      "durationSeconds": 4.319,
+      "text": "we'll get to the theorem itself"
+    },
+    {
+      "startSeconds": 47.68,
+      "durationSeconds": 3.76,
+      "text": "consistency in the cap theorem context"
+    },
+    {
+      "startSeconds": 50.079,
+      "durationSeconds": 3.361,
+      "text": "means that when someone queries the"
+    },
+    {
+      "startSeconds": 51.44,
+      "durationSeconds": 3.68,
+      "text": "system for information the most"
+    },
+    {
+      "startSeconds": 53.44,
+      "durationSeconds": 2.88,
+      "text": "up-to-date information is always"
+    },
+    {
+      "startSeconds": 55.12,
+      "durationSeconds": 3.759,
+      "text": "returned"
+    },
+    {
+      "startSeconds": 56.32,
+      "durationSeconds": 4.079,
+      "text": "in a distributed system multiple servers"
+    },
+    {
+      "startSeconds": 58.879,
+      "durationSeconds": 3.84,
+      "text": "or nodes are reading and writing"
+    },
+    {
+      "startSeconds": 60.399,
+      "durationSeconds": 4.4,
+      "text": "information and have to take extra care"
+    },
+    {
+      "startSeconds": 62.719,
+      "durationSeconds": 4.241,
+      "text": "to maintain consistency"
+    },
+    {
+      "startSeconds": 64.799,
+      "durationSeconds": 5.121,
+      "text": "for example we might ask a distributed"
+    },
+    {
+      "startSeconds": 66.96,
+      "durationSeconds": 4.8,
+      "text": "system to write some info like one"
+    },
+    {
+      "startSeconds": 69.92,
+      "durationSeconds": 3.76,
+      "text": "the node receiving the request might"
+    },
+    {
+      "startSeconds": 71.76,
+      "durationSeconds": 3.359,
+      "text": "broadcast the information to other nodes"
+    },
+    {
+      "startSeconds": 73.68,
+      "durationSeconds": 2.799,
+      "text": "so that they get the most up-to-date"
+    },
+    {
+      "startSeconds": 75.119,
+      "durationSeconds": 3.201,
+      "text": "information too"
+    },
+    {
+      "startSeconds": 76.479,
+      "durationSeconds": 2.96,
+      "text": "then we might ask the system to write"
+    },
+    {
+      "startSeconds": 78.32,
+      "durationSeconds": 3.68,
+      "text": "too"
+    },
+    {
+      "startSeconds": 79.439,
+      "durationSeconds": 5.521,
+      "text": "this system has consistency if after the"
+    },
+    {
+      "startSeconds": 82,
+      "durationSeconds": 4.479,
+      "text": "system says i'm done query again always"
+    },
+    {
+      "startSeconds": 84.96,
+      "durationSeconds": 3.44,
+      "text": "returns too"
+    },
+    {
+      "startSeconds": 86.479,
+      "durationSeconds": 4.561,
+      "text": "on the other hand in a system without"
+    },
+    {
+      "startSeconds": 88.4,
+      "durationSeconds": 4.719,
+      "text": "consistency after the system says i'm"
+    },
+    {
+      "startSeconds": 91.04,
+      "durationSeconds": 4.8,
+      "text": "done i could query a node and it could"
+    },
+    {
+      "startSeconds": 93.119,
+      "durationSeconds": 5.441,
+      "text": "return stale information for example if"
+    },
+    {
+      "startSeconds": 95.84,
+      "durationSeconds": 5.2,
+      "text": "i write 3 then query a different node"
+    },
+    {
+      "startSeconds": 98.56,
+      "durationSeconds": 4.879,
+      "text": "before the information propagates to it"
+    },
+    {
+      "startSeconds": 101.04,
+      "durationSeconds": 4.88,
+      "text": "it might return two which is stale"
+    },
+    {
+      "startSeconds": 103.439,
+      "durationSeconds": 4.801,
+      "text": "we can sum consistency up as when the"
+    },
+    {
+      "startSeconds": 105.92,
+      "durationSeconds": 4.479,
+      "text": "system returns information it is always"
+    },
+    {
+      "startSeconds": 108.24,
+      "durationSeconds": 4.32,
+      "text": "the latest information"
+    },
+    {
+      "startSeconds": 110.399,
+      "durationSeconds": 4.241,
+      "text": "the next term is availability this one"
+    },
+    {
+      "startSeconds": 112.56,
+      "durationSeconds": 4.8,
+      "text": "is easier it means that all incoming"
+    },
+    {
+      "startSeconds": 114.64,
+      "durationSeconds": 4.64,
+      "text": "requests receive a useful response"
+    },
+    {
+      "startSeconds": 117.36,
+      "durationSeconds": 4.16,
+      "text": "for example if we query a distributed"
+    },
+    {
+      "startSeconds": 119.28,
+      "durationSeconds": 4.72,
+      "text": "system it is available if it returns"
+    },
+    {
+      "startSeconds": 121.52,
+      "durationSeconds": 4.08,
+      "text": "useful data even if it's stale"
+    },
+    {
+      "startSeconds": 124,
+      "durationSeconds": 3.119,
+      "text": "as long as they return something it's"
+    },
+    {
+      "startSeconds": 125.6,
+      "durationSeconds": 3.2,
+      "text": "considered available"
+    },
+    {
+      "startSeconds": 127.119,
+      "durationSeconds": 3.36,
+      "text": "on the other hand if it isn't able to"
+    },
+    {
+      "startSeconds": 128.8,
+      "durationSeconds": 2.72,
+      "text": "handle my request then it's not"
+    },
+    {
+      "startSeconds": 130.479,
+      "durationSeconds": 3.201,
+      "text": "available"
+    },
+    {
+      "startSeconds": 131.52,
+      "durationSeconds": 4.16,
+      "text": "we can sum this one up as the system"
+    },
+    {
+      "startSeconds": 133.68,
+      "durationSeconds": 3.279,
+      "text": "always returns info and never stops"
+    },
+    {
+      "startSeconds": 135.68,
+      "durationSeconds": 3.12,
+      "text": "functioning"
+    },
+    {
+      "startSeconds": 136.959,
+      "durationSeconds": 3.441,
+      "text": "the last one is partition tolerance"
+    },
+    {
+      "startSeconds": 138.8,
+      "durationSeconds": 2.72,
+      "text": "which is about reacting to a network"
+    },
+    {
+      "startSeconds": 140.4,
+      "durationSeconds": 2.8,
+      "text": "partition"
+    },
+    {
+      "startSeconds": 141.52,
+      "durationSeconds": 3.52,
+      "text": "a network partition is when some of the"
+    },
+    {
+      "startSeconds": 143.2,
+      "durationSeconds": 3.92,
+      "text": "nodes in a distributed system are unable"
+    },
+    {
+      "startSeconds": 145.04,
+      "durationSeconds": 4,
+      "text": "to contact each other it's like the"
+    },
+    {
+      "startSeconds": 147.12,
+      "durationSeconds": 3.04,
+      "text": "scene in a horror movie when a wall"
+    },
+    {
+      "startSeconds": 149.04,
+      "durationSeconds": 3.04,
+      "text": "comes down and separates the"
+    },
+    {
+      "startSeconds": 150.16,
+      "durationSeconds": 4.24,
+      "text": "protagonists into two parties and each"
+    },
+    {
+      "startSeconds": 152.08,
+      "durationSeconds": 4.48,
+      "text": "party has to fend for itself"
+    },
+    {
+      "startSeconds": 154.4,
+      "durationSeconds": 4,
+      "text": "when a network partition happens any"
+    },
+    {
+      "startSeconds": 156.56,
+      "durationSeconds": 4.64,
+      "text": "communication between any set of nodes"
+    },
+    {
+      "startSeconds": 158.4,
+      "durationSeconds": 4.4,
+      "text": "might be cut off like this or like this"
+    },
+    {
+      "startSeconds": 161.2,
+      "durationSeconds": 3.119,
+      "text": "so the network is partitioned into"
+    },
+    {
+      "startSeconds": 162.8,
+      "durationSeconds": 3.2,
+      "text": "pieces"
+    },
+    {
+      "startSeconds": 164.319,
+      "durationSeconds": 3.761,
+      "text": "partition tolerance means that during a"
+    },
+    {
+      "startSeconds": 166,
+      "durationSeconds": 4.16,
+      "text": "partition the system can continue to"
+    },
+    {
+      "startSeconds": 168.08,
+      "durationSeconds": 3.92,
+      "text": "operate a system without partition"
+    },
+    {
+      "startSeconds": 170.16,
+      "durationSeconds": 3.2,
+      "text": "tolerance simply goes down if there's a"
+    },
+    {
+      "startSeconds": 172,
+      "durationSeconds": 3.04,
+      "text": "network partition"
+    },
+    {
+      "startSeconds": 173.36,
+      "durationSeconds": 4.879,
+      "text": "those are the three pieces of the cap"
+    },
+    {
+      "startSeconds": 175.04,
+      "durationSeconds": 5.44,
+      "text": "theorem here's a quick recap consistency"
+    },
+    {
+      "startSeconds": 178.239,
+      "durationSeconds": 4.161,
+      "text": "is when the system returns info it's"
+    },
+    {
+      "startSeconds": 180.48,
+      "durationSeconds": 4.399,
+      "text": "always the latest info"
+    },
+    {
+      "startSeconds": 182.4,
+      "durationSeconds": 4.64,
+      "text": "availability is the system always"
+    },
+    {
+      "startSeconds": 184.879,
+      "durationSeconds": 4.64,
+      "text": "returns some information even if it's"
+    },
+    {
+      "startSeconds": 187.04,
+      "durationSeconds": 4.559,
+      "text": "stale and partition tolerance is when"
+    },
+    {
+      "startSeconds": 189.519,
+      "durationSeconds": 3.601,
+      "text": "the system can continue operating during"
+    },
+    {
+      "startSeconds": 191.599,
+      "durationSeconds": 3.601,
+      "text": "a network partition"
+    },
+    {
+      "startSeconds": 193.12,
+      "durationSeconds": 3.52,
+      "text": "now back to the cap theorem the cap"
+    },
+    {
+      "startSeconds": 195.2,
+      "durationSeconds": 2.88,
+      "text": "theorem states that you could have only"
+    },
+    {
+      "startSeconds": 196.64,
+      "durationSeconds": 4,
+      "text": "two of the three properties in a"
+    },
+    {
+      "startSeconds": 198.08,
+      "durationSeconds": 4.32,
+      "text": "distributed system but not all three"
+    },
+    {
+      "startSeconds": 200.64,
+      "durationSeconds": 4,
+      "text": "for example if you design a system with"
+    },
+    {
+      "startSeconds": 202.4,
+      "durationSeconds": 4.64,
+      "text": "consistency and availability it can't"
+    },
+    {
+      "startSeconds": 204.64,
+      "durationSeconds": 4.239,
+      "text": "also be partition tolerant if you design"
+    },
+    {
+      "startSeconds": 207.04,
+      "durationSeconds": 4.479,
+      "text": "a system with consistency and partition"
+    },
+    {
+      "startSeconds": 208.879,
+      "durationSeconds": 5.841,
+      "text": "tolerance it can have availability"
+    },
+    {
+      "startSeconds": 211.519,
+      "durationSeconds": 6.08,
+      "text": "so there are three possible choices cna"
+    },
+    {
+      "startSeconds": 214.72,
+      "durationSeconds": 4.799,
+      "text": "cnp and a and p we can cover what this"
+    },
+    {
+      "startSeconds": 217.599,
+      "durationSeconds": 4.56,
+      "text": "means case by case"
+    },
+    {
+      "startSeconds": 219.519,
+      "durationSeconds": 4.321,
+      "text": "the first one is cna this means that our"
+    },
+    {
+      "startSeconds": 222.159,
+      "durationSeconds": 3.761,
+      "text": "system can have consistency and"
+    },
+    {
+      "startSeconds": 223.84,
+      "durationSeconds": 4.8,
+      "text": "availability but can't be partition"
+    },
+    {
+      "startSeconds": 225.92,
+      "durationSeconds": 4.72,
+      "text": "tolerant in other words if there is no"
+    },
+    {
+      "startSeconds": 228.64,
+      "durationSeconds": 4.4,
+      "text": "network partition we can guarantee"
+    },
+    {
+      "startSeconds": 230.64,
+      "durationSeconds": 4.239,
+      "text": "consistency and availability"
+    },
+    {
+      "startSeconds": 233.04,
+      "durationSeconds": 4,
+      "text": "this generally makes sense because when"
+    },
+    {
+      "startSeconds": 234.879,
+      "durationSeconds": 4.241,
+      "text": "a network partition isn't happening the"
+    },
+    {
+      "startSeconds": 237.04,
+      "durationSeconds": 4.24,
+      "text": "system is running normally and thus can"
+    },
+    {
+      "startSeconds": 239.12,
+      "durationSeconds": 3.44,
+      "text": "have both consistency and availability"
+    },
+    {
+      "startSeconds": 241.28,
+      "durationSeconds": 2.48,
+      "text": "because there's no need to make"
+    },
+    {
+      "startSeconds": 242.56,
+      "durationSeconds": 2.879,
+      "text": "trade-offs"
+    },
+    {
+      "startSeconds": 243.76,
+      "durationSeconds": 3.199,
+      "text": "that means it can always respond to"
+    },
+    {
+      "startSeconds": 245.439,
+      "durationSeconds": 2.72,
+      "text": "every request with the latest"
+    },
+    {
+      "startSeconds": 246.959,
+      "durationSeconds": 3.041,
+      "text": "information"
+    },
+    {
+      "startSeconds": 248.159,
+      "durationSeconds": 2.961,
+      "text": "now if there's a partition what should"
+    },
+    {
+      "startSeconds": 250,
+      "durationSeconds": 3.04,
+      "text": "we do"
+    },
+    {
+      "startSeconds": 251.12,
+      "durationSeconds": 4.72,
+      "text": "well if we want to keep operating during"
+    },
+    {
+      "startSeconds": 253.04,
+      "durationSeconds": 3.599,
+      "text": "a partition we need either c and p or a"
+    },
+    {
+      "startSeconds": 255.84,
+      "durationSeconds": 2.959,
+      "text": "and p"
+    },
+    {
+      "startSeconds": 256.639,
+      "durationSeconds": 4.401,
+      "text": "in other words if there is a partition"
+    },
+    {
+      "startSeconds": 258.799,
+      "durationSeconds": 3.521,
+      "text": "we must choose between consistency and"
+    },
+    {
+      "startSeconds": 261.04,
+      "durationSeconds": 3.599,
+      "text": "availability"
+    },
+    {
+      "startSeconds": 262.32,
+      "durationSeconds": 3.92,
+      "text": "this is the crux of the theorem in fact"
+    },
+    {
+      "startSeconds": 264.639,
+      "durationSeconds": 4.161,
+      "text": "the cap theorem could be rewarded like"
+    },
+    {
+      "startSeconds": 266.24,
+      "durationSeconds": 5.04,
+      "text": "this to be much clearer during a network"
+    },
+    {
+      "startSeconds": 268.8,
+      "durationSeconds": 4.08,
+      "text": "partition a distributed system must"
+    },
+    {
+      "startSeconds": 271.28,
+      "durationSeconds": 3.04,
+      "text": "choose between consistency and"
+    },
+    {
+      "startSeconds": 272.88,
+      "durationSeconds": 3.84,
+      "text": "availability"
+    },
+    {
+      "startSeconds": 274.32,
+      "durationSeconds": 4.72,
+      "text": "in my opinion the pic2 terminology is"
+    },
+    {
+      "startSeconds": 276.72,
+      "durationSeconds": 3.759,
+      "text": "confusing and hard to understand which"
+    },
+    {
+      "startSeconds": 279.04,
+      "durationSeconds": 3.36,
+      "text": "could be why people like to quote it"
+    },
+    {
+      "startSeconds": 280.479,
+      "durationSeconds": 4.241,
+      "text": "because it sounds cool"
+    },
+    {
+      "startSeconds": 282.4,
+      "durationSeconds": 4,
+      "text": "so why during our partition do we need"
+    },
+    {
+      "startSeconds": 284.72,
+      "durationSeconds": 3.28,
+      "text": "to choose between consistency and"
+    },
+    {
+      "startSeconds": 286.4,
+      "durationSeconds": 3.44,
+      "text": "availability"
+    },
+    {
+      "startSeconds": 288,
+      "durationSeconds": 4,
+      "text": "well during a partition the network is"
+    },
+    {
+      "startSeconds": 289.84,
+      "durationSeconds": 4.079,
+      "text": "cut into pieces so the different pieces"
+    },
+    {
+      "startSeconds": 292,
+      "durationSeconds": 3.04,
+      "text": "of the system have to independently make"
+    },
+    {
+      "startSeconds": 293.919,
+      "durationSeconds": 2.881,
+      "text": "a decision"
+    },
+    {
+      "startSeconds": 295.04,
+      "durationSeconds": 3.12,
+      "text": "should they keep accepting traffic or"
+    },
+    {
+      "startSeconds": 296.8,
+      "durationSeconds": 3.679,
+      "text": "should they stop because there is a"
+    },
+    {
+      "startSeconds": 298.16,
+      "durationSeconds": 4.319,
+      "text": "partition if they keep accepting traffic"
+    },
+    {
+      "startSeconds": 300.479,
+      "durationSeconds": 4.401,
+      "text": "which means they keep availability they"
+    },
+    {
+      "startSeconds": 302.479,
+      "durationSeconds": 4.081,
+      "text": "run the risk of creating inconsistency"
+    },
+    {
+      "startSeconds": 304.88,
+      "durationSeconds": 3.52,
+      "text": "because each piece might claim to be the"
+    },
+    {
+      "startSeconds": 306.56,
+      "durationSeconds": 3.68,
+      "text": "authoritative system"
+    },
+    {
+      "startSeconds": 308.4,
+      "durationSeconds": 3.519,
+      "text": "remember that during a partition the"
+    },
+    {
+      "startSeconds": 310.24,
+      "durationSeconds": 3.2,
+      "text": "pieces can't talk to each other so they"
+    },
+    {
+      "startSeconds": 311.919,
+      "durationSeconds": 3.28,
+      "text": "don't know if the other pieces are still"
+    },
+    {
+      "startSeconds": 313.44,
+      "durationSeconds": 3.28,
+      "text": "operating or have died"
+    },
+    {
+      "startSeconds": 315.199,
+      "durationSeconds": 3.361,
+      "text": "a client could write data to one of the"
+    },
+    {
+      "startSeconds": 316.72,
+      "durationSeconds": 3.12,
+      "text": "pieces then write some data to a"
+    },
+    {
+      "startSeconds": 318.56,
+      "durationSeconds": 3.199,
+      "text": "different piece"
+    },
+    {
+      "startSeconds": 319.84,
+      "durationSeconds": 3.28,
+      "text": "then if the network partition heals"
+    },
+    {
+      "startSeconds": 321.759,
+      "durationSeconds": 3.201,
+      "text": "there's a conflict between the two"
+    },
+    {
+      "startSeconds": 323.12,
+      "durationSeconds": 3.76,
+      "text": "pieces that needs to be resolved which"
+    },
+    {
+      "startSeconds": 324.96,
+      "durationSeconds": 4,
+      "text": "can get pretty messy"
+    },
+    {
+      "startSeconds": 326.88,
+      "durationSeconds": 3.44,
+      "text": "on the other hand if the system stops"
+    },
+    {
+      "startSeconds": 328.96,
+      "durationSeconds": 4.079,
+      "text": "accepting traffic while there is a"
+    },
+    {
+      "startSeconds": 330.32,
+      "durationSeconds": 4.56,
+      "text": "partition then it loses availability but"
+    },
+    {
+      "startSeconds": 333.039,
+      "durationSeconds": 3.921,
+      "text": "preserves consistency"
+    },
+    {
+      "startSeconds": 334.88,
+      "durationSeconds": 3.759,
+      "text": "that's why a partition forces a system"
+    },
+    {
+      "startSeconds": 336.96,
+      "durationSeconds": 4,
+      "text": "to choose"
+    },
+    {
+      "startSeconds": 338.639,
+      "durationSeconds": 4.321,
+      "text": "to recap the cap theorem is about how a"
+    },
+    {
+      "startSeconds": 340.96,
+      "durationSeconds": 4.16,
+      "text": "system must pick two properties between"
+    },
+    {
+      "startSeconds": 342.96,
+      "durationSeconds": 4.959,
+      "text": "consistency availability and partition"
+    },
+    {
+      "startSeconds": 345.12,
+      "durationSeconds": 5.44,
+      "text": "tolerance and can't pick all three"
+    },
+    {
+      "startSeconds": 347.919,
+      "durationSeconds": 4.881,
+      "text": "however it's more clearly stated as"
+    },
+    {
+      "startSeconds": 350.56,
+      "durationSeconds": 4.32,
+      "text": "during normal operation a distributed"
+    },
+    {
+      "startSeconds": 352.8,
+      "durationSeconds": 4,
+      "text": "system can have consistency and"
+    },
+    {
+      "startSeconds": 354.88,
+      "durationSeconds": 3.92,
+      "text": "availability but during a network"
+    },
+    {
+      "startSeconds": 356.8,
+      "durationSeconds": 5.2,
+      "text": "partition it must choose between"
+    },
+    {
+      "startSeconds": 358.8,
+      "durationSeconds": 4.88,
+      "text": "consistency and availability and why"
+    },
+    {
+      "startSeconds": 362,
+      "durationSeconds": 3.6,
+      "text": "because it has to decide between"
+    },
+    {
+      "startSeconds": 363.68,
+      "durationSeconds": 4.48,
+      "text": "accepting traffic which preserves"
+    },
+    {
+      "startSeconds": 365.6,
+      "durationSeconds": 4.56,
+      "text": "availability but could lose consistency"
+    },
+    {
+      "startSeconds": 368.16,
+      "durationSeconds": 3.039,
+      "text": "by potentially creating diverging data"
+    },
+    {
+      "startSeconds": 370.16,
+      "durationSeconds": 3.599,
+      "text": "sets"
+    },
+    {
+      "startSeconds": 371.199,
+      "durationSeconds": 4.641,
+      "text": "or stop accepting traffic which"
+    },
+    {
+      "startSeconds": 373.759,
+      "durationSeconds": 3.44,
+      "text": "preserves consistency but loses"
+    },
+    {
+      "startSeconds": 375.84,
+      "durationSeconds": 2.72,
+      "text": "availability"
+    },
+    {
+      "startSeconds": 377.199,
+      "durationSeconds": 2.961,
+      "text": "the last thing i'll mention is that"
+    },
+    {
+      "startSeconds": 378.56,
+      "durationSeconds": 3.6,
+      "text": "people are always working on better"
+    },
+    {
+      "startSeconds": 380.16,
+      "durationSeconds": 3.759,
+      "text": "algorithms which allow hybrids of"
+    },
+    {
+      "startSeconds": 382.16,
+      "durationSeconds": 4.4,
+      "text": "consistency and availability during"
+    },
+    {
+      "startSeconds": 383.919,
+      "durationSeconds": 4.641,
+      "text": "partition however there is no solution"
+    },
+    {
+      "startSeconds": 386.56,
+      "durationSeconds": 4.479,
+      "text": "that provides 100 consistency and"
+    },
+    {
+      "startSeconds": 388.56,
+      "durationSeconds": 4.24,
+      "text": "availability during a partition"
+    },
+    {
+      "startSeconds": 391.039,
+      "durationSeconds": 3.201,
+      "text": "i hope that was helpful and that now the"
+    },
+    {
+      "startSeconds": 392.8,
+      "durationSeconds": 3.76,
+      "text": "cap theorem doesn't seem all that"
+    },
+    {
+      "startSeconds": 394.24,
+      "durationSeconds": 3.76,
+      "text": "intimidating if you like this video"
+    },
+    {
+      "startSeconds": 396.56,
+      "durationSeconds": 2.8,
+      "text": "please consider sharing it with someone"
+    },
+    {
+      "startSeconds": 398,
+      "durationSeconds": 4.36,
+      "text": "who'd enjoy it too"
+    },
+    {
+      "startSeconds": 399.36,
+      "durationSeconds": 3,
+      "text": "thanks"
+    },
+    {
+      "startSeconds": 406.66,
+      "durationSeconds": 2.329,
+      "text": "[Music]"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Intro"
+    },
+    {
+      "startSeconds": 31,
+      "label": "C, A, and P"
+    },
+    {
+      "startSeconds": 48,
+      "label": "Consistency"
+    },
+    {
+      "startSeconds": 111,
+      "label": "Availability"
+    },
+    {
+      "startSeconds": 137,
+      "label": "Partition Tolerance"
+    },
+    {
+      "startSeconds": 174,
+      "label": "C, A, and P Recap"
+    },
+    {
+      "startSeconds": 193,
+      "label": "The CAP Theorem"
+    },
+    {
+      "startSeconds": 220,
+      "label": "C & A"
+    },
+    {
+      "startSeconds": 248,
+      "label": "One Must Choose Between C and A"
+    },
+    {
+      "startSeconds": 282,
+      "label": "Why Must One Choose?"
+    },
+    {
+      "startSeconds": 338,
+      "label": "Recap"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:23:03.855Z"
+}

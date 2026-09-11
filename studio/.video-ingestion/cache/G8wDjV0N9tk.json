@@ -1,0 +1,438 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "G8wDjV0N9tk",
+  "url": "https://www.youtube.com/watch?v=G8wDjV0N9tk",
+  "title": "Transaction Isolation Levels With PostgreSQL as an example",
+  "description": "In this video, Boris Strelnikov will explain which transaction isolation levels exist in databases and what you should be aware of as a developer. \n\nYou will see dirty read, lost update, non-repeatable read, phantoms and serialization anomaly - most of them demoed inside PostgreSQL database.\n\nYou can hire Boris as your programming mentor or get a consultation from him here: https://mkdev.me/en/mentors/risentveber\n\nCheck out mkdev dispatch, bi-weekly newsletter about DevOps and Cloud Native -  https://mkdev.me/dispatch\n\nDevOps Accents is our monthly podcast, where 3 mkdev founders chat about DevOps, Cloud and Life: https://mkdev.me/podcast\n\nAt mkdev we provide all range of IT services, from trainings and workshops to audit and consulting. \n\nCheck out our website: https://mkdev.me/en/b or contact us at team@mkdev.me\n\n#databases #rdbms #postgresql #transactionisolation #acid",
+  "expectedDurationSeconds": 498,
+  "transcript": [
+    {
+      "startSeconds": 16.484,
+      "durationSeconds": 1.766,
+      "text": "Hey!"
+    },
+    {
+      "startSeconds": 18.25,
+      "durationSeconds": 5.24,
+      "text": "In this video, I'll explain what transaction\nisolation levels exist and what you should"
+    },
+    {
+      "startSeconds": 23.49,
+      "durationSeconds": 2.299,
+      "text": "be aware of as a developer"
+    },
+    {
+      "startSeconds": 25.789,
+      "durationSeconds": 5.761,
+      "text": "We will consider only PostgreSQL (version\n13) as an example database, so some information"
+    },
+    {
+      "startSeconds": 31.55,
+      "durationSeconds": 3.779,
+      "text": "may be wrong if you would like to use another\ndatabase"
+    },
+    {
+      "startSeconds": 35.329,
+      "durationSeconds": 6.321,
+      "text": "For examples in this video, we will use pgcli\nutility. This is a nice analog for standard"
+    },
+    {
+      "startSeconds": 41.65,
+      "durationSeconds": 5.31,
+      "text": "Postgres command-line interface that provides\nsyntax highlighting and substitution. It can"
+    },
+    {
+      "startSeconds": 46.96,
+      "durationSeconds": 3.52,
+      "text": "be easily installed e.g. via the brew package\nmanager"
+    },
+    {
+      "startSeconds": 50.48,
+      "durationSeconds": 6.489,
+      "text": "So, there is a well-known database abbreviation\nACID. This stands for Atomicity, Consistency"
+    },
+    {
+      "startSeconds": 56.969,
+      "durationSeconds": 2.52,
+      "text": "Isolation, and Durability"
+    },
+    {
+      "startSeconds": 59.489,
+      "durationSeconds": 5.781,
+      "text": "The term isolation relates to how concurrent\ntransactions affect each other"
+    },
+    {
+      "startSeconds": 65.27,
+      "durationSeconds": 6.29,
+      "text": "So if you develop backend software that operates\ndata in a complex way inside database transactions"
+    },
+    {
+      "startSeconds": 71.56,
+      "durationSeconds": 5.52,
+      "text": "you must be aware of how transactions affect\neach other to prevent your code from business-logic"
+    },
+    {
+      "startSeconds": 77.08,
+      "durationSeconds": 1.78,
+      "text": "mistakes"
+    },
+    {
+      "startSeconds": 78.86,
+      "durationSeconds": 5.79,
+      "text": "In classic SQL theory isolation levels is\ndefined in terms of what must not happen or"
+    },
+    {
+      "startSeconds": 84.65,
+      "durationSeconds": 2.02,
+      "text": "phenomena\ndirty read"
+    },
+    {
+      "startSeconds": 86.67,
+      "durationSeconds": 2.44,
+      "text": "lost update\nnon-repeatable read"
+    },
+    {
+      "startSeconds": 89.11,
+      "durationSeconds": 2.53,
+      "text": "phantoms\nserialization anomaly"
+    },
+    {
+      "startSeconds": 91.64,
+      "durationSeconds": 4.72,
+      "text": "so let's define each of them separately"
+    },
+    {
+      "startSeconds": 96.36,
+      "durationSeconds": 6.21,
+      "text": "Dirty read - means read uncommitted changes\nof other transactions. In PostgreSQL, it doesn't"
+    },
+    {
+      "startSeconds": 102.57,
+      "durationSeconds": 3.299,
+      "text": "happen on any isolation level"
+    },
+    {
+      "startSeconds": 105.869,
+      "durationSeconds": 6.07,
+      "text": "For example, the first transaction updates\nsome record, after that the second transaction"
+    },
+    {
+      "startSeconds": 111.939,
+      "durationSeconds": 6.981,
+      "text": "reads the same record and gets updated value\neven if the first transaction rollbacks later"
+    },
+    {
+      "startSeconds": 118.92,
+      "durationSeconds": 6.83,
+      "text": "A lost update is when the first transaction\nreads data into its local memory, and then"
+    },
+    {
+      "startSeconds": 125.75,
+      "durationSeconds": 5.8,
+      "text": "the second transaction changes this data and\ncommits its change. After this, the first"
+    },
+    {
+      "startSeconds": 131.55,
+      "durationSeconds": 5.1,
+      "text": "transaction updates the same data based on\nwhat it read into memory before the second"
+    },
+    {
+      "startSeconds": 136.65,
+      "durationSeconds": 5.79,
+      "text": "transaction was executed. In this case, the\nupdate performed by the second transaction"
+    },
+    {
+      "startSeconds": 142.44,
+      "durationSeconds": 4.4,
+      "text": "can be considered a lost update"
+    },
+    {
+      "startSeconds": 146.84,
+      "durationSeconds": 5.03,
+      "text": "For live examples, we will use PostgreSQL\nrunning via docker-compose, consisting of"
+    },
+    {
+      "startSeconds": 151.87,
+      "durationSeconds": 5.79,
+      "text": "one table named 'orders' that is populated\nwith several seed records"
+    },
+    {
+      "startSeconds": 157.66,
+      "durationSeconds": 6.549,
+      "text": "For example, the first transaction read order\nwith id equals 1 and the second does the same"
+    },
+    {
+      "startSeconds": 164.209,
+      "durationSeconds": 11.521,
+      "text": "After that, each of them updates the total\nfield value, and after committing both transactions"
+    },
+    {
+      "startSeconds": 175.73,
+      "durationSeconds": 6.07,
+      "text": "only the last one will have a real effect"
+    },
+    {
+      "startSeconds": 181.8,
+      "durationSeconds": 4.89,
+      "text": "Non-repeatable read means that one of the\nrows you've queried at different stages of"
+    },
+    {
+      "startSeconds": 186.69,
+      "durationSeconds": 3.39,
+      "text": "transaction may be updated by other transactions"
+    },
+    {
+      "startSeconds": 190.08,
+      "durationSeconds": 11.83,
+      "text": "For example, one transaction reads orders.\nAfter that, another transaction modifies the"
+    },
+    {
+      "startSeconds": 201.91,
+      "durationSeconds": 10.02,
+      "text": "total field value for one of them with id equals\n1 and commits. If the first transaction reads"
+    },
+    {
+      "startSeconds": 211.93,
+      "durationSeconds": 5.44,
+      "text": "orders one more time it sees the updated record"
+    },
+    {
+      "startSeconds": 217.37,
+      "durationSeconds": 5.33,
+      "text": "Phantoms - means that some new rows are added\nor removed by another transaction to the set"
+    },
+    {
+      "startSeconds": 222.7,
+      "durationSeconds": 2.32,
+      "text": "of records being read"
+    },
+    {
+      "startSeconds": 225.02,
+      "durationSeconds": 8.49,
+      "text": "For example, one transaction reads orders.\nAfter that, another transaction creates one"
+    },
+    {
+      "startSeconds": 233.51,
+      "durationSeconds": 13.559,
+      "text": "of them and commits. If the first transaction\nreads orders one more time it sees the new"
+    },
+    {
+      "startSeconds": 247.069,
+      "durationSeconds": 8.611,
+      "text": "order record that can't be seen at first read.\nThis record is called a phantom"
+    },
+    {
+      "startSeconds": 255.68,
+      "durationSeconds": 4.82,
+      "text": "Serialization anomaly - means that the result\nof successfully committing a group of transactions"
+    },
+    {
+      "startSeconds": 260.5,
+      "durationSeconds": 8,
+      "text": "is inconsistent with all possible orderings\nof running those transactions one at a time"
+    },
+    {
+      "startSeconds": 268.5,
+      "durationSeconds": 6.02,
+      "text": "For example, one transaction reads the sum\nof the total field for the orders with status"
+    },
+    {
+      "startSeconds": 274.52,
+      "durationSeconds": 6.78,
+      "text": "'NEW' and the other does the same but for\nstatus 'FAILED'. After that, each transaction"
+    },
+    {
+      "startSeconds": 281.3,
+      "durationSeconds": 9.14,
+      "text": "creates a new record with the opposite status,\nbut with the total field equals the sum read"
+    },
+    {
+      "startSeconds": 290.44,
+      "durationSeconds": 5.67,
+      "text": "After committing both of them there is no\npossible sequential order of these transactions"
+    },
+    {
+      "startSeconds": 296.11,
+      "durationSeconds": 5.36,
+      "text": "that leads to the committed result because\ntransactions are cyclic dependent on each"
+    },
+    {
+      "startSeconds": 301.47,
+      "durationSeconds": 2.69,
+      "text": "other result"
+    },
+    {
+      "startSeconds": 304.16,
+      "durationSeconds": 7.44,
+      "text": "In classic theory, there are 4 levels of transaction\nisolation and exact behavior for some of them"
+    },
+    {
+      "startSeconds": 311.6,
+      "durationSeconds": 3.06,
+      "text": "depends on the database"
+    },
+    {
+      "startSeconds": 314.66,
+      "durationSeconds": 5.41,
+      "text": "In the case of PostgreSQL version 13 they\nare defined the following way"
+    },
+    {
+      "startSeconds": 320.07,
+      "durationSeconds": 4.54,
+      "text": "read uncommitted (which behaves the same as\nread committed)"
+    },
+    {
+      "startSeconds": 324.61,
+      "durationSeconds": 3.96,
+      "text": "read committed (which is the default)\nrepeatable read"
+    },
+    {
+      "startSeconds": 328.57,
+      "durationSeconds": 5.159,
+      "text": "and serializable\nOne can see plus sign if the isolation level"
+    },
+    {
+      "startSeconds": 333.729,
+      "durationSeconds": 4.341,
+      "text": "is free of phenomena"
+    },
+    {
+      "startSeconds": 338.07,
+      "durationSeconds": 4.75,
+      "text": "Repeatable read in PostgreSQL extends default\nRead committed level with guarantees of"
+    },
+    {
+      "startSeconds": 342.82,
+      "durationSeconds": 2.969,
+      "text": "no non-repeatable read\nno lost updates"
+    },
+    {
+      "startSeconds": 345.789,
+      "durationSeconds": 3.581,
+      "text": "and no phantoms\nrepeatable read recording"
+    },
+    {
+      "startSeconds": 349.37,
+      "durationSeconds": 5.079,
+      "text": "Let's repeat what we've done in several of\nour previous examples. The first transaction"
+    },
+    {
+      "startSeconds": 354.449,
+      "durationSeconds": 7.22,
+      "text": "reads orders. The second transaction updates\none of them, creates one more order and commits"
+    },
+    {
+      "startSeconds": 361.669,
+      "durationSeconds": 7.481,
+      "text": "Now if the first transaction rereads orders\nit doesn't see any updates at all"
+    },
+    {
+      "startSeconds": 369.15,
+      "durationSeconds": 6.68,
+      "text": "And if it tries to update already updated\nby another transaction record it gets an error"
+    },
+    {
+      "startSeconds": 375.83,
+      "durationSeconds": 3.899,
+      "text": "that prevents lost updates"
+    },
+    {
+      "startSeconds": 379.729,
+      "durationSeconds": 4.101,
+      "text": "Serializable in PostgreSQL extends Repeatable\nRead level with guarantees of"
+    },
+    {
+      "startSeconds": 383.83,
+      "durationSeconds": 2.44,
+      "text": "no serialization anomaly"
+    },
+    {
+      "startSeconds": 386.27,
+      "durationSeconds": 10.3,
+      "text": "Let's do the same stuff we did in the serialization\nanomaly example. After committing the first"
+    },
+    {
+      "startSeconds": 396.57,
+      "durationSeconds": 10.51,
+      "text": "transaction, the second one gets an error\nwhen it tries to commit. This error prevents"
+    },
+    {
+      "startSeconds": 407.08,
+      "durationSeconds": 3.66,
+      "text": "serialization anomaly"
+    },
+    {
+      "startSeconds": 410.74,
+      "durationSeconds": 5.34,
+      "text": "So as you can see one should also be aware\nof special errors for repeatable read and"
+    },
+    {
+      "startSeconds": 416.08,
+      "durationSeconds": 6.38,
+      "text": "serializable isolation levels that the database\nreturn in case of impossibility to commit"
+    },
+    {
+      "startSeconds": 422.46,
+      "durationSeconds": 6.12,
+      "text": "transaction with the chosen isolation level.\nIn this case, it's up to your code to retry"
+    },
+    {
+      "startSeconds": 428.58,
+      "durationSeconds": 2.38,
+      "text": "the transaction later"
+    },
+    {
+      "startSeconds": 430.96,
+      "durationSeconds": 6.15,
+      "text": "Now you are aware of different isolation levels\nin PostgreSQL and can carefully use one of"
+    },
+    {
+      "startSeconds": 437.11,
+      "durationSeconds": 6.21,
+      "text": "them when it's necessary or may decide to\nuse explicit locks instead"
+    },
+    {
+      "startSeconds": 443.32,
+      "durationSeconds": 5.939,
+      "text": "You should also keep in mind that the higher\nthe isolation level the slower concurrency"
+    },
+    {
+      "startSeconds": 449.259,
+      "durationSeconds": 5.151,
+      "text": "performance will be, so it's always a trade-off"
+    },
+    {
+      "startSeconds": 454.41,
+      "durationSeconds": 6.17,
+      "text": "It's not an end-to-end guide about all isolation\nbehavior so for specific details please consult"
+    },
+    {
+      "startSeconds": 460.58,
+      "durationSeconds": 4.6,
+      "text": "documentation - I'll give a link in the description"
+    },
+    {
+      "startSeconds": 465.18,
+      "durationSeconds": 6.35,
+      "text": "If you or your company are interested in consulting\nand training on various development and infrastructure"
+    },
+    {
+      "startSeconds": 471.53,
+      "durationSeconds": 6.03,
+      "text": "topics, you can contact us via the email address\nprovided in the description"
+    },
+    {
+      "startSeconds": 477.56,
+      "durationSeconds": 4.259,
+      "text": "Don't forget to subscribe to our channel and\npress the like button"
+    },
+    {
+      "startSeconds": 481.819,
+      "durationSeconds": 10.291,
+      "text": "Thanks for watching!"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:08.312Z"
+}

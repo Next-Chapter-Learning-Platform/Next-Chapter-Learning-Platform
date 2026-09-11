@@ -1,0 +1,1013 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "YXkOdWBwqaA",
+  "url": "https://www.youtube.com/watch?v=YXkOdWBwqaA",
+  "title": "Rate Limiter System Design: Token Bucket, Leaky Bucket, Scaling",
+  "description": "Warp is free to try but for a limited time, my friends at Warp are offering their Warp Pro plan for only $1. Use code BYTEBYTEGO to redeem here: https://go.warp.dev/BYTEBYTEGO",
+  "expectedDurationSeconds": 466,
+  "transcript": [
+    {
+      "startSeconds": 0.56,
+      "durationSeconds": 5.279,
+      "text": "Every major API has ray limits. Make too"
+    },
+    {
+      "startSeconds": 3.12,
+      "durationSeconds": 5.12,
+      "text": "many requests to GitHub, Stripe or AWS"
+    },
+    {
+      "startSeconds": 5.839,
+      "durationSeconds": 4.88,
+      "text": "and your requests get rejected. How do"
+    },
+    {
+      "startSeconds": 8.24,
+      "durationSeconds": 4.64,
+      "text": "this system work? Ray limiters control"
+    },
+    {
+      "startSeconds": 10.719,
+      "durationSeconds": 4.8,
+      "text": "how many requests a client can make to"
+    },
+    {
+      "startSeconds": 12.88,
+      "durationSeconds": 4.399,
+      "text": "an API in a given time window. They"
+    },
+    {
+      "startSeconds": 15.519,
+      "durationSeconds": 4.241,
+      "text": "protect systems from overload while"
+    },
+    {
+      "startSeconds": 17.279,
+      "durationSeconds": 4.801,
+      "text": "maintaining fair access for legitimate"
+    },
+    {
+      "startSeconds": 19.76,
+      "durationSeconds": 4.48,
+      "text": "users. Let's tackle the core design"
+    },
+    {
+      "startSeconds": 22.08,
+      "durationSeconds": 4.16,
+      "text": "challenges. Let's go over the"
+    },
+    {
+      "startSeconds": 24.24,
+      "durationSeconds": 3.92,
+      "text": "requirements first. The system should"
+    },
+    {
+      "startSeconds": 26.24,
+      "durationSeconds": 4.879,
+      "text": "limit incoming requests based on"
+    },
+    {
+      "startSeconds": 28.16,
+      "durationSeconds": 5.52,
+      "text": "configurable rules like 100 API requests"
+    },
+    {
+      "startSeconds": 31.119,
+      "durationSeconds": 4.561,
+      "text": "per minute per user. When limits are"
+    },
+    {
+      "startSeconds": 33.68,
+      "durationSeconds": 5.28,
+      "text": "exceeded, the system should reject"
+    },
+    {
+      "startSeconds": 35.68,
+      "durationSeconds": 5.52,
+      "text": "requests with HTTP 429 and include"
+    },
+    {
+      "startSeconds": 38.96,
+      "durationSeconds": 4.64,
+      "text": "helpful headers showing rate limit"
+    },
+    {
+      "startSeconds": 41.2,
+      "durationSeconds": 4.08,
+      "text": "remaining and reset time. The system"
+    },
+    {
+      "startSeconds": 43.6,
+      "durationSeconds": 5.04,
+      "text": "should introduce minimal latency"
+    },
+    {
+      "startSeconds": 45.28,
+      "durationSeconds": 5.52,
+      "text": "overhead, say under 3 millisecond P95"
+    },
+    {
+      "startSeconds": 48.64,
+      "durationSeconds": 4.48,
+      "text": "per check. The system should be highly"
+    },
+    {
+      "startSeconds": 50.8,
+      "durationSeconds": 4,
+      "text": "available and accessible by multiple"
+    },
+    {
+      "startSeconds": 53.12,
+      "durationSeconds": 3.439,
+      "text": "servers."
+    },
+    {
+      "startSeconds": 54.8,
+      "durationSeconds": 3.52,
+      "text": "Now that we understand what we need to"
+    },
+    {
+      "startSeconds": 56.559,
+      "durationSeconds": 4.401,
+      "text": "build, let's start with the simplest"
+    },
+    {
+      "startSeconds": 58.32,
+      "durationSeconds": 4.8,
+      "text": "approach, fixed window counting. We"
+    },
+    {
+      "startSeconds": 60.96,
+      "durationSeconds": 4.72,
+      "text": "divide time into fixed windows like one"
+    },
+    {
+      "startSeconds": 63.12,
+      "durationSeconds": 4.56,
+      "text": "minute intervals. Each user gets a"
+    },
+    {
+      "startSeconds": 65.68,
+      "durationSeconds": 4.88,
+      "text": "counter that resets at the start of each"
+    },
+    {
+      "startSeconds": 67.68,
+      "durationSeconds": 5.28,
+      "text": "window. Here's how it works. A user is"
+    },
+    {
+      "startSeconds": 70.56,
+      "durationSeconds": 4.32,
+      "text": "allowed 100 requests per minute. At the"
+    },
+    {
+      "startSeconds": 72.96,
+      "durationSeconds": 4.64,
+      "text": "start of each minute, their counter"
+    },
+    {
+      "startSeconds": 74.88,
+      "durationSeconds": 5.44,
+      "text": "resets to zero. Each request increments"
+    },
+    {
+      "startSeconds": 77.6,
+      "durationSeconds": 4.96,
+      "text": "to counter. When they hit 100 requests,"
+    },
+    {
+      "startSeconds": 80.32,
+      "durationSeconds": 4.72,
+      "text": "we reject additional requests until the"
+    },
+    {
+      "startSeconds": 82.56,
+      "durationSeconds": 4.559,
+      "text": "next minutes begins. We need to store"
+    },
+    {
+      "startSeconds": 85.04,
+      "durationSeconds": 4.16,
+      "text": "these counters somewhere fast. The"
+    },
+    {
+      "startSeconds": 87.119,
+      "durationSeconds": 4.081,
+      "text": "database is too slow for this. Today's"
+    },
+    {
+      "startSeconds": 89.2,
+      "durationSeconds": 4.72,
+      "text": "video is sponsored by Warped, the best"
+    },
+    {
+      "startSeconds": 91.2,
+      "durationSeconds": 5.12,
+      "text": "way to code with AI agents. Too often,"
+    },
+    {
+      "startSeconds": 93.92,
+      "durationSeconds": 4.32,
+      "text": "agents write code that's almost right,"
+    },
+    {
+      "startSeconds": 96.32,
+      "durationSeconds": 4.72,
+      "text": "leaving developers stuck debugging"
+    },
+    {
+      "startSeconds": 98.24,
+      "durationSeconds": 4.96,
+      "text": "instead of shipping. Warp is different."
+    },
+    {
+      "startSeconds": 101.04,
+      "durationSeconds": 4.48,
+      "text": "Rank top of terminal bench and bench"
+    },
+    {
+      "startSeconds": 103.2,
+      "durationSeconds": 4.559,
+      "text": "verified. Warps agent understands your"
+    },
+    {
+      "startSeconds": 105.52,
+      "durationSeconds": 5.52,
+      "text": "context and writes production ready code"
+    },
+    {
+      "startSeconds": 107.759,
+      "durationSeconds": 5.281,
+      "text": "out of the box. Prom, review, and refine"
+    },
+    {
+      "startSeconds": 111.04,
+      "durationSeconds": 4.48,
+      "text": "all in one interface. No context"
+    },
+    {
+      "startSeconds": 113.04,
+      "durationSeconds": 5.2,
+      "text": "switching, no wasted time. You stay in"
+    },
+    {
+      "startSeconds": 115.52,
+      "durationSeconds": 4.879,
+      "text": "control and it pays off. On average,"
+    },
+    {
+      "startSeconds": 118.24,
+      "durationSeconds": 4.479,
+      "text": "users are saving over an hour a day with"
+    },
+    {
+      "startSeconds": 120.399,
+      "durationSeconds": 4.561,
+      "text": "Warp. Download Warp by clicking the link"
+    },
+    {
+      "startSeconds": 122.719,
+      "durationSeconds": 4.241,
+      "text": "in the description."
+    },
+    {
+      "startSeconds": 124.96,
+      "durationSeconds": 4.24,
+      "text": "We're adding a database query to every"
+    },
+    {
+      "startSeconds": 126.96,
+      "durationSeconds": 4.48,
+      "text": "request, which could overload the very"
+    },
+    {
+      "startSeconds": 129.2,
+      "durationSeconds": 4.56,
+      "text": "system we're trying to protect. What"
+    },
+    {
+      "startSeconds": 131.44,
+      "durationSeconds": 4.4,
+      "text": "about in-memory storage and this server?"
+    },
+    {
+      "startSeconds": 133.76,
+      "durationSeconds": 4.559,
+      "text": "This would be very fast, but it only"
+    },
+    {
+      "startSeconds": 135.84,
+      "durationSeconds": 4.72,
+      "text": "works for a single server. When we scale"
+    },
+    {
+      "startSeconds": 138.319,
+      "durationSeconds": 4.64,
+      "text": "to multiple servers, each server would"
+    },
+    {
+      "startSeconds": 140.56,
+      "durationSeconds": 4.88,
+      "text": "have its own separate counters. A user"
+    },
+    {
+      "startSeconds": 142.959,
+      "durationSeconds": 4.961,
+      "text": "could make 100 requests to server A and"
+    },
+    {
+      "startSeconds": 145.44,
+      "durationSeconds": 4.64,
+      "text": "100 requests to server B, effectively"
+    },
+    {
+      "startSeconds": 147.92,
+      "durationSeconds": 5.599,
+      "text": "getting 200 requests per minute instead"
+    },
+    {
+      "startSeconds": 150.08,
+      "durationSeconds": 5.519,
+      "text": "of 100. Reddit solves both problems. Is"
+    },
+    {
+      "startSeconds": 153.519,
+      "durationSeconds": 4.401,
+      "text": "an in-memory data store that's shared"
+    },
+    {
+      "startSeconds": 155.599,
+      "durationSeconds": 4.64,
+      "text": "across all our servers. Reddis provides"
+    },
+    {
+      "startSeconds": 157.92,
+      "durationSeconds": 5.12,
+      "text": "primitives to increment counters and"
+    },
+    {
+      "startSeconds": 160.239,
+      "durationSeconds": 5.201,
+      "text": "reset them automatically. But fix window"
+    },
+    {
+      "startSeconds": 163.04,
+      "durationSeconds": 4.96,
+      "text": "have a critical flaw. Consider this"
+    },
+    {
+      "startSeconds": 165.44,
+      "durationSeconds": 4.72,
+      "text": "scenario. A user makes 100 requests in"
+    },
+    {
+      "startSeconds": 168,
+      "durationSeconds": 3.84,
+      "text": "the last 10 seconds of a minute, then"
+    },
+    {
+      "startSeconds": 170.16,
+      "durationSeconds": 4.32,
+      "text": "100 more requests in the first 10"
+    },
+    {
+      "startSeconds": 171.84,
+      "durationSeconds": 4.64,
+      "text": "seconds of the next minute. Both bursts"
+    },
+    {
+      "startSeconds": 174.48,
+      "durationSeconds": 4.64,
+      "text": "are within the 100 requests per minute"
+    },
+    {
+      "startSeconds": 176.48,
+      "durationSeconds": 4.96,
+      "text": "limit individually, but they've made 200"
+    },
+    {
+      "startSeconds": 179.12,
+      "durationSeconds": 5.039,
+      "text": "requests in just 20 seconds, which"
+    },
+    {
+      "startSeconds": 181.44,
+      "durationSeconds": 4.64,
+      "text": "clearly violates the intended ray limit."
+    },
+    {
+      "startSeconds": 184.159,
+      "durationSeconds": 3.681,
+      "text": "This edge case happens at every window"
+    },
+    {
+      "startSeconds": 186.08,
+      "durationSeconds": 3.36,
+      "text": "boundary. We could use a better"
+    },
+    {
+      "startSeconds": 187.84,
+      "durationSeconds": 3.679,
+      "text": "algorithm."
+    },
+    {
+      "startSeconds": 189.44,
+      "durationSeconds": 4.32,
+      "text": "The token bucket algorithm solves the"
+    },
+    {
+      "startSeconds": 191.519,
+      "durationSeconds": 4.561,
+      "text": "fixed window problem. It's the industry"
+    },
+    {
+      "startSeconds": 193.76,
+      "durationSeconds": 5.28,
+      "text": "standard used by companies like AWS and"
+    },
+    {
+      "startSeconds": 196.08,
+      "durationSeconds": 5.519,
+      "text": "Stripe. Think of it like this. Imagine a"
+    },
+    {
+      "startSeconds": 199.04,
+      "durationSeconds": 5.279,
+      "text": "bucket that hosts tokens. New tokens are"
+    },
+    {
+      "startSeconds": 201.599,
+      "durationSeconds": 4.881,
+      "text": "added at a steady rate. Each request"
+    },
+    {
+      "startSeconds": 204.319,
+      "durationSeconds": 4.721,
+      "text": "consume one token. When there are no"
+    },
+    {
+      "startSeconds": 206.48,
+      "durationSeconds": 4.16,
+      "text": "tokens left, we reject the request."
+    },
+    {
+      "startSeconds": 209.04,
+      "durationSeconds": 4,
+      "text": "Let's see how this fixes our window"
+    },
+    {
+      "startSeconds": 210.64,
+      "durationSeconds": 5.2,
+      "text": "boundary problem. We set a bucket"
+    },
+    {
+      "startSeconds": 213.04,
+      "durationSeconds": 5.119,
+      "text": "capacity of 100 tokens that refills at"
+    },
+    {
+      "startSeconds": 215.84,
+      "durationSeconds": 5.28,
+      "text": "100 tokens per minute. During quiet"
+    },
+    {
+      "startSeconds": 218.159,
+      "durationSeconds": 5.041,
+      "text": "periods, tokens accumulate. When user"
+    },
+    {
+      "startSeconds": 221.12,
+      "durationSeconds": 4.08,
+      "text": "makes burst requests across window"
+    },
+    {
+      "startSeconds": 223.2,
+      "durationSeconds": 4.48,
+      "text": "boundaries, they consume accumulated"
+    },
+    {
+      "startSeconds": 225.2,
+      "durationSeconds": 4.48,
+      "text": "tokens but can't exceed the refill rate"
+    },
+    {
+      "startSeconds": 227.68,
+      "durationSeconds": 4.639,
+      "text": "over time. The key insight is that"
+    },
+    {
+      "startSeconds": 229.68,
+      "durationSeconds": 4.88,
+      "text": "tokens accumulate during quiet period."
+    },
+    {
+      "startSeconds": 232.319,
+      "durationSeconds": 3.84,
+      "text": "This allow legitimate traffic bursts"
+    },
+    {
+      "startSeconds": 234.56,
+      "durationSeconds": 4.08,
+      "text": "while maintaining the overall rate"
+    },
+    {
+      "startSeconds": 236.159,
+      "durationSeconds": 5.041,
+      "text": "limit. A user can game the system by"
+    },
+    {
+      "startSeconds": 238.64,
+      "durationSeconds": 4.72,
+      "text": "timing the request to window boundaries."
+    },
+    {
+      "startSeconds": 241.2,
+      "durationSeconds": 4.72,
+      "text": "The algorithm uses two parameters."
+    },
+    {
+      "startSeconds": 243.36,
+      "durationSeconds": 4.56,
+      "text": "Bucket capacity determines burst size"
+    },
+    {
+      "startSeconds": 245.92,
+      "durationSeconds": 4.72,
+      "text": "and refill rate determines sustained"
+    },
+    {
+      "startSeconds": 247.92,
+      "durationSeconds": 5.28,
+      "text": "throughput. A capacity of 100 with a"
+    },
+    {
+      "startSeconds": 250.64,
+      "durationSeconds": 5.2,
+      "text": "refill rate of 100 per minute allows up"
+    },
+    {
+      "startSeconds": 253.2,
+      "durationSeconds": 4.48,
+      "text": "to 100 requests instantly that maintains"
+    },
+    {
+      "startSeconds": 255.84,
+      "durationSeconds": 4.239,
+      "text": "exactly 100 requests per minute"
+    },
+    {
+      "startSeconds": 257.68,
+      "durationSeconds": 4.799,
+      "text": "long-term. There are other algorithms"
+    },
+    {
+      "startSeconds": 260.079,
+      "durationSeconds": 5.041,
+      "text": "like sliding window logs, sliding window"
+    },
+    {
+      "startSeconds": 262.479,
+      "durationSeconds": 4.72,
+      "text": "counters, and leaking buckets that solve"
+    },
+    {
+      "startSeconds": 265.12,
+      "durationSeconds": 3.68,
+      "text": "the fixed window problem differently."
+    },
+    {
+      "startSeconds": 267.199,
+      "durationSeconds": 3.521,
+      "text": "But token buckets strike the best"
+    },
+    {
+      "startSeconds": 268.8,
+      "durationSeconds": 4.64,
+      "text": "balance between simplicity and"
+    },
+    {
+      "startSeconds": 270.72,
+      "durationSeconds": 4.64,
+      "text": "effectiveness for most use cases. Now"
+    },
+    {
+      "startSeconds": 273.44,
+      "durationSeconds": 3.759,
+      "text": "that we have our algorithm, we need to"
+    },
+    {
+      "startSeconds": 275.36,
+      "durationSeconds": 3.92,
+      "text": "decide where to implement it in our"
+    },
+    {
+      "startSeconds": 277.199,
+      "durationSeconds": 3.761,
+      "text": "system architecture. We have three"
+    },
+    {
+      "startSeconds": 279.28,
+      "durationSeconds": 4.08,
+      "text": "options for where to place our ray"
+    },
+    {
+      "startSeconds": 280.96,
+      "durationSeconds": 4.959,
+      "text": "limiter. Client side ray limiting puts"
+    },
+    {
+      "startSeconds": 283.36,
+      "durationSeconds": 4.32,
+      "text": "the logic in client applications, but we"
+    },
+    {
+      "startSeconds": 285.919,
+      "durationSeconds": 4.401,
+      "text": "can't trust clients to enforce their own"
+    },
+    {
+      "startSeconds": 287.68,
+      "durationSeconds": 5.76,
+      "text": "limits. Malicious users can modify the"
+    },
+    {
+      "startSeconds": 290.32,
+      "durationSeconds": 5.599,
+      "text": "code or bypass restrictions entirely."
+    },
+    {
+      "startSeconds": 293.44,
+      "durationSeconds": 4.8,
+      "text": "Serverside ray limiting embeds the logic"
+    },
+    {
+      "startSeconds": 295.919,
+      "durationSeconds": 4.56,
+      "text": "in our application code. This gives us"
+    },
+    {
+      "startSeconds": 298.24,
+      "durationSeconds": 4.239,
+      "text": "complete control over the algorithm and"
+    },
+    {
+      "startSeconds": 300.479,
+      "durationSeconds": 3.841,
+      "text": "keeps everything in one place. The"
+    },
+    {
+      "startSeconds": 302.479,
+      "durationSeconds": 3.841,
+      "text": "downsides is that ray limiting gets"
+    },
+    {
+      "startSeconds": 304.32,
+      "durationSeconds": 4.56,
+      "text": "mixed with business logic and each"
+    },
+    {
+      "startSeconds": 306.32,
+      "durationSeconds": 4.879,
+      "text": "service needs its own implementation."
+    },
+    {
+      "startSeconds": 308.88,
+      "durationSeconds": 5.039,
+      "text": "Middleware ray limiting uses a dedicated"
+    },
+    {
+      "startSeconds": 311.199,
+      "durationSeconds": 5.201,
+      "text": "service between clients and the APIs."
+    },
+    {
+      "startSeconds": 313.919,
+      "durationSeconds": 5.28,
+      "text": "This could be an API gateway, a reverse"
+    },
+    {
+      "startSeconds": 316.4,
+      "durationSeconds": 4.56,
+      "text": "proxy or a custom service. This keeps"
+    },
+    {
+      "startSeconds": 319.199,
+      "durationSeconds": 4.081,
+      "text": "ray limiting separate from business"
+    },
+    {
+      "startSeconds": 320.96,
+      "durationSeconds": 4.72,
+      "text": "logic and provides a single place to"
+    },
+    {
+      "startSeconds": 323.28,
+      "durationSeconds": 4.88,
+      "text": "manage policies. The trade-off is an"
+    },
+    {
+      "startSeconds": 325.68,
+      "durationSeconds": 4.32,
+      "text": "increase in system complexity. Which"
+    },
+    {
+      "startSeconds": 328.16,
+      "durationSeconds": 4.56,
+      "text": "should we choose? It depends on our"
+    },
+    {
+      "startSeconds": 330,
+      "durationSeconds": 4.96,
+      "text": "situation. If we already have an API"
+    },
+    {
+      "startSeconds": 332.72,
+      "durationSeconds": 4.64,
+      "text": "gateway handling authentication, adding"
+    },
+    {
+      "startSeconds": 334.96,
+      "durationSeconds": 4.64,
+      "text": "rate limiting there makes sense. If we"
+    },
+    {
+      "startSeconds": 337.36,
+      "durationSeconds": 4.88,
+      "text": "need a custom algorithm, server side"
+    },
+    {
+      "startSeconds": 339.6,
+      "durationSeconds": 4.48,
+      "text": "gives us flexibility. For most systems,"
+    },
+    {
+      "startSeconds": 342.24,
+      "durationSeconds": 4.88,
+      "text": "middleware offers the best balance of"
+    },
+    {
+      "startSeconds": 344.08,
+      "durationSeconds": 5.119,
+      "text": "control and operational simplicity. Our"
+    },
+    {
+      "startSeconds": 347.12,
+      "durationSeconds": 3.84,
+      "text": "system architecture looks like this. We"
+    },
+    {
+      "startSeconds": 349.199,
+      "durationSeconds": 3.921,
+      "text": "store ray limiting rules in a"
+    },
+    {
+      "startSeconds": 350.96,
+      "durationSeconds": 5.2,
+      "text": "configuration service. These rules"
+    },
+    {
+      "startSeconds": 353.12,
+      "durationSeconds": 5.44,
+      "text": "define limits like premium users get a"
+    },
+    {
+      "startSeconds": 356.16,
+      "durationSeconds": 4.4,
+      "text": "th00and requests per hour or free users"
+    },
+    {
+      "startSeconds": 358.56,
+      "durationSeconds": 3.76,
+      "text": "get 100 requests per hour. The"
+    },
+    {
+      "startSeconds": 360.56,
+      "durationSeconds": 4.16,
+      "text": "middleware fetches these rules and"
+    },
+    {
+      "startSeconds": 362.32,
+      "durationSeconds": 4.719,
+      "text": "stores token bucket state in Reddus."
+    },
+    {
+      "startSeconds": 364.72,
+      "durationSeconds": 4.479,
+      "text": "When a request arrives, the middleware"
+    },
+    {
+      "startSeconds": 367.039,
+      "durationSeconds": 4.401,
+      "text": "identifies the user, fetches their token"
+    },
+    {
+      "startSeconds": 369.199,
+      "durationSeconds": 4.72,
+      "text": "bucket from Reddus and checks if tokens"
+    },
+    {
+      "startSeconds": 371.44,
+      "durationSeconds": 4.879,
+      "text": "are available. If yes, it decrements the"
+    },
+    {
+      "startSeconds": 373.919,
+      "durationSeconds": 5.201,
+      "text": "token count and forwards the request to"
+    },
+    {
+      "startSeconds": 376.319,
+      "durationSeconds": 5.841,
+      "text": "API servers. If no token remains, it"
+    },
+    {
+      "startSeconds": 379.12,
+      "durationSeconds": 5.519,
+      "text": "returns HTTP 429 with header showing"
+    },
+    {
+      "startSeconds": 382.16,
+      "durationSeconds": 4.64,
+      "text": "when the user can retry. This works"
+    },
+    {
+      "startSeconds": 384.639,
+      "durationSeconds": 3.601,
+      "text": "great for a single rail limited server."
+    },
+    {
+      "startSeconds": 386.8,
+      "durationSeconds": 3.76,
+      "text": "But what happens when we need to scale"
+    },
+    {
+      "startSeconds": 388.24,
+      "durationSeconds": 4.64,
+      "text": "to multiple servers, we run into race"
+    },
+    {
+      "startSeconds": 390.56,
+      "durationSeconds": 4.16,
+      "text": "conditions. Here's what happens. Server"
+    },
+    {
+      "startSeconds": 392.88,
+      "durationSeconds": 4.48,
+      "text": "A reads a counter value of three from"
+    },
+    {
+      "startSeconds": 394.72,
+      "durationSeconds": 4.88,
+      "text": "radius. At the same time, server B also"
+    },
+    {
+      "startSeconds": 397.36,
+      "durationSeconds": 4.8,
+      "text": "reads three. Both servers check their"
+    },
+    {
+      "startSeconds": 399.6,
+      "durationSeconds": 4.64,
+      "text": "limits, decide the request is okay,"
+    },
+    {
+      "startSeconds": 402.16,
+      "durationSeconds": 4.4,
+      "text": "increment the value to four, and write"
+    },
+    {
+      "startSeconds": 404.24,
+      "durationSeconds": 4.079,
+      "text": "it back to Reddus. The counter now shows"
+    },
+    {
+      "startSeconds": 406.56,
+      "durationSeconds": 4.56,
+      "text": "four instead of the correct value of"
+    },
+    {
+      "startSeconds": 408.319,
+      "durationSeconds": 5.041,
+      "text": "five. We've lost a count. We can solve"
+    },
+    {
+      "startSeconds": 411.12,
+      "durationSeconds": 4,
+      "text": "this with atomic operations. Reddus"
+    },
+    {
+      "startSeconds": 413.36,
+      "durationSeconds": 3.92,
+      "text": "supports these two lure scripts that"
+    },
+    {
+      "startSeconds": 415.12,
+      "durationSeconds": 4.72,
+      "text": "bundle the read, check, and increment"
+    },
+    {
+      "startSeconds": 417.28,
+      "durationSeconds": 5.359,
+      "text": "into a single indivisible unit. This"
+    },
+    {
+      "startSeconds": 419.84,
+      "durationSeconds": 4.4,
+      "text": "prevents race condition entirely. We've"
+    },
+    {
+      "startSeconds": 422.639,
+      "durationSeconds": 3.761,
+      "text": "covered the essential building blocks"
+    },
+    {
+      "startSeconds": 424.24,
+      "durationSeconds": 3.92,
+      "text": "for ray limiters in this video. There"
+    },
+    {
+      "startSeconds": 426.4,
+      "durationSeconds": 3.84,
+      "text": "are other interesting topics we didn't"
+    },
+    {
+      "startSeconds": 428.16,
+      "durationSeconds": 4.64,
+      "text": "cover. How do we handle geographic"
+    },
+    {
+      "startSeconds": 430.24,
+      "durationSeconds": 5.04,
+      "text": "latency with multi-reion deployment? How"
+    },
+    {
+      "startSeconds": 432.8,
+      "durationSeconds": 4.799,
+      "text": "do we handle hot keys when a few users"
+    },
+    {
+      "startSeconds": 435.28,
+      "durationSeconds": 4.479,
+      "text": "generate most traffic? How do we upload"
+    },
+    {
+      "startSeconds": 437.599,
+      "durationSeconds": 4.561,
+      "text": "rate limiting rules without restarting"
+    },
+    {
+      "startSeconds": 439.759,
+      "durationSeconds": 4.88,
+      "text": "servers? Should the system fail open or"
+    },
+    {
+      "startSeconds": 442.16,
+      "durationSeconds": 4.72,
+      "text": "fail closed when key components go down?"
+    },
+    {
+      "startSeconds": 444.639,
+      "durationSeconds": 4,
+      "text": "These are all interesting topics worth"
+    },
+    {
+      "startSeconds": 446.88,
+      "durationSeconds": 3.36,
+      "text": "exploring."
+    },
+    {
+      "startSeconds": 448.639,
+      "durationSeconds": 3.68,
+      "text": "Ready to ace your next technical"
+    },
+    {
+      "startSeconds": 450.24,
+      "durationSeconds": 4.239,
+      "text": "interview? Join our community where we"
+    },
+    {
+      "startSeconds": 452.319,
+      "durationSeconds": 5.201,
+      "text": "offer comprehensive courses on system"
+    },
+    {
+      "startSeconds": 454.479,
+      "durationSeconds": 5.12,
+      "text": "design, coding, behavioral questions,"
+    },
+    {
+      "startSeconds": 457.52,
+      "durationSeconds": 6.76,
+      "text": "machine learning, and object-oriented"
+    },
+    {
+      "startSeconds": 459.599,
+      "durationSeconds": 4.681,
+      "text": "design. Learn more at byitebico.com."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:04.496Z"
+}

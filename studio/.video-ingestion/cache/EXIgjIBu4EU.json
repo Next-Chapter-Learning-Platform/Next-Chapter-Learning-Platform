@@ -1,0 +1,4632 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "EXIgjIBu4EU",
+  "url": "https://www.youtube.com/watch?v=EXIgjIBu4EU",
+  "title": "Learn Pandas in 30 Minutes - Python Pandas Tutorial",
+  "description": "Visit https://postmarkapp.com/lp/tech-with-tim and use coupon code TECHWITHTIM to get 20% off any plan for three months.\n\nIn this video, you'll learn how to use the Pandas Library in Python. Now, if you're interested at all in data science, AI, machine learning, or data visualization, Pandas is a must learn. And fortunately, I can teach you almost all of the fundamentals that will get you quite far.\n\nDevLaunch is my mentorship program where I personally help developers go beyond tutorials, build real-world projects, and actually land jobs. No fluff. Just real accountability, proven strategies, and hands-on guidance. Learn more here - https://training.devlaunch.us/tim\n\n🎞 Video Resources 🎞\nCode in this video: https://github.com/techwithtim/PanadasTutorial\nUV Video: https://www.youtube.com/watch?v=6pttmsBSi8M\n\n⏳ Timestamps ⏳\n00:00 | Overview\n00:22 | Setup/Install\n02:05 | DataFrame Fundamentals \n08:46 | Using Jupyter Notebooks\n09:55 | Loading CSV Files\n11:00 | Exploring a DataFrame\n13:24 | Indexing By Row & Column\n17:40 | Filtering\n22:03 | Updating Data\n25:48 | Deleting Data\n26:18 | Cleaning Data\n28:00 | Analyzing Data\n\nHashtags\n#PandasPython #Python #SoftwareEngineer",
+  "expectedDurationSeconds": 1837,
+  "transcript": [
+    {
+      "startSeconds": 0.16,
+      "durationSeconds": 4.24,
+      "text": "In this video, you'll learn how to use"
+    },
+    {
+      "startSeconds": 1.76,
+      "durationSeconds": 4.16,
+      "text": "the pandas library in Python. Now, if"
+    },
+    {
+      "startSeconds": 4.4,
+      "durationSeconds": 4,
+      "text": "you're interested at all in data"
+    },
+    {
+      "startSeconds": 5.92,
+      "durationSeconds": 5.12,
+      "text": "science, AI, machine learning, or data"
+    },
+    {
+      "startSeconds": 8.4,
+      "durationSeconds": 4.48,
+      "text": "visualization, pandas is a must-learn."
+    },
+    {
+      "startSeconds": 11.04,
+      "durationSeconds": 3.599,
+      "text": "And fortunately, in just a short video"
+    },
+    {
+      "startSeconds": 12.88,
+      "durationSeconds": 3.76,
+      "text": "like this, I can teach you almost all of"
+    },
+    {
+      "startSeconds": 14.639,
+      "durationSeconds": 4.001,
+      "text": "the fundamentals that will get you quite"
+    },
+    {
+      "startSeconds": 16.64,
+      "durationSeconds": 4,
+      "text": "far. So, with that said, let's get onto"
+    },
+    {
+      "startSeconds": 18.64,
+      "durationSeconds": 4,
+      "text": "the computer and let me teach you pandas"
+    },
+    {
+      "startSeconds": 20.64,
+      "durationSeconds": 3.76,
+      "text": "in Python. All right, so I've opened up"
+    },
+    {
+      "startSeconds": 22.64,
+      "durationSeconds": 3.44,
+      "text": "a code editor here. Now, for this video,"
+    },
+    {
+      "startSeconds": 24.4,
+      "durationSeconds": 2.959,
+      "text": "you can use anything that you want, but"
+    },
+    {
+      "startSeconds": 26.08,
+      "durationSeconds": 3.279,
+      "text": "if you want to follow along with me,"
+    },
+    {
+      "startSeconds": 27.359,
+      "durationSeconds": 4.72,
+      "text": "then I'd suggest using something like VS"
+    },
+    {
+      "startSeconds": 29.359,
+      "durationSeconds": 3.841,
+      "text": "Code, Cursor, or potentially PyCharm."
+    },
+    {
+      "startSeconds": 32.079,
+      "durationSeconds": 2.801,
+      "text": "Now, that's because I'm going to show"
+    },
+    {
+      "startSeconds": 33.2,
+      "durationSeconds": 3.76,
+      "text": "you how to write Pandanda's code from a"
+    },
+    {
+      "startSeconds": 34.88,
+      "durationSeconds": 3.199,
+      "text": "normal Python file and also how to do it"
+    },
+    {
+      "startSeconds": 36.96,
+      "durationSeconds": 2.8,
+      "text": "from something called a Jupyter"
+    },
+    {
+      "startSeconds": 38.079,
+      "durationSeconds": 3.921,
+      "text": "notebook, which is quite useful when"
+    },
+    {
+      "startSeconds": 39.76,
+      "durationSeconds": 3.76,
+      "text": "you're doing data related tasks. Okay,"
+    },
+    {
+      "startSeconds": 42,
+      "durationSeconds": 3.76,
+      "text": "so first things first, if we want to"
+    },
+    {
+      "startSeconds": 43.52,
+      "durationSeconds": 4.16,
+      "text": "work with pandas, we do need to install"
+    },
+    {
+      "startSeconds": 45.76,
+      "durationSeconds": 3.2,
+      "text": "that. Now, in order to install pandas,"
+    },
+    {
+      "startSeconds": 47.68,
+      "durationSeconds": 2.559,
+      "text": "you're going to go to your terminal or"
+    },
+    {
+      "startSeconds": 48.96,
+      "durationSeconds": 3.919,
+      "text": "your command prompt and you're going to"
+    },
+    {
+      "startSeconds": 50.239,
+      "durationSeconds": 4.401,
+      "text": "type pip install and then pandas. Now,"
+    },
+    {
+      "startSeconds": 52.879,
+      "durationSeconds": 4.241,
+      "text": "if you're on Mac or Linux, you will need"
+    },
+    {
+      "startSeconds": 54.64,
+      "durationSeconds": 4.16,
+      "text": "to use pip 3 install pandas. So, go"
+    },
+    {
+      "startSeconds": 57.12,
+      "durationSeconds": 3.2,
+      "text": "ahead, run that command and install it."
+    },
+    {
+      "startSeconds": 58.8,
+      "durationSeconds": 3.36,
+      "text": "You can see in my case, it was already"
+    },
+    {
+      "startSeconds": 60.32,
+      "durationSeconds": 3.6,
+      "text": "installed. Now, in case that's not"
+    },
+    {
+      "startSeconds": 62.16,
+      "durationSeconds": 3.6,
+      "text": "working for you, you can also use a"
+    },
+    {
+      "startSeconds": 63.92,
+      "durationSeconds": 2.96,
+      "text": "virtual environment to install this in."
+    },
+    {
+      "startSeconds": 65.76,
+      "durationSeconds": 2.48,
+      "text": "If you're familiar with virtual"
+    },
+    {
+      "startSeconds": 66.88,
+      "durationSeconds": 3.44,
+      "text": "environments, you can go ahead and do"
+    },
+    {
+      "startSeconds": 68.24,
+      "durationSeconds": 4,
+      "text": "that. One quick way to set one up is to"
+    },
+    {
+      "startSeconds": 70.32,
+      "durationSeconds": 3.52,
+      "text": "use the UV command. This is something"
+    },
+    {
+      "startSeconds": 72.24,
+      "durationSeconds": 3.04,
+      "text": "that you will need to install. So, I'll"
+    },
+    {
+      "startSeconds": 73.84,
+      "durationSeconds": 3.279,
+      "text": "leave a video on screen that explains"
+    },
+    {
+      "startSeconds": 75.28,
+      "durationSeconds": 4,
+      "text": "how to install this, but you can type"
+    },
+    {
+      "startSeconds": 77.119,
+      "durationSeconds": 4.081,
+      "text": "uvit and then dot. That's going to"
+    },
+    {
+      "startSeconds": 79.28,
+      "durationSeconds": 3.199,
+      "text": "create a virtual environment in the"
+    },
+    {
+      "startSeconds": 81.2,
+      "durationSeconds": 2.88,
+      "text": "directory that you're currently inside"
+    },
+    {
+      "startSeconds": 82.479,
+      "durationSeconds": 3.68,
+      "text": "of. So what I've done is I've opened a"
+    },
+    {
+      "startSeconds": 84.08,
+      "durationSeconds": 4.719,
+      "text": "new folder here in VS Code and then I've"
+    },
+    {
+      "startSeconds": 86.159,
+      "durationSeconds": 5.681,
+      "text": "typed uit from this pandas tutorial"
+    },
+    {
+      "startSeconds": 88.799,
+      "durationSeconds": 5.121,
+      "text": "folder and then what I can do is type uv"
+    },
+    {
+      "startSeconds": 91.84,
+      "durationSeconds": 3.919,
+      "text": "and then pandas. Now this has added it"
+    },
+    {
+      "startSeconds": 93.92,
+      "durationSeconds": 3.76,
+      "text": "to my virtual environment. And now when"
+    },
+    {
+      "startSeconds": 95.759,
+      "durationSeconds": 4.081,
+      "text": "I want to run my python code I would"
+    },
+    {
+      "startSeconds": 97.68,
+      "durationSeconds": 4.56,
+      "text": "just use uv run and then the name of my"
+    },
+    {
+      "startSeconds": 99.84,
+      "durationSeconds": 4.48,
+      "text": "python file and pandas will be available"
+    },
+    {
+      "startSeconds": 102.24,
+      "durationSeconds": 3.839,
+      "text": "inside of that file. Okay. So I'm going"
+    },
+    {
+      "startSeconds": 104.32,
+      "durationSeconds": 3.759,
+      "text": "to clear the terminal and for now we're"
+    },
+    {
+      "startSeconds": 106.079,
+      "durationSeconds": 3.841,
+      "text": "going to start writing some pandas code."
+    },
+    {
+      "startSeconds": 108.079,
+      "durationSeconds": 6.241,
+      "text": "Okay, so in order to use pandas, we're"
+    },
+    {
+      "startSeconds": 109.92,
+      "durationSeconds": 6.4,
+      "text": "going to say import pandas as pd. Okay,"
+    },
+    {
+      "startSeconds": 114.32,
+      "durationSeconds": 3.839,
+      "text": "now you don't need to do this as pd, but"
+    },
+    {
+      "startSeconds": 116.32,
+      "durationSeconds": 4.479,
+      "text": "it's common practice that anytime you"
+    },
+    {
+      "startSeconds": 118.159,
+      "durationSeconds": 4.081,
+      "text": "import this module, you import it as pd,"
+    },
+    {
+      "startSeconds": 120.799,
+      "durationSeconds": 3.28,
+      "text": "standing for pandas, because it's a"
+    },
+    {
+      "startSeconds": 122.24,
+      "durationSeconds": 4.559,
+      "text": "little bit shorter and a bit easier for"
+    },
+    {
+      "startSeconds": 124.079,
+      "durationSeconds": 5.121,
+      "text": "you to work with. Now, pandas has two"
+    },
+    {
+      "startSeconds": 126.799,
+      "durationSeconds": 4.881,
+      "text": "main types that we need to understand."
+    },
+    {
+      "startSeconds": 129.2,
+      "durationSeconds": 4.16,
+      "text": "The first is a dataf frame, which we're"
+    },
+    {
+      "startSeconds": 131.68,
+      "durationSeconds": 4.639,
+      "text": "going to talk about in a second, and the"
+    },
+    {
+      "startSeconds": 133.36,
+      "durationSeconds": 5.44,
+      "text": "next is a series. Okay, a series is"
+    },
+    {
+      "startSeconds": 136.319,
+      "durationSeconds": 4,
+      "text": "something like a row or a column. We'll"
+    },
+    {
+      "startSeconds": 138.8,
+      "durationSeconds": 3.12,
+      "text": "discuss that in just one minute. Now,"
+    },
+    {
+      "startSeconds": 140.319,
+      "durationSeconds": 2.881,
+      "text": "whenever you start working with pandas,"
+    },
+    {
+      "startSeconds": 141.92,
+      "durationSeconds": 3.2,
+      "text": "typically the first thing that you're"
+    },
+    {
+      "startSeconds": 143.2,
+      "durationSeconds": 3.679,
+      "text": "going to be doing is loading in some"
+    },
+    {
+      "startSeconds": 145.12,
+      "durationSeconds": 5.44,
+      "text": "data. So, what I've done for this video"
+    },
+    {
+      "startSeconds": 146.879,
+      "durationSeconds": 6.161,
+      "text": "is I've prepared a sample CSV file. CSV"
+    },
+    {
+      "startSeconds": 150.56,
+      "durationSeconds": 4.399,
+      "text": "stands for commaepparated values. Now,"
+    },
+    {
+      "startSeconds": 153.04,
+      "durationSeconds": 3.279,
+      "text": "pandas can work with all types of data,"
+    },
+    {
+      "startSeconds": 154.959,
+      "durationSeconds": 3.841,
+      "text": "but it's common to work with something"
+    },
+    {
+      "startSeconds": 156.319,
+      "durationSeconds": 4.401,
+      "text": "like CSV files or something like Excel"
+    },
+    {
+      "startSeconds": 158.8,
+      "durationSeconds": 3.92,
+      "text": "spreadsheets. And that's because pandas"
+    },
+    {
+      "startSeconds": 160.72,
+      "durationSeconds": 3.84,
+      "text": "is typically very good at representing"
+    },
+    {
+      "startSeconds": 162.72,
+      "durationSeconds": 4,
+      "text": "two-dimensional data. So where you have"
+    },
+    {
+      "startSeconds": 164.56,
+      "durationSeconds": 3.759,
+      "text": "some rows and you have some columns. So"
+    },
+    {
+      "startSeconds": 166.72,
+      "durationSeconds": 3.599,
+      "text": "in this case we have a bunch of kind of"
+    },
+    {
+      "startSeconds": 168.319,
+      "durationSeconds": 4,
+      "text": "headers right like we have an order ID,"
+    },
+    {
+      "startSeconds": 170.319,
+      "durationSeconds": 4.321,
+      "text": "customer name, product, category,"
+    },
+    {
+      "startSeconds": 172.319,
+      "durationSeconds": 3.601,
+      "text": "quantity, price, etc. And then we have"
+    },
+    {
+      "startSeconds": 174.64,
+      "durationSeconds": 4.959,
+      "text": "all of these values. So we have the"
+    },
+    {
+      "startSeconds": 175.92,
+      "durationSeconds": 5.44,
+      "text": "order ID, the name, laptop, etc. Now we"
+    },
+    {
+      "startSeconds": 179.599,
+      "durationSeconds": 3.601,
+      "text": "can work with this in standard Python"
+    },
+    {
+      "startSeconds": 181.36,
+      "durationSeconds": 3.92,
+      "text": "but pandas makes it a lot easier for us"
+    },
+    {
+      "startSeconds": 183.2,
+      "durationSeconds": 4.319,
+      "text": "to work with this data. So we can load"
+    },
+    {
+      "startSeconds": 185.28,
+      "durationSeconds": 4.239,
+      "text": "in this CSV file and we can also load in"
+    },
+    {
+      "startSeconds": 187.519,
+      "durationSeconds": 3.521,
+      "text": "something like an Excel spreadsheet. And"
+    },
+    {
+      "startSeconds": 189.519,
+      "durationSeconds": 3.36,
+      "text": "oftentimes when you're working with"
+    },
+    {
+      "startSeconds": 191.04,
+      "durationSeconds": 3.839,
+      "text": "large machine learning libraries, it"
+    },
+    {
+      "startSeconds": 192.879,
+      "durationSeconds": 4.321,
+      "text": "will already have Pandanda's data frames"
+    },
+    {
+      "startSeconds": 194.879,
+      "durationSeconds": 4.08,
+      "text": "set up for you or you'll load data into"
+    },
+    {
+      "startSeconds": 197.2,
+      "durationSeconds": 3.84,
+      "text": "those data frames before you pass them"
+    },
+    {
+      "startSeconds": 198.959,
+      "durationSeconds": 3.92,
+      "text": "to your machine learning algorithm."
+    },
+    {
+      "startSeconds": 201.04,
+      "durationSeconds": 3.279,
+      "text": "Okay, so we have this data. If you want"
+    },
+    {
+      "startSeconds": 202.879,
+      "durationSeconds": 3.201,
+      "text": "to download it, I will leave all of this"
+    },
+    {
+      "startSeconds": 204.319,
+      "durationSeconds": 3.521,
+      "text": "code from the link in the description."
+    },
+    {
+      "startSeconds": 206.08,
+      "durationSeconds": 3.2,
+      "text": "There'll be a GitHub repository there."
+    },
+    {
+      "startSeconds": 207.84,
+      "durationSeconds": 3.52,
+      "text": "So you can simply download this and work"
+    },
+    {
+      "startSeconds": 209.28,
+      "durationSeconds": 4.319,
+      "text": "with it for this video. Now in order to"
+    },
+    {
+      "startSeconds": 211.36,
+      "durationSeconds": 4.879,
+      "text": "load in this file what we can do is we"
+    },
+    {
+      "startSeconds": 213.599,
+      "durationSeconds": 6.161,
+      "text": "can say df which stands for dataf frame"
+    },
+    {
+      "startSeconds": 216.239,
+      "durationSeconds": 6.881,
+      "text": "is equal to pd readad_csv"
+    },
+    {
+      "startSeconds": 219.76,
+      "durationSeconds": 5.039,
+      "text": "and then we can read in the orders.csv."
+    },
+    {
+      "startSeconds": 223.12,
+      "durationSeconds": 3.36,
+      "text": "Okay, so this is going to load the CSV"
+    },
+    {
+      "startSeconds": 224.799,
+      "durationSeconds": 3.601,
+      "text": "file for us and it's going to store it"
+    },
+    {
+      "startSeconds": 226.48,
+      "durationSeconds": 3.759,
+      "text": "in a dataf frame. So what I want to do"
+    },
+    {
+      "startSeconds": 228.4,
+      "durationSeconds": 3.28,
+      "text": "for now is I just want to print out the"
+    },
+    {
+      "startSeconds": 230.239,
+      "durationSeconds": 2.881,
+      "text": "data frame and I want to show you what"
+    },
+    {
+      "startSeconds": 231.68,
+      "durationSeconds": 2.639,
+      "text": "this looks like and we'll continue"
+    },
+    {
+      "startSeconds": 233.12,
+      "durationSeconds": 3.6,
+      "text": "getting into a little bit more"
+    },
+    {
+      "startSeconds": 234.319,
+      "durationSeconds": 5.041,
+      "text": "information. Okay, so from here if I"
+    },
+    {
+      "startSeconds": 236.72,
+      "durationSeconds": 4.879,
+      "text": "want to run my code, I can type uv run"
+    },
+    {
+      "startSeconds": 239.36,
+      "durationSeconds": 4.159,
+      "text": "and then main.py. This is going to run"
+    },
+    {
+      "startSeconds": 241.599,
+      "durationSeconds": 3.521,
+      "text": "my pandas file for me. And you can see"
+    },
+    {
+      "startSeconds": 243.519,
+      "durationSeconds": 4.321,
+      "text": "that it kind of prints out this data"
+    },
+    {
+      "startSeconds": 245.12,
+      "durationSeconds": 5.36,
+      "text": "frame for me. And we get this well like"
+    },
+    {
+      "startSeconds": 247.84,
+      "durationSeconds": 4.479,
+      "text": "table, right? So we have 40 rows and"
+    },
+    {
+      "startSeconds": 250.48,
+      "durationSeconds": 3.28,
+      "text": "nine columns and it gives us all of this"
+    },
+    {
+      "startSeconds": 252.319,
+      "durationSeconds": 2.881,
+      "text": "information. So I just want to show you"
+    },
+    {
+      "startSeconds": 253.76,
+      "durationSeconds": 3.759,
+      "text": "that's kind of what the data frame looks"
+    },
+    {
+      "startSeconds": 255.2,
+      "durationSeconds": 4.08,
+      "text": "like. Right now automatically when we"
+    },
+    {
+      "startSeconds": 257.519,
+      "durationSeconds": 3.521,
+      "text": "load something in with the data frame,"
+    },
+    {
+      "startSeconds": 259.28,
+      "durationSeconds": 4.479,
+      "text": "it's automatically going to assign"
+    },
+    {
+      "startSeconds": 261.04,
+      "durationSeconds": 4.24,
+      "text": "indices to every single row that gets"
+    },
+    {
+      "startSeconds": 263.759,
+      "durationSeconds": 2.72,
+      "text": "loaded in. Now, if you're confused by"
+    },
+    {
+      "startSeconds": 265.28,
+      "durationSeconds": 2.96,
+      "text": "that, don't worry. I'm going to pull up"
+    },
+    {
+      "startSeconds": 266.479,
+      "durationSeconds": 3.361,
+      "text": "a document right now so we can visualize"
+    },
+    {
+      "startSeconds": 268.24,
+      "durationSeconds": 3.44,
+      "text": "what the data frame looks like better."
+    },
+    {
+      "startSeconds": 269.84,
+      "durationSeconds": 3.2,
+      "text": "And then we'll get into more code. Okay,"
+    },
+    {
+      "startSeconds": 271.68,
+      "durationSeconds": 3.68,
+      "text": "so quick pause. We're going to get into"
+    },
+    {
+      "startSeconds": 273.04,
+      "durationSeconds": 4.879,
+      "text": "it in 1 second after a quick word from"
+    },
+    {
+      "startSeconds": 275.36,
+      "durationSeconds": 5.04,
+      "text": "our sponsor, Postmark. The simplest way"
+    },
+    {
+      "startSeconds": 277.919,
+      "durationSeconds": 4.56,
+      "text": "to ensure your emails always reach your"
+    },
+    {
+      "startSeconds": 280.4,
+      "durationSeconds": 4.32,
+      "text": "users. Look, we've all dealt with"
+    },
+    {
+      "startSeconds": 282.479,
+      "durationSeconds": 4.561,
+      "text": "unreliable email delivery, whether it's"
+    },
+    {
+      "startSeconds": 284.72,
+      "durationSeconds": 4.96,
+      "text": "password resets, notifications, or"
+    },
+    {
+      "startSeconds": 287.04,
+      "durationSeconds": 4.64,
+      "text": "critical order confirmations. Postmark"
+    },
+    {
+      "startSeconds": 289.68,
+      "durationSeconds": 4.16,
+      "text": "solves this by offering lightning fast"
+    },
+    {
+      "startSeconds": 291.68,
+      "durationSeconds": 5.2,
+      "text": "delivery, ensuring your messages arrive"
+    },
+    {
+      "startSeconds": 293.84,
+      "durationSeconds": 5.04,
+      "text": "in seconds, not in minutes. Now, plus"
+    },
+    {
+      "startSeconds": 296.88,
+      "durationSeconds": 4,
+      "text": "with separate message streams, your"
+    },
+    {
+      "startSeconds": 298.88,
+      "durationSeconds": 4.48,
+      "text": "transactional emails stay protected from"
+    },
+    {
+      "startSeconds": 300.88,
+      "durationSeconds": 4.72,
+      "text": "marketing email reputation issues thanks"
+    },
+    {
+      "startSeconds": 303.36,
+      "durationSeconds": 4.96,
+      "text": "to dedicated infrastructure. Postmark is"
+    },
+    {
+      "startSeconds": 305.6,
+      "durationSeconds": 5.52,
+      "text": "built by developers for developers. It"
+    },
+    {
+      "startSeconds": 308.32,
+      "durationSeconds": 5.439,
+      "text": "gives you simple, clean APIs that just"
+    },
+    {
+      "startSeconds": 311.12,
+      "durationSeconds": 4.96,
+      "text": "work. It also has a user-friendly API"
+    },
+    {
+      "startSeconds": 313.759,
+      "durationSeconds": 4.481,
+      "text": "explorer and a new MCP server that"
+    },
+    {
+      "startSeconds": 316.08,
+      "durationSeconds": 5.2,
+      "text": "integrates easily with AI tools like"
+    },
+    {
+      "startSeconds": 318.24,
+      "durationSeconds": 4.56,
+      "text": "Cursor, Claude, Bolt, and Lovable. Plus,"
+    },
+    {
+      "startSeconds": 321.28,
+      "durationSeconds": 3.12,
+      "text": "you'll always know exactly what's"
+    },
+    {
+      "startSeconds": 322.8,
+      "durationSeconds": 3.52,
+      "text": "happening to your emails thanks to"
+    },
+    {
+      "startSeconds": 324.4,
+      "durationSeconds": 3.84,
+      "text": "detailed analytics and in-depth"
+    },
+    {
+      "startSeconds": 326.32,
+      "durationSeconds": 3.84,
+      "text": "tracking. If you send any user"
+    },
+    {
+      "startSeconds": 328.24,
+      "durationSeconds": 3.76,
+      "text": "notifications, receipts, shipping"
+    },
+    {
+      "startSeconds": 330.16,
+      "durationSeconds": 4.319,
+      "text": "updates, reminders, or honestly just"
+    },
+    {
+      "startSeconds": 332,
+      "durationSeconds": 4.639,
+      "text": "need a reliable email service, you need"
+    },
+    {
+      "startSeconds": 334.479,
+      "durationSeconds": 5.681,
+      "text": "Postmark. They have a delivery rate of"
+    },
+    {
+      "startSeconds": 336.639,
+      "durationSeconds": 5.761,
+      "text": "99% and stellar customer support. Just"
+    },
+    {
+      "startSeconds": 340.16,
+      "durationSeconds": 4,
+      "text": "check out their G2. Stop fighting with"
+    },
+    {
+      "startSeconds": 342.4,
+      "durationSeconds": 3.68,
+      "text": "spam filters and start focusing on"
+    },
+    {
+      "startSeconds": 344.16,
+      "durationSeconds": 4.92,
+      "text": "building great features by visiting"
+    },
+    {
+      "startSeconds": 346.08,
+      "durationSeconds": 3,
+      "text": "postmarkapp.com/lp/techwithtim"
+    },
+    {
+      "startSeconds": 349.84,
+      "durationSeconds": 5.44,
+      "text": "and use the coupon code techim to get"
+    },
+    {
+      "startSeconds": 352.16,
+      "durationSeconds": 5.28,
+      "text": "20% off any plan for 3 months. Thanks to"
+    },
+    {
+      "startSeconds": 355.28,
+      "durationSeconds": 3.28,
+      "text": "Postmark. Now, let's get back into it."
+    },
+    {
+      "startSeconds": 357.44,
+      "durationSeconds": 2.8,
+      "text": "All right, so I've just prepared a"
+    },
+    {
+      "startSeconds": 358.56,
+      "durationSeconds": 3.199,
+      "text": "readme file which will also be available"
+    },
+    {
+      "startSeconds": 360.24,
+      "durationSeconds": 3.6,
+      "text": "to download just to make this a little"
+    },
+    {
+      "startSeconds": 361.759,
+      "durationSeconds": 4.241,
+      "text": "bit easier to follow along with. So you"
+    },
+    {
+      "startSeconds": 363.84,
+      "durationSeconds": 3.68,
+      "text": "can see first, what is pandas? Pandas is"
+    },
+    {
+      "startSeconds": 366,
+      "durationSeconds": 3.52,
+      "text": "an open source Python library designed"
+    },
+    {
+      "startSeconds": 367.52,
+      "durationSeconds": 3.6,
+      "text": "for data manipulation and analysis. We"
+    },
+    {
+      "startSeconds": 369.52,
+      "durationSeconds": 2.959,
+      "text": "already discussed that. And there's two"
+    },
+    {
+      "startSeconds": 371.12,
+      "durationSeconds": 3.84,
+      "text": "core data structures that we're"
+    },
+    {
+      "startSeconds": 372.479,
+      "durationSeconds": 3.84,
+      "text": "concerned with. Series, which is a 1D"
+    },
+    {
+      "startSeconds": 374.96,
+      "durationSeconds": 3.359,
+      "text": "labeled array, so something like a"
+    },
+    {
+      "startSeconds": 376.319,
+      "durationSeconds": 4.72,
+      "text": "column or maybe a row. And then a dataf"
+    },
+    {
+      "startSeconds": 378.319,
+      "durationSeconds": 5.041,
+      "text": "frame, a 2D labeled data structure, like"
+    },
+    {
+      "startSeconds": 381.039,
+      "durationSeconds": 4,
+      "text": "a full spreadsheet or a SQL table. So"
+    },
+    {
+      "startSeconds": 383.36,
+      "durationSeconds": 3.679,
+      "text": "what we just loaded in there and created"
+    },
+    {
+      "startSeconds": 385.039,
+      "durationSeconds": 4,
+      "text": "is a data frame. We'll just read the"
+    },
+    {
+      "startSeconds": 387.039,
+      "durationSeconds": 4.321,
+      "text": "definition, which is a two-dimensional"
+    },
+    {
+      "startSeconds": 389.039,
+      "durationSeconds": 4.561,
+      "text": "tabular data structure with labeled rows"
+    },
+    {
+      "startSeconds": 391.36,
+      "durationSeconds": 3.839,
+      "text": "and columns. Think of it like a Python"
+    },
+    {
+      "startSeconds": 393.6,
+      "durationSeconds": 3.68,
+      "text": "native spreadsheet, but much more"
+    },
+    {
+      "startSeconds": 395.199,
+      "durationSeconds": 3.44,
+      "text": "powerful and programmable. Now, a few"
+    },
+    {
+      "startSeconds": 397.28,
+      "durationSeconds": 3.919,
+      "text": "key features you should know. We have"
+    },
+    {
+      "startSeconds": 398.639,
+      "durationSeconds": 4.081,
+      "text": "labelbased indexing, column-wise and"
+    },
+    {
+      "startSeconds": 401.199,
+      "durationSeconds": 3.44,
+      "text": "row-wise operations. That means we can"
+    },
+    {
+      "startSeconds": 402.72,
+      "durationSeconds": 4.08,
+      "text": "do operations on the entire row or the"
+    },
+    {
+      "startSeconds": 404.639,
+      "durationSeconds": 4.161,
+      "text": "entire column. Support for various data"
+    },
+    {
+      "startSeconds": 406.8,
+      "durationSeconds": 4.239,
+      "text": "types. Okay? And then this is extremely"
+    },
+    {
+      "startSeconds": 408.8,
+      "durationSeconds": 4.48,
+      "text": "fast. So, it's built on NumPy in the"
+    },
+    {
+      "startSeconds": 411.039,
+      "durationSeconds": 4.72,
+      "text": "background, which is just a much faster"
+    },
+    {
+      "startSeconds": 413.28,
+      "durationSeconds": 4.08,
+      "text": "kind of C-based library that doesn't use"
+    },
+    {
+      "startSeconds": 415.759,
+      "durationSeconds": 2.961,
+      "text": "all of the built-in Python types. So,"
+    },
+    {
+      "startSeconds": 417.36,
+      "durationSeconds": 3.36,
+      "text": "it's much more performant than simply"
+    },
+    {
+      "startSeconds": 418.72,
+      "durationSeconds": 4.16,
+      "text": "using like a two-dimensional list in"
+    },
+    {
+      "startSeconds": 420.72,
+      "durationSeconds": 3.36,
+      "text": "Python. Now just a few examples quickly"
+    },
+    {
+      "startSeconds": 422.88,
+      "durationSeconds": 2.96,
+      "text": "just to kind of look at the data frame,"
+    },
+    {
+      "startSeconds": 424.08,
+      "durationSeconds": 3.36,
+      "text": "right? So this is an example of manually"
+    },
+    {
+      "startSeconds": 425.84,
+      "durationSeconds": 3.68,
+      "text": "creating a data frame. So what we could"
+    },
+    {
+      "startSeconds": 427.44,
+      "durationSeconds": 4.319,
+      "text": "do is we could have a dictionary. We can"
+    },
+    {
+      "startSeconds": 429.52,
+      "durationSeconds": 3.84,
+      "text": "have some names, ages and countries"
+    },
+    {
+      "startSeconds": 431.759,
+      "durationSeconds": 3.681,
+      "text": "where we have kind of profiles like"
+    },
+    {
+      "startSeconds": 433.36,
+      "durationSeconds": 4.88,
+      "text": "this. We have Alice who's 25 who lives"
+    },
+    {
+      "startSeconds": 435.44,
+      "durationSeconds": 5.68,
+      "text": "in the USA. Bob who's 30 who lives in"
+    },
+    {
+      "startSeconds": 438.24,
+      "durationSeconds": 4.32,
+      "text": "Canada. Charlie 35 lives in UK. And then"
+    },
+    {
+      "startSeconds": 441.12,
+      "durationSeconds": 3.12,
+      "text": "you can see if we print this out, this"
+    },
+    {
+      "startSeconds": 442.56,
+      "durationSeconds": 3.359,
+      "text": "is what the data frame would look like."
+    },
+    {
+      "startSeconds": 444.24,
+      "durationSeconds": 3.2,
+      "text": "Now the reason why I'm showing you this"
+    },
+    {
+      "startSeconds": 445.919,
+      "durationSeconds": 5.041,
+      "text": "example is because notice we have these"
+    },
+    {
+      "startSeconds": 447.44,
+      "durationSeconds": 6.08,
+      "text": "indices 0 1 and two. So these are kind"
+    },
+    {
+      "startSeconds": 450.96,
+      "durationSeconds": 4.239,
+      "text": "of the indexes of each row. So even"
+    },
+    {
+      "startSeconds": 453.52,
+      "durationSeconds": 3.679,
+      "text": "though we didn't include any indexes"
+    },
+    {
+      "startSeconds": 455.199,
+      "durationSeconds": 4.081,
+      "text": "here, by default when we create a data"
+    },
+    {
+      "startSeconds": 457.199,
+      "durationSeconds": 4.481,
+      "text": "frame, every single row is given this"
+    },
+    {
+      "startSeconds": 459.28,
+      "durationSeconds": 4.72,
+      "text": "index. So the first row is index zero,"
+    },
+    {
+      "startSeconds": 461.68,
+      "durationSeconds": 4.32,
+      "text": "the second row index one, the last row"
+    },
+    {
+      "startSeconds": 464,
+      "durationSeconds": 3.36,
+      "text": "index two. Okay, so it's important to"
+    },
+    {
+      "startSeconds": 466,
+      "durationSeconds": 4.16,
+      "text": "know that because that's a way that you"
+    },
+    {
+      "startSeconds": 467.36,
+      "durationSeconds": 4.32,
+      "text": "can locate data in a dataf frame. Now,"
+    },
+    {
+      "startSeconds": 470.16,
+      "durationSeconds": 2.64,
+      "text": "in terms of loading a data frame, and"
+    },
+    {
+      "startSeconds": 471.68,
+      "durationSeconds": 2.56,
+      "text": "I'm going to go back into the code and"
+    },
+    {
+      "startSeconds": 472.8,
+      "durationSeconds": 3.2,
+      "text": "show you some examples here. I just want"
+    },
+    {
+      "startSeconds": 474.24,
+      "durationSeconds": 3.2,
+      "text": "to quickly show you what I have here. We"
+    },
+    {
+      "startSeconds": 476,
+      "durationSeconds": 2.72,
+      "text": "have kind of three main ways. There's a"
+    },
+    {
+      "startSeconds": 477.44,
+      "durationSeconds": 3.52,
+      "text": "few other ways as well, but these are"
+    },
+    {
+      "startSeconds": 478.72,
+      "durationSeconds": 4,
+      "text": "the popular ones. We can load from a CSV"
+    },
+    {
+      "startSeconds": 480.96,
+      "durationSeconds": 4.639,
+      "text": "file, which we've already done. We could"
+    },
+    {
+      "startSeconds": 482.72,
+      "durationSeconds": 4.72,
+      "text": "load from an Excel document, so an XLSX"
+    },
+    {
+      "startSeconds": 485.599,
+      "durationSeconds": 3.28,
+      "text": "document. You could download this from"
+    },
+    {
+      "startSeconds": 487.44,
+      "durationSeconds": 2.96,
+      "text": "Google Sheets, for example, or if you"
+    },
+    {
+      "startSeconds": 488.879,
+      "durationSeconds": 3.04,
+      "text": "have Microsoft Excel, obviously, you"
+    },
+    {
+      "startSeconds": 490.4,
+      "durationSeconds": 4,
+      "text": "could just open that. And then you can"
+    },
+    {
+      "startSeconds": 491.919,
+      "durationSeconds": 3.84,
+      "text": "manually create one from a dictionary,"
+    },
+    {
+      "startSeconds": 494.4,
+      "durationSeconds": 2.799,
+      "text": "something like this. You could actually"
+    },
+    {
+      "startSeconds": 495.759,
+      "durationSeconds": 3.44,
+      "text": "have an empty data frame and then"
+    },
+    {
+      "startSeconds": 497.199,
+      "durationSeconds": 4,
+      "text": "populate it later. But for now, these"
+    },
+    {
+      "startSeconds": 499.199,
+      "durationSeconds": 3.84,
+      "text": "are kind of the three main ways. Okay,"
+    },
+    {
+      "startSeconds": 501.199,
+      "durationSeconds": 3.28,
+      "text": "so let's close that. Let's go back into"
+    },
+    {
+      "startSeconds": 503.039,
+      "durationSeconds": 3.681,
+      "text": "the code editor and let's start messing"
+    },
+    {
+      "startSeconds": 504.479,
+      "durationSeconds": 3.761,
+      "text": "around with some more pandas operations."
+    },
+    {
+      "startSeconds": 506.72,
+      "durationSeconds": 2.879,
+      "text": "All right, so first things first, I"
+    },
+    {
+      "startSeconds": 508.24,
+      "durationSeconds": 3.44,
+      "text": "actually don't really want to work in"
+    },
+    {
+      "startSeconds": 509.599,
+      "durationSeconds": 4.081,
+      "text": "sort of inside of sort a normal Python"
+    },
+    {
+      "startSeconds": 511.68,
+      "durationSeconds": 3.359,
+      "text": "file. The reason for that is that this"
+    },
+    {
+      "startSeconds": 513.68,
+      "durationSeconds": 2.96,
+      "text": "isn't really the best way to work with"
+    },
+    {
+      "startSeconds": 515.039,
+      "durationSeconds": 3.281,
+      "text": "pandas because a lot of times when we're"
+    },
+    {
+      "startSeconds": 516.64,
+      "durationSeconds": 3.279,
+      "text": "dealing with pandas, we want to really"
+    },
+    {
+      "startSeconds": 518.32,
+      "durationSeconds": 3.44,
+      "text": "quickly be able to run and execute"
+    },
+    {
+      "startSeconds": 519.919,
+      "durationSeconds": 4.24,
+      "text": "different parts of our code and kind of"
+    },
+    {
+      "startSeconds": 521.76,
+      "durationSeconds": 3.519,
+      "text": "analyze, clean, and interpret data."
+    },
+    {
+      "startSeconds": 524.159,
+      "durationSeconds": 3.68,
+      "text": "That's really what the point of this"
+    },
+    {
+      "startSeconds": 525.279,
+      "durationSeconds": 3.921,
+      "text": "library is. So what we can do is we can"
+    },
+    {
+      "startSeconds": 527.839,
+      "durationSeconds": 3.201,
+      "text": "open something called a Jupyter"
+    },
+    {
+      "startSeconds": 529.2,
+      "durationSeconds": 3.759,
+      "text": "notebook. Now in order to do that if"
+    },
+    {
+      "startSeconds": 531.04,
+      "durationSeconds": 3.919,
+      "text": "you're working inside of VS Code or any"
+    },
+    {
+      "startSeconds": 532.959,
+      "durationSeconds": 3.681,
+      "text": "VS code fork so something like cursor"
+    },
+    {
+      "startSeconds": 534.959,
+      "durationSeconds": 4.721,
+      "text": "then what you can do is hit control"
+    },
+    {
+      "startSeconds": 536.64,
+      "durationSeconds": 4.8,
+      "text": "shiftp okay or commandshiftp depending"
+    },
+    {
+      "startSeconds": 539.68,
+      "durationSeconds": 6.08,
+      "text": "on your operating system and you can"
+    },
+    {
+      "startSeconds": 541.44,
+      "durationSeconds": 5.839,
+      "text": "type new jupitter notebook okay now in"
+    },
+    {
+      "startSeconds": 545.76,
+      "durationSeconds": 3.36,
+      "text": "order for this to work you do need the"
+    },
+    {
+      "startSeconds": 547.279,
+      "durationSeconds": 2.961,
+      "text": "python extension installed on your"
+    },
+    {
+      "startSeconds": 549.12,
+      "durationSeconds": 2.88,
+      "text": "computer I'm going to show you how you"
+    },
+    {
+      "startSeconds": 550.24,
+      "durationSeconds": 3.039,
+      "text": "get that in one second but for now we're"
+    },
+    {
+      "startSeconds": 552,
+      "durationSeconds": 3.2,
+      "text": "going to do this we're going to create a"
+    },
+    {
+      "startSeconds": 553.279,
+      "durationSeconds": 5.12,
+      "text": "new Jupyter notebook you also could just"
+    },
+    {
+      "startSeconds": 555.2,
+      "durationSeconds": 5.28,
+      "text": "make a new file that ends in i pi andb"
+    },
+    {
+      "startSeconds": 558.399,
+      "durationSeconds": 5.521,
+      "text": "okay now I'm going to save this file."
+    },
+    {
+      "startSeconds": 560.48,
+      "durationSeconds": 4.479,
+      "text": "So, I'll just save it here as notebook."
+    },
+    {
+      "startSeconds": 563.92,
+      "durationSeconds": 2.8,
+      "text": "All right. And this is where I'm going"
+    },
+    {
+      "startSeconds": 564.959,
+      "durationSeconds": 3.601,
+      "text": "to start writing my Pandas code. Now,"
+    },
+    {
+      "startSeconds": 566.72,
+      "durationSeconds": 3.52,
+      "text": "again, Pandas needs to be installed in"
+    },
+    {
+      "startSeconds": 568.56,
+      "durationSeconds": 3.839,
+      "text": "order for this to work. Now, if you"
+    },
+    {
+      "startSeconds": 570.24,
+      "durationSeconds": 4.32,
+      "text": "don't have the Python extension, you can"
+    },
+    {
+      "startSeconds": 572.399,
+      "durationSeconds": 4.641,
+      "text": "install that by going to the extensions"
+    },
+    {
+      "startSeconds": 574.56,
+      "durationSeconds": 5.68,
+      "text": "paid in extensions pane, sorry, in VS"
+    },
+    {
+      "startSeconds": 577.04,
+      "durationSeconds": 4.799,
+      "text": "Code and simply typing Python and then"
+    },
+    {
+      "startSeconds": 580.24,
+      "durationSeconds": 2.719,
+      "text": "just installing the Python extension."
+    },
+    {
+      "startSeconds": 581.839,
+      "durationSeconds": 2.881,
+      "text": "So, you can see it's this one right"
+    },
+    {
+      "startSeconds": 582.959,
+      "durationSeconds": 2.961,
+      "text": "here, just Python. Okay, just install"
+    },
+    {
+      "startSeconds": 584.72,
+      "durationSeconds": 3.2,
+      "text": "that and then you should have the"
+    },
+    {
+      "startSeconds": 585.92,
+      "durationSeconds": 3.84,
+      "text": "ability to use Jupyter Notebooks. All"
+    },
+    {
+      "startSeconds": 587.92,
+      "durationSeconds": 4.8,
+      "text": "right. So now what I'm going to do is"
+    },
+    {
+      "startSeconds": 589.76,
+      "durationSeconds": 5.28,
+      "text": "I'm going to again say import pandas as"
+    },
+    {
+      "startSeconds": 592.72,
+      "durationSeconds": 4.16,
+      "text": "pd and I'm going to load in my data"
+    },
+    {
+      "startSeconds": 595.04,
+      "durationSeconds": 4.239,
+      "text": "frame. So I'm going to say df is equal"
+    },
+    {
+      "startSeconds": 596.88,
+      "durationSeconds": 4.88,
+      "text": "to pd readcsv and then read my"
+    },
+    {
+      "startSeconds": 599.279,
+      "durationSeconds": 4.56,
+      "text": "orders.csv. Now the interesting thing"
+    },
+    {
+      "startSeconds": 601.76,
+      "durationSeconds": 3.44,
+      "text": "when we are using the Jupyter notebook"
+    },
+    {
+      "startSeconds": 603.839,
+      "durationSeconds": 3.201,
+      "text": "here is that we have these different"
+    },
+    {
+      "startSeconds": 605.2,
+      "durationSeconds": 4.16,
+      "text": "cells. So you see that I kind of have"
+    },
+    {
+      "startSeconds": 607.04,
+      "durationSeconds": 4.32,
+      "text": "this cell that's created and I can just"
+    },
+    {
+      "startSeconds": 609.36,
+      "durationSeconds": 3.36,
+      "text": "run and execute this cell. So I just"
+    },
+    {
+      "startSeconds": 611.36,
+      "durationSeconds": 3.36,
+      "text": "choose a Python version that I want to"
+    },
+    {
+      "startSeconds": 612.72,
+      "durationSeconds": 3.84,
+      "text": "run it with and now I've loaded in this"
+    },
+    {
+      "startSeconds": 614.72,
+      "durationSeconds": 3.92,
+      "text": "data frame. And then what I can do is I"
+    },
+    {
+      "startSeconds": 616.56,
+      "durationSeconds": 4,
+      "text": "can make a new cell below this and I"
+    },
+    {
+      "startSeconds": 618.64,
+      "durationSeconds": 4,
+      "text": "could do something like print dataf"
+    },
+    {
+      "startSeconds": 620.56,
+      "durationSeconds": 4.399,
+      "text": "frame and then I can just run this cell"
+    },
+    {
+      "startSeconds": 622.64,
+      "durationSeconds": 4,
+      "text": "independently of running this cell. So"
+    },
+    {
+      "startSeconds": 624.959,
+      "durationSeconds": 3.281,
+      "text": "right now my data frame is loaded and"
+    },
+    {
+      "startSeconds": 626.64,
+      "durationSeconds": 3.439,
+      "text": "then if I want to print it I can just"
+    },
+    {
+      "startSeconds": 628.24,
+      "durationSeconds": 3.36,
+      "text": "run this cell and you see it prints out"
+    },
+    {
+      "startSeconds": 630.079,
+      "durationSeconds": 3.041,
+      "text": "and it looks a little bit nicer right"
+    },
+    {
+      "startSeconds": 631.6,
+      "durationSeconds": 3.359,
+      "text": "when it's inside of this Jupyter"
+    },
+    {
+      "startSeconds": 633.12,
+      "durationSeconds": 3.04,
+      "text": "notebook. Okay. So just something to"
+    },
+    {
+      "startSeconds": 634.959,
+      "durationSeconds": 3.201,
+      "text": "note there. You have these different"
+    },
+    {
+      "startSeconds": 636.16,
+      "durationSeconds": 3.76,
+      "text": "cells in order to run the cells. You can"
+    },
+    {
+      "startSeconds": 638.16,
+      "durationSeconds": 3.76,
+      "text": "press here. You can also press here like"
+    },
+    {
+      "startSeconds": 639.92,
+      "durationSeconds": 4.32,
+      "text": "to above uh to execute above execute"
+    },
+    {
+      "startSeconds": 641.92,
+      "durationSeconds": 4.08,
+      "text": "below. You can delete the cells. And"
+    },
+    {
+      "startSeconds": 644.24,
+      "durationSeconds": 4.08,
+      "text": "this is kind of more of like a temporary"
+    },
+    {
+      "startSeconds": 646,
+      "durationSeconds": 3.76,
+      "text": "space where it's a little bit easier to"
+    },
+    {
+      "startSeconds": 648.32,
+      "durationSeconds": 3.199,
+      "text": "experiment and mess around with the"
+    },
+    {
+      "startSeconds": 649.76,
+      "durationSeconds": 3.6,
+      "text": "code. And then you can save the output"
+    },
+    {
+      "startSeconds": 651.519,
+      "durationSeconds": 3.521,
+      "text": "and you can see it as you move on to the"
+    },
+    {
+      "startSeconds": 653.36,
+      "durationSeconds": 3.36,
+      "text": "next cell. Now, if you want to clear the"
+    },
+    {
+      "startSeconds": 655.04,
+      "durationSeconds": 4.32,
+      "text": "output, you can just press these three"
+    },
+    {
+      "startSeconds": 656.72,
+      "durationSeconds": 4.32,
+      "text": "dots here and clear the cell outputs."
+    },
+    {
+      "startSeconds": 659.36,
+      "durationSeconds": 4.4,
+      "text": "Cool. So, let's keep going. All right."
+    },
+    {
+      "startSeconds": 661.04,
+      "durationSeconds": 4.64,
+      "text": "So, once we load a data frame here,"
+    },
+    {
+      "startSeconds": 663.76,
+      "durationSeconds": 4.16,
+      "text": "there's a few pieces of information that"
+    },
+    {
+      "startSeconds": 665.68,
+      "durationSeconds": 3.92,
+      "text": "we typically want to see. So, the first"
+    },
+    {
+      "startSeconds": 667.92,
+      "durationSeconds": 3.599,
+      "text": "thing we can do is we can look at the"
+    },
+    {
+      "startSeconds": 669.6,
+      "durationSeconds": 3.52,
+      "text": "head of our data frame. Now the head of"
+    },
+    {
+      "startSeconds": 671.519,
+      "durationSeconds": 3.76,
+      "text": "the dataf frame is going to print out"
+    },
+    {
+      "startSeconds": 673.12,
+      "durationSeconds": 3.92,
+      "text": "the first five rows just to show you"
+    },
+    {
+      "startSeconds": 675.279,
+      "durationSeconds": 3.041,
+      "text": "what the data frame looks like. So a lot"
+    },
+    {
+      "startSeconds": 677.04,
+      "durationSeconds": 2.56,
+      "text": "of times you don't want to just view the"
+    },
+    {
+      "startSeconds": 678.32,
+      "durationSeconds": 2.959,
+      "text": "entire data frame. You just want to view"
+    },
+    {
+      "startSeconds": 679.6,
+      "durationSeconds": 3.359,
+      "text": "a little bit of it. So what I can do is"
+    },
+    {
+      "startSeconds": 681.279,
+      "durationSeconds": 3.281,
+      "text": "I can run this here and you'll see that"
+    },
+    {
+      "startSeconds": 682.959,
+      "durationSeconds": 3.361,
+      "text": "it gives me a nice table here with just"
+    },
+    {
+      "startSeconds": 684.56,
+      "durationSeconds": 4.48,
+      "text": "the first five rows. Okay. So we have"
+    },
+    {
+      "startSeconds": 686.32,
+      "durationSeconds": 4.48,
+      "text": "order ID, customer name, product, etc."
+    },
+    {
+      "startSeconds": 689.04,
+      "durationSeconds": 3.12,
+      "text": "So we can kind of start examining this"
+    },
+    {
+      "startSeconds": 690.8,
+      "durationSeconds": 3.52,
+      "text": "data frame and seeing the different"
+    },
+    {
+      "startSeconds": 692.16,
+      "durationSeconds": 3.6,
+      "text": "information that we have. So head is"
+    },
+    {
+      "startSeconds": 694.32,
+      "durationSeconds": 4.24,
+      "text": "interesting but of course as well as"
+    },
+    {
+      "startSeconds": 695.76,
+      "durationSeconds": 4.24,
+      "text": "head we also have tail. Now tail just"
+    },
+    {
+      "startSeconds": 698.56,
+      "durationSeconds": 3.44,
+      "text": "like head is going to give us the last"
+    },
+    {
+      "startSeconds": 700,
+      "durationSeconds": 3.92,
+      "text": "five rows in the data frame. So if we go"
+    },
+    {
+      "startSeconds": 702,
+      "durationSeconds": 4.399,
+      "text": "down here you can see we have our last"
+    },
+    {
+      "startSeconds": 703.92,
+      "durationSeconds": 4.08,
+      "text": "five rows. Perfect. Now a few other"
+    },
+    {
+      "startSeconds": 706.399,
+      "durationSeconds": 4.241,
+      "text": "methods that you'll want to be aware of"
+    },
+    {
+      "startSeconds": 708,
+      "durationSeconds": 4.48,
+      "text": "are info. So if you use info this will"
+    },
+    {
+      "startSeconds": 710.64,
+      "durationSeconds": 4.08,
+      "text": "give you general information on the data"
+    },
+    {
+      "startSeconds": 712.48,
+      "durationSeconds": 5.039,
+      "text": "frame. So you see hey this is a pandas"
+    },
+    {
+      "startSeconds": 714.72,
+      "durationSeconds": 4.799,
+      "text": "dataf frame. It has 40 entries. It has"
+    },
+    {
+      "startSeconds": 717.519,
+      "durationSeconds": 3.921,
+      "text": "nine data columns and then it tells you"
+    },
+    {
+      "startSeconds": 719.519,
+      "durationSeconds": 4.56,
+      "text": "all of the columns and their types. So"
+    },
+    {
+      "startSeconds": 721.44,
+      "durationSeconds": 4.959,
+      "text": "we have object object object int float"
+    },
+    {
+      "startSeconds": 724.079,
+      "durationSeconds": 3.521,
+      "text": "object object object. Okay. And then it"
+    },
+    {
+      "startSeconds": 726.399,
+      "durationSeconds": 2.721,
+      "text": "gives you kind of the various types"
+    },
+    {
+      "startSeconds": 727.6,
+      "durationSeconds": 3.039,
+      "text": "right here. And the reason why they're"
+    },
+    {
+      "startSeconds": 729.12,
+      "durationSeconds": 3.44,
+      "text": "being represented as objects and not"
+    },
+    {
+      "startSeconds": 730.639,
+      "durationSeconds": 3.521,
+      "text": "strings is because if we look inside of"
+    },
+    {
+      "startSeconds": 732.56,
+      "durationSeconds": 3.519,
+      "text": "our data frame here, we didn't surround"
+    },
+    {
+      "startSeconds": 734.16,
+      "durationSeconds": 3.6,
+      "text": "them inside of quotation marks. We can"
+    },
+    {
+      "startSeconds": 736.079,
+      "durationSeconds": 3.601,
+      "text": "actually change the type of these to be"
+    },
+    {
+      "startSeconds": 737.76,
+      "durationSeconds": 4.639,
+      "text": "strings if we want to. But for right"
+    },
+    {
+      "startSeconds": 739.68,
+      "durationSeconds": 4.8,
+      "text": "now, this is okay. All right. So that's"
+    },
+    {
+      "startSeconds": 742.399,
+      "durationSeconds": 4.321,
+      "text": "info. And then we also have the ability"
+    },
+    {
+      "startSeconds": 744.48,
+      "durationSeconds": 3.76,
+      "text": "to describe. So here, this actually"
+    },
+    {
+      "startSeconds": 746.72,
+      "durationSeconds": 2.96,
+      "text": "generates a table for us. And if we go"
+    },
+    {
+      "startSeconds": 748.24,
+      "durationSeconds": 3.839,
+      "text": "to the method signature, you can see it"
+    },
+    {
+      "startSeconds": 749.68,
+      "durationSeconds": 4.24,
+      "text": "says generate descriptive statistics. So"
+    },
+    {
+      "startSeconds": 752.079,
+      "durationSeconds": 3.921,
+      "text": "it gives us values that summarizes the"
+    },
+    {
+      "startSeconds": 753.92,
+      "durationSeconds": 4.08,
+      "text": "central tendency dispersion and shape of"
+    },
+    {
+      "startSeconds": 756,
+      "durationSeconds": 3.839,
+      "text": "the data set's distribution. Okay. And"
+    },
+    {
+      "startSeconds": 758,
+      "durationSeconds": 3.6,
+      "text": "it analyzes both numeric and object"
+    },
+    {
+      "startSeconds": 759.839,
+      "durationSeconds": 3.281,
+      "text": "series. All right. Now if you look here"
+    },
+    {
+      "startSeconds": 761.6,
+      "durationSeconds": 3.76,
+      "text": "you can see kind of that information. So"
+    },
+    {
+      "startSeconds": 763.12,
+      "durationSeconds": 5.04,
+      "text": "for the order we have you know 25% 50%"
+    },
+    {
+      "startSeconds": 765.36,
+      "durationSeconds": 4.64,
+      "text": "75% etc. If you've ever taken any type"
+    },
+    {
+      "startSeconds": 768.16,
+      "durationSeconds": 3.2,
+      "text": "of probability class you probably know"
+    },
+    {
+      "startSeconds": 770,
+      "durationSeconds": 3.04,
+      "text": "what this means better than I can"
+    },
+    {
+      "startSeconds": 771.36,
+      "durationSeconds": 3.52,
+      "text": "explain it to you. So let's continue."
+    },
+    {
+      "startSeconds": 773.04,
+      "durationSeconds": 4.32,
+      "text": "All right. So we have df describe and"
+    },
+    {
+      "startSeconds": 774.88,
+      "durationSeconds": 4.079,
+      "text": "then we also have df.c columns. Okay."
+    },
+    {
+      "startSeconds": 777.36,
+      "durationSeconds": 3.2,
+      "text": "Now if we do columns again it will just"
+    },
+    {
+      "startSeconds": 778.959,
+      "durationSeconds": 3.201,
+      "text": "give us a list of all of these different"
+    },
+    {
+      "startSeconds": 780.56,
+      "durationSeconds": 4.32,
+      "text": "columns here. so we can see what they"
+    },
+    {
+      "startSeconds": 782.16,
+      "durationSeconds": 4.88,
+      "text": "look like. And then lastly, we can do"
+    },
+    {
+      "startSeconds": 784.88,
+      "durationSeconds": 4.16,
+      "text": "index. And if we do dot index, it gives"
+    },
+    {
+      "startSeconds": 787.04,
+      "durationSeconds": 4,
+      "text": "us a range here that would allow us to"
+    },
+    {
+      "startSeconds": 789.04,
+      "durationSeconds": 4.88,
+      "text": "step over the data frame. So we would"
+    },
+    {
+      "startSeconds": 791.04,
+      "durationSeconds": 5.12,
+      "text": "start at zero, stop at 40, and step by"
+    },
+    {
+      "startSeconds": 793.92,
+      "durationSeconds": 3.68,
+      "text": "one. Okay, so this is kind of the first"
+    },
+    {
+      "startSeconds": 796.16,
+      "durationSeconds": 3.76,
+      "text": "few things that you're typically going"
+    },
+    {
+      "startSeconds": 797.6,
+      "durationSeconds": 4.32,
+      "text": "to run when you load in a data frame so"
+    },
+    {
+      "startSeconds": 799.92,
+      "durationSeconds": 3.599,
+      "text": "that you can start analyzing this data"
+    },
+    {
+      "startSeconds": 801.92,
+      "durationSeconds": 3.52,
+      "text": "set and understanding what you're"
+    },
+    {
+      "startSeconds": 803.519,
+      "durationSeconds": 3.921,
+      "text": "actually working with. Once you have"
+    },
+    {
+      "startSeconds": 805.44,
+      "durationSeconds": 3.92,
+      "text": "that information, you probably want to"
+    },
+    {
+      "startSeconds": 807.44,
+      "durationSeconds": 3.92,
+      "text": "start pulling out certain rows or"
+    },
+    {
+      "startSeconds": 809.36,
+      "durationSeconds": 3.599,
+      "text": "columns or modifying the data frame,"
+    },
+    {
+      "startSeconds": 811.36,
+      "durationSeconds": 3.76,
+      "text": "which we can do now. So, let's create a"
+    },
+    {
+      "startSeconds": 812.959,
+      "durationSeconds": 3.601,
+      "text": "new cell down here and let's start"
+    },
+    {
+      "startSeconds": 815.12,
+      "durationSeconds": 3.839,
+      "text": "messing around with that. So, if I write"
+    },
+    {
+      "startSeconds": 816.56,
+      "durationSeconds": 4,
+      "text": "something like DF and then let's look at"
+    },
+    {
+      "startSeconds": 818.959,
+      "durationSeconds": 5.761,
+      "text": "one of our columns. So, actually, let's"
+    },
+    {
+      "startSeconds": 820.56,
+      "durationSeconds": 6.24,
+      "text": "go up here and go df doc columns. Let's"
+    },
+    {
+      "startSeconds": 824.72,
+      "durationSeconds": 4.239,
+      "text": "run that. Okay. And let's look at maybe"
+    },
+    {
+      "startSeconds": 826.8,
+      "durationSeconds": 5.36,
+      "text": "we want to look at the country or"
+    },
+    {
+      "startSeconds": 828.959,
+      "durationSeconds": 5.201,
+      "text": "something. We can say df country. And"
+    },
+    {
+      "startSeconds": 832.16,
+      "durationSeconds": 4.32,
+      "text": "when we do this, this actually allows us"
+    },
+    {
+      "startSeconds": 834.16,
+      "durationSeconds": 4.72,
+      "text": "to index all of the values that are"
+    },
+    {
+      "startSeconds": 836.48,
+      "durationSeconds": 4.24,
+      "text": "inside of the country column. So this is"
+    },
+    {
+      "startSeconds": 838.88,
+      "durationSeconds": 3.92,
+      "text": "going to return to us something called a"
+    },
+    {
+      "startSeconds": 840.72,
+      "durationSeconds": 3.84,
+      "text": "series. So not a data frame, but a panda"
+    },
+    {
+      "startSeconds": 842.8,
+      "durationSeconds": 4.159,
+      "text": "series, which will include all of the"
+    },
+    {
+      "startSeconds": 844.56,
+      "durationSeconds": 3.839,
+      "text": "values that are in the country column."
+    },
+    {
+      "startSeconds": 846.959,
+      "durationSeconds": 3.44,
+      "text": "So with your data frame, what's"
+    },
+    {
+      "startSeconds": 848.399,
+      "durationSeconds": 3.601,
+      "text": "interesting is that you can index by the"
+    },
+    {
+      "startSeconds": 850.399,
+      "durationSeconds": 3.44,
+      "text": "row, but you can also index by the"
+    },
+    {
+      "startSeconds": 852,
+      "durationSeconds": 3.36,
+      "text": "column. So when I run this, notice now"
+    },
+    {
+      "startSeconds": 853.839,
+      "durationSeconds": 2.961,
+      "text": "that it's going to give me all of the"
+    },
+    {
+      "startSeconds": 855.36,
+      "durationSeconds": 2.8,
+      "text": "different countries, right? And then I"
+    },
+    {
+      "startSeconds": 856.8,
+      "durationSeconds": 2.88,
+      "text": "can start doing some more complex"
+    },
+    {
+      "startSeconds": 858.16,
+      "durationSeconds": 3.44,
+      "text": "operations on here. Now, you notice it"
+    },
+    {
+      "startSeconds": 859.68,
+      "durationSeconds": 3.279,
+      "text": "doesn't print everything out. uh it's"
+    },
+    {
+      "startSeconds": 861.6,
+      "durationSeconds": 3.2,
+      "text": "truncating it because of kind of how"
+    },
+    {
+      "startSeconds": 862.959,
+      "durationSeconds": 3.601,
+      "text": "this is set up, but that's okay. All"
+    },
+    {
+      "startSeconds": 864.8,
+      "durationSeconds": 3.12,
+      "text": "right, so we have DF country. And then"
+    },
+    {
+      "startSeconds": 866.56,
+      "durationSeconds": 3.519,
+      "text": "if we wanted to, right, we could do"
+    },
+    {
+      "startSeconds": 867.92,
+      "durationSeconds": 5.599,
+      "text": "something like maybe print the length of"
+    },
+    {
+      "startSeconds": 870.079,
+      "durationSeconds": 6.081,
+      "text": "this. We could say length of DF country."
+    },
+    {
+      "startSeconds": 873.519,
+      "durationSeconds": 5.361,
+      "text": "Okay, we could run this. We get 40. I"
+    },
+    {
+      "startSeconds": 876.16,
+      "durationSeconds": 3.919,
+      "text": "could print maybe the set of DF country."
+    },
+    {
+      "startSeconds": 878.88,
+      "durationSeconds": 2.72,
+      "text": "And then it's going to give me all of"
+    },
+    {
+      "startSeconds": 880.079,
+      "durationSeconds": 3.041,
+      "text": "the unique values that I have inside of"
+    },
+    {
+      "startSeconds": 881.6,
+      "durationSeconds": 2.72,
+      "text": "here and remove any of the other ones."
+    },
+    {
+      "startSeconds": 883.12,
+      "durationSeconds": 2.56,
+      "text": "And you get the idea. You can start"
+    },
+    {
+      "startSeconds": 884.32,
+      "durationSeconds": 2.8,
+      "text": "doing some pretty cool stuff. Those"
+    },
+    {
+      "startSeconds": 885.68,
+      "durationSeconds": 2.719,
+      "text": "aren't even pandas operations, but"
+    },
+    {
+      "startSeconds": 887.12,
+      "durationSeconds": 3.839,
+      "text": "that's kind of the interesting component"
+    },
+    {
+      "startSeconds": 888.399,
+      "durationSeconds": 4.8,
+      "text": "of being able to reference things here"
+    },
+    {
+      "startSeconds": 890.959,
+      "durationSeconds": 3.761,
+      "text": "by the uh what do you call it? Uh"
+    },
+    {
+      "startSeconds": 893.199,
+      "durationSeconds": 2.961,
+      "text": "column. Now, what's interesting as well"
+    },
+    {
+      "startSeconds": 894.72,
+      "durationSeconds": 3.2,
+      "text": "is that you can actually reference by"
+    },
+    {
+      "startSeconds": 896.16,
+      "durationSeconds": 3.84,
+      "text": "multiple columns. So, what we could do"
+    },
+    {
+      "startSeconds": 897.92,
+      "durationSeconds": 4.56,
+      "text": "is we could put a list inside of here"
+    },
+    {
+      "startSeconds": 900,
+      "durationSeconds": 4.8,
+      "text": "and we could reference by the country"
+    },
+    {
+      "startSeconds": 902.48,
+      "durationSeconds": 4.719,
+      "text": "and then maybe we want to get the"
+    },
+    {
+      "startSeconds": 904.8,
+      "durationSeconds": 4.32,
+      "text": "product. Okay. Now, if I run this, you"
+    },
+    {
+      "startSeconds": 907.199,
+      "durationSeconds": 3.121,
+      "text": "see that we now get a new data frame."
+    },
+    {
+      "startSeconds": 909.12,
+      "durationSeconds": 2.8,
+      "text": "So, when we do this, it doesn't give us"
+    },
+    {
+      "startSeconds": 910.32,
+      "durationSeconds": 3.28,
+      "text": "a series. It actually gives us a data"
+    },
+    {
+      "startSeconds": 911.92,
+      "durationSeconds": 3.599,
+      "text": "frame where we have all of the countries"
+    },
+    {
+      "startSeconds": 913.6,
+      "durationSeconds": 3.679,
+      "text": "and then the associated product that was"
+    },
+    {
+      "startSeconds": 915.519,
+      "durationSeconds": 3.44,
+      "text": "kind of with that order. So you can"
+    },
+    {
+      "startSeconds": 917.279,
+      "durationSeconds": 3.441,
+      "text": "really create some interesting views of"
+    },
+    {
+      "startSeconds": 918.959,
+      "durationSeconds": 3.521,
+      "text": "the data frame here. And this returns"
+    },
+    {
+      "startSeconds": 920.72,
+      "durationSeconds": 3.119,
+      "text": "again a new data frame because we have"
+    },
+    {
+      "startSeconds": 922.48,
+      "durationSeconds": 3.44,
+      "text": "two different entries that we're"
+    },
+    {
+      "startSeconds": 923.839,
+      "durationSeconds": 4.161,
+      "text": "indexing by. If we just do one then"
+    },
+    {
+      "startSeconds": 925.92,
+      "durationSeconds": 4.32,
+      "text": "we're just going to get a series. Okay."
+    },
+    {
+      "startSeconds": 928,
+      "durationSeconds": 4.72,
+      "text": "So that's how you kind of index based on"
+    },
+    {
+      "startSeconds": 930.24,
+      "durationSeconds": 4.959,
+      "text": "the uh what do you call it the columns."
+    },
+    {
+      "startSeconds": 932.72,
+      "durationSeconds": 4.239,
+      "text": "But if you want to index based on the"
+    },
+    {
+      "startSeconds": 935.199,
+      "durationSeconds": 4.64,
+      "text": "row so you want to get row zero, row"
+    },
+    {
+      "startSeconds": 936.959,
+      "durationSeconds": 5.68,
+      "text": "one, row two etc. then you can use the"
+    },
+    {
+      "startSeconds": 939.839,
+      "durationSeconds": 5.921,
+      "text": "following. Okay, so you can use ILocc."
+    },
+    {
+      "startSeconds": 942.639,
+      "durationSeconds": 4.721,
+      "text": "Now ILOC stands for index location. At"
+    },
+    {
+      "startSeconds": 945.76,
+      "durationSeconds": 2.879,
+      "text": "least that's what I like to remember it"
+    },
+    {
+      "startSeconds": 947.36,
+      "durationSeconds": 2.8,
+      "text": "by. I'm not sure if that's exactly what"
+    },
+    {
+      "startSeconds": 948.639,
+      "durationSeconds": 3.921,
+      "text": "it means, but for me that makes sense."
+    },
+    {
+      "startSeconds": 950.16,
+      "durationSeconds": 4.799,
+      "text": "So what I can do is I can say df do"
+    },
+    {
+      "startSeconds": 952.56,
+      "durationSeconds": 4.56,
+      "text": "eyilock zero. And when I do that, it's"
+    },
+    {
+      "startSeconds": 954.959,
+      "durationSeconds": 4.88,
+      "text": "going to give me all of the values for"
+    },
+    {
+      "startSeconds": 957.12,
+      "durationSeconds": 4.959,
+      "text": "the first row or the zeroth row. Okay,"
+    },
+    {
+      "startSeconds": 959.839,
+      "durationSeconds": 3.92,
+      "text": "inside of my data frame. Now I could do"
+    },
+    {
+      "startSeconds": 962.079,
+      "durationSeconds": 4.241,
+      "text": "maybe 10. And now I'm going to access"
+    },
+    {
+      "startSeconds": 963.759,
+      "durationSeconds": 3.841,
+      "text": "the 10th row and I get the values. And"
+    },
+    {
+      "startSeconds": 966.32,
+      "durationSeconds": 4.079,
+      "text": "again, if I wanted to, I could do"
+    },
+    {
+      "startSeconds": 967.6,
+      "durationSeconds": 4.239,
+      "text": "something like list. Okay? And if I do"
+    },
+    {
+      "startSeconds": 970.399,
+      "durationSeconds": 3.201,
+      "text": "list, now it's going to convert this to"
+    },
+    {
+      "startSeconds": 971.839,
+      "durationSeconds": 2.961,
+      "text": "a list for me and give me all of the"
+    },
+    {
+      "startSeconds": 973.6,
+      "durationSeconds": 4.4,
+      "text": "values. Okay? And you can see we have"
+    },
+    {
+      "startSeconds": 974.8,
+      "durationSeconds": 6,
+      "text": "these ins, floats, strings, etc. All of"
+    },
+    {
+      "startSeconds": 978,
+      "durationSeconds": 4.24,
+      "text": "the stuff. Okay? Because the pandas data"
+    },
+    {
+      "startSeconds": 980.8,
+      "durationSeconds": 3.68,
+      "text": "type is a little bit different than the"
+    },
+    {
+      "startSeconds": 982.24,
+      "durationSeconds": 3.44,
+      "text": "built-in uh Python data type. So you"
+    },
+    {
+      "startSeconds": 984.48,
+      "durationSeconds": 3.039,
+      "text": "just need to be a little bit careful"
+    },
+    {
+      "startSeconds": 985.68,
+      "durationSeconds": 4.8,
+      "text": "when you're kind of using this because"
+    },
+    {
+      "startSeconds": 987.519,
+      "durationSeconds": 5.201,
+      "text": "for example if I do dfilock and then 10"
+    },
+    {
+      "startSeconds": 990.48,
+      "durationSeconds": 4.08,
+      "text": "now if I want right and I try to access"
+    },
+    {
+      "startSeconds": 992.72,
+      "durationSeconds": 3.76,
+      "text": "index zero you see that it actually"
+    },
+    {
+      "startSeconds": 994.56,
+      "durationSeconds": 4.56,
+      "text": "gives me this right so it gives me the"
+    },
+    {
+      "startSeconds": 996.48,
+      "durationSeconds": 5.599,
+      "text": "first value I can access index one gives"
+    },
+    {
+      "startSeconds": 999.12,
+      "durationSeconds": 4.8,
+      "text": "me the second value or alternatively I"
+    },
+    {
+      "startSeconds": 1002.079,
+      "durationSeconds": 4.32,
+      "text": "could do something like directly access"
+    },
+    {
+      "startSeconds": 1003.92,
+      "durationSeconds": 4.32,
+      "text": "the row value of country and then get"
+    },
+    {
+      "startSeconds": 1006.399,
+      "durationSeconds": 3.281,
+      "text": "friends. So this just works a little bit"
+    },
+    {
+      "startSeconds": 1008.24,
+      "durationSeconds": 4.24,
+      "text": "differently than the built-in Python"
+    },
+    {
+      "startSeconds": 1009.68,
+      "durationSeconds": 4.56,
+      "text": "data type. So I get this row. Then from"
+    },
+    {
+      "startSeconds": 1012.48,
+      "durationSeconds": 3.84,
+      "text": "this row I can either access the"
+    },
+    {
+      "startSeconds": 1014.24,
+      "durationSeconds": 4.399,
+      "text": "individual values by their index because"
+    },
+    {
+      "startSeconds": 1016.32,
+      "durationSeconds": 4.16,
+      "text": "it's kind of represented like a list or"
+    },
+    {
+      "startSeconds": 1018.639,
+      "durationSeconds": 4,
+      "text": "I can reference it by the column name."
+    },
+    {
+      "startSeconds": 1020.48,
+      "durationSeconds": 4.64,
+      "text": "So I can get the country, I can get"
+    },
+    {
+      "startSeconds": 1022.639,
+      "durationSeconds": 3.841,
+      "text": "shipped, etc. Okay, and you guys get the"
+    },
+    {
+      "startSeconds": 1025.12,
+      "durationSeconds": 3.52,
+      "text": "idea. All right, so let's keep going"
+    },
+    {
+      "startSeconds": 1026.48,
+      "durationSeconds": 3.92,
+      "text": "here and let's get into some filtering."
+    },
+    {
+      "startSeconds": 1028.64,
+      "durationSeconds": 3.039,
+      "text": "Now, I want to just make a note here"
+    },
+    {
+      "startSeconds": 1030.4,
+      "durationSeconds": 2.399,
+      "text": "that what I'm about to show you in the"
+    },
+    {
+      "startSeconds": 1031.679,
+      "durationSeconds": 2.481,
+      "text": "rest of the video is really just"
+    },
+    {
+      "startSeconds": 1032.799,
+      "durationSeconds": 4,
+      "text": "scratching the surface of what's"
+    },
+    {
+      "startSeconds": 1034.16,
+      "durationSeconds": 4.32,
+      "text": "possible here. Pandas can get very, very"
+    },
+    {
+      "startSeconds": 1036.799,
+      "durationSeconds": 3.04,
+      "text": "advanced. That's not the point of this"
+    },
+    {
+      "startSeconds": 1038.48,
+      "durationSeconds": 2.959,
+      "text": "video. I just want to give you the"
+    },
+    {
+      "startSeconds": 1039.839,
+      "durationSeconds": 3.2,
+      "text": "basics. So if you think I'm missing"
+    },
+    {
+      "startSeconds": 1041.439,
+      "durationSeconds": 2.561,
+      "text": "something, it is because I am missing"
+    },
+    {
+      "startSeconds": 1043.039,
+      "durationSeconds": 3.121,
+      "text": "something because I'm not going to cover"
+    },
+    {
+      "startSeconds": 1044,
+      "durationSeconds": 4.079,
+      "text": "the entire library in this short video."
+    },
+    {
+      "startSeconds": 1046.16,
+      "durationSeconds": 3.519,
+      "text": "Okay. So first let's just look at our"
+    },
+    {
+      "startSeconds": 1048.079,
+      "durationSeconds": 2.881,
+      "text": "data frame again because maybe I just"
+    },
+    {
+      "startSeconds": 1049.679,
+      "durationSeconds": 2.641,
+      "text": "want to see what's in here. So I could"
+    },
+    {
+      "startSeconds": 1050.96,
+      "durationSeconds": 3.36,
+      "text": "try to come up with like an interesting"
+    },
+    {
+      "startSeconds": 1052.32,
+      "durationSeconds": 4.239,
+      "text": "filter. So I see, okay, I have like"
+    },
+    {
+      "startSeconds": 1054.32,
+      "durationSeconds": 4,
+      "text": "customer name, product, category. So"
+    },
+    {
+      "startSeconds": 1056.559,
+      "durationSeconds": 3.921,
+      "text": "maybe I want to do something like find"
+    },
+    {
+      "startSeconds": 1058.32,
+      "durationSeconds": 3.76,
+      "text": "all of the electronics. Let me get rid"
+    },
+    {
+      "startSeconds": 1060.48,
+      "durationSeconds": 4.079,
+      "text": "of that. So what I could do is something"
+    },
+    {
+      "startSeconds": 1062.08,
+      "durationSeconds": 6.16,
+      "text": "like DF. Okay. And then I'm going to say"
+    },
+    {
+      "startSeconds": 1064.559,
+      "durationSeconds": 5.681,
+      "text": "DF and then this is product. Okay. and"
+    },
+    {
+      "startSeconds": 1068.24,
+      "durationSeconds": 4.08,
+      "text": "I'm going to say this is equal to and"
+    },
+    {
+      "startSeconds": 1070.24,
+      "durationSeconds": 3.52,
+      "text": "then electronics. So what I'm doing is"
+    },
+    {
+      "startSeconds": 1072.32,
+      "durationSeconds": 3.359,
+      "text": "I'm actually applying a filter. I'm"
+    },
+    {
+      "startSeconds": 1073.76,
+      "durationSeconds": 4.32,
+      "text": "saying all right in my data frame I want"
+    },
+    {
+      "startSeconds": 1075.679,
+      "durationSeconds": 4.321,
+      "text": "to look for all of the values that match"
+    },
+    {
+      "startSeconds": 1078.08,
+      "durationSeconds": 4.64,
+      "text": "this where the data frame at the column"
+    },
+    {
+      "startSeconds": 1080,
+      "durationSeconds": 4.559,
+      "text": "product is equal to electronics. So now"
+    },
+    {
+      "startSeconds": 1082.72,
+      "durationSeconds": 3.36,
+      "text": "if I do this I get an empty table and"
+    },
+    {
+      "startSeconds": 1084.559,
+      "durationSeconds": 4.641,
+      "text": "that's because I meant to go category"
+    },
+    {
+      "startSeconds": 1086.08,
+      "durationSeconds": 5.68,
+      "text": "not product. So sorry, let's swap that"
+    },
+    {
+      "startSeconds": 1089.2,
+      "durationSeconds": 3.92,
+      "text": "and run. And now you see that we get all"
+    },
+    {
+      "startSeconds": 1091.76,
+      "durationSeconds": 3.68,
+      "text": "of the products that are in the"
+    },
+    {
+      "startSeconds": 1093.12,
+      "durationSeconds": 4.24,
+      "text": "electronics category. Okay. So we just"
+    },
+    {
+      "startSeconds": 1095.44,
+      "durationSeconds": 3.84,
+      "text": "applied a filter there. Now if we wanted"
+    },
+    {
+      "startSeconds": 1097.36,
+      "durationSeconds": 3.76,
+      "text": "to we could actually apply multiple"
+    },
+    {
+      "startSeconds": 1099.28,
+      "durationSeconds": 3.92,
+      "text": "filters. So I can put this in a set of"
+    },
+    {
+      "startSeconds": 1101.12,
+      "durationSeconds": 4.48,
+      "text": "parenthesis. I could put an and"
+    },
+    {
+      "startSeconds": 1103.2,
+      "durationSeconds": 4.32,
+      "text": "operator. Okay? So just a single and not"
+    },
+    {
+      "startSeconds": 1105.6,
+      "durationSeconds": 4.319,
+      "text": "two like we would in Python. And then I"
+    },
+    {
+      "startSeconds": 1107.52,
+      "durationSeconds": 6.159,
+      "text": "could do something like df"
+    },
+    {
+      "startSeconds": 1109.919,
+      "durationSeconds": 6,
+      "text": "country is equal to maybe USA. So now"
+    },
+    {
+      "startSeconds": 1113.679,
+      "durationSeconds": 4.641,
+      "text": "I'm getting all of the electronics that"
+    },
+    {
+      "startSeconds": 1115.919,
+      "durationSeconds": 4.64,
+      "text": "are in the USA. So now if I run this you"
+    },
+    {
+      "startSeconds": 1118.32,
+      "durationSeconds": 4.32,
+      "text": "see that we only have one entry here."
+    },
+    {
+      "startSeconds": 1120.559,
+      "durationSeconds": 3.521,
+      "text": "Okay. If we can scroll through for some"
+    },
+    {
+      "startSeconds": 1122.64,
+      "durationSeconds": 3.12,
+      "text": "reason it's being a bit difficult to"
+    },
+    {
+      "startSeconds": 1124.08,
+      "durationSeconds": 3.28,
+      "text": "scroll but you guys get the idea. And"
+    },
+    {
+      "startSeconds": 1125.76,
+      "durationSeconds": 2.72,
+      "text": "then this would say USA if we were able"
+    },
+    {
+      "startSeconds": 1127.36,
+      "durationSeconds": 2.319,
+      "text": "to scroll over and see that. Actually,"
+    },
+    {
+      "startSeconds": 1128.48,
+      "durationSeconds": 3.12,
+      "text": "let's zoom out. And then boom, there you"
+    },
+    {
+      "startSeconds": 1129.679,
+      "durationSeconds": 3.281,
+      "text": "go. Okay, we have USA. All right, let's"
+    },
+    {
+      "startSeconds": 1131.6,
+      "durationSeconds": 3.92,
+      "text": "do another one. I'll leave that filter"
+    },
+    {
+      "startSeconds": 1132.96,
+      "durationSeconds": 4.959,
+      "text": "up. So maybe we want to check if the"
+    },
+    {
+      "startSeconds": 1135.52,
+      "durationSeconds": 4.48,
+      "text": "category is electronics or the country"
+    },
+    {
+      "startSeconds": 1137.919,
+      "durationSeconds": 4.721,
+      "text": "is USA. Now, if that's the case, then we"
+    },
+    {
+      "startSeconds": 1140,
+      "durationSeconds": 5.12,
+      "text": "can just use a single pipe operator."
+    },
+    {
+      "startSeconds": 1142.64,
+      "durationSeconds": 4.159,
+      "text": "Okay, this is or. And then if I run this"
+    },
+    {
+      "startSeconds": 1145.12,
+      "durationSeconds": 3.52,
+      "text": "now, we get all of the ones where it's"
+    },
+    {
+      "startSeconds": 1146.799,
+      "durationSeconds": 4,
+      "text": "either electronics or the country is"
+    },
+    {
+      "startSeconds": 1148.64,
+      "durationSeconds": 3.84,
+      "text": "USA. So you can see we have this furnace"
+    },
+    {
+      "startSeconds": 1150.799,
+      "durationSeconds": 3.441,
+      "text": "where, you know, it's in the USA, but it"
+    },
+    {
+      "startSeconds": 1152.48,
+      "durationSeconds": 4.8,
+      "text": "wasn't electronics because we've used"
+    },
+    {
+      "startSeconds": 1154.24,
+      "durationSeconds": 5.36,
+      "text": "the ore. So we have and or etc. You can"
+    },
+    {
+      "startSeconds": 1157.28,
+      "durationSeconds": 5.12,
+      "text": "use those inside of the filters. Now"
+    },
+    {
+      "startSeconds": 1159.6,
+      "durationSeconds": 5.439,
+      "text": "let's do some more filters. So let's do"
+    },
+    {
+      "startSeconds": 1162.4,
+      "durationSeconds": 4.08,
+      "text": "something like maybe I don't know the"
+    },
+    {
+      "startSeconds": 1165.039,
+      "durationSeconds": 2.721,
+      "text": "quantity greater than a certain amount"
+    },
+    {
+      "startSeconds": 1166.48,
+      "durationSeconds": 5.36,
+      "text": "or something. Let me just look at this."
+    },
+    {
+      "startSeconds": 1167.76,
+      "durationSeconds": 6.159,
+      "text": "Okay. So let's go df and then df"
+    },
+    {
+      "startSeconds": 1171.84,
+      "durationSeconds": 5.44,
+      "text": "quantity"
+    },
+    {
+      "startSeconds": 1173.919,
+      "durationSeconds": 5.041,
+      "text": "is greater than 20. Okay. And then we"
+    },
+    {
+      "startSeconds": 1177.28,
+      "durationSeconds": 2.88,
+      "text": "run this. And you can see now we have"
+    },
+    {
+      "startSeconds": 1178.96,
+      "durationSeconds": 2.56,
+      "text": "this one. It's the only quantity that"
+    },
+    {
+      "startSeconds": 1180.16,
+      "durationSeconds": 3.12,
+      "text": "was greater than 20. Maybe quantity"
+    },
+    {
+      "startSeconds": 1181.52,
+      "durationSeconds": 2.96,
+      "text": "greater than two. And then we get all of"
+    },
+    {
+      "startSeconds": 1183.28,
+      "durationSeconds": 2.56,
+      "text": "these where the quantity was greater"
+    },
+    {
+      "startSeconds": 1184.48,
+      "durationSeconds": 3.12,
+      "text": "than two. And then of course you could"
+    },
+    {
+      "startSeconds": 1185.84,
+      "durationSeconds": 3.76,
+      "text": "switch this around. You could say less"
+    },
+    {
+      "startSeconds": 1187.6,
+      "durationSeconds": 3.76,
+      "text": "than two. You could say less than or"
+    },
+    {
+      "startSeconds": 1189.6,
+      "durationSeconds": 3.76,
+      "text": "equal to two, right? And then you get"
+    },
+    {
+      "startSeconds": 1191.36,
+      "durationSeconds": 3.28,
+      "text": "going to get this. You could do not"
+    },
+    {
+      "startSeconds": 1193.36,
+      "durationSeconds": 2.72,
+      "text": "equal to two. Then you're going to get"
+    },
+    {
+      "startSeconds": 1194.64,
+      "durationSeconds": 2.8,
+      "text": "all the ones that aren't equal to two."
+    },
+    {
+      "startSeconds": 1196.08,
+      "durationSeconds": 3.04,
+      "text": "And you guys get the idea. Okay? So you"
+    },
+    {
+      "startSeconds": 1197.44,
+      "durationSeconds": 3.44,
+      "text": "can mess around with these filters quite"
+    },
+    {
+      "startSeconds": 1199.12,
+      "durationSeconds": 3.36,
+      "text": "a bit. You can make them quite advanced"
+    },
+    {
+      "startSeconds": 1200.88,
+      "durationSeconds": 3.6,
+      "text": "and you can really look through and kind"
+    },
+    {
+      "startSeconds": 1202.48,
+      "durationSeconds": 3.84,
+      "text": "of prune this data set down to what you"
+    },
+    {
+      "startSeconds": 1204.48,
+      "durationSeconds": 4.559,
+      "text": "really want. All right. So let's keep"
+    },
+    {
+      "startSeconds": 1206.32,
+      "durationSeconds": 4.8,
+      "text": "going here and uh let's do some more"
+    },
+    {
+      "startSeconds": 1209.039,
+      "durationSeconds": 3.601,
+      "text": "advanced filtering. So that's kind of"
+    },
+    {
+      "startSeconds": 1211.12,
+      "durationSeconds": 3.52,
+      "text": "simple. like you're just filtering based"
+    },
+    {
+      "startSeconds": 1212.64,
+      "durationSeconds": 4.32,
+      "text": "on columns. But you can also do some"
+    },
+    {
+      "startSeconds": 1214.64,
+      "durationSeconds": 5.36,
+      "text": "more complex methods. So for example, we"
+    },
+    {
+      "startSeconds": 1216.96,
+      "durationSeconds": 4.959,
+      "text": "could say something like DF and then DF"
+    },
+    {
+      "startSeconds": 1220,
+      "durationSeconds": 3.679,
+      "text": "and what do we want to do here? Maybe"
+    },
+    {
+      "startSeconds": 1221.919,
+      "durationSeconds": 3.841,
+      "text": "this is what the customer name. Let's"
+    },
+    {
+      "startSeconds": 1223.679,
+      "durationSeconds": 4.48,
+      "text": "just look at this column. Yes, customer"
+    },
+    {
+      "startSeconds": 1225.76,
+      "durationSeconds": 5.44,
+      "text": "name. Okay, so we're going to say"
+    },
+    {
+      "startSeconds": 1228.159,
+      "durationSeconds": 6.481,
+      "text": "customer name and we're going to say dot"
+    },
+    {
+      "startSeconds": 1231.2,
+      "durationSeconds": 5.44,
+      "text": "string dot starts with and then we can"
+    },
+    {
+      "startSeconds": 1234.64,
+      "durationSeconds": 3.12,
+      "text": "uh do something like a. So in this case,"
+    },
+    {
+      "startSeconds": 1236.64,
+      "durationSeconds": 3.039,
+      "text": "this is going to give us all of the"
+    },
+    {
+      "startSeconds": 1237.76,
+      "durationSeconds": 3.84,
+      "text": "customers names that start with a. And"
+    },
+    {
+      "startSeconds": 1239.679,
+      "durationSeconds": 4.961,
+      "text": "you see we pull up all the customers"
+    },
+    {
+      "startSeconds": 1241.6,
+      "durationSeconds": 5.36,
+      "text": "that start with A. Okay. Now I believe"
+    },
+    {
+      "startSeconds": 1244.64,
+      "durationSeconds": 4.48,
+      "text": "we also have ends with. Let's see. Yeah."
+    },
+    {
+      "startSeconds": 1246.96,
+      "durationSeconds": 3.599,
+      "text": "So ends with. So ends with A as well."
+    },
+    {
+      "startSeconds": 1249.12,
+      "durationSeconds": 2.96,
+      "text": "Run this. We don't get any because it"
+    },
+    {
+      "startSeconds": 1250.559,
+      "durationSeconds": 3.201,
+      "text": "would be a lowercase A. So sorry. Let's"
+    },
+    {
+      "startSeconds": 1252.08,
+      "durationSeconds": 3.68,
+      "text": "go lowerase. And then you can see all"
+    },
+    {
+      "startSeconds": 1253.76,
+      "durationSeconds": 3.6,
+      "text": "the names that end in A. We pull them"
+    },
+    {
+      "startSeconds": 1255.76,
+      "durationSeconds": 3.039,
+      "text": "up. Of course, that would apply to any"
+    },
+    {
+      "startSeconds": 1257.36,
+      "durationSeconds": 3.36,
+      "text": "other column. What I've done is I've"
+    },
+    {
+      "startSeconds": 1258.799,
+      "durationSeconds": 3.681,
+      "text": "used dot string. So I've said, okay,"
+    },
+    {
+      "startSeconds": 1260.72,
+      "durationSeconds": 2.88,
+      "text": "customer name. We're looking for the"
+    },
+    {
+      "startSeconds": 1262.48,
+      "durationSeconds": 3.12,
+      "text": "string methods. And then we're looking"
+    },
+    {
+      "startSeconds": 1263.6,
+      "durationSeconds": 3.76,
+      "text": "at dot ends with. Now there's a few"
+    },
+    {
+      "startSeconds": 1265.6,
+      "durationSeconds": 3.6,
+      "text": "other methods that we can do. So for"
+    },
+    {
+      "startSeconds": 1267.36,
+      "durationSeconds": 6.64,
+      "text": "example, we could go here. Here we could"
+    },
+    {
+      "startSeconds": 1269.2,
+      "durationSeconds": 6.64,
+      "text": "say df country then dot is in and then"
+    },
+    {
+      "startSeconds": 1274,
+      "durationSeconds": 5.2,
+      "text": "we could specify an array. So we could"
+    },
+    {
+      "startSeconds": 1275.84,
+      "durationSeconds": 6.4,
+      "text": "do something like USA you know Sweden"
+    },
+    {
+      "startSeconds": 1279.2,
+      "durationSeconds": 4.8,
+      "text": "and maybe Brazil or something. Okay. And"
+    },
+    {
+      "startSeconds": 1282.24,
+      "durationSeconds": 3.439,
+      "text": "if we run this then it gives us all of"
+    },
+    {
+      "startSeconds": 1284,
+      "durationSeconds": 3.039,
+      "text": "the entries where they're in one of"
+    },
+    {
+      "startSeconds": 1285.679,
+      "durationSeconds": 3.201,
+      "text": "those countries. Okay. So rather than"
+    },
+    {
+      "startSeconds": 1287.039,
+      "durationSeconds": 2.961,
+      "text": "having to write out the complex kind of"
+    },
+    {
+      "startSeconds": 1288.88,
+      "durationSeconds": 2.96,
+      "text": "uh what do you call it combined"
+    },
+    {
+      "startSeconds": 1290,
+      "durationSeconds": 3.919,
+      "text": "condition you can use something like the"
+    },
+    {
+      "startSeconds": 1291.84,
+      "durationSeconds": 3.839,
+      "text": "is in operator. And then actually if we"
+    },
+    {
+      "startSeconds": 1293.919,
+      "durationSeconds": 3.201,
+      "text": "wanted to reverse this, this is going to"
+    },
+    {
+      "startSeconds": 1295.679,
+      "durationSeconds": 4.561,
+      "text": "look a little bit weird, but we can use"
+    },
+    {
+      "startSeconds": 1297.12,
+      "durationSeconds": 4.88,
+      "text": "the tilda operator. This is built into"
+    },
+    {
+      "startSeconds": 1300.24,
+      "durationSeconds": 4.08,
+      "text": "uh pandas. So this works and this"
+    },
+    {
+      "startSeconds": 1302,
+      "durationSeconds": 3.919,
+      "text": "essentially reverses this condition. So"
+    },
+    {
+      "startSeconds": 1304.32,
+      "durationSeconds": 3.44,
+      "text": "it would say essentially all of the"
+    },
+    {
+      "startSeconds": 1305.919,
+      "durationSeconds": 3.441,
+      "text": "countries that are not in this. So if I"
+    },
+    {
+      "startSeconds": 1307.76,
+      "durationSeconds": 4,
+      "text": "run this now, you see that we get"
+    },
+    {
+      "startSeconds": 1309.36,
+      "durationSeconds": 5.12,
+      "text": "anything that is not USA, Sweden or"
+    },
+    {
+      "startSeconds": 1311.76,
+      "durationSeconds": 4.08,
+      "text": "Brazil. Now again, there is a lot more"
+    },
+    {
+      "startSeconds": 1314.48,
+      "durationSeconds": 2.64,
+      "text": "filtering that you can do. I'm just"
+    },
+    {
+      "startSeconds": 1315.84,
+      "durationSeconds": 3.04,
+      "text": "trying to scratch the surface and show"
+    },
+    {
+      "startSeconds": 1317.12,
+      "durationSeconds": 3.84,
+      "text": "you a few examples. You kind of get the"
+    },
+    {
+      "startSeconds": 1318.88,
+      "durationSeconds": 4.4,
+      "text": "idea of how powerful this is. And now"
+    },
+    {
+      "startSeconds": 1320.96,
+      "durationSeconds": 3.599,
+      "text": "let's move on to the next example. Okay,"
+    },
+    {
+      "startSeconds": 1323.28,
+      "durationSeconds": 3.12,
+      "text": "so we've looked at a lot of filtering"
+    },
+    {
+      "startSeconds": 1324.559,
+      "durationSeconds": 3.281,
+      "text": "and kind of viewing the data, but now I"
+    },
+    {
+      "startSeconds": 1326.4,
+      "durationSeconds": 3.36,
+      "text": "want to show you how we can delete data"
+    },
+    {
+      "startSeconds": 1327.84,
+      "durationSeconds": 4,
+      "text": "and update data because obviously that's"
+    },
+    {
+      "startSeconds": 1329.76,
+      "durationSeconds": 4.96,
+      "text": "important. So let's say that we want to"
+    },
+    {
+      "startSeconds": 1331.84,
+      "durationSeconds": 5.199,
+      "text": "update a specific row or we want to"
+    },
+    {
+      "startSeconds": 1334.72,
+      "durationSeconds": 4.16,
+      "text": "maybe look for a row where Anna here"
+    },
+    {
+      "startSeconds": 1337.039,
+      "durationSeconds": 3.841,
+      "text": "exists and we want to update her and"
+    },
+    {
+      "startSeconds": 1338.88,
+      "durationSeconds": 3.679,
+      "text": "maybe change, I don't know, the quantity"
+    },
+    {
+      "startSeconds": 1340.88,
+      "durationSeconds": 3.12,
+      "text": "or something that she's ordered. Now"
+    },
+    {
+      "startSeconds": 1342.559,
+      "durationSeconds": 3.201,
+      "text": "again, there's a lot of ways to do this,"
+    },
+    {
+      "startSeconds": 1344,
+      "durationSeconds": 3.52,
+      "text": "but I'm going to show you one way. So"
+    },
+    {
+      "startSeconds": 1345.76,
+      "durationSeconds": 6.159,
+      "text": "another tool that I've uh not shown you"
+    },
+    {
+      "startSeconds": 1347.52,
+      "durationSeconds": 6.48,
+      "text": "yet is called okay or loc. Now loc means"
+    },
+    {
+      "startSeconds": 1351.919,
+      "durationSeconds": 4.24,
+      "text": "we're going to locate based on some"
+    },
+    {
+      "startSeconds": 1354,
+      "durationSeconds": 4.64,
+      "text": "label. Okay, a label being essentially"
+    },
+    {
+      "startSeconds": 1356.159,
+      "durationSeconds": 4.721,
+      "text": "any entry that's inside of this row"
+    },
+    {
+      "startSeconds": 1358.64,
+      "durationSeconds": 4.96,
+      "text": "rather than the index. So I could do"
+    },
+    {
+      "startSeconds": 1360.88,
+      "durationSeconds": 4.799,
+      "text": "something like df.illock and then 39,"
+    },
+    {
+      "startSeconds": 1363.6,
+      "durationSeconds": 4.079,
+      "text": "right? And then I'm accessing index 39"
+    },
+    {
+      "startSeconds": 1365.679,
+      "durationSeconds": 3.521,
+      "text": "which is Anna. But instead I'm going to"
+    },
+    {
+      "startSeconds": 1367.679,
+      "durationSeconds": 3.36,
+      "text": "do something different where maybe I"
+    },
+    {
+      "startSeconds": 1369.2,
+      "durationSeconds": 3.599,
+      "text": "don't know that she's at 39 or maybe"
+    },
+    {
+      "startSeconds": 1371.039,
+      "durationSeconds": 3.921,
+      "text": "there's multiple Annas. And what I would"
+    },
+    {
+      "startSeconds": 1372.799,
+      "durationSeconds": 3.921,
+      "text": "do is I would say df.locate. Okay. and"
+    },
+    {
+      "startSeconds": 1374.96,
+      "durationSeconds": 5.68,
+      "text": "I'm going to say df and then I'm going"
+    },
+    {
+      "startSeconds": 1376.72,
+      "durationSeconds": 5.439,
+      "text": "to say customer name is equal to and"
+    },
+    {
+      "startSeconds": 1380.64,
+      "durationSeconds": 2.8,
+      "text": "then I'm going to paste her name. Okay,"
+    },
+    {
+      "startSeconds": 1382.159,
+      "durationSeconds": 3.681,
+      "text": "so what I'm doing is I'm saying all"
+    },
+    {
+      "startSeconds": 1383.44,
+      "durationSeconds": 4,
+      "text": "right I want to locate the row right"
+    },
+    {
+      "startSeconds": 1385.84,
+      "durationSeconds": 3.6,
+      "text": "where the customer name is equal to"
+    },
+    {
+      "startSeconds": 1387.44,
+      "durationSeconds": 3.84,
+      "text": "this. So if I run this here boom it"
+    },
+    {
+      "startSeconds": 1389.44,
+      "durationSeconds": 3.52,
+      "text": "pulls up a data frame for me. Notice"
+    },
+    {
+      "startSeconds": 1391.28,
+      "durationSeconds": 3.36,
+      "text": "it's not just one row it's a data frame"
+    },
+    {
+      "startSeconds": 1392.96,
+      "durationSeconds": 3.44,
+      "text": "because there could be multiple here"
+    },
+    {
+      "startSeconds": 1394.64,
+      "durationSeconds": 4.399,
+      "text": "where the customer name is equal to"
+    },
+    {
+      "startSeconds": 1396.4,
+      "durationSeconds": 5.12,
+      "text": "Anna. Now if I want to change something"
+    },
+    {
+      "startSeconds": 1399.039,
+      "durationSeconds": 5.361,
+      "text": "here, what I can do is I can put a comma"
+    },
+    {
+      "startSeconds": 1401.52,
+      "durationSeconds": 5.44,
+      "text": "and I can put something like the"
+    },
+    {
+      "startSeconds": 1404.4,
+      "durationSeconds": 4.159,
+      "text": "product. Okay. And is it product name or"
+    },
+    {
+      "startSeconds": 1406.96,
+      "durationSeconds": 4.719,
+      "text": "is it just product? I think it's just"
+    },
+    {
+      "startSeconds": 1408.559,
+      "durationSeconds": 6.561,
+      "text": "product. Okay. And then we can say this"
+    },
+    {
+      "startSeconds": 1411.679,
+      "durationSeconds": 4.961,
+      "text": "is equal to Tim. Okay. And if I run this"
+    },
+    {
+      "startSeconds": 1415.12,
+      "durationSeconds": 3.76,
+      "text": "now, this actually is going to update"
+    },
+    {
+      "startSeconds": 1416.64,
+      "durationSeconds": 5.919,
+      "text": "the row. And then if we want, we can do"
+    },
+    {
+      "startSeconds": 1418.88,
+      "durationSeconds": 6.48,
+      "text": "another cell and we can just copy this."
+    },
+    {
+      "startSeconds": 1422.559,
+      "durationSeconds": 5.6,
+      "text": "Okay. And run. And then you'll see the"
+    },
+    {
+      "startSeconds": 1425.36,
+      "durationSeconds": 4.72,
+      "text": "product has now changed to Tim. So I've"
+    },
+    {
+      "startSeconds": 1428.159,
+      "durationSeconds": 3.841,
+      "text": "located the entry that I want. I've"
+    },
+    {
+      "startSeconds": 1430.08,
+      "durationSeconds": 3.839,
+      "text": "specified the column that I want to"
+    },
+    {
+      "startSeconds": 1432,
+      "durationSeconds": 4,
+      "text": "change and then I've just modified it."
+    },
+    {
+      "startSeconds": 1433.919,
+      "durationSeconds": 3.201,
+      "text": "Okay, made it equal to Tim. That's it."
+    },
+    {
+      "startSeconds": 1436,
+      "durationSeconds": 2.48,
+      "text": "Again, I know it's a little bit weird"
+    },
+    {
+      "startSeconds": 1437.12,
+      "durationSeconds": 3.12,
+      "text": "with the syntax. You kind of need to get"
+    },
+    {
+      "startSeconds": 1438.48,
+      "durationSeconds": 3.76,
+      "text": "used to it, but that's how we just"
+    },
+    {
+      "startSeconds": 1440.24,
+      "durationSeconds": 3.36,
+      "text": "located this row and then we changed it."
+    },
+    {
+      "startSeconds": 1442.24,
+      "durationSeconds": 3.679,
+      "text": "Now, if we wanted to, we could do"
+    },
+    {
+      "startSeconds": 1443.6,
+      "durationSeconds": 8,
+      "text": "something like df"
+    },
+    {
+      "startSeconds": 1445.919,
+      "durationSeconds": 8.321,
+      "text": "country is equal to USA. Okay? And then"
+    },
+    {
+      "startSeconds": 1451.6,
+      "durationSeconds": 5.76,
+      "text": "we could say country and we can make"
+    },
+    {
+      "startSeconds": 1454.24,
+      "durationSeconds": 4.799,
+      "text": "this equal to United States. All right."
+    },
+    {
+      "startSeconds": 1457.36,
+      "durationSeconds": 3.199,
+      "text": "Now if I run this, what it's going to do"
+    },
+    {
+      "startSeconds": 1459.039,
+      "durationSeconds": 2.801,
+      "text": "is it's going to change all of the"
+    },
+    {
+      "startSeconds": 1460.559,
+      "durationSeconds": 4.321,
+      "text": "entries where the country is equal to"
+    },
+    {
+      "startSeconds": 1461.84,
+      "durationSeconds": 5.12,
+      "text": "USA to be equal to United States. So now"
+    },
+    {
+      "startSeconds": 1464.88,
+      "durationSeconds": 5.12,
+      "text": "again, let's just copy this filter."
+    },
+    {
+      "startSeconds": 1466.96,
+      "durationSeconds": 4.959,
+      "text": "Let's paste it down here and run. And"
+    },
+    {
+      "startSeconds": 1470,
+      "durationSeconds": 3.36,
+      "text": "there's none that equal USA because we"
+    },
+    {
+      "startSeconds": 1471.919,
+      "durationSeconds": 3.36,
+      "text": "changed it. And then if we go United"
+    },
+    {
+      "startSeconds": 1473.36,
+      "durationSeconds": 3.679,
+      "text": "States, you can see all of these are now"
+    },
+    {
+      "startSeconds": 1475.279,
+      "durationSeconds": 3.441,
+      "text": "equal to United States. And sorry, my"
+    },
+    {
+      "startSeconds": 1477.039,
+      "durationSeconds": 3.841,
+      "text": "voice was falling apart there. So I'm"
+    },
+    {
+      "startSeconds": 1478.72,
+      "durationSeconds": 3.92,
+      "text": "back. But you get the idea. Okay. So we"
+    },
+    {
+      "startSeconds": 1480.88,
+      "durationSeconds": 3.2,
+      "text": "can do kind of these multiple changes."
+    },
+    {
+      "startSeconds": 1482.64,
+      "durationSeconds": 2.8,
+      "text": "Now I could also say where all of the"
+    },
+    {
+      "startSeconds": 1484.08,
+      "durationSeconds": 2.4,
+      "text": "countries are equal to USA, I want to"
+    },
+    {
+      "startSeconds": 1485.44,
+      "durationSeconds": 2.239,
+      "text": "change something else. I want to change"
+    },
+    {
+      "startSeconds": 1486.48,
+      "durationSeconds": 3.52,
+      "text": "the quantity, I want to change the"
+    },
+    {
+      "startSeconds": 1487.679,
+      "durationSeconds": 4.081,
+      "text": "product, I want to change the order ID,"
+    },
+    {
+      "startSeconds": 1490,
+      "durationSeconds": 3.76,
+      "text": "etc., etc. Okay, there's more advanced"
+    },
+    {
+      "startSeconds": 1491.76,
+      "durationSeconds": 4,
+      "text": "stuff that we can do there. Now, if we"
+    },
+    {
+      "startSeconds": 1493.76,
+      "durationSeconds": 3.36,
+      "text": "wanted to as well, so we have United"
+    },
+    {
+      "startSeconds": 1495.76,
+      "durationSeconds": 3.68,
+      "text": "States. Now we've kind of made this"
+    },
+    {
+      "startSeconds": 1497.12,
+      "durationSeconds": 3.6,
+      "text": "change. What we could do down here is we"
+    },
+    {
+      "startSeconds": 1499.44,
+      "durationSeconds": 7.839,
+      "text": "could say something like this. We could"
+    },
+    {
+      "startSeconds": 1500.72,
+      "durationSeconds": 9.88,
+      "text": "say DF country is equal to DF. Okay? and"
+    },
+    {
+      "startSeconds": 1507.279,
+      "durationSeconds": 3.321,
+      "text": "then country.string.upper."
+    },
+    {
+      "startSeconds": 1510.72,
+      "durationSeconds": 2.72,
+      "text": "Now, if I do this, what it's going to do"
+    },
+    {
+      "startSeconds": 1512.08,
+      "durationSeconds": 2.56,
+      "text": "is it's going to say, okay, so we're"
+    },
+    {
+      "startSeconds": 1513.44,
+      "durationSeconds": 2.719,
+      "text": "going to take country and we're going to"
+    },
+    {
+      "startSeconds": 1514.64,
+      "durationSeconds": 3.6,
+      "text": "make it equal to the dataf frame"
+    },
+    {
+      "startSeconds": 1516.159,
+      "durationSeconds": 3.52,
+      "text": "country, but we're going to modify all"
+    },
+    {
+      "startSeconds": 1518.24,
+      "durationSeconds": 4.24,
+      "text": "of the values here so that they're"
+    },
+    {
+      "startSeconds": 1519.679,
+      "durationSeconds": 5.041,
+      "text": "completely uppercase. So now, if I run"
+    },
+    {
+      "startSeconds": 1522.48,
+      "durationSeconds": 6.64,
+      "text": "this, okay, let's wait. Then we go down"
+    },
+    {
+      "startSeconds": 1524.72,
+      "durationSeconds": 6.64,
+      "text": "here and we can say like this df"
+    },
+    {
+      "startSeconds": 1529.12,
+      "durationSeconds": 3.919,
+      "text": "country. Okay, and when we run this,"
+    },
+    {
+      "startSeconds": 1531.36,
+      "durationSeconds": 3.28,
+      "text": "notice that we get United States. Okay."
+    },
+    {
+      "startSeconds": 1533.039,
+      "durationSeconds": 2.88,
+      "text": "And it's in all capitals and everything"
+    },
+    {
+      "startSeconds": 1534.64,
+      "durationSeconds": 3.12,
+      "text": "actually is in all capitals because"
+    },
+    {
+      "startSeconds": 1535.919,
+      "durationSeconds": 3.601,
+      "text": "we've updated it. So everything is in"
+    },
+    {
+      "startSeconds": 1537.76,
+      "durationSeconds": 4.08,
+      "text": "all capitals. So if you want to change"
+    },
+    {
+      "startSeconds": 1539.52,
+      "durationSeconds": 3.759,
+      "text": "everything in one of the columns, you"
+    },
+    {
+      "startSeconds": 1541.84,
+      "durationSeconds": 2.8,
+      "text": "can kind of do it like this. Again,"
+    },
+    {
+      "startSeconds": 1543.279,
+      "durationSeconds": 3.601,
+      "text": "there's multiple ways to do it, but that"
+    },
+    {
+      "startSeconds": 1544.64,
+      "durationSeconds": 3.519,
+      "text": "is one way. Cool. All right. Now, a few"
+    },
+    {
+      "startSeconds": 1546.88,
+      "durationSeconds": 3.36,
+      "text": "last things that I want to show you."
+    },
+    {
+      "startSeconds": 1548.159,
+      "durationSeconds": 4.481,
+      "text": "Let's say that maybe we want to remove"
+    },
+    {
+      "startSeconds": 1550.24,
+      "durationSeconds": 3.84,
+      "text": "some entries from our data frame. So"
+    },
+    {
+      "startSeconds": 1552.64,
+      "durationSeconds": 3.68,
+      "text": "what I can do is say something like df"
+    },
+    {
+      "startSeconds": 1554.08,
+      "durationSeconds": 4.56,
+      "text": "is equal to df.drop. And then I can drop"
+    },
+    {
+      "startSeconds": 1556.32,
+      "durationSeconds": 4,
+      "text": "something like 39. Now, if I do that,"
+    },
+    {
+      "startSeconds": 1558.64,
+      "durationSeconds": 5.279,
+      "text": "that means I'm going to drop the row"
+    },
+    {
+      "startSeconds": 1560.32,
+      "durationSeconds": 5.28,
+      "text": "that's at index 39. So, when I run this,"
+    },
+    {
+      "startSeconds": 1563.919,
+      "durationSeconds": 3.921,
+      "text": "okay, that's going to now drop the row."
+    },
+    {
+      "startSeconds": 1565.6,
+      "durationSeconds": 4.88,
+      "text": "So, if I go df.tail"
+    },
+    {
+      "startSeconds": 1567.84,
+      "durationSeconds": 4.719,
+      "text": "now, okay, then you're going to see that"
+    },
+    {
+      "startSeconds": 1570.48,
+      "durationSeconds": 3.52,
+      "text": "we no longer have row 39 because we"
+    },
+    {
+      "startSeconds": 1572.559,
+      "durationSeconds": 3.12,
+      "text": "removed it. So, if you want to remove an"
+    },
+    {
+      "startSeconds": 1574,
+      "durationSeconds": 3.679,
+      "text": "individual row, you can do it like this"
+    },
+    {
+      "startSeconds": 1575.679,
+      "durationSeconds": 4.161,
+      "text": "using df.drop."
+    },
+    {
+      "startSeconds": 1577.679,
+      "durationSeconds": 3.681,
+      "text": "Okay. And sorry, I just needed to reload"
+    },
+    {
+      "startSeconds": 1579.84,
+      "durationSeconds": 2.8,
+      "text": "this data frame because I had messed a"
+    },
+    {
+      "startSeconds": 1581.36,
+      "durationSeconds": 2.48,
+      "text": "few things up. So, we are back here and"
+    },
+    {
+      "startSeconds": 1582.64,
+      "durationSeconds": 4.159,
+      "text": "I'm going to show you a few other things"
+    },
+    {
+      "startSeconds": 1583.84,
+      "durationSeconds": 4.88,
+      "text": "that we can do. Okay. So with pandas,"
+    },
+    {
+      "startSeconds": 1586.799,
+      "durationSeconds": 4.561,
+      "text": "cleaning data is also something that's"
+    },
+    {
+      "startSeconds": 1588.72,
+      "durationSeconds": 3.839,
+      "text": "going to happen quite a bit. Now one"
+    },
+    {
+      "startSeconds": 1591.36,
+      "durationSeconds": 4.88,
+      "text": "thing that you'll see a lot of people"
+    },
+    {
+      "startSeconds": 1592.559,
+      "durationSeconds": 6.321,
+      "text": "doing commonly is dropping NA tables. So"
+    },
+    {
+      "startSeconds": 1596.24,
+      "durationSeconds": 4.48,
+      "text": "they can say dataf frame.rop NA. Now"
+    },
+    {
+      "startSeconds": 1598.88,
+      "durationSeconds": 4.48,
+      "text": "what this means is drop anything that"
+    },
+    {
+      "startSeconds": 1600.72,
+      "durationSeconds": 4.16,
+      "text": "contains any null values or NA values"
+    },
+    {
+      "startSeconds": 1603.36,
+      "durationSeconds": 3.28,
+      "text": "because sometimes you'll load in data"
+    },
+    {
+      "startSeconds": 1604.88,
+      "durationSeconds": 3.039,
+      "text": "where you'll have like missing entries."
+    },
+    {
+      "startSeconds": 1606.64,
+      "durationSeconds": 2.8,
+      "text": "So like if you were to run this for"
+    },
+    {
+      "startSeconds": 1607.919,
+      "durationSeconds": 2.801,
+      "text": "example, I mean it would remove those."
+    },
+    {
+      "startSeconds": 1609.44,
+      "durationSeconds": 3.599,
+      "text": "In our case, we don't have any NA"
+    },
+    {
+      "startSeconds": 1610.72,
+      "durationSeconds": 3.28,
+      "text": "values. So there's no problem. But this"
+    },
+    {
+      "startSeconds": 1613.039,
+      "durationSeconds": 3.681,
+      "text": "is a common thing that you're going to"
+    },
+    {
+      "startSeconds": 1614,
+      "durationSeconds": 4,
+      "text": "see to clean data. Okay. Now, another"
+    },
+    {
+      "startSeconds": 1616.72,
+      "durationSeconds": 2.959,
+      "text": "thing you might see is something like"
+    },
+    {
+      "startSeconds": 1618,
+      "durationSeconds": 4.64,
+      "text": "df.fill"
+    },
+    {
+      "startSeconds": 1619.679,
+      "durationSeconds": 6.48,
+      "text": "na. So here maybe we're going to say"
+    },
+    {
+      "startSeconds": 1622.64,
+      "durationSeconds": 6.159,
+      "text": "okay we want to fill all of the order"
+    },
+    {
+      "startSeconds": 1626.159,
+      "durationSeconds": 3.921,
+      "text": "ids that don't exist with just zero."
+    },
+    {
+      "startSeconds": 1628.799,
+      "durationSeconds": 3.441,
+      "text": "Okay. So in this case rather than"
+    },
+    {
+      "startSeconds": 1630.08,
+      "durationSeconds": 3.92,
+      "text": "removing it we just fill them with zero."
+    },
+    {
+      "startSeconds": 1632.24,
+      "durationSeconds": 3.84,
+      "text": "And then you would usually specify in"
+    },
+    {
+      "startSeconds": 1634,
+      "durationSeconds": 3.52,
+      "text": "place equals true. And what that means"
+    },
+    {
+      "startSeconds": 1636.08,
+      "durationSeconds": 3.92,
+      "text": "is it's going to actually modify the"
+    },
+    {
+      "startSeconds": 1637.52,
+      "durationSeconds": 4.32,
+      "text": "existing data frame not return you a new"
+    },
+    {
+      "startSeconds": 1640,
+      "durationSeconds": 3.52,
+      "text": "data frame. because here if you don't"
+    },
+    {
+      "startSeconds": 1641.84,
+      "durationSeconds": 3.439,
+      "text": "have in place equals to true, this"
+    },
+    {
+      "startSeconds": 1643.52,
+      "durationSeconds": 3.68,
+      "text": "actually returns new data frame. This"
+    },
+    {
+      "startSeconds": 1645.279,
+      "durationSeconds": 3.52,
+      "text": "modifies the existing data frame. Okay,"
+    },
+    {
+      "startSeconds": 1647.2,
+      "durationSeconds": 3.12,
+      "text": "so those are two quick ways that you can"
+    },
+    {
+      "startSeconds": 1648.799,
+      "durationSeconds": 3.681,
+      "text": "kind of clean data that you're going to"
+    },
+    {
+      "startSeconds": 1650.32,
+      "durationSeconds": 3.28,
+      "text": "see frequently. Again, in our place or"
+    },
+    {
+      "startSeconds": 1652.48,
+      "durationSeconds": 2.319,
+      "text": "in our example, they don't really make"
+    },
+    {
+      "startSeconds": 1653.6,
+      "durationSeconds": 2.88,
+      "text": "too much sense, but I wanted to show"
+    },
+    {
+      "startSeconds": 1654.799,
+      "durationSeconds": 3.841,
+      "text": "them to you. Now, another thing that you"
+    },
+    {
+      "startSeconds": 1656.48,
+      "durationSeconds": 4.24,
+      "text": "can do is you can rename columns. So,"
+    },
+    {
+      "startSeconds": 1658.64,
+      "durationSeconds": 3.68,
+      "text": "for example, we want to rename a column."
+    },
+    {
+      "startSeconds": 1660.72,
+      "durationSeconds": 3.6,
+      "text": "So, maybe we want to change order ID to"
+    },
+    {
+      "startSeconds": 1662.32,
+      "durationSeconds": 4.08,
+      "text": "be order space ID. And then we can say"
+    },
+    {
+      "startSeconds": 1664.32,
+      "durationSeconds": 4.8,
+      "text": "in place is equal to true. So, we can"
+    },
+    {
+      "startSeconds": 1666.4,
+      "durationSeconds": 4.639,
+      "text": "run this. And then if we go here and we"
+    },
+    {
+      "startSeconds": 1669.12,
+      "durationSeconds": 3.76,
+      "text": "print the data frame, you'll see now"
+    },
+    {
+      "startSeconds": 1671.039,
+      "durationSeconds": 3.281,
+      "text": "that the order ID has a space between"
+    },
+    {
+      "startSeconds": 1672.88,
+      "durationSeconds": 3.919,
+      "text": "it. All right, so let's scroll down."
+    },
+    {
+      "startSeconds": 1674.32,
+      "durationSeconds": 3.92,
+      "text": "Let's make a few more cells. Uh, again,"
+    },
+    {
+      "startSeconds": 1676.799,
+      "durationSeconds": 2.641,
+      "text": "so much stuff to cover here, so I'm"
+    },
+    {
+      "startSeconds": 1678.24,
+      "durationSeconds": 2.559,
+      "text": "trying to be a little bit selective, but"
+    },
+    {
+      "startSeconds": 1679.44,
+      "durationSeconds": 3.44,
+      "text": "I'm going to show you a few other cool"
+    },
+    {
+      "startSeconds": 1680.799,
+      "durationSeconds": 5.201,
+      "text": "ways to analyze data. And then that's"
+    },
+    {
+      "startSeconds": 1682.88,
+      "durationSeconds": 5.44,
+      "text": "pretty much going to be it. Okay, so"
+    },
+    {
+      "startSeconds": 1686,
+      "durationSeconds": 4.32,
+      "text": "let's say we want to look at our"
+    },
+    {
+      "startSeconds": 1688.32,
+      "durationSeconds": 4.32,
+      "text": "countries, for example. What we can do"
+    },
+    {
+      "startSeconds": 1690.32,
+      "durationSeconds": 3.839,
+      "text": "is something like value counts. And"
+    },
+    {
+      "startSeconds": 1692.64,
+      "durationSeconds": 2.8,
+      "text": "notice it's showing me a bunch of other"
+    },
+    {
+      "startSeconds": 1694.159,
+      "durationSeconds": 2.64,
+      "text": "methods that I could use here, which is"
+    },
+    {
+      "startSeconds": 1695.44,
+      "durationSeconds": 2.64,
+      "text": "kind of funny. So there you go, guys."
+    },
+    {
+      "startSeconds": 1696.799,
+      "durationSeconds": 3.521,
+      "text": "you can see just how much stuff actually"
+    },
+    {
+      "startSeconds": 1698.08,
+      "durationSeconds": 4.16,
+      "text": "exists inside of pandas. But if I were"
+    },
+    {
+      "startSeconds": 1700.32,
+      "durationSeconds": 3.359,
+      "text": "to run this for example, you see now"
+    },
+    {
+      "startSeconds": 1702.24,
+      "durationSeconds": 4.08,
+      "text": "that it's going to give me a count of"
+    },
+    {
+      "startSeconds": 1703.679,
+      "durationSeconds": 4.161,
+      "text": "every single value that exists inside of"
+    },
+    {
+      "startSeconds": 1706.32,
+      "durationSeconds": 3.04,
+      "text": "here. So if you wanted to see, okay, you"
+    },
+    {
+      "startSeconds": 1707.84,
+      "durationSeconds": 3.36,
+      "text": "know, how many products are from US, how"
+    },
+    {
+      "startSeconds": 1709.36,
+      "durationSeconds": 2.88,
+      "text": "many products are from South Korea, you"
+    },
+    {
+      "startSeconds": 1711.2,
+      "durationSeconds": 2.56,
+      "text": "could do something like this and you"
+    },
+    {
+      "startSeconds": 1712.24,
+      "durationSeconds": 4.4,
+      "text": "would really quickly kind of get that"
+    },
+    {
+      "startSeconds": 1713.76,
+      "durationSeconds": 4.799,
+      "text": "analysis. Now, what we also could do is"
+    },
+    {
+      "startSeconds": 1716.64,
+      "durationSeconds": 3.84,
+      "text": "we can group by. Now, if you ever worked"
+    },
+    {
+      "startSeconds": 1718.559,
+      "durationSeconds": 3.521,
+      "text": "in SQL before, you probably know what"
+    },
+    {
+      "startSeconds": 1720.48,
+      "durationSeconds": 6.88,
+      "text": "this is. But we could do something like"
+    },
+    {
+      "startSeconds": 1722.08,
+      "durationSeconds": 6.88,
+      "text": "df dot okay, group by. All right. And"
+    },
+    {
+      "startSeconds": 1727.36,
+      "durationSeconds": 3.6,
+      "text": "then we're going to group by the"
+    },
+    {
+      "startSeconds": 1728.96,
+      "durationSeconds": 4.24,
+      "text": "country. And then we could do something"
+    },
+    {
+      "startSeconds": 1730.96,
+      "durationSeconds": 4.8,
+      "text": "like price"
+    },
+    {
+      "startSeconds": 1733.2,
+      "durationSeconds": 4,
+      "text": "dot sum. Now, if I run this, what it's"
+    },
+    {
+      "startSeconds": 1735.76,
+      "durationSeconds": 3.279,
+      "text": "going to do is it's going to sum the"
+    },
+    {
+      "startSeconds": 1737.2,
+      "durationSeconds": 5.199,
+      "text": "total price of all of the products"
+    },
+    {
+      "startSeconds": 1739.039,
+      "durationSeconds": 5.441,
+      "text": "grouped by countries. So for Argentina,"
+    },
+    {
+      "startSeconds": 1742.399,
+      "durationSeconds": 6,
+      "text": "all of the products there, their price"
+    },
+    {
+      "startSeconds": 1744.48,
+      "durationSeconds": 5.439,
+      "text": "total together is $22. Colombia 280. And"
+    },
+    {
+      "startSeconds": 1748.399,
+      "durationSeconds": 4.321,
+      "text": "you can keep going right all the way"
+    },
+    {
+      "startSeconds": 1749.919,
+      "durationSeconds": 3.921,
+      "text": "down to USA, 1265."
+    },
+    {
+      "startSeconds": 1752.72,
+      "durationSeconds": 2.8,
+      "text": "Okay, so that's something interesting"
+    },
+    {
+      "startSeconds": 1753.84,
+      "durationSeconds": 3.04,
+      "text": "that you can do. And then also let's"
+    },
+    {
+      "startSeconds": 1755.52,
+      "durationSeconds": 4.96,
+      "text": "just do another one. We can do something"
+    },
+    {
+      "startSeconds": 1756.88,
+      "durationSeconds": 6.48,
+      "text": "like df dots sort values and then"
+    },
+    {
+      "startSeconds": 1760.48,
+      "durationSeconds": 5.04,
+      "text": "something like not that price ascending"
+    },
+    {
+      "startSeconds": 1763.36,
+      "durationSeconds": 4.08,
+      "text": "for example. Let's remove this. Of"
+    },
+    {
+      "startSeconds": 1765.52,
+      "durationSeconds": 4.639,
+      "text": "course the autocomplete is really being"
+    },
+    {
+      "startSeconds": 1767.44,
+      "durationSeconds": 4.64,
+      "text": "quite difficult to deal with here. Okay."
+    },
+    {
+      "startSeconds": 1770.159,
+      "durationSeconds": 3.601,
+      "text": "So let's go here and run this. And then"
+    },
+    {
+      "startSeconds": 1772.08,
+      "durationSeconds": 3.36,
+      "text": "you see now they were running this with"
+    },
+    {
+      "startSeconds": 1773.76,
+      "durationSeconds": 3.68,
+      "text": "the price ascending and you can kind of"
+    },
+    {
+      "startSeconds": 1775.44,
+      "durationSeconds": 3.68,
+      "text": "scroll down and see all of the product"
+    },
+    {
+      "startSeconds": 1777.44,
+      "durationSeconds": 3.44,
+      "text": "prices or sorry descending not"
+    },
+    {
+      "startSeconds": 1779.12,
+      "durationSeconds": 3.36,
+      "text": "ascending. All right. So that's pretty"
+    },
+    {
+      "startSeconds": 1780.88,
+      "durationSeconds": 3.679,
+      "text": "much it. Now look there's so much other"
+    },
+    {
+      "startSeconds": 1782.48,
+      "durationSeconds": 3.12,
+      "text": "stuff to cover. Last quick thing I will"
+    },
+    {
+      "startSeconds": 1784.559,
+      "durationSeconds": 3.041,
+      "text": "show you is that if you make"
+    },
+    {
+      "startSeconds": 1785.6,
+      "durationSeconds": 3.28,
+      "text": "modifications to a dataf frame and you"
+    },
+    {
+      "startSeconds": 1787.6,
+      "durationSeconds": 3.12,
+      "text": "want to save it, you can do something"
+    },
+    {
+      "startSeconds": 1788.88,
+      "durationSeconds": 5.679,
+      "text": "like df.2"
+    },
+    {
+      "startSeconds": 1790.72,
+      "durationSeconds": 5.52,
+      "text": "csv can do, you know, new file.csv."
+    },
+    {
+      "startSeconds": 1794.559,
+      "durationSeconds": 3.441,
+      "text": "And if you want to include the indexes,"
+    },
+    {
+      "startSeconds": 1796.24,
+      "durationSeconds": 4,
+      "text": "you can say index equals true. If you"
+    },
+    {
+      "startSeconds": 1798,
+      "durationSeconds": 3.679,
+      "text": "don't, you can say index equals false."
+    },
+    {
+      "startSeconds": 1800.24,
+      "durationSeconds": 3.52,
+      "text": "And then boom, it will create a new file"
+    },
+    {
+      "startSeconds": 1801.679,
+      "durationSeconds": 4.48,
+      "text": "for you. So if I run this here, should"
+    },
+    {
+      "startSeconds": 1803.76,
+      "durationSeconds": 4.08,
+      "text": "see that we get this new file.csv that"
+    },
+    {
+      "startSeconds": 1806.159,
+      "durationSeconds": 3.601,
+      "text": "has all of these new values inside of"
+    },
+    {
+      "startSeconds": 1807.84,
+      "durationSeconds": 3.839,
+      "text": "here that we modified from our dataf"
+    },
+    {
+      "startSeconds": 1809.76,
+      "durationSeconds": 3.279,
+      "text": "frame. Okay, so I think with that said"
+    },
+    {
+      "startSeconds": 1811.679,
+      "durationSeconds": 3.36,
+      "text": "guys, that's going to wrap up this"
+    },
+    {
+      "startSeconds": 1813.039,
+      "durationSeconds": 3.601,
+      "text": "video. Again, all of this code will be"
+    },
+    {
+      "startSeconds": 1815.039,
+      "durationSeconds": 3.36,
+      "text": "available from the link in the"
+    },
+    {
+      "startSeconds": 1816.64,
+      "durationSeconds": 3.6,
+      "text": "description in case you want to check it"
+    },
+    {
+      "startSeconds": 1818.399,
+      "durationSeconds": 3.76,
+      "text": "out. There is a lot of stuff you can do"
+    },
+    {
+      "startSeconds": 1820.24,
+      "durationSeconds": 4.4,
+      "text": "with pandas. This video could easily be"
+    },
+    {
+      "startSeconds": 1822.159,
+      "durationSeconds": 4.081,
+      "text": "7 8 hours long. If you want more pandas"
+    },
+    {
+      "startSeconds": 1824.64,
+      "durationSeconds": 4.34,
+      "text": "content, then please let me know and I"
+    },
+    {
+      "startSeconds": 1826.24,
+      "durationSeconds": 11.82,
+      "text": "would be happy to make it."
+    },
+    {
+      "startSeconds": 1828.98,
+      "durationSeconds": 9.08,
+      "text": "[Music]"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Overview"
+    },
+    {
+      "startSeconds": 22,
+      "label": "Setup/Install"
+    },
+    {
+      "startSeconds": 125,
+      "label": "DataFrame Fundamentals"
+    },
+    {
+      "startSeconds": 526,
+      "label": "Using Jupyter Notebooks"
+    },
+    {
+      "startSeconds": 595,
+      "label": "Loading CSV Files"
+    },
+    {
+      "startSeconds": 660,
+      "label": "Exploring a DataFrame"
+    },
+    {
+      "startSeconds": 804,
+      "label": "Indexing By Row & Column"
+    },
+    {
+      "startSeconds": 1060,
+      "label": "Filtering"
+    },
+    {
+      "startSeconds": 1323,
+      "label": "Updating Data"
+    },
+    {
+      "startSeconds": 1548,
+      "label": "Deleting Data"
+    },
+    {
+      "startSeconds": 1578,
+      "label": "Cleaning Data"
+    },
+    {
+      "startSeconds": 1680,
+      "label": "Analyzing Data"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:57.654Z"
+}

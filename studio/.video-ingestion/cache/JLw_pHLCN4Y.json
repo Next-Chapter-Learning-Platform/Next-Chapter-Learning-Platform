@@ -1,0 +1,690 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "JLw_pHLCN4Y",
+  "url": "https://www.youtube.com/watch?v=JLw_pHLCN4Y",
+  "title": "Kubernetes OOMKilled: Fix Memory Limit Issues & Exit Code 137 | K8s Troubleshooting Tutorial",
+  "description": "🚀 Master Kubernetes OOMKilled errors and learn how to handle out-of-memory container terminations like a pro!\n\nIn this comprehensive Kubernetes troubleshooting tutorial, you'll learn everything about OOMKilled errors (Exit Code 137) and how to fix memory limit issues in your containers. Whether you're a beginner or looking to strengthen your K8s skills, this guide covers detection, troubleshooting, and prevention strategies.\n\n💡 What You'll Learn:\n✅ What OOMKilled means and why it happens\n✅ Understanding Exit Code 137 in Kubernetes\n✅ Common causes of memory limit issues\n✅ How to detect OOMKilled errors using kubectl\n✅ Memory requests vs limits explained\n✅ Setting proper memory limits in pod specifications\n✅ Step-by-step troubleshooting techniques\n✅ Best practices to prevent OOM errors\n\n🎯 Perfect for DevOps engineers, system administrators, and anyone working with Kubernetes containers who wants to understand and resolve memory-related container failures.\n\n🔧 Topics Covered:\nContainer memory management, Kubernetes resource limits, pod troubleshooting, exit code debugging, memory leak detection, horizontal pod autoscaling, and production-ready best practices.\n\nDon't let OOMKilled errors crash your applications! Learn how to diagnose and fix them effectively.\n\n👍 Like this video if you found it helpful!\n💬 Comment below with your Kubernetes troubleshooting questions!\n🔔 Subscribe for more Kubernetes tutorials and DevOps content!\n\n#Kubernetes #OOMKilled #K8s #DevOps #ContainerOrchestration #CloudNative #KubernetesTroubleshooting #ExitCode137 #MemoryManagement #DockerContainers #CloudComputing #KubernetesTutorial #DevOpsEngineering #SysAdmin #ContainerSecurity\n\nChapters:\n00:00 - OOMKilled: Understanding Memory Limit Issues\n00:26 - What is OOMKilled?\n01:03 - Common Causes\n01:37 - Detecting OOMKilled\n02:08 - Memory: Requests vs Limits\n02:45 - Setting Memory Limits\n03:21 - Troubleshooting Steps\n04:03 - Prevention Best Practices\n04:52 - Outro\n\n🔗 Stay Connected:\n▶️ YouTube: https://youtube.com/@thecodelucky\n📱 Instagram: https://instagram.com/thecodelucky\n📘 Facebook: https://facebook.com/codeluckyfb\n🌐 Website: https://codelucky.com\n\n⭐ Support us by Liking, Subscribing, and Sharing!\n💬 Drop your questions in the comments below\n🔔 Hit the notification bell to never miss an update\n\n#CodeLucky",
+  "expectedDurationSeconds": 308,
+  "transcript": [
+    {
+      "startSeconds": 0.4,
+      "durationSeconds": 3.76,
+      "text": "Welcome to this Kubernetes"
+    },
+    {
+      "startSeconds": 1.839,
+      "durationSeconds": 3.92,
+      "text": "troubleshooting tutorial. Today we're"
+    },
+    {
+      "startSeconds": 4.16,
+      "durationSeconds": 3.599,
+      "text": "diving into one of the most common"
+    },
+    {
+      "startSeconds": 5.759,
+      "durationSeconds": 5.281,
+      "text": "issues you'll encounter when running"
+    },
+    {
+      "startSeconds": 7.759,
+      "durationSeconds": 5.681,
+      "text": "containers. OOM killed. This stands for"
+    },
+    {
+      "startSeconds": 11.04,
+      "durationSeconds": 5.04,
+      "text": "out of memory killed and it happens when"
+    },
+    {
+      "startSeconds": 13.44,
+      "durationSeconds": 4.8,
+      "text": "containers exceed their memory limits."
+    },
+    {
+      "startSeconds": 16.08,
+      "durationSeconds": 4.08,
+      "text": "Understanding this error is crucial for"
+    },
+    {
+      "startSeconds": 18.24,
+      "durationSeconds": 4.56,
+      "text": "maintaining stable applications in"
+    },
+    {
+      "startSeconds": 20.16,
+      "durationSeconds": 4.48,
+      "text": "Kubernetes. Let's explore what causes"
+    },
+    {
+      "startSeconds": 22.8,
+      "durationSeconds": 4.84,
+      "text": "this issue and how to handle it"
+    },
+    {
+      "startSeconds": 24.64,
+      "durationSeconds": 3,
+      "text": "effectively."
+    },
+    {
+      "startSeconds": 28,
+      "durationSeconds": 4.16,
+      "text": "OOM killed occurs when a container is"
+    },
+    {
+      "startSeconds": 30.24,
+      "durationSeconds": 3.999,
+      "text": "forcibly terminated because it tried to"
+    },
+    {
+      "startSeconds": 32.16,
+      "durationSeconds": 4,
+      "text": "use more memory than it was allowed."
+    },
+    {
+      "startSeconds": 34.239,
+      "durationSeconds": 4.16,
+      "text": "When this happens, the Linux kernel's"
+    },
+    {
+      "startSeconds": 36.16,
+      "durationSeconds": 4.16,
+      "text": "out of memory killer mechanism steps in"
+    },
+    {
+      "startSeconds": 38.399,
+      "durationSeconds": 4.32,
+      "text": "and terminates the container to protect"
+    },
+    {
+      "startSeconds": 40.32,
+      "durationSeconds": 6.239,
+      "text": "the system. You'll recognize this error"
+    },
+    {
+      "startSeconds": 42.719,
+      "durationSeconds": 6.801,
+      "text": "by its distinctive exit code 137. This"
+    },
+    {
+      "startSeconds": 46.559,
+      "durationSeconds": 5.52,
+      "text": "exit code is a combination of 128, which"
+    },
+    {
+      "startSeconds": 49.52,
+      "durationSeconds": 6.48,
+      "text": "is the base code for fatal signals, plus"
+    },
+    {
+      "startSeconds": 52.079,
+      "durationSeconds": 6.96,
+      "text": "9, which represents the SI GKILL signal."
+    },
+    {
+      "startSeconds": 56,
+      "durationSeconds": 4.879,
+      "text": "So whenever you see exit code 137, you"
+    },
+    {
+      "startSeconds": 59.039,
+      "durationSeconds": 5.241,
+      "text": "know a container was killed due to"
+    },
+    {
+      "startSeconds": 60.879,
+      "durationSeconds": 3.401,
+      "text": "memory issues."
+    },
+    {
+      "startSeconds": 64.479,
+      "durationSeconds": 4.96,
+      "text": "There are four main reasons why OOM"
+    },
+    {
+      "startSeconds": 66.72,
+      "durationSeconds": 4.64,
+      "text": "killed errors occur. First, the memory"
+    },
+    {
+      "startSeconds": 69.439,
+      "durationSeconds": 4.881,
+      "text": "limit might simply be set too low for"
+    },
+    {
+      "startSeconds": 71.36,
+      "durationSeconds": 4.56,
+      "text": "your application's actual needs. Second,"
+    },
+    {
+      "startSeconds": 74.32,
+      "durationSeconds": 3.92,
+      "text": "your application could have a memory"
+    },
+    {
+      "startSeconds": 75.92,
+      "durationSeconds": 5.28,
+      "text": "leak, meaning it's not releasing memory"
+    },
+    {
+      "startSeconds": 78.24,
+      "durationSeconds": 4.559,
+      "text": "properly after use. Third, a sudden"
+    },
+    {
+      "startSeconds": 81.2,
+      "durationSeconds": 4.16,
+      "text": "traffic spike can cause memory"
+    },
+    {
+      "startSeconds": 82.799,
+      "durationSeconds": 4.401,
+      "text": "consumption to jump unexpectedly. And"
+    },
+    {
+      "startSeconds": 85.36,
+      "durationSeconds": 3.52,
+      "text": "fourth, there might be a bug in your"
+    },
+    {
+      "startSeconds": 87.2,
+      "durationSeconds": 4.559,
+      "text": "application code that's causing"
+    },
+    {
+      "startSeconds": 88.88,
+      "durationSeconds": 4.48,
+      "text": "excessive memory usage. Identifying"
+    },
+    {
+      "startSeconds": 91.759,
+      "durationSeconds": 3.841,
+      "text": "which of these is affecting your"
+    },
+    {
+      "startSeconds": 93.36,
+      "durationSeconds": 5.799,
+      "text": "application is the first step toward"
+    },
+    {
+      "startSeconds": 95.6,
+      "durationSeconds": 3.559,
+      "text": "fixing the problem."
+    },
+    {
+      "startSeconds": 99.2,
+      "durationSeconds": 4.16,
+      "text": "To detect if your pod was killed due to"
+    },
+    {
+      "startSeconds": 101.119,
+      "durationSeconds": 4.241,
+      "text": "out of memory, you can use the cubectal"
+    },
+    {
+      "startSeconds": 103.36,
+      "durationSeconds": 4.32,
+      "text": "describe pod command followed by your"
+    },
+    {
+      "startSeconds": 105.36,
+      "durationSeconds": 4.799,
+      "text": "pod name. This will show you detailed"
+    },
+    {
+      "startSeconds": 107.68,
+      "durationSeconds": 4.32,
+      "text": "information about the pod status. Look"
+    },
+    {
+      "startSeconds": 110.159,
+      "durationSeconds": 4.081,
+      "text": "specifically for the last state section"
+    },
+    {
+      "startSeconds": 112,
+      "durationSeconds": 6.159,
+      "text": "in the output. If you see the reason"
+    },
+    {
+      "startSeconds": 114.24,
+      "durationSeconds": 5.68,
+      "text": "listed as OOM killed and exit code 137,"
+    },
+    {
+      "startSeconds": 118.159,
+      "durationSeconds": 3.841,
+      "text": "you've confirmed that your container was"
+    },
+    {
+      "startSeconds": 119.92,
+      "durationSeconds": 4.799,
+      "text": "terminated due to exceeding its memory"
+    },
+    {
+      "startSeconds": 122,
+      "durationSeconds": 4.399,
+      "text": "limit. This information is essential for"
+    },
+    {
+      "startSeconds": 124.719,
+      "durationSeconds": 4.921,
+      "text": "troubleshooting and determining your"
+    },
+    {
+      "startSeconds": 126.399,
+      "durationSeconds": 3.241,
+      "text": "next steps."
+    },
+    {
+      "startSeconds": 129.759,
+      "durationSeconds": 4.48,
+      "text": "Kubernetes uses two different settings"
+    },
+    {
+      "startSeconds": 131.599,
+      "durationSeconds": 5.201,
+      "text": "to manage container memory requests and"
+    },
+    {
+      "startSeconds": 134.239,
+      "durationSeconds": 4.481,
+      "text": "limits. Memory requests specify the"
+    },
+    {
+      "startSeconds": 136.8,
+      "durationSeconds": 4.24,
+      "text": "minimum amount of memory guaranteed to"
+    },
+    {
+      "startSeconds": 138.72,
+      "durationSeconds": 5.04,
+      "text": "your container for scheduling purposes."
+    },
+    {
+      "startSeconds": 141.04,
+      "durationSeconds": 4.72,
+      "text": "The Kubernetesuler uses this value to"
+    },
+    {
+      "startSeconds": 143.76,
+      "durationSeconds": 4.559,
+      "text": "decide which node has enough resources"
+    },
+    {
+      "startSeconds": 145.76,
+      "durationSeconds": 4.479,
+      "text": "to run your pod. Memory limits, on the"
+    },
+    {
+      "startSeconds": 148.319,
+      "durationSeconds": 4.481,
+      "text": "other hand, set the maximum amount of"
+    },
+    {
+      "startSeconds": 150.239,
+      "durationSeconds": 4.481,
+      "text": "memory your container is allowed to use."
+    },
+    {
+      "startSeconds": 152.8,
+      "durationSeconds": 4.64,
+      "text": "If your container tries to exceed this"
+    },
+    {
+      "startSeconds": 154.72,
+      "durationSeconds": 5.12,
+      "text": "limit, it will be terminated with an OOM"
+    },
+    {
+      "startSeconds": 157.44,
+      "durationSeconds": 4.48,
+      "text": "killed error. Understanding the"
+    },
+    {
+      "startSeconds": 159.84,
+      "durationSeconds": 3.92,
+      "text": "difference between these two settings is"
+    },
+    {
+      "startSeconds": 161.92,
+      "durationSeconds": 3.679,
+      "text": "fundamental to proper resource"
+    },
+    {
+      "startSeconds": 163.76,
+      "durationSeconds": 3.52,
+      "text": "management."
+    },
+    {
+      "startSeconds": 165.599,
+      "durationSeconds": 3.36,
+      "text": "Here's"
+    },
+    {
+      "startSeconds": 167.28,
+      "durationSeconds": 3.84,
+      "text": "how you configure memory settings in"
+    },
+    {
+      "startSeconds": 168.959,
+      "durationSeconds": 4.321,
+      "text": "your pod specification. Under the"
+    },
+    {
+      "startSeconds": 171.12,
+      "durationSeconds": 4.96,
+      "text": "resources section, you define both"
+    },
+    {
+      "startSeconds": 173.28,
+      "durationSeconds": 5.599,
+      "text": "requests and limits. In this example,"
+    },
+    {
+      "startSeconds": 176.08,
+      "durationSeconds": 5.76,
+      "text": "we're requesting 256 megabytes of memory"
+    },
+    {
+      "startSeconds": 178.879,
+      "durationSeconds": 5.041,
+      "text": "and setting a limit of 512 megabytes."
+    },
+    {
+      "startSeconds": 181.84,
+      "durationSeconds": 4.24,
+      "text": "The request ensures that the pod will"
+    },
+    {
+      "startSeconds": 183.92,
+      "durationSeconds": 5.12,
+      "text": "only be scheduled on nodes with at least"
+    },
+    {
+      "startSeconds": 186.08,
+      "durationSeconds": 4.799,
+      "text": "256 megabytes available. The limit"
+    },
+    {
+      "startSeconds": 189.04,
+      "durationSeconds": 4.559,
+      "text": "prevents the container from using more"
+    },
+    {
+      "startSeconds": 190.879,
+      "durationSeconds": 4.72,
+      "text": "than 512 megabytes, protecting the node"
+    },
+    {
+      "startSeconds": 193.599,
+      "durationSeconds": 3.761,
+      "text": "from memory exhaustion."
+    },
+    {
+      "startSeconds": 195.599,
+      "durationSeconds": 4,
+      "text": "These values should be based on your"
+    },
+    {
+      "startSeconds": 197.36,
+      "durationSeconds": 5.239,
+      "text": "application's actual memory usage"
+    },
+    {
+      "startSeconds": 199.599,
+      "durationSeconds": 3,
+      "text": "patterns."
+    },
+    {
+      "startSeconds": 202.8,
+      "durationSeconds": 5.6,
+      "text": "When facing an OOM killed error, follow"
+    },
+    {
+      "startSeconds": 205.519,
+      "durationSeconds": 4.64,
+      "text": "these four troubleshooting steps. First,"
+    },
+    {
+      "startSeconds": 208.4,
+      "durationSeconds": 4.08,
+      "text": "check your current memory usage using"
+    },
+    {
+      "startSeconds": 210.159,
+      "durationSeconds": 4.08,
+      "text": "the cubectal top command to see how much"
+    },
+    {
+      "startSeconds": 212.48,
+      "durationSeconds": 4.24,
+      "text": "memory your containers are actually"
+    },
+    {
+      "startSeconds": 214.239,
+      "durationSeconds": 4.64,
+      "text": "consuming. Second, review your"
+    },
+    {
+      "startSeconds": 216.72,
+      "durationSeconds": 4.799,
+      "text": "application logs to identify memory"
+    },
+    {
+      "startSeconds": 218.879,
+      "durationSeconds": 4.561,
+      "text": "usage patterns and potential spikes."
+    },
+    {
+      "startSeconds": 221.519,
+      "durationSeconds": 4.481,
+      "text": "Third, analyze whether your memory"
+    },
+    {
+      "startSeconds": 223.44,
+      "durationSeconds": 5.28,
+      "text": "limits align with your actual usage or"
+    },
+    {
+      "startSeconds": 226,
+      "durationSeconds": 4.959,
+      "text": "if they're too restrictive. Finally,"
+    },
+    {
+      "startSeconds": 228.72,
+      "durationSeconds": 4.079,
+      "text": "based on your findings, either adjust"
+    },
+    {
+      "startSeconds": 230.959,
+      "durationSeconds": 4.401,
+      "text": "the memory limits to accommodate your"
+    },
+    {
+      "startSeconds": 232.799,
+      "durationSeconds": 5.601,
+      "text": "workload or investigate your application"
+    },
+    {
+      "startSeconds": 235.36,
+      "durationSeconds": 5.519,
+      "text": "code for memory leaks or inefficiencies."
+    },
+    {
+      "startSeconds": 238.4,
+      "durationSeconds": 6.68,
+      "text": "Systematic troubleshooting will help you"
+    },
+    {
+      "startSeconds": 240.879,
+      "durationSeconds": 4.201,
+      "text": "identify the root cause quickly."
+    },
+    {
+      "startSeconds": 245.28,
+      "durationSeconds": 5.36,
+      "text": "Preventing OOM killed errors requires"
+    },
+    {
+      "startSeconds": 247.68,
+      "durationSeconds": 4.96,
+      "text": "following several best practices. First,"
+    },
+    {
+      "startSeconds": 250.64,
+      "durationSeconds": 3.76,
+      "text": "set realistic memory limits based on"
+    },
+    {
+      "startSeconds": 252.64,
+      "durationSeconds": 4.159,
+      "text": "actual usage patterns rather than"
+    },
+    {
+      "startSeconds": 254.4,
+      "durationSeconds": 4.239,
+      "text": "guessing. Monitor your applications in"
+    },
+    {
+      "startSeconds": 256.799,
+      "durationSeconds": 4.56,
+      "text": "development and staging to understand"
+    },
+    {
+      "startSeconds": 258.639,
+      "durationSeconds": 4.481,
+      "text": "their memory requirements. Second,"
+    },
+    {
+      "startSeconds": 261.359,
+      "durationSeconds": 4.001,
+      "text": "implement continuous monitoring of"
+    },
+    {
+      "startSeconds": 263.12,
+      "durationSeconds": 5.04,
+      "text": "memory metrics in production so you can"
+    },
+    {
+      "startSeconds": 265.36,
+      "durationSeconds": 5.68,
+      "text": "detect issues before they cause outages."
+    },
+    {
+      "startSeconds": 268.16,
+      "durationSeconds": 5.039,
+      "text": "Third, use horizontal pod autoscaling to"
+    },
+    {
+      "startSeconds": 271.04,
+      "durationSeconds": 5.04,
+      "text": "distribute load across multiple pods"
+    },
+    {
+      "startSeconds": 273.199,
+      "durationSeconds": 4.881,
+      "text": "when demand increases. And fourth,"
+    },
+    {
+      "startSeconds": 276.08,
+      "durationSeconds": 4.08,
+      "text": "always load test your applications"
+    },
+    {
+      "startSeconds": 278.08,
+      "durationSeconds": 4.48,
+      "text": "before deploying to production to"
+    },
+    {
+      "startSeconds": 280.16,
+      "durationSeconds": 4.56,
+      "text": "understand their behavior under stress."
+    },
+    {
+      "startSeconds": 282.56,
+      "durationSeconds": 4,
+      "text": "By following these practices, you'll"
+    },
+    {
+      "startSeconds": 284.72,
+      "durationSeconds": 4.479,
+      "text": "keep your containers healthy and your"
+    },
+    {
+      "startSeconds": 286.56,
+      "durationSeconds": 6.96,
+      "text": "applications running efficiently. Thanks"
+    },
+    {
+      "startSeconds": 289.199,
+      "durationSeconds": 6.56,
+      "text": "for watching and happy troubleshooting."
+    },
+    {
+      "startSeconds": 293.52,
+      "durationSeconds": 5.76,
+      "text": "If you like this video, hit that like"
+    },
+    {
+      "startSeconds": 295.759,
+      "durationSeconds": 6.241,
+      "text": "button and don't forget to subscribe."
+    },
+    {
+      "startSeconds": 299.28,
+      "durationSeconds": 4.38,
+      "text": "Visit codelucky.com for more such useful"
+    },
+    {
+      "startSeconds": 302,
+      "durationSeconds": 7.48,
+      "text": "content."
+    },
+    {
+      "startSeconds": 303.66,
+      "durationSeconds": 5.82,
+      "text": "[Music]"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "OOMKilled: Understanding Memory Limit Issues"
+    },
+    {
+      "startSeconds": 26,
+      "label": "What is OOMKilled?"
+    },
+    {
+      "startSeconds": 63,
+      "label": "Common Causes"
+    },
+    {
+      "startSeconds": 97,
+      "label": "Detecting OOMKilled"
+    },
+    {
+      "startSeconds": 128,
+      "label": "Memory: Requests vs Limits"
+    },
+    {
+      "startSeconds": 165,
+      "label": "Setting Memory Limits"
+    },
+    {
+      "startSeconds": 201,
+      "label": "Troubleshooting Steps"
+    },
+    {
+      "startSeconds": 243,
+      "label": "Prevention Best Practices"
+    },
+    {
+      "startSeconds": 292,
+      "label": "Outro"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:23:13.201Z"
+}

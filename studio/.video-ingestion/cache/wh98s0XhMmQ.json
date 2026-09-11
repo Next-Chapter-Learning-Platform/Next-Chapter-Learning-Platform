@@ -1,0 +1,903 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "wh98s0XhMmQ",
+  "url": "https://www.youtube.com/watch?v=wh98s0XhMmQ",
+  "title": "Caching Pitfalls Every Developer Should Know",
+  "description": "Get a Free System Design PDF with 158 pages by subscribing to our weekly newsletter: https://bit.ly/bytebytegoytTopic\n\nAnimation tools: Adobe Illustrator and After Effects.\n\nCheckout our bestselling System Design Interview books: \nVolume 1: https://amzn.to/3Ou7gkd\nVolume 2: https://amzn.to/3HqGozy\n\nThe digital version of System Design Interview books: https://bit.ly/3mlDSk9\n\nABOUT US: \nCovering topics and trends in large-scale system design, from the authors of the best-selling System Design Interview series.",
+  "expectedDurationSeconds": 401,
+  "transcript": [
+    {
+      "startSeconds": 0.44,
+      "durationSeconds": 3.56,
+      "text": "Today we're going to talk about caching."
+    },
+    {
+      "startSeconds": 2.12,
+      "durationSeconds": 3.92,
+      "text": "A key concept in system design that is"
+    },
+    {
+      "startSeconds": 4,
+      "durationSeconds": 3.72,
+      "text": "critical for performance but then also"
+    },
+    {
+      "startSeconds": 6.04,
+      "durationSeconds": 2.88,
+      "text": "cause some issues if not handled"
+    },
+    {
+      "startSeconds": 7.72,
+      "durationSeconds": 3.12,
+      "text": "properly."
+    },
+    {
+      "startSeconds": 8.92,
+      "durationSeconds": 3.6,
+      "text": "Before jumping into what can go wrong,"
+    },
+    {
+      "startSeconds": 10.84,
+      "durationSeconds": 4.36,
+      "text": "let's quickly cover the basics of what"
+    },
+    {
+      "startSeconds": 12.52,
+      "durationSeconds": 4.92,
+      "text": "caching is and why it matters. Simply"
+    },
+    {
+      "startSeconds": 15.2,
+      "durationSeconds": 4.04,
+      "text": "put, caching is like a memory layer that"
+    },
+    {
+      "startSeconds": 17.44,
+      "durationSeconds": 2.84,
+      "text": "store copies of frequently accessed"
+    },
+    {
+      "startSeconds": 19.24,
+      "durationSeconds": 2.8,
+      "text": "data."
+    },
+    {
+      "startSeconds": 20.28,
+      "durationSeconds": 4.4,
+      "text": "It's a strategy to speed things up by"
+    },
+    {
+      "startSeconds": 22.04,
+      "durationSeconds": 4.28,
+      "text": "keeping data readily available, reducing"
+    },
+    {
+      "startSeconds": 24.68,
+      "durationSeconds": 4.52,
+      "text": "the need to fetch it from slower"
+    },
+    {
+      "startSeconds": 26.32,
+      "durationSeconds": 5.2,
+      "text": "databases every time it is requested."
+    },
+    {
+      "startSeconds": 29.2,
+      "durationSeconds": 5,
+      "text": "For example, think about database with"
+    },
+    {
+      "startSeconds": 31.52,
+      "durationSeconds": 4.32,
+      "text": "user profiles. A cache for this database"
+    },
+    {
+      "startSeconds": 34.2,
+      "durationSeconds": 3.44,
+      "text": "might store the most popular user"
+    },
+    {
+      "startSeconds": 35.84,
+      "durationSeconds": 4.24,
+      "text": "profile so that when someone view a"
+    },
+    {
+      "startSeconds": 37.64,
+      "durationSeconds": 5.04,
+      "text": "profile, it loads instantly instead of"
+    },
+    {
+      "startSeconds": 40.08,
+      "durationSeconds": 4.44,
+      "text": "hitting the database on every view. Now,"
+    },
+    {
+      "startSeconds": 42.68,
+      "durationSeconds": 4.2,
+      "text": "even with these performance gains,"
+    },
+    {
+      "startSeconds": 44.52,
+      "durationSeconds": 4.16,
+      "text": "caching also introduces new challenges."
+    },
+    {
+      "startSeconds": 46.88,
+      "durationSeconds": 3.2,
+      "text": "Let's unpack the common problems that"
+    },
+    {
+      "startSeconds": 48.68,
+      "durationSeconds": 4.32,
+      "text": "can come up."
+    },
+    {
+      "startSeconds": 50.08,
+      "durationSeconds": 5,
+      "text": "First, let's explore cache stampede."
+    },
+    {
+      "startSeconds": 53,
+      "durationSeconds": 4.52,
+      "text": "Imagine a web server using Redis to"
+    },
+    {
+      "startSeconds": 55.08,
+      "durationSeconds": 4.72,
+      "text": "cache pages for a set duration. These"
+    },
+    {
+      "startSeconds": 57.52,
+      "durationSeconds": 4.76,
+      "text": "pages require extensive database calls"
+    },
+    {
+      "startSeconds": 59.8,
+      "durationSeconds": 4.6,
+      "text": "and take several seconds to render. With"
+    },
+    {
+      "startSeconds": 62.28,
+      "durationSeconds": 4.32,
+      "text": "caching, the system stays responsive"
+    },
+    {
+      "startSeconds": 64.4,
+      "durationSeconds": 4.4,
+      "text": "under high load since resource-heavy"
+    },
+    {
+      "startSeconds": 66.6,
+      "durationSeconds": 4.12,
+      "text": "pages are served from cache."
+    },
+    {
+      "startSeconds": 68.8,
+      "durationSeconds": 4.48,
+      "text": "However, under extreme traffic, if a"
+    },
+    {
+      "startSeconds": 70.72,
+      "durationSeconds": 4.16,
+      "text": "cache page expires, multiple threads"
+    },
+    {
+      "startSeconds": 73.28,
+      "durationSeconds": 4.04,
+      "text": "across the web cluster may try"
+    },
+    {
+      "startSeconds": 74.88,
+      "durationSeconds": 4.6,
+      "text": "refreshing the expired page at the same"
+    },
+    {
+      "startSeconds": 77.32,
+      "durationSeconds": 4.32,
+      "text": "time. This flood of requests could"
+    },
+    {
+      "startSeconds": 79.48,
+      "durationSeconds": 4.72,
+      "text": "overwhelm the database, potentially"
+    },
+    {
+      "startSeconds": 81.64,
+      "durationSeconds": 5.4,
+      "text": "causing system failure and prevent the"
+    },
+    {
+      "startSeconds": 84.2,
+      "durationSeconds": 5.96,
+      "text": "page from being recached. So, how can we"
+    },
+    {
+      "startSeconds": 87.04,
+      "durationSeconds": 5.84,
+      "text": "prevent stampedes? A few key strategies."
+    },
+    {
+      "startSeconds": 90.16,
+      "durationSeconds": 4.72,
+      "text": "One is locking. Upon a cache miss, each"
+    },
+    {
+      "startSeconds": 92.88,
+      "durationSeconds": 4.28,
+      "text": "request attempts to acquire a lock for"
+    },
+    {
+      "startSeconds": 94.88,
+      "durationSeconds": 4.56,
+      "text": "that cache key before recomputing the"
+    },
+    {
+      "startSeconds": 97.16,
+      "durationSeconds": 5.12,
+      "text": "expired page. If the lock is not"
+    },
+    {
+      "startSeconds": 99.44,
+      "durationSeconds": 4.76,
+      "text": "acquired, there are some options. One,"
+    },
+    {
+      "startSeconds": 102.28,
+      "durationSeconds": 4.68,
+      "text": "the request can wait until the value is"
+    },
+    {
+      "startSeconds": 104.2,
+      "durationSeconds": 4.88,
+      "text": "recomputed by another thread. Two, the"
+    },
+    {
+      "startSeconds": 106.96,
+      "durationSeconds": 4.36,
+      "text": "request can immediately return a not"
+    },
+    {
+      "startSeconds": 109.08,
+      "durationSeconds": 5,
+      "text": "found response and let the client handle"
+    },
+    {
+      "startSeconds": 111.32,
+      "durationSeconds": 4.96,
+      "text": "the situation with a back-off retry."
+    },
+    {
+      "startSeconds": 114.08,
+      "durationSeconds": 4.48,
+      "text": "Three, the system can maintain a stale"
+    },
+    {
+      "startSeconds": 116.28,
+      "durationSeconds": 4.48,
+      "text": "version of the cached item to be used"
+    },
+    {
+      "startSeconds": 118.56,
+      "durationSeconds": 3.76,
+      "text": "temporarily while the new value is"
+    },
+    {
+      "startSeconds": 120.76,
+      "durationSeconds": 3.24,
+      "text": "recomputed."
+    },
+    {
+      "startSeconds": 122.32,
+      "durationSeconds": 3.76,
+      "text": "Locking requires an additional write"
+    },
+    {
+      "startSeconds": 124,
+      "durationSeconds": 4.479,
+      "text": "operation for the lock itself, and"
+    },
+    {
+      "startSeconds": 126.08,
+      "durationSeconds": 4.88,
+      "text": "implementing lock acquisition correctly"
+    },
+    {
+      "startSeconds": 128.479,
+      "durationSeconds": 4.721,
+      "text": "can be challenging. Another solution is"
+    },
+    {
+      "startSeconds": 130.96,
+      "durationSeconds": 4.8,
+      "text": "offloading recomputation to an external"
+    },
+    {
+      "startSeconds": 133.2,
+      "durationSeconds": 5.2,
+      "text": "process. This method can be activated in"
+    },
+    {
+      "startSeconds": 135.76,
+      "durationSeconds": 5,
+      "text": "various ways, either proactively when a"
+    },
+    {
+      "startSeconds": 138.4,
+      "durationSeconds": 5.28,
+      "text": "cache key is nearing expiration, or"
+    },
+    {
+      "startSeconds": 140.76,
+      "durationSeconds": 4.8,
+      "text": "reactively when a cache miss occurs."
+    },
+    {
+      "startSeconds": 143.68,
+      "durationSeconds": 3.84,
+      "text": "This approach adds another moving part"
+    },
+    {
+      "startSeconds": 145.56,
+      "durationSeconds": 3.64,
+      "text": "to the architecture that requires"
+    },
+    {
+      "startSeconds": 147.52,
+      "durationSeconds": 3.4,
+      "text": "careful ongoing maintenance and"
+    },
+    {
+      "startSeconds": 149.2,
+      "durationSeconds": 4.56,
+      "text": "monitoring. A third approach is"
+    },
+    {
+      "startSeconds": 150.92,
+      "durationSeconds": 4.72,
+      "text": "probabilistic early expiration. In this"
+    },
+    {
+      "startSeconds": 153.76,
+      "durationSeconds": 3.68,
+      "text": "strategy, each request has a small"
+    },
+    {
+      "startSeconds": 155.64,
+      "durationSeconds": 4.36,
+      "text": "chance of proactively triggering"
+    },
+    {
+      "startSeconds": 157.44,
+      "durationSeconds": 5.16,
+      "text": "recomputation of the cached value before"
+    },
+    {
+      "startSeconds": 160,
+      "durationSeconds": 4.12,
+      "text": "its actual expiration. The likelihood of"
+    },
+    {
+      "startSeconds": 162.6,
+      "durationSeconds": 3.68,
+      "text": "this happening increases as the"
+    },
+    {
+      "startSeconds": 164.12,
+      "durationSeconds": 4.56,
+      "text": "expiration time approaches. This"
+    },
+    {
+      "startSeconds": 166.28,
+      "durationSeconds": 4.64,
+      "text": "staggered early refreshing mitigates the"
+    },
+    {
+      "startSeconds": 168.68,
+      "durationSeconds": 3.76,
+      "text": "impact of stampeding since fewer keys"
+    },
+    {
+      "startSeconds": 170.92,
+      "durationSeconds": 3.64,
+      "text": "will expire."
+    },
+    {
+      "startSeconds": 172.44,
+      "durationSeconds": 4.04,
+      "text": "Moving on to cache penetration. This"
+    },
+    {
+      "startSeconds": 174.56,
+      "durationSeconds": 3.76,
+      "text": "happens when a request is made for data"
+    },
+    {
+      "startSeconds": 176.48,
+      "durationSeconds": 5.039,
+      "text": "that doesn't exist in the database or"
+    },
+    {
+      "startSeconds": 178.32,
+      "durationSeconds": 4.8,
+      "text": "cache. This results in unnecessary load"
+    },
+    {
+      "startSeconds": 181.519,
+      "durationSeconds": 4.201,
+      "text": "as the system tries to retrieve"
+    },
+    {
+      "startSeconds": 183.12,
+      "durationSeconds": 4.56,
+      "text": "non-existent data. This can destabilize"
+    },
+    {
+      "startSeconds": 185.72,
+      "durationSeconds": 3.4,
+      "text": "the entire system if the request volume"
+    },
+    {
+      "startSeconds": 187.68,
+      "durationSeconds": 3.8,
+      "text": "is high."
+    },
+    {
+      "startSeconds": 189.12,
+      "durationSeconds": 4.48,
+      "text": "To mitigate cache penetration, implement"
+    },
+    {
+      "startSeconds": 191.48,
+      "durationSeconds": 4.84,
+      "text": "a placeholder value for non-existent"
+    },
+    {
+      "startSeconds": 193.6,
+      "durationSeconds": 4.48,
+      "text": "keys. This way, follow-up requests for"
+    },
+    {
+      "startSeconds": 196.32,
+      "durationSeconds": 4.08,
+      "text": "the same missing data hit the"
+    },
+    {
+      "startSeconds": 198.08,
+      "durationSeconds": 5,
+      "text": "placeholders in cache instead of"
+    },
+    {
+      "startSeconds": 200.4,
+      "durationSeconds": 4.52,
+      "text": "pointlessly hitting the database again."
+    },
+    {
+      "startSeconds": 203.08,
+      "durationSeconds": 3.879,
+      "text": "Setting appropriate TTL for these"
+    },
+    {
+      "startSeconds": 204.92,
+      "durationSeconds": 4.88,
+      "text": "placeholders prevents them from"
+    },
+    {
+      "startSeconds": 206.959,
+      "durationSeconds": 5.401,
+      "text": "occupying cache space indefinitely."
+    },
+    {
+      "startSeconds": 209.8,
+      "durationSeconds": 4.52,
+      "text": "However, this approach requires careful"
+    },
+    {
+      "startSeconds": 212.36,
+      "durationSeconds": 4.36,
+      "text": "tuning to avoid significant cache"
+    },
+    {
+      "startSeconds": 214.32,
+      "durationSeconds": 4.36,
+      "text": "resource consumption, especially for"
+    },
+    {
+      "startSeconds": 216.72,
+      "durationSeconds": 4.56,
+      "text": "systems with many lookups of"
+    },
+    {
+      "startSeconds": 218.68,
+      "durationSeconds": 4.839,
+      "text": "non-existent keys. Another approach uses"
+    },
+    {
+      "startSeconds": 221.28,
+      "durationSeconds": 4.36,
+      "text": "Bloom filters, a space-efficient"
+    },
+    {
+      "startSeconds": 223.519,
+      "durationSeconds": 4.761,
+      "text": "probabilistic data structure for quickly"
+    },
+    {
+      "startSeconds": 225.64,
+      "durationSeconds": 4.879,
+      "text": "checking if elements are in a set before"
+    },
+    {
+      "startSeconds": 228.28,
+      "durationSeconds": 4.16,
+      "text": "querying the databases. Here's how they"
+    },
+    {
+      "startSeconds": 230.519,
+      "durationSeconds": 3.841,
+      "text": "work. When new records are added to"
+    },
+    {
+      "startSeconds": 232.44,
+      "durationSeconds": 4.48,
+      "text": "storage, their keys are recorded in"
+    },
+    {
+      "startSeconds": 234.36,
+      "durationSeconds": 4.2,
+      "text": "Bloom filter. Before fetching records,"
+    },
+    {
+      "startSeconds": 236.92,
+      "durationSeconds": 4.12,
+      "text": "the application checks the Bloom filter"
+    },
+    {
+      "startSeconds": 238.56,
+      "durationSeconds": 4.96,
+      "text": "first. If the key is absent, the record"
+    },
+    {
+      "startSeconds": 241.04,
+      "durationSeconds": 4.64,
+      "text": "conclusively doesn't exist, allowing the"
+    },
+    {
+      "startSeconds": 243.52,
+      "durationSeconds": 4.88,
+      "text": "application to return a null value"
+    },
+    {
+      "startSeconds": 245.68,
+      "durationSeconds": 5.2,
+      "text": "immediately. However, positive key"
+    },
+    {
+      "startSeconds": 248.4,
+      "durationSeconds": 4.88,
+      "text": "presence doesn't guarantee existence. A"
+    },
+    {
+      "startSeconds": 250.88,
+      "durationSeconds": 4.8,
+      "text": "small percentage of cache reads may"
+    },
+    {
+      "startSeconds": 253.28,
+      "durationSeconds": 4.48,
+      "text": "still result in misses. We have a video"
+    },
+    {
+      "startSeconds": 255.68,
+      "durationSeconds": 3.32,
+      "text": "on how Bloom filters work if you want to"
+    },
+    {
+      "startSeconds": 257.76,
+      "durationSeconds": 3.24,
+      "text": "learn more."
+    },
+    {
+      "startSeconds": 259,
+      "durationSeconds": 4.04,
+      "text": "Finally, we come to the cache crash."
+    },
+    {
+      "startSeconds": 261,
+      "durationSeconds": 4.72,
+      "text": "Picture this, our entire cache system"
+    },
+    {
+      "startSeconds": 263.04,
+      "durationSeconds": 5.12,
+      "text": "suddenly fails. What happens next? With"
+    },
+    {
+      "startSeconds": 265.72,
+      "durationSeconds": 4.8,
+      "text": "no cache layer, every single request now"
+    },
+    {
+      "startSeconds": 268.16,
+      "durationSeconds": 4.32,
+      "text": "slams straight into the database. This"
+    },
+    {
+      "startSeconds": 270.52,
+      "durationSeconds": 4.28,
+      "text": "sudden spike in traffic can easily"
+    },
+    {
+      "startSeconds": 272.48,
+      "durationSeconds": 5.24,
+      "text": "overwhelm databases, jeopardizing"
+    },
+    {
+      "startSeconds": 274.8,
+      "durationSeconds": 5.24,
+      "text": "overall system stability. What's worse,"
+    },
+    {
+      "startSeconds": 277.72,
+      "durationSeconds": 5.04,
+      "text": "users start obsessively hitting refresh,"
+    },
+    {
+      "startSeconds": 280.04,
+      "durationSeconds": 5.64,
+      "text": "compounding the problem. A close cousin"
+    },
+    {
+      "startSeconds": 282.76,
+      "durationSeconds": 5.68,
+      "text": "to the cache crash is cache avalanche."
+    },
+    {
+      "startSeconds": 285.68,
+      "durationSeconds": 4.56,
+      "text": "This can happen in two scenarios. One,"
+    },
+    {
+      "startSeconds": 288.44,
+      "durationSeconds": 4.92,
+      "text": "when a massive chunk of cache data"
+    },
+    {
+      "startSeconds": 290.24,
+      "durationSeconds": 6.2,
+      "text": "expires all at once. Two, when the cache"
+    },
+    {
+      "startSeconds": 293.36,
+      "durationSeconds": 5.92,
+      "text": "restarts and is cold and empty. In both"
+    },
+    {
+      "startSeconds": 296.44,
+      "durationSeconds": 5.28,
+      "text": "cases, a crushing wave of requests hits"
+    },
+    {
+      "startSeconds": 299.28,
+      "durationSeconds": 5.08,
+      "text": "the databases all at once. This sudden"
+    },
+    {
+      "startSeconds": 301.72,
+      "durationSeconds": 4.6,
+      "text": "load spike overwhelms the system, much"
+    },
+    {
+      "startSeconds": 304.36,
+      "durationSeconds": 4.12,
+      "text": "like hundreds of people abruptly"
+    },
+    {
+      "startSeconds": 306.32,
+      "durationSeconds": 3.88,
+      "text": "cramming through a single tiny door"
+    },
+    {
+      "startSeconds": 308.48,
+      "durationSeconds": 3.72,
+      "text": "after a fire alarm."
+    },
+    {
+      "startSeconds": 310.2,
+      "durationSeconds": 3.92,
+      "text": "So, how do we tackle these challenges?"
+    },
+    {
+      "startSeconds": 312.2,
+      "durationSeconds": 3.92,
+      "text": "First option, implement a circuit"
+    },
+    {
+      "startSeconds": 314.12,
+      "durationSeconds": 4.04,
+      "text": "breaker, which temporarily blocks"
+    },
+    {
+      "startSeconds": 316.12,
+      "durationSeconds": 4.68,
+      "text": "incoming requests when the system is"
+    },
+    {
+      "startSeconds": 318.16,
+      "durationSeconds": 5.32,
+      "text": "clearly overloaded. This prevents total"
+    },
+    {
+      "startSeconds": 320.8,
+      "durationSeconds": 5.2,
+      "text": "meltdown and buys time for recovery."
+    },
+    {
+      "startSeconds": 323.48,
+      "durationSeconds": 5.36,
+      "text": "Next strategy, deploy highly available"
+    },
+    {
+      "startSeconds": 326,
+      "durationSeconds": 5.16,
+      "text": "cache cluster with redundancy. If parts"
+    },
+    {
+      "startSeconds": 328.84,
+      "durationSeconds": 4.88,
+      "text": "of the cache go down, other parts remain"
+    },
+    {
+      "startSeconds": 331.16,
+      "durationSeconds": 5.32,
+      "text": "operational. The goal is to reduce the"
+    },
+    {
+      "startSeconds": 333.72,
+      "durationSeconds": 4.92,
+      "text": "severity of full crashes. And don't"
+    },
+    {
+      "startSeconds": 336.48,
+      "durationSeconds": 4.4,
+      "text": "dismiss cache pre-warming, particularly"
+    },
+    {
+      "startSeconds": 338.64,
+      "durationSeconds": 4.48,
+      "text": "critical after a cold start. Here,"
+    },
+    {
+      "startSeconds": 340.88,
+      "durationSeconds": 4.4,
+      "text": "essential data is proactively populated"
+    },
+    {
+      "startSeconds": 343.12,
+      "durationSeconds": 4.8,
+      "text": "in the cold cache before it's put into"
+    },
+    {
+      "startSeconds": 345.28,
+      "durationSeconds": 4.32,
+      "text": "service. This avoids abruptly bombarding"
+    },
+    {
+      "startSeconds": 347.92,
+      "durationSeconds": 4.2,
+      "text": "the databases."
+    },
+    {
+      "startSeconds": 349.6,
+      "durationSeconds": 5.04,
+      "text": "As we wrap up, let's distinguish cache"
+    },
+    {
+      "startSeconds": 352.12,
+      "durationSeconds": 4.08,
+      "text": "stampede versus cache avalanche since"
+    },
+    {
+      "startSeconds": 354.64,
+      "durationSeconds": 3.64,
+      "text": "they sound similar."
+    },
+    {
+      "startSeconds": 356.2,
+      "durationSeconds": 4.16,
+      "text": "A cache stampede happens when many"
+    },
+    {
+      "startSeconds": 358.28,
+      "durationSeconds": 4.6,
+      "text": "requests simultaneously hit the same"
+    },
+    {
+      "startSeconds": 360.36,
+      "durationSeconds": 5.4,
+      "text": "expired cache entry, overwhelming the"
+    },
+    {
+      "startSeconds": 362.88,
+      "durationSeconds": 5,
+      "text": "database as it tries to refresh just"
+    },
+    {
+      "startSeconds": 365.76,
+      "durationSeconds": 4.4,
+      "text": "that single data point. A cache"
+    },
+    {
+      "startSeconds": 367.88,
+      "durationSeconds": 4.8,
+      "text": "avalanche is a broader issue where"
+    },
+    {
+      "startSeconds": 370.16,
+      "durationSeconds": 4.24,
+      "text": "numerous requests for different data"
+    },
+    {
+      "startSeconds": 372.68,
+      "durationSeconds": 4.24,
+      "text": "flood the system after a cache is"
+    },
+    {
+      "startSeconds": 374.4,
+      "durationSeconds": 4.44,
+      "text": "cleared or restarted, putting a strain"
+    },
+    {
+      "startSeconds": 376.92,
+      "durationSeconds": 3.68,
+      "text": "on resources."
+    },
+    {
+      "startSeconds": 378.84,
+      "durationSeconds": 4.12,
+      "text": "And that concludes our walk through of"
+    },
+    {
+      "startSeconds": 380.6,
+      "durationSeconds": 4.08,
+      "text": "the common caching pitfalls and how to"
+    },
+    {
+      "startSeconds": 382.96,
+      "durationSeconds": 3.52,
+      "text": "navigate them."
+    },
+    {
+      "startSeconds": 384.68,
+      "durationSeconds": 4.08,
+      "text": "If you like our videos, you might like"
+    },
+    {
+      "startSeconds": 386.48,
+      "durationSeconds": 4.439,
+      "text": "our system design newsletter as well. It"
+    },
+    {
+      "startSeconds": 388.76,
+      "durationSeconds": 4.92,
+      "text": "covers topics and trends in large-scale"
+    },
+    {
+      "startSeconds": 390.919,
+      "durationSeconds": 4.601,
+      "text": "system design, trusted by 500,000"
+    },
+    {
+      "startSeconds": 393.68,
+      "durationSeconds": 4.84,
+      "text": "readers. Subscribe at"
+    },
+    {
+      "startSeconds": 395.52,
+      "durationSeconds": 3,
+      "text": "blog.bytebytego.com."
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:02.336Z"
+}

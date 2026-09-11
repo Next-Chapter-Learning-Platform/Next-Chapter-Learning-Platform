@@ -1,0 +1,1563 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "VBlSe8tvg4U",
+  "url": "https://www.youtube.com/watch?v=VBlSe8tvg4U",
+  "title": "Next.js App Router Caching: Explained!",
+  "description": "Learn how to fetch, cache, and revalidate data using the Next.js App Router.\n\n0:00 – Introduction\n0:24 – Demo\n1:20 – Caching overview\n2:06 – Foundations\n6:10 – Static: fetch()\n7:03 – Dynamic: fetch() without caching\n7:37 – Static: unstable_cache()\n9:37 – Dynamic: Direct database calls\n10:07 – Revalidating static data\n12:32 – Revalidating from external sources (webhooks)\n14:12 – Revalidating static data with ISR\n15:28 – React cache()\n16:40 – App Router and Pages Router differences\n17:52 – Example: Forms with useFormState & useFormStatus\n19:33 – Using forms without JavaScript\n19:59 – Exploring the network tab for a Server Action\n20:49 – Example: Optimistic UI\n21:45 – Preventing navigations with pending mutations\n22:34 – Progressive enhancement\n23:39 – Partial Prerendering\n24:56 – Conclusion\n\n◆ Forms example: https://github.com/vercel/next.js/tree/canary/examples/next-forms\n◆ Optimistic UI example: https://github.com/vercel/next.js/tree/canary/examples/with-redis\n◆ Docs: https://nextjs.org/docs/app/building-your-application/caching\n◆ Deep dive: https://github.com/vercel/next.js/discussions/54075\n◆ Partial Prerendering: https://vercel.com/blog/partial-prerendering-with-next-js-creating-a-new-default-rendering-model\n\n#nextjs #react",
+  "expectedDurationSeconds": 1522,
+  "transcript": [
+    {
+      "startSeconds": 0.08,
+      "durationSeconds": 4.16,
+      "text": "Let's talk about caching in Next.js. This \nis probably one of the most requested videos"
+    },
+    {
+      "startSeconds": 4.24,
+      "durationSeconds": 4.88,
+      "text": "that I've had, and I know you all want to see \nsome practical examples of how to cache data,"
+    },
+    {
+      "startSeconds": 9.12,
+      "durationSeconds": 3.92,
+      "text": "revalidate data, and also just walk \nthrough how the model works from the"
+    },
+    {
+      "startSeconds": 13.04,
+      "durationSeconds": 3.4,
+      "text": "ground up. So that's what we're going to do \ntoday. We're going to show some examples,"
+    },
+    {
+      "startSeconds": 16.44,
+      "durationSeconds": 3.52,
+      "text": "show some demo apps that will have \nthe code open source as well, too,"
+    },
+    {
+      "startSeconds": 19.96,
+      "durationSeconds": 4.56,
+      "text": "and kind of walk through the foundations of \nhow caching works in the Next.js App Router."
+    },
+    {
+      "startSeconds": 24.52,
+      "durationSeconds": 4.32,
+      "text": "Okay, let's start by looking at an example of \nan application that uses caching. It revalidates"
+    },
+    {
+      "startSeconds": 28.84,
+      "durationSeconds": 4.92,
+      "text": "data and it has mutations, so we can work \nbackwards from a real product. So, on the right,"
+    },
+    {
+      "startSeconds": 33.76,
+      "durationSeconds": 5.52,
+      "text": "I have this example of kind of a roadmap feature \nprioritization app, and if I go in here and I"
+    },
+    {
+      "startSeconds": 39.28,
+      "durationSeconds": 8.28,
+      "text": "say new feature, I hit enter, this data that is \nnow shown on the page is being cached. Anytime"
+    },
+    {
+      "startSeconds": 47.56,
+      "durationSeconds": 8.2,
+      "text": "I make a mutation to this data, like uploading a \nfeature or adding another new feature, the Next.js"
+    },
+    {
+      "startSeconds": 55.76,
+      "durationSeconds": 5.08,
+      "text": "App Router is able to revalidate that data. It's \nable to mutate the cache and update it with the"
+    },
+    {
+      "startSeconds": 60.84,
+      "durationSeconds": 5.52,
+      "text": "latest features. So now, if I reload the page, I \nstill see that we have our cache data on the page."
+    },
+    {
+      "startSeconds": 66.36,
+      "durationSeconds": 5.36,
+      "text": "Now, this is a simple example, but it really \nis probably the most common way of interacting"
+    },
+    {
+      "startSeconds": 71.72,
+      "durationSeconds": 4.28,
+      "text": "with the App Router. And we're going to \nbreak down how every bit of this happens,"
+    },
+    {
+      "startSeconds": 76,
+      "durationSeconds": 4.4,
+      "text": "from static pages to the cache pages, \nand finally to revalidating data."
+    },
+    {
+      "startSeconds": 80.4,
+      "durationSeconds": 4.28,
+      "text": "Before we jump in, I want to talk a bit about \nthe state of caching in Next.js today. So,"
+    },
+    {
+      "startSeconds": 84.68,
+      "durationSeconds": 4.32,
+      "text": "the App Router has been out for about a year \nnow, and a lot of you all have shared a lot of"
+    },
+    {
+      "startSeconds": 89,
+      "durationSeconds": 3.92,
+      "text": "great feedback with us on the parts of caching \nthat you like, the parts of caching that you"
+    },
+    {
+      "startSeconds": 92.92,
+      "durationSeconds": 4.12,
+      "text": "want us to change, and how we can improve the \ndeveloper experience, and even helped report"
+    },
+    {
+      "startSeconds": 97.04,
+      "durationSeconds": 5.28,
+      "text": "and solve some bugs along the way, too. And \nmaybe the last time you all tried out caching,"
+    },
+    {
+      "startSeconds": 102.32,
+      "durationSeconds": 4.96,
+      "text": "some parts of this model might not have been \nready yet, like server actions or revalidateTag or"
+    },
+    {
+      "startSeconds": 107.28,
+      "durationSeconds": 4.6,
+      "text": "revalidatePath. So if you haven't checked it out \nin a while, definitely come into this video with"
+    },
+    {
+      "startSeconds": 111.88,
+      "durationSeconds": 4.12,
+      "text": "a fresh set of eyes because it might look a little \ndifferent than the last time you checked it out."
+    },
+    {
+      "startSeconds": 116,
+      "durationSeconds": 1.36,
+      "text": "As you'll see as I talk through the video,"
+    },
+    {
+      "startSeconds": 117.36,
+      "durationSeconds": 3.44,
+      "text": "there's still ways that we want to make \nthis even more simple. So I'll highlight"
+    },
+    {
+      "startSeconds": 120.8,
+      "durationSeconds": 4.32,
+      "text": "a few things that we're still working on \nalong the way to simplify this even further."
+    },
+    {
+      "startSeconds": 125.12,
+      "durationSeconds": 4.64,
+      "text": "Okay, so now let's talk about some of the \nfoundations of caching in the App Router."
+    },
+    {
+      "startSeconds": 129.76,
+      "durationSeconds": 4.76,
+      "text": "We can understand how the pieces fit together. \nWe'll talk a little bit about static and dynamic"
+    },
+    {
+      "startSeconds": 134.52,
+      "durationSeconds": 3.96,
+      "text": "pages or static and dynamic rendering. We'll \ntalk about some differences with the pages"
+    },
+    {
+      "startSeconds": 138.48,
+      "durationSeconds": 4.84,
+      "text": "router model that you might have used before, \nand we'll also walk through some examples of"
+    },
+    {
+      "startSeconds": 143.32,
+      "durationSeconds": 3.56,
+      "text": "different use cases where you might want to \nuse caching and what that would look like."
+    },
+    {
+      "startSeconds": 146.88,
+      "durationSeconds": 6.4,
+      "text": "So let's start with static and dynamic rendering. \nIn my application, in my editor on the left here,"
+    },
+    {
+      "startSeconds": 153.28,
+      "durationSeconds": 6.8,
+      "text": "I have an App Router app, and I have a page at \nthe index route. This page is just rendering out"
+    },
+    {
+      "startSeconds": 160.08,
+      "durationSeconds": 5,
+      "text": "some JSX, and it's rendering out the date of \nright now. In my terminal on the bottom left,"
+    },
+    {
+      "startSeconds": 165.08,
+      "durationSeconds": 6.04,
+      "text": "I'm running next dev. So on the right \nin the browser, if I reload the page,"
+    },
+    {
+      "startSeconds": 171.12,
+      "durationSeconds": 5.96,
+      "text": "I can see I'm making requests to this page, \nand I'm getting a new date on every request."
+    },
+    {
+      "startSeconds": 177.08,
+      "durationSeconds": 4.96,
+      "text": "Now, this functionality of being able to refresh \nthe page when you're running your local dev server"
+    },
+    {
+      "startSeconds": 182.04,
+      "durationSeconds": 5.8,
+      "text": "and see up-to-date data is how Next.js has worked \nsince the pages router as well. I also have,"
+    },
+    {
+      "startSeconds": 187.84,
+      "durationSeconds": 5.84,
+      "text": "just to show an example, this /test which is in \nthe pages router that does basically the exact"
+    },
+    {
+      "startSeconds": 193.68,
+      "durationSeconds": 5.52,
+      "text": "same thing, except it's passing the date from \ngetStaticProps. And when I'm running in my local"
+    },
+    {
+      "startSeconds": 199.2,
+      "durationSeconds": 5.48,
+      "text": "dev environment and I reload the page, I see that \nexact same behavior, too, with the pages router."
+    },
+    {
+      "startSeconds": 204.68,
+      "durationSeconds": 5,
+      "text": "Now, what you're witnessing is that when you're \nrunning local dev and you reload the page,"
+    },
+    {
+      "startSeconds": 210.28,
+      "durationSeconds": 4.36,
+      "text": "even though this page is going to be cached, \nwe're going to talk about that here in a second,"
+    },
+    {
+      "startSeconds": 214.64,
+      "durationSeconds": 5.64,
+      "text": "the data is fresh on every reload. And I think \nsometimes that foundational bit gets a little"
+    },
+    {
+      "startSeconds": 220.28,
+      "durationSeconds": 5.84,
+      "text": "bit confused between folks trying out this new \nmodel. So we have to understand that bit first."
+    },
+    {
+      "startSeconds": 226.12,
+      "durationSeconds": 7.08,
+      "text": "For example, if I were to go and run the \nbuild and then start my application locally,"
+    },
+    {
+      "startSeconds": 233.2,
+      "durationSeconds": 4.88,
+      "text": "you're going to witness a different behavior. What \nyou're going to see is, when we run a production"
+    },
+    {
+      "startSeconds": 238.08,
+      "durationSeconds": 6.44,
+      "text": "build, when we take this example of our App \nRouter page where it had a date, this code,"
+    },
+    {
+      "startSeconds": 244.52,
+      "durationSeconds": 5,
+      "text": "while it is a server component, is going to be \nevaluated during the build. So there's nothing"
+    },
+    {
+      "startSeconds": 249.52,
+      "durationSeconds": 4.8,
+      "text": "in this component that's saying that it needs \nto access any information on demand or from"
+    },
+    {
+      "startSeconds": 254.32,
+      "durationSeconds": 4.88,
+      "text": "the request, so it can be pre-rendered, and \nit doesn't need to be computed on the fly."
+    },
+    {
+      "startSeconds": 259.2,
+      "durationSeconds": 5.76,
+      "text": "So, if I reload the page, I now see this \ndate that has been generated, the page has"
+    },
+    {
+      "startSeconds": 264.96,
+      "durationSeconds": 4.24,
+      "text": "been pre-rendered, and nothing changes. So \nthis is a foundational bit to understand,"
+    },
+    {
+      "startSeconds": 269.2,
+      "durationSeconds": 4.72,
+      "text": "which is that even though we're using server \ncomponents, the default is that pages get"
+    },
+    {
+      "startSeconds": 273.92,
+      "durationSeconds": 5.24,
+      "text": "prerendered when you run a build. It's also worth \nmentioning that the same thing applies to route"
+    },
+    {
+      "startSeconds": 279.16,
+      "durationSeconds": 6.08,
+      "text": "handlers that use a GET and do not read anything \nfrom the incoming request. So if you try to use"
+    },
+    {
+      "startSeconds": 285.24,
+      "durationSeconds": 5.44,
+      "text": "a route handler and you want to just print out a \ndate, you might notice the same behavior. Route"
+    },
+    {
+      "startSeconds": 290.68,
+      "durationSeconds": 5.76,
+      "text": "handlers are built on the same foundation as \npages, so they share the same default behavior."
+    },
+    {
+      "startSeconds": 296.44,
+      "durationSeconds": 4.04,
+      "text": "Now, what if this isn't the behavior \nthat we want? What if we do actually"
+    },
+    {
+      "startSeconds": 300.48,
+      "durationSeconds": 5.24,
+      "text": "want our page to be computed dynamically, \nto run dynamically on every request? Well,"
+    },
+    {
+      "startSeconds": 305.72,
+      "durationSeconds": 3.04,
+      "text": "we want it to be dynamically \nrendered and not statically rendered."
+    },
+    {
+      "startSeconds": 308.76,
+      "durationSeconds": 5,
+      "text": "Now, I've updated my code on the left here to \nread something from the incoming request. So,"
+    },
+    {
+      "startSeconds": 313.76,
+      "durationSeconds": 4.36,
+      "text": "I'm using this cookies() function, which allows \nme to look at the incoming request. I could"
+    },
+    {
+      "startSeconds": 318.12,
+      "durationSeconds": 5.04,
+      "text": "have also used a headers() function, \nor we also have one called noStore(),"
+    },
+    {
+      "startSeconds": 323.16,
+      "durationSeconds": 5.68,
+      "text": "which allows you to do basically the exact same \nthing to opt into dynamic rendering. And now,"
+    },
+    {
+      "startSeconds": 328.84,
+      "durationSeconds": 3.32,
+      "text": "when I reload the page on the right, \nyou're seeing that this component is"
+    },
+    {
+      "startSeconds": 332.16,
+      "durationSeconds": 5.68,
+      "text": "getting a fresh date on every reload. So \nnow, the page is using dynamic rendering."
+    },
+    {
+      "startSeconds": 337.84,
+      "durationSeconds": 2.52,
+      "text": "There are a number of ways, when \nwe talk about fetching and caching,"
+    },
+    {
+      "startSeconds": 340.36,
+      "durationSeconds": 5.24,
+      "text": "of how you can opt out of using the \ndefault behavior where things are cached."
+    },
+    {
+      "startSeconds": 345.6,
+      "durationSeconds": 2.92,
+      "text": "But it's important to understand \nthis difference from the start."
+    },
+    {
+      "startSeconds": 348.52,
+      "durationSeconds": 2.92,
+      "text": "Okay, so with an understanding \nof static and dynamic, and what"
+    },
+    {
+      "startSeconds": 351.44,
+      "durationSeconds": 4.32,
+      "text": "is opting a page into dynamic rendering, \nand an understanding that the local next"
+    },
+    {
+      "startSeconds": 355.76,
+      "durationSeconds": 3.28,
+      "text": "dev environment is different than \nrunning your production server,"
+    },
+    {
+      "startSeconds": 359.04,
+      "durationSeconds": 5.24,
+      "text": "let's talk about some specific examples of how you \nwould fetch data and how caching will affect that."
+    },
+    {
+      "startSeconds": 364.28,
+      "durationSeconds": 6.92,
+      "text": "We're going to start with the most simple \nexample, which is using the fetch API. So here,"
+    },
+    {
+      "startSeconds": 371.2,
+      "durationSeconds": 5.16,
+      "text": "I have the fetch API, I'm making a request \nto some external URL, I get back JSON,"
+    },
+    {
+      "startSeconds": 376.36,
+      "durationSeconds": 4.8,
+      "text": "and then I'm showing the stock on the page. So \nin the right, my browser, if I reload the page,"
+    },
+    {
+      "startSeconds": 381.16,
+      "durationSeconds": 4.16,
+      "text": "I see in my console that this is a \ncache hit. I can reload the page,"
+    },
+    {
+      "startSeconds": 385.32,
+      "durationSeconds": 5,
+      "text": "still seeing a cache hit. Now, I have an \noption turned on in my next.config that"
+    },
+    {
+      "startSeconds": 390.32,
+      "durationSeconds": 4.48,
+      "text": "allows me to see more information about the \nURLs that I'm fetching from. If you all think"
+    },
+    {
+      "startSeconds": 394.8,
+      "durationSeconds": 4.16,
+      "text": "this is helpful and you want us to do more like \nthis in the terminal, definitely let us know,"
+    },
+    {
+      "startSeconds": 398.96,
+      "durationSeconds": 4.56,
+      "text": "but that's where you're seeing that, and then it's \ngetting rendered out on the page as well, too."
+    },
+    {
+      "startSeconds": 403.52,
+      "durationSeconds": 4.48,
+      "text": "Now, let's say when I'm testing locally, I \nwant to empty the cache, and I want to get"
+    },
+    {
+      "startSeconds": 408,
+      "durationSeconds": 5.84,
+      "text": "fresh data. You can use Command + Shift + R like \na hard reload in the browser. If I do that now,"
+    },
+    {
+      "startSeconds": 413.84,
+      "durationSeconds": 4.88,
+      "text": "we see in the console that it was a cache \nskip, and now if I reload, I'm back to cache"
+    },
+    {
+      "startSeconds": 418.72,
+      "durationSeconds": 4.44,
+      "text": "data again. So if you need to clear that \nout, Command + Shift + R is your friend."
+    },
+    {
+      "startSeconds": 423.16,
+      "durationSeconds": 4.84,
+      "text": "What about if you have a fetch but you don't \nwant it to be cached? Well, going back to the"
+    },
+    {
+      "startSeconds": 428,
+      "durationSeconds": 4.08,
+      "text": "foundational part I talked through with \ndynamic rendering, we want to tell this"
+    },
+    {
+      "startSeconds": 432.08,
+      "durationSeconds": 5.76,
+      "text": "component actually we don't want to store this \ninto cash. We want to use no store, or cookies,"
+    },
+    {
+      "startSeconds": 437.84,
+      "durationSeconds": 4.64,
+      "text": "or headers, or looking at search prams, or a \nnumber of different ways you can opt into dynamic"
+    },
+    {
+      "startSeconds": 442.48,
+      "durationSeconds": 5.84,
+      "text": "rendering. noStore() is the easiest, so here \nI've opted this into dynamic rendering. I said,"
+    },
+    {
+      "startSeconds": 448.32,
+      "durationSeconds": 5.48,
+      "text": "you know what, don't do this. So if I reload my \nbrowser on the right, you see every single time"
+    },
+    {
+      "startSeconds": 453.8,
+      "durationSeconds": 5.2,
+      "text": "I'm seeing cache skip. So this is a really easy \nway to opt out. Now, your next question might be,"
+    },
+    {
+      "startSeconds": 459,
+      "durationSeconds": 5.36,
+      "text": "that's great, the fetch API is super helpful if \nI'm using some external API, but what about if I'm"
+    },
+    {
+      "startSeconds": 464.36,
+      "durationSeconds": 4.68,
+      "text": "trying to build my full stack app in Next.js? \nI want to just go directly to the database,"
+    },
+    {
+      "startSeconds": 469.04,
+      "durationSeconds": 6.2,
+      "text": "or I want to use some library that doesn't expose \nthe fetch API. The answer for that is a function"
+    },
+    {
+      "startSeconds": 475.24,
+      "durationSeconds": 6,
+      "text": "called unstable_cache(). So let's take a look at \nthis. In this example, I have an unstable_cache()"
+    },
+    {
+      "startSeconds": 481.24,
+      "durationSeconds": 5.44,
+      "text": "route here, pretty much the same exact thing where \nI have this product quantity component, but I'm"
+    },
+    {
+      "startSeconds": 486.68,
+      "durationSeconds": 4.52,
+      "text": "making this call to this getProduct() function. \nLet's take a look at what this looks like. So,"
+    },
+    {
+      "startSeconds": 491.2,
+      "durationSeconds": 4.72,
+      "text": "I have this unstable_cache() function, and it \ntakes in this function here where I'm going to"
+    },
+    {
+      "startSeconds": 495.92,
+      "durationSeconds": 5.28,
+      "text": "go to my database using a Postgres database. I'm \ngoing to select from the products table, and I'm"
+    },
+    {
+      "startSeconds": 501.2,
+      "durationSeconds": 6.44,
+      "text": "going to find the one with the ID of one, and then \nI'm tagging this cache to say that this is for all"
+    },
+    {
+      "startSeconds": 507.64,
+      "durationSeconds": 6.28,
+      "text": "of the products that I'm fetching. So if I go \nback to my browser, I reload the page, this is"
+    },
+    {
+      "startSeconds": 513.92,
+      "durationSeconds": 5.36,
+      "text": "being cached every single time. And if I wanted \nto clear the cache again, I can do a similar"
+    },
+    {
+      "startSeconds": 519.28,
+      "durationSeconds": 7.16,
+      "text": "thing where I go and fetch that from the origin \nsource. Now, you might be wondering, is it okay"
+    },
+    {
+      "startSeconds": 526.44,
+      "durationSeconds": 6.88,
+      "text": "to use this? Can I use this as unstable_cache()? \nFine, the API structure here might change a little"
+    },
+    {
+      "startSeconds": 533.32,
+      "durationSeconds": 3.92,
+      "text": "bit and we're looking for your feedback on the \noverall structure of this. We've already heard"
+    },
+    {
+      "startSeconds": 537.24,
+      "durationSeconds": 5.32,
+      "text": "feedback that it's a little confusing why there \nare the parts that make up the cache key here, and"
+    },
+    {
+      "startSeconds": 542.56,
+      "durationSeconds": 4.8,
+      "text": "then how you're specifically tagging the cache to \nrevalidate the cache here. So we plan to simplify"
+    },
+    {
+      "startSeconds": 547.36,
+      "durationSeconds": 6.72,
+      "text": "this a little bit, but the general idea is still \nvery solid. So if you have your data layer in your"
+    },
+    {
+      "startSeconds": 554.08,
+      "durationSeconds": 4.8,
+      "text": "application that has your database and it has \nyour fetches and your functions, and you want"
+    },
+    {
+      "startSeconds": 558.88,
+      "durationSeconds": 4.72,
+      "text": "to use unstable_cache(), this is totally fine. \nYou can still kind of build out your application"
+    },
+    {
+      "startSeconds": 563.6,
+      "durationSeconds": 5.96,
+      "text": "in this model, and then over time, as we improve \nthis cache in the coming months, we'll provide"
+    },
+    {
+      "startSeconds": 569.56,
+      "durationSeconds": 7.48,
+      "text": "code mods and documentation and examples to move \nfrom this world to the newer world. Now, if you're"
+    },
+    {
+      "startSeconds": 577.04,
+      "durationSeconds": 5.04,
+      "text": "like, you know what, actually I want to go to my \ndatabase, I want to grab new data, I don't want to"
+    },
+    {
+      "startSeconds": 582.08,
+      "durationSeconds": 4.48,
+      "text": "cache anything here, that's fine. You don't need \nto use the unstable_cache() function. Instead,"
+    },
+    {
+      "startSeconds": 586.56,
+      "durationSeconds": 5.08,
+      "text": "you can write your component like this. I've just \nkind of inlined that database fetch here, so go to"
+    },
+    {
+      "startSeconds": 591.64,
+      "durationSeconds": 5.48,
+      "text": "my database, I select all the products, and then \nI have a list of products. So on every reload,"
+    },
+    {
+      "startSeconds": 597.12,
+      "durationSeconds": 5.56,
+      "text": "I'm going and fetching that new list of products. \nNow, the counter to this is how we actually"
+    },
+    {
+      "startSeconds": 602.68,
+      "durationSeconds": 3.96,
+      "text": "invalidate the cache when that data changes, and \nwe're going to talk about that a little bit more"
+    },
+    {
+      "startSeconds": 606.64,
+      "durationSeconds": 4.84,
+      "text": "here in a minute. Alright, let's take this a \nlittle bit further. So I have a route here,"
+    },
+    {
+      "startSeconds": 611.48,
+      "durationSeconds": 6.48,
+      "text": "it's a dynamic route that's a list of products, \nand inside of that page, I'm getting a product"
+    },
+    {
+      "startSeconds": 617.96,
+      "durationSeconds": 7.16,
+      "text": "based on the ID, and then I'm showing the name \nand the price. So I have /product/2, /product/1,"
+    },
+    {
+      "startSeconds": 625.12,
+      "durationSeconds": 6.6,
+      "text": "and I have different data depending on what I'm \nreading from the parameter from params.id, and"
+    },
+    {
+      "startSeconds": 631.72,
+      "durationSeconds": 6,
+      "text": "this getProduct call. If I go look at this file, \ngetProduct again, it's using unstable_cache(),"
+    },
+    {
+      "startSeconds": 637.72,
+      "durationSeconds": 3.56,
+      "text": "it's fetching from the database, and it's \ntagging it with products. Now let's show"
+    },
+    {
+      "startSeconds": 641.28,
+      "durationSeconds": 5.2,
+      "text": "what the mutation side of this looks like. And \nto show that example, I have a route here that"
+    },
+    {
+      "startSeconds": 646.48,
+      "durationSeconds": 8.04,
+      "text": "is /dashboard. Let's take a look at this code. So \n/dashboard, it has some JSX, it has products, it"
+    },
+    {
+      "startSeconds": 654.52,
+      "durationSeconds": 7.24,
+      "text": "has a link back to all products, it has a list of \nthe products, and it has a form to actually create"
+    },
+    {
+      "startSeconds": 661.76,
+      "durationSeconds": 5.4,
+      "text": "a product. So I can go back here, I can look at \nall the products, the same list is here, and then"
+    },
+    {
+      "startSeconds": 667.16,
+      "durationSeconds": 6.32,
+      "text": "I also can add in a new product here. Now when I \nsubmit this form, I'm going to use a server action"
+    },
+    {
+      "startSeconds": 673.48,
+      "durationSeconds": 5.44,
+      "text": "So I have this action called createProduct. \ncreateProduct, I'm just putting it inline here,"
+    },
+    {
+      "startSeconds": 678.92,
+      "durationSeconds": 4.52,
+      "text": "but it's probably best practice to move this \nto its own file where you can have your own"
+    },
+    {
+      "startSeconds": 683.44,
+      "durationSeconds": 4.88,
+      "text": "data layer, where you can add in security checks \nas well too. For the sake of simplicity in this"
+    },
+    {
+      "startSeconds": 688.32,
+      "durationSeconds": 4.68,
+      "text": "example, I have it here. So I mark it with \nthe \"use server\" directive to mark this as a"
+    },
+    {
+      "startSeconds": 693,
+      "durationSeconds": 6.44,
+      "text": "server action. I do a mutation on the database \nwhere I insert a new field into the database,"
+    },
+    {
+      "startSeconds": 699.44,
+      "durationSeconds": 4.32,
+      "text": "and then I'm going to revalidate the tag of \nproducts. Now what I want to show is when I"
+    },
+    {
+      "startSeconds": 703.76,
+      "durationSeconds": 5.6,
+      "text": "add a new product and I'm able to revalidate this \ndata, how it revalidates data that's been tagged"
+    },
+    {
+      "startSeconds": 709.36,
+      "durationSeconds": 5.48,
+      "text": "across different pages as well too. So when you \ncall revalidateTag, it's actually purging that"
+    },
+    {
+      "startSeconds": 714.84,
+      "durationSeconds": 8.16,
+      "text": "entire cache. So let's say I want a new product \nhere, that's going to be beef, and let's say"
+    },
+    {
+      "startSeconds": 723,
+      "durationSeconds": 6.72,
+      "text": "the price is 50. I hit create, you're going to \nsee not only does this list of products update"
+    },
+    {
+      "startSeconds": 729.72,
+      "durationSeconds": 5.72,
+      "text": "because we've revalidated the tag, also if I \ngo back to all products and I fetch this data,"
+    },
+    {
+      "startSeconds": 735.44,
+      "durationSeconds": 6.04,
+      "text": "we also see this updated with the latest list. So \neven going kind of cross-navigation as well too,"
+    },
+    {
+      "startSeconds": 741.48,
+      "durationSeconds": 4.28,
+      "text": "I had a mutation that I was controlling in \nmy application. I said this data change,"
+    },
+    {
+      "startSeconds": 745.76,
+      "durationSeconds": 5.6,
+      "text": "my database had a new item, I call revalidateTag \nor revalidatePath, and now I can see that latest"
+    },
+    {
+      "startSeconds": 751.36,
+      "durationSeconds": 5.24,
+      "text": "information updated. Now the follow-up to that is \nwhat do I do when there's a mutation that someone"
+    },
+    {
+      "startSeconds": 756.6,
+      "durationSeconds": 5.8,
+      "text": "else made on my application? So maybe I went to a \nCMS and I updated the data. Maybe the data changed"
+    },
+    {
+      "startSeconds": 762.4,
+      "durationSeconds": 5.84,
+      "text": "in my database, this is where webhooks can come in \nvery handy. So I have a webhook in my application"
+    },
+    {
+      "startSeconds": 768.24,
+      "durationSeconds": 6.24,
+      "text": "using a route handler, and what I'm going to do \nto demonstrate this is I have my application here,"
+    },
+    {
+      "startSeconds": 774.48,
+      "durationSeconds": 6.04,
+      "text": "/product/1, and right now if I reload the \npage, the price is 9. So what I want to do"
+    },
+    {
+      "startSeconds": 780.52,
+      "durationSeconds": 6.6,
+      "text": "instead is if I call this webhook, simulating \nsome external event in my system changing,"
+    },
+    {
+      "startSeconds": 787.12,
+      "durationSeconds": 5.08,
+      "text": "something in my database has changed, I want to \ngo and I want to revalidate the tag products and"
+    },
+    {
+      "startSeconds": 792.2,
+      "durationSeconds": 5.6,
+      "text": "I want to return back. So this takes a post \nrequest to my application, so I'm just going"
+    },
+    {
+      "startSeconds": 797.8,
+      "durationSeconds": 6.08,
+      "text": "to open up a new terminal here, going to make \na post request, and I get success back. So now"
+    },
+    {
+      "startSeconds": 803.88,
+      "durationSeconds": 5.24,
+      "text": "if I go here, I reload the page, I get this new \ndata fetched from the database. So even even if"
+    },
+    {
+      "startSeconds": 809.12,
+      "durationSeconds": 5.24,
+      "text": "that mutation is happening outside of my my user \ninteraction, clicking a button, it's happening"
+    },
+    {
+      "startSeconds": 814.36,
+      "durationSeconds": 4.4,
+      "text": "from an external system, revalidateTag \ncan still revalidate that whole data."
+    },
+    {
+      "startSeconds": 818.76,
+      "durationSeconds": 5.32,
+      "text": "Now the last bit here is what happens if neither \nof those are possible? What happens if it's not"
+    },
+    {
+      "startSeconds": 824.08,
+      "durationSeconds": 4.72,
+      "text": "something that I control, or it's something I \ncan listen to from my database or my CMS? And"
+    },
+    {
+      "startSeconds": 828.8,
+      "durationSeconds": 4.4,
+      "text": "this is where we're still helping to get feedback \nand iterate on this experience today. I'll link"
+    },
+    {
+      "startSeconds": 833.2,
+      "durationSeconds": 5.16,
+      "text": "a thread down below where we have a deep dive \ninto how caching works today, and walks through"
+    },
+    {
+      "startSeconds": 838.36,
+      "durationSeconds": 4.04,
+      "text": "a lot of these bits, as well as our caching \ndocumentation. And if you're in this third"
+    },
+    {
+      "startSeconds": 842.4,
+      "durationSeconds": 4.68,
+      "text": "camp right here, we'd love to hear your feedback \non how to make this better. We do have an option"
+    },
+    {
+      "startSeconds": 847.08,
+      "durationSeconds": 4.76,
+      "text": "that we're proposing to configure this a bit more, \nso we love to hear your use cases around this."
+    },
+    {
+      "startSeconds": 851.84,
+      "durationSeconds": 4.64,
+      "text": "If you have cache data that you want \nto periodically revalidate using the"
+    },
+    {
+      "startSeconds": 856.48,
+      "durationSeconds": 5.16,
+      "text": "incremental static regeneration-like behavior, \nyou can also do that, either using the fetch"
+    },
+    {
+      "startSeconds": 861.64,
+      "durationSeconds": 5.6,
+      "text": "API or using unstable_cache(). So today, the \nway this works with the fetch API is that you"
+    },
+    {
+      "startSeconds": 867.24,
+      "durationSeconds": 7,
+      "text": "can pass additional options by extending the \nfetch API. So maybe I want something like this,"
+    },
+    {
+      "startSeconds": 874.24,
+      "durationSeconds": 5.72,
+      "text": "we're actually looking to move away from \nextending the fetch based on your feedback"
+    },
+    {
+      "startSeconds": 879.96,
+      "durationSeconds": 5.4,
+      "text": "and the community's feedback. So in the future, \nwe'll have a way to code mod or to upgrade this"
+    },
+    {
+      "startSeconds": 885.36,
+      "durationSeconds": 6.92,
+      "text": "where you can have something like revalidate \nafter, and you can put time in or an API that"
+    },
+    {
+      "startSeconds": 892.28,
+      "durationSeconds": 5.24,
+      "text": "looks something similar to this. But for today, \nit's totally okay to use it this way, we'll give"
+    },
+    {
+      "startSeconds": 897.52,
+      "durationSeconds": 4.56,
+      "text": "some more guidance as that change in the future. \nBut I wanted to just mention that as well too."
+    },
+    {
+      "startSeconds": 902.08,
+      "durationSeconds": 6.16,
+      "text": "And also on the unstable_cache() function, \nif I go back to getProduct, inside of here,"
+    },
+    {
+      "startSeconds": 908.24,
+      "durationSeconds": 5.64,
+      "text": "this option not only has the ability to tag \nthe cache but also to set a revalidate time"
+    },
+    {
+      "startSeconds": 913.88,
+      "durationSeconds": 4.4,
+      "text": "when you're using unstable_cache() as well \ntoo. So that's how you can use incremental"
+    },
+    {
+      "startSeconds": 918.28,
+      "durationSeconds": 5.76,
+      "text": "static regeneration-like ability to update \ncache data based on some time interval."
+    },
+    {
+      "startSeconds": 924.04,
+      "durationSeconds": 4.32,
+      "text": "The last one I want to talk about, walking through \nthe foundational examples of how these bits work,"
+    },
+    {
+      "startSeconds": 928.36,
+      "durationSeconds": 5.8,
+      "text": "is the React cache function. So different from the \nNext.js cache function, the React cache function,"
+    },
+    {
+      "startSeconds": 934.16,
+      "durationSeconds": 4.04,
+      "text": "you can kind of think about it like \nmemorization on the server. So I call"
+    },
+    {
+      "startSeconds": 938.2,
+      "durationSeconds": 5.64,
+      "text": "the same thing with the same inputs, I \ncan essentially dup that. Now this is"
+    },
+    {
+      "startSeconds": 943.84,
+      "durationSeconds": 4.6,
+      "text": "important because there are some instances \nin the Next.js App Router that kind of are"
+    },
+    {
+      "startSeconds": 948.44,
+      "durationSeconds": 3.72,
+      "text": "pushing you towards a model where you're \ncalling the same function multiple times,"
+    },
+    {
+      "startSeconds": 952.16,
+      "durationSeconds": 5.72,
+      "text": "and that's okay. We've given you these helpers so \nthat you can have control over the cache state of"
+    },
+    {
+      "startSeconds": 957.88,
+      "durationSeconds": 4.04,
+      "text": "how I call a phone function and have it not \nget called multiple times. So for example,"
+    },
+    {
+      "startSeconds": 961.92,
+      "durationSeconds": 5.08,
+      "text": "on this page, I have this call to get \nproducts, so it's going to my database,"
+    },
+    {
+      "startSeconds": 967,
+      "durationSeconds": 6.32,
+      "text": "and I'm using the same call both to generate the \ninitial metadata for the page, like the title, and"
+    },
+    {
+      "startSeconds": 973.32,
+      "durationSeconds": 4.92,
+      "text": "I'm using it to display the name of the product \non the page. And when I go look at get products,"
+    },
+    {
+      "startSeconds": 978.24,
+      "durationSeconds": 3.48,
+      "text": "I'm wrapping that function with the React \ncache function, so it's only going to be"
+    },
+    {
+      "startSeconds": 981.72,
+      "durationSeconds": 5,
+      "text": "ever called once. Go to the database and I get \nthe information. So, I reload the page here on"
+    },
+    {
+      "startSeconds": 986.72,
+      "durationSeconds": 5.44,
+      "text": "the right in the console, I see get products one, \nand then I see this page get displayed. I reload"
+    },
+    {
+      "startSeconds": 992.16,
+      "durationSeconds": 4.28,
+      "text": "again, I only see one call to get products, \neven though you can see Apple's displayed"
+    },
+    {
+      "startSeconds": 996.44,
+      "durationSeconds": 4.44,
+      "text": "in the title and it's displayed on the page. \nSo, I wanted to mention that one as well too."
+    },
+    {
+      "startSeconds": 1000.88,
+      "durationSeconds": 4.48,
+      "text": "Alright, now I want to show another example of \na CRUD app, or a Create, Read, Update, Delete,"
+    },
+    {
+      "startSeconds": 1005.36,
+      "durationSeconds": 4.16,
+      "text": "that's using forms, showing some of this \nin practice a little bit more. But first,"
+    },
+    {
+      "startSeconds": 1009.52,
+      "durationSeconds": 4.48,
+      "text": "I want to talk about the architecture a little \nbit. So, coming back to the differences between"
+    },
+    {
+      "startSeconds": 1014,
+      "durationSeconds": 6.88,
+      "text": "the Pages and the App Router, I think this diagram \nhopefully explains things well. So with the Pages"
+    },
+    {
+      "startSeconds": 1020.88,
+      "durationSeconds": 4.32,
+      "text": "Router model, let's start there. You would \nwrite code in a client component. Everything"
+    },
+    {
+      "startSeconds": 1025.2,
+      "durationSeconds": 4.76,
+      "text": "was client components in the Pages Router, and \nyou would have some event handler like onSubmit"
+    },
+    {
+      "startSeconds": 1029.96,
+      "durationSeconds": 5.72,
+      "text": "that would call an API route where you would \ngo update your database or update some source,"
+    },
+    {
+      "startSeconds": 1035.68,
+      "durationSeconds": 4.96,
+      "text": "and then that API route could return back \nsome JSON, where on the client you could"
+    },
+    {
+      "startSeconds": 1040.64,
+      "durationSeconds": 5.32,
+      "text": "handle this response and update the UI. In the \nApp Router, it's actually entirely different,"
+    },
+    {
+      "startSeconds": 1045.96,
+      "durationSeconds": 5.2,
+      "text": "it's server-based. So the App Router, I have \na form submission and that form submission can"
+    },
+    {
+      "startSeconds": 1051.16,
+      "durationSeconds": 5.48,
+      "text": "call a server action which runs on the server. It \ngoes to our server, it can update our database,"
+    },
+    {
+      "startSeconds": 1056.64,
+      "durationSeconds": 5.56,
+      "text": "it can revalidate our cache, and then it \ncan return back the new UI as well as the"
+    },
+    {
+      "startSeconds": 1062.2,
+      "durationSeconds": 6.08,
+      "text": "data in the same network roundtrip in this \nRSC payload back to our UI. So, there are"
+    },
+    {
+      "startSeconds": 1068.28,
+      "durationSeconds": 4.48,
+      "text": "some foundational differences here between how \nthese two models work. Let's look at an example."
+    },
+    {
+      "startSeconds": 1072.76,
+      "durationSeconds": 4.52,
+      "text": "Okay, so let's look at this to-do list example. \nIt's a bit more simple example from the first one"
+    },
+    {
+      "startSeconds": 1077.28,
+      "durationSeconds": 7.32,
+      "text": "that we showed. I want to walk through a couple of \ndifferent bits here. So, let me make a new to-do,"
+    },
+    {
+      "startSeconds": 1084.6,
+      "durationSeconds": 4.56,
+      "text": "enter, that's going to submit the form. You'll \nsee that the form went into that loading state,"
+    },
+    {
+      "startSeconds": 1089.16,
+      "durationSeconds": 5.88,
+      "text": "and then the new form was added. So, on this \npage, we're fetching the to-dos from our Postgres"
+    },
+    {
+      "startSeconds": 1095.04,
+      "durationSeconds": 5.76,
+      "text": "database. Those get cached, and then I have \nthis \"Add Todo\" form that uses this hook called"
+    },
+    {
+      "startSeconds": 1100.8,
+      "durationSeconds": 5.56,
+      "text": "useFormState, which allows me to take some error \nback from my server action or some success message"
+    },
+    {
+      "startSeconds": 1106.36,
+      "durationSeconds": 4.96,
+      "text": "and display it on the page. And in this instance, \nI'm using the response back from the server action"
+    },
+    {
+      "startSeconds": 1111.32,
+      "durationSeconds": 6.52,
+      "text": "to send a message to a screen reader. So, in \nthis live area, and also inside of here, I have"
+    },
+    {
+      "startSeconds": 1117.84,
+      "durationSeconds": 6.68,
+      "text": "this submit button. The submit button is using \nanother hook from React called useFormStatus,"
+    },
+    {
+      "startSeconds": 1124.52,
+      "durationSeconds": 6.52,
+      "text": "and useFormStatus is going to know when a mutation \nis pending. So when we're adding in a new to-do,"
+    },
+    {
+      "startSeconds": 1131.84,
+      "durationSeconds": 4.52,
+      "text": "another to-do, when I hit enter, and this \ngoes into a pending state, you're going to"
+    },
+    {
+      "startSeconds": 1136.36,
+      "durationSeconds": 5.8,
+      "text": "notice that the add button gets disabled, and \nwe're able to then see that reflected in the"
+    },
+    {
+      "startSeconds": 1142.16,
+      "durationSeconds": 6.12,
+      "text": "UI. So let's take a look at what this action \nactually does. If I go into createTodo here,"
+    },
+    {
+      "startSeconds": 1148.28,
+      "durationSeconds": 4.48,
+      "text": "basically all it's doing is going to our \nSQL database, it's inserting some data,"
+    },
+    {
+      "startSeconds": 1152.76,
+      "durationSeconds": 4.52,
+      "text": "and then it's revalidating the path, and \nthen it's returning that message back to"
+    },
+    {
+      "startSeconds": 1157.28,
+      "durationSeconds": 5.84,
+      "text": "the UI in the RSC payload, the React Server \nComponents payload. So, you can use this now."
+    },
+    {
+      "startSeconds": 1163.12,
+      "durationSeconds": 5.4,
+      "text": "The cool thing about this whole model is that it \nworks even if JavaScript hasn't loaded yet. So,"
+    },
+    {
+      "startSeconds": 1168.52,
+      "durationSeconds": 7.32,
+      "text": "for example, let's say that I want to go in \nhere, let's say disable JavaScript, and I'll"
+    },
+    {
+      "startSeconds": 1175.84,
+      "durationSeconds": 9.12,
+      "text": "reload the page. And I want to delete this to-do, \ngreat, that still works. I want to add a to-do,"
+    },
+    {
+      "startSeconds": 1184.96,
+      "durationSeconds": 5.84,
+      "text": "that also still works. And it also still works \nwith useFormState. So, you'll notice there was"
+    },
+    {
+      "startSeconds": 1190.8,
+      "durationSeconds": 5.52,
+      "text": "that browser loading spinner at the top because \nit's doing the normal HTML form reload where the"
+    },
+    {
+      "startSeconds": 1196.32,
+      "durationSeconds": 4.96,
+      "text": "page is reloading. So, I think that's pretty cool. \nI also think it's worth showing what the network"
+    },
+    {
+      "startSeconds": 1201.28,
+      "durationSeconds": 4.36,
+      "text": "tab looks like when you're doing a mutation, when \nyou're calling a server action, and you're going"
+    },
+    {
+      "startSeconds": 1205.64,
+      "durationSeconds": 7.2,
+      "text": "to revalidate that cache data. So, let's say \nI want to do another to-do here. I hit add,"
+    },
+    {
+      "startSeconds": 1212.84,
+      "durationSeconds": 5.12,
+      "text": "and we're going to see just this one network \nrequest. So, I see in here that another to-do"
+    },
+    {
+      "startSeconds": 1217.96,
+      "durationSeconds": 6.16,
+      "text": "pops up. I click on this value, and I see that \nbasically the server action is just posting back"
+    },
+    {
+      "startSeconds": 1224.12,
+      "durationSeconds": 5.44,
+      "text": "to itself, it's posting back to the same route. \nThere's some additional information inside of here"
+    },
+    {
+      "startSeconds": 1229.56,
+      "durationSeconds": 4.88,
+      "text": "about the request. We can even see if we go into \nthe payload, we can see more about what's in here,"
+    },
+    {
+      "startSeconds": 1234.44,
+      "durationSeconds": 5.6,
+      "text": "what we sent along to the server action, what the \nto-do was, it's called \"Another Todo\". And then"
+    },
+    {
+      "startSeconds": 1240.04,
+      "durationSeconds": 8.08,
+      "text": "the server, in this instance, returns back the UI \nas well as that updated state in that RSC payload."
+    },
+    {
+      "startSeconds": 1248.12,
+      "durationSeconds": 4.08,
+      "text": "Now, going back to our first example with the \nroadmap product, I want to show another cool"
+    },
+    {
+      "startSeconds": 1252.2,
+      "durationSeconds": 6.88,
+      "text": "React hook called useOptimistic. What I'm going \nto do is actually slow down our network here. So,"
+    },
+    {
+      "startSeconds": 1259.08,
+      "durationSeconds": 4.48,
+      "text": "we're going to go to slow 3G. And when I showed \nit for the first time, everything felt really,"
+    },
+    {
+      "startSeconds": 1263.56,
+      "durationSeconds": 4.92,
+      "text": "really fast. But what happens if I was on a slower \ninternet connection? Would this still feel really"
+    },
+    {
+      "startSeconds": 1268.48,
+      "durationSeconds": 4.56,
+      "text": "snappy? So, I'm going to click upvote, and \nI'm going to notice that I immediately see"
+    },
+    {
+      "startSeconds": 1273.04,
+      "durationSeconds": 5.28,
+      "text": "the 4 on the right side, but it took awhile for \nthe information to get updated. And if I look"
+    },
+    {
+      "startSeconds": 1278.32,
+      "durationSeconds": 4.6,
+      "text": "down in the network tab, I see that even though \nthis waterfall, even though this request hadn't"
+    },
+    {
+      "startSeconds": 1282.92,
+      "durationSeconds": 5.48,
+      "text": "completed yet, I'm able to provide feedback \nto the user right away using this optimistic"
+    },
+    {
+      "startSeconds": 1288.4,
+      "durationSeconds": 5.92,
+      "text": "UI pattern. And this also works too if I add a \nnew item. So let's say, \"Another Another One\","
+    },
+    {
+      "startSeconds": 1294.32,
+      "durationSeconds": 5.56,
+      "text": "and I hit enter. I immediately see it show up, I \nimmediately see the form field get cleared out,"
+    },
+    {
+      "startSeconds": 1299.88,
+      "durationSeconds": 3.8,
+      "text": "and then down below I see, okay, \nthat network request has completed."
+    },
+    {
+      "startSeconds": 1303.68,
+      "durationSeconds": 4.92,
+      "text": "Now, you might be thinking, well, what if \nmy internet is really, really slow? So,"
+    },
+    {
+      "startSeconds": 1308.6,
+      "durationSeconds": 6.32,
+      "text": "\"really really slow\", and a user submits this form \nbut then they want to close the browser tab. So,"
+    },
+    {
+      "startSeconds": 1314.92,
+      "durationSeconds": 7.56,
+      "text": "they hit enter and then they try to do a Command + \nW to close. Well, something I've added in here is"
+    },
+    {
+      "startSeconds": 1322.48,
+      "durationSeconds": 6.6,
+      "text": "just a little bit of JavaScript code that prevents \nthem from leaving the site if this mutation hasn't"
+    },
+    {
+      "startSeconds": 1329.08,
+      "durationSeconds": 3.04,
+      "text": "completed. So it says, \"Hey, are you sure you \nwant to leave the site?\" In this instance,"
+    },
+    {
+      "startSeconds": 1332.12,
+      "durationSeconds": 4.96,
+      "text": "I'm going to say no, and then I see that my \nmutation goes through. And this only takes"
+    },
+    {
+      "startSeconds": 1337.08,
+      "durationSeconds": 4.36,
+      "text": "just a little bit of code here. So, I have \nthis useEffect that is basically listening"
+    },
+    {
+      "startSeconds": 1341.44,
+      "durationSeconds": 4.84,
+      "text": "for this beforeunload event, and I can \nuse that based on the pending state to"
+    },
+    {
+      "startSeconds": 1346.28,
+      "durationSeconds": 5.4,
+      "text": "know whether I want to pause and ask the user \nwhether they want to confirm leaving the page."
+    },
+    {
+      "startSeconds": 1351.68,
+      "durationSeconds": 4.12,
+      "text": "Now, going back up to my useOptimistic pattern, \nI want to show something that was subtle but"
+    },
+    {
+      "startSeconds": 1355.8,
+      "durationSeconds": 4.8,
+      "text": "very important, which is that this pattern still \nsupports progressive enhancement. On the right,"
+    },
+    {
+      "startSeconds": 1360.6,
+      "durationSeconds": 5.4,
+      "text": "in my browser, I've disabled JavaScript, and when \nI'm loading the page, if there's no JavaScript,"
+    },
+    {
+      "startSeconds": 1366,
+      "durationSeconds": 5,
+      "text": "or more commonly, the JavaScript hasn't \nyet loaded, this can still work. So,"
+    },
+    {
+      "startSeconds": 1371,
+      "durationSeconds": 4.4,
+      "text": "in that instance, we're going to call the server \naction through the native form submission,"
+    },
+    {
+      "startSeconds": 1375.4,
+      "durationSeconds": 5.84,
+      "text": "through the action. So if I click on \"Upvote \nNew Feature\", I see the browser reload,"
+    },
+    {
+      "startSeconds": 1381.24,
+      "durationSeconds": 6.4,
+      "text": "and I see \"New Feature\" here, the value goes \nup to six. And because I don't have JavaScript,"
+    },
+    {
+      "startSeconds": 1387.64,
+      "durationSeconds": 4.36,
+      "text": "I don't get to have the niceties \nof the optimistic UI updates."
+    },
+    {
+      "startSeconds": 1392,
+      "durationSeconds": 5.44,
+      "text": "But that's okay, because once the JavaScript has \nloaded, then I can use the client event handler,"
+    },
+    {
+      "startSeconds": 1397.44,
+      "durationSeconds": 3.88,
+      "text": "which is going to give me some, uh, \nadditional enhancements to the flow. Now,"
+    },
+    {
+      "startSeconds": 1401.32,
+      "durationSeconds": 3.36,
+      "text": "it's worth mentioning that you might want \nto have a completely different pattern here,"
+    },
+    {
+      "startSeconds": 1404.68,
+      "durationSeconds": 5.4,
+      "text": "a completely different UX. If having JavaScript \ndisabled is actually a very important requirement"
+    },
+    {
+      "startSeconds": 1410.08,
+      "durationSeconds": 3.56,
+      "text": "for your application, you might want a \ndifferent UX, where this redirects to"
+    },
+    {
+      "startSeconds": 1413.64,
+      "durationSeconds": 4.52,
+      "text": "some different page instead. But it's nice that \nyou have the ability to craft that experience."
+    },
+    {
+      "startSeconds": 1418.16,
+      "durationSeconds": 3.88,
+      "text": "Now, okay, the last thing I want to \ntalk about, as it relates to caching,"
+    },
+    {
+      "startSeconds": 1422.04,
+      "durationSeconds": 4.72,
+      "text": "and static and dynamic rendering, is Partial \nPrerendering. Now, this is still experimental,"
+    },
+    {
+      "startSeconds": 1426.76,
+      "durationSeconds": 5.4,
+      "text": "so this is just an early look. But previously, \nthe way the Next.js pages' App Router worked was,"
+    },
+    {
+      "startSeconds": 1432.16,
+      "durationSeconds": 4.44,
+      "text": "you had All or Nothing static or dynamic \npages. Either you could run your whole page"
+    },
+    {
+      "startSeconds": 1436.6,
+      "durationSeconds": 5.24,
+      "text": "and pre-render as static, or you had to run it \non demand. And I'll link a video down below,"
+    },
+    {
+      "startSeconds": 1441.84,
+      "durationSeconds": 2.72,
+      "text": "and some additional information \nabout partial pre-rendering."
+    },
+    {
+      "startSeconds": 1444.56,
+      "durationSeconds": 4.72,
+      "text": "But just to show an example of what this looks \nlike, I have my website on the right, and the"
+    },
+    {
+      "startSeconds": 1449.28,
+      "durationSeconds": 5.36,
+      "text": "majority of this page is static. But then I have \nthis component where I'm listing out the number of"
+    },
+    {
+      "startSeconds": 1454.64,
+      "durationSeconds": 5.2,
+      "text": "subscribers, which, it's a great time to subscribe \nto the Vercel YouTube channel, if you haven't. And"
+    },
+    {
+      "startSeconds": 1459.84,
+      "durationSeconds": 5.84,
+      "text": "in this component, I want these numbers to be \ndynamic. I want them to be fresh. So, in this"
+    },
+    {
+      "startSeconds": 1465.68,
+      "durationSeconds": 4.56,
+      "text": "application, I have the partial pre-rendering \nflag flipped on. The shell of my application,"
+    },
+    {
+      "startSeconds": 1470.24,
+      "durationSeconds": 5.12,
+      "text": "or the majority of this page, was pre-rendered \nas static. But then, this specific component,"
+    },
+    {
+      "startSeconds": 1475.36,
+      "durationSeconds": 6.08,
+      "text": "I'm able to say, \"You know what, actually use \nnoStore, and we want this one to run dynamically.\""
+    },
+    {
+      "startSeconds": 1481.44,
+      "durationSeconds": 5.76,
+      "text": "So, if I reload the page, I'm able to run just \nthat bit dynamically. And since the subscribers"
+    },
+    {
+      "startSeconds": 1487.2,
+      "durationSeconds": 3.64,
+      "text": "haven't updated, I can show a different \nexample with my blog, which is where,"
+    },
+    {
+      "startSeconds": 1490.84,
+      "durationSeconds": 5.2,
+      "text": "if I click in here, I'm able to get that new \nvalue and see it update in the top right."
+    },
+    {
+      "startSeconds": 1496.04,
+      "durationSeconds": 4.32,
+      "text": "Okay, so that wraps up this video. We talked \nabout fetching, caching, and revalidating with"
+    },
+    {
+      "startSeconds": 1500.36,
+      "durationSeconds": 5.08,
+      "text": "the Next.js App Router. Hopefully, these demos \nand these examples help solve and answer some of"
+    },
+    {
+      "startSeconds": 1505.44,
+      "durationSeconds": 4.76,
+      "text": "your questions. If you still have open questions, \nplease leave comments down below, or if there's"
+    },
+    {
+      "startSeconds": 1510.2,
+      "durationSeconds": 4.8,
+      "text": "things you want to see us make more content \nabout, also just let us know. But hopefully,"
+    },
+    {
+      "startSeconds": 1515,
+      "durationSeconds": 6.6,
+      "text": "this puts you on the right path to understanding \ncaching in your next Next.js application. Peace."
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Introduction"
+    },
+    {
+      "startSeconds": 24,
+      "label": "Demo"
+    },
+    {
+      "startSeconds": 80,
+      "label": "Caching overview"
+    },
+    {
+      "startSeconds": 126,
+      "label": "Foundations"
+    },
+    {
+      "startSeconds": 370,
+      "label": "Static: fetch()"
+    },
+    {
+      "startSeconds": 423,
+      "label": "Dynamic: fetch() without caching"
+    },
+    {
+      "startSeconds": 457,
+      "label": "Static: unstable_cache()"
+    },
+    {
+      "startSeconds": 577,
+      "label": "Dynamic: Direct database calls"
+    },
+    {
+      "startSeconds": 607,
+      "label": "Revalidating static data"
+    },
+    {
+      "startSeconds": 752,
+      "label": "Revalidating from external sources (webhooks)"
+    },
+    {
+      "startSeconds": 852,
+      "label": "Revalidating static data with ISR"
+    },
+    {
+      "startSeconds": 928,
+      "label": "React cache()"
+    },
+    {
+      "startSeconds": 1000,
+      "label": "App Router and Pages Router differences"
+    },
+    {
+      "startSeconds": 1072,
+      "label": "Example: Forms with useFormState & useFormStatus"
+    },
+    {
+      "startSeconds": 1173,
+      "label": "Using forms without JavaScript"
+    },
+    {
+      "startSeconds": 1199,
+      "label": "Exploring the network tab for a Server Action"
+    },
+    {
+      "startSeconds": 1249,
+      "label": "Example: Optimistic UI"
+    },
+    {
+      "startSeconds": 1305,
+      "label": "Preventing navigations with pending mutations"
+    },
+    {
+      "startSeconds": 1354,
+      "label": "Progressive enhancement"
+    },
+    {
+      "startSeconds": 1419,
+      "label": "Partial Prerendering"
+    },
+    {
+      "startSeconds": 1496,
+      "label": "Conclusion"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:39.680Z"
+}

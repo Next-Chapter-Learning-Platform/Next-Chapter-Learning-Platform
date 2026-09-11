@@ -1,0 +1,498 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "ZV5yTm4pT8g",
+  "url": "https://www.youtube.com/watch?v=ZV5yTm4pT8g",
+  "title": "OAuth 2 Explained In Simple Terms",
+  "description": "Get a Free System Design PDF with 158 pages by subscribing to our weekly newsletter: https://bytebytego.ck.page/subscribe\n\nAnimation tools: Adobe Illustrator and After Effects.\n\nCheckout our bestselling System Design Interview books: \nVolume 1: https://amzn.to/3Ou7gkd\nVolume 2: https://amzn.to/3HqGozy\n\nThe digital version of System Design Interview books: https://bit.ly/3mlDSk9\n\nABOUT US: \nCovering topics and trends in large-scale system design, from the authors of the best-selling System Design Interview series.",
+  "expectedDurationSeconds": 272,
+  "transcript": [
+    {
+      "startSeconds": 2.66,
+      "durationSeconds": 3.109,
+      "text": "[Music]"
+    },
+    {
+      "startSeconds": 7.759,
+      "durationSeconds": 3.88,
+      "text": "have you ever tried wrapping your mind"
+    },
+    {
+      "startSeconds": 9.4,
+      "durationSeconds": 4.399,
+      "text": "around o off2 but ended up lost in the"
+    },
+    {
+      "startSeconds": 11.639,
+      "durationSeconds": 4.48,
+      "text": "sea of jargons that's why we're here"
+    },
+    {
+      "startSeconds": 13.799,
+      "durationSeconds": 5.201,
+      "text": "today we're breaking down these complex"
+    },
+    {
+      "startSeconds": 16.119,
+      "durationSeconds": 5.881,
+      "text": "Concepts into digestible explanations"
+    },
+    {
+      "startSeconds": 19,
+      "durationSeconds": 5.64,
+      "text": "let's Dive Right In imagine the early"
+    },
+    {
+      "startSeconds": 22,
+      "durationSeconds": 4.72,
+      "text": "days of the internet sharing info was"
+    },
+    {
+      "startSeconds": 24.64,
+      "durationSeconds": 4.799,
+      "text": "straightforward just hand over your"
+    },
+    {
+      "startSeconds": 26.72,
+      "durationSeconds": 4.559,
+      "text": "username and password to another service"
+    },
+    {
+      "startSeconds": 29.439,
+      "durationSeconds": 4.681,
+      "text": "and they could access anything they"
+    },
+    {
+      "startSeconds": 31.279,
+      "durationSeconds": 5.241,
+      "text": "wanted this practice is fry upon these"
+    },
+    {
+      "startSeconds": 34.12,
+      "durationSeconds": 4.4,
+      "text": "days but we might still encounter this"
+    },
+    {
+      "startSeconds": 36.52,
+      "durationSeconds": 4.48,
+      "text": "practice in certain personal finance"
+    },
+    {
+      "startSeconds": 38.52,
+      "durationSeconds": 5.92,
+      "text": "software to scrape information from"
+    },
+    {
+      "startSeconds": 41,
+      "durationSeconds": 7.48,
+      "text": "crusto Banks luckily we have something"
+    },
+    {
+      "startSeconds": 44.44,
+      "durationSeconds": 6.48,
+      "text": "much better these days enter OA 2 OA 2"
+    },
+    {
+      "startSeconds": 48.48,
+      "durationSeconds": 4.919,
+      "text": "is like giving someone a special key"
+    },
+    {
+      "startSeconds": 50.92,
+      "durationSeconds": 5.24,
+      "text": "this key allows them to access specific"
+    },
+    {
+      "startSeconds": 53.399,
+      "durationSeconds": 5.201,
+      "text": "information in another application we"
+    },
+    {
+      "startSeconds": 56.16,
+      "durationSeconds": 5.199,
+      "text": "control who gets access to our data"
+    },
+    {
+      "startSeconds": 58.6,
+      "durationSeconds": 6.12,
+      "text": "without having to share a password and"
+    },
+    {
+      "startSeconds": 61.359,
+      "durationSeconds": 5.881,
+      "text": "yes we can revoke that key at any time"
+    },
+    {
+      "startSeconds": 64.72,
+      "durationSeconds": 5.32,
+      "text": "now let's play this out with an example"
+    },
+    {
+      "startSeconds": 67.24,
+      "durationSeconds": 5.08,
+      "text": "consider a photo storage application"
+    },
+    {
+      "startSeconds": 70.04,
+      "durationSeconds": 4.24,
+      "text": "Snap Store we've been using it to store"
+    },
+    {
+      "startSeconds": 72.32,
+      "durationSeconds": 4.159,
+      "text": "our photos and now we want to print some"
+    },
+    {
+      "startSeconds": 74.28,
+      "durationSeconds": 5.479,
+      "text": "of them using a thirdparty printing"
+    },
+    {
+      "startSeconds": 76.479,
+      "durationSeconds": 6.161,
+      "text": "service PR magic instead of manually"
+    },
+    {
+      "startSeconds": 79.759,
+      "durationSeconds": 5.68,
+      "text": "uploading each photo to PR magic we ask"
+    },
+    {
+      "startSeconds": 82.64,
+      "durationSeconds": 5.6,
+      "text": "PR magic to do the job with a simple"
+    },
+    {
+      "startSeconds": 85.439,
+      "durationSeconds": 6.521,
+      "text": "click we Grant PR magic permission to"
+    },
+    {
+      "startSeconds": 88.24,
+      "durationSeconds": 6.6,
+      "text": "access our photos on Snap Store using o"
+    },
+    {
+      "startSeconds": 91.96,
+      "durationSeconds": 5.6,
+      "text": "Off 2 preager can then access our Snap"
+    },
+    {
+      "startSeconds": 94.84,
+      "durationSeconds": 5.12,
+      "text": "Store photos on our behalf without ever"
+    },
+    {
+      "startSeconds": 97.56,
+      "durationSeconds": 4.879,
+      "text": "knowing our Snap Store login"
+    },
+    {
+      "startSeconds": 99.96,
+      "durationSeconds": 6,
+      "text": "credentials this is an example of the O"
+    },
+    {
+      "startSeconds": 102.439,
+      "durationSeconds": 5.801,
+      "text": "off flow is an elegant stance between us"
+    },
+    {
+      "startSeconds": 105.96,
+      "durationSeconds": 5.6,
+      "text": "Prem magic and snap store all"
+    },
+    {
+      "startSeconds": 108.24,
+      "durationSeconds": 6.64,
+      "text": "orchestrated by o of2 now let's unpack"
+    },
+    {
+      "startSeconds": 111.56,
+      "durationSeconds": 5.879,
+      "text": "this further in this context we are the"
+    },
+    {
+      "startSeconds": 114.88,
+      "durationSeconds": 6.08,
+      "text": "resource owner because we own our photos"
+    },
+    {
+      "startSeconds": 117.439,
+      "durationSeconds": 7.241,
+      "text": "on Snap Store Snap Store is the resource"
+    },
+    {
+      "startSeconds": 120.96,
+      "durationSeconds": 6.079,
+      "text": "server that stores our photos pre magic"
+    },
+    {
+      "startSeconds": 124.68,
+      "durationSeconds": 5.6,
+      "text": "is the client that wants to access the"
+    },
+    {
+      "startSeconds": 127.039,
+      "durationSeconds": 5.681,
+      "text": "photos the authorization server could be"
+    },
+    {
+      "startSeconds": 130.28,
+      "durationSeconds": 5.4,
+      "text": "a part of snap store or an external"
+    },
+    {
+      "startSeconds": 132.72,
+      "durationSeconds": 6.36,
+      "text": "identity provider and is responsible for"
+    },
+    {
+      "startSeconds": 135.68,
+      "durationSeconds": 7.199,
+      "text": "handling the O off2 process let's follow"
+    },
+    {
+      "startSeconds": 139.08,
+      "durationSeconds": 5.64,
+      "text": "the oof2 flow in this scenario it begins"
+    },
+    {
+      "startSeconds": 142.879,
+      "durationSeconds": 5.64,
+      "text": "when we instruct pre magic to fetch"
+    },
+    {
+      "startSeconds": 144.72,
+      "durationSeconds": 5.64,
+      "text": "photos from Snap Store pre magic sends a"
+    },
+    {
+      "startSeconds": 148.519,
+      "durationSeconds": 3.561,
+      "text": "client ID and scope"
+    },
+    {
+      "startSeconds": 150.36,
+      "durationSeconds": 4.879,
+      "text": "which represent the access level"
+    },
+    {
+      "startSeconds": 152.08,
+      "durationSeconds": 5.92,
+      "text": "requested to snap store's authorization"
+    },
+    {
+      "startSeconds": 155.239,
+      "durationSeconds": 5.121,
+      "text": "server as a resource owner we"
+    },
+    {
+      "startSeconds": 158,
+      "durationSeconds": 4.44,
+      "text": "authenticate directly with SNAP store"
+    },
+    {
+      "startSeconds": 160.36,
+      "durationSeconds": 5,
+      "text": "and Grant Prem magic the consent to"
+    },
+    {
+      "startSeconds": 162.44,
+      "durationSeconds": 5.48,
+      "text": "access our photos once consent is"
+    },
+    {
+      "startSeconds": 165.36,
+      "durationSeconds": 6.32,
+      "text": "granted the authorization server sends"
+    },
+    {
+      "startSeconds": 167.92,
+      "durationSeconds": 5.319,
+      "text": "an authorization code back to PR magic"
+    },
+    {
+      "startSeconds": 171.68,
+      "durationSeconds": 4.68,
+      "text": "Prim magic then presents this"
+    },
+    {
+      "startSeconds": 173.239,
+      "durationSeconds": 5.601,
+      "text": "authorization code is client ID and"
+    },
+    {
+      "startSeconds": 176.36,
+      "durationSeconds": 4.84,
+      "text": "client secret to the authorization"
+    },
+    {
+      "startSeconds": 178.84,
+      "durationSeconds": 5.679,
+      "text": "server now the client secret is a"
+    },
+    {
+      "startSeconds": 181.2,
+      "durationSeconds": 4.959,
+      "text": "private key shared only between PR magic"
+    },
+    {
+      "startSeconds": 184.519,
+      "durationSeconds": 4.08,
+      "text": "and the authorization"
+    },
+    {
+      "startSeconds": 186.159,
+      "durationSeconds": 5.401,
+      "text": "server if the authorization server"
+    },
+    {
+      "startSeconds": 188.599,
+      "durationSeconds": 6.521,
+      "text": "verifies the authorization code client"
+    },
+    {
+      "startSeconds": 191.56,
+      "durationSeconds": 5.039,
+      "text": "ID and client secret IT issues an access"
+    },
+    {
+      "startSeconds": 195.12,
+      "durationSeconds": 4.479,
+      "text": "token to PR"
+    },
+    {
+      "startSeconds": 196.599,
+      "durationSeconds": 6,
+      "text": "magic finally Prim magic uses this"
+    },
+    {
+      "startSeconds": 199.599,
+      "durationSeconds": 6.081,
+      "text": "access token to request our photos from"
+    },
+    {
+      "startSeconds": 202.599,
+      "durationSeconds": 5.481,
+      "text": "snap store's resource server this all"
+    },
+    {
+      "startSeconds": 205.68,
+      "durationSeconds": 4.759,
+      "text": "off to process ensures that our Snap"
+    },
+    {
+      "startSeconds": 208.08,
+      "durationSeconds": 5.439,
+      "text": "Store login credentials are never"
+    },
+    {
+      "startSeconds": 210.439,
+      "durationSeconds": 5.241,
+      "text": "exposed to pre magic while allowing pre"
+    },
+    {
+      "startSeconds": 213.519,
+      "durationSeconds": 5.521,
+      "text": "magic to access only the photos we"
+    },
+    {
+      "startSeconds": 215.68,
+      "durationSeconds": 6.24,
+      "text": "authorized it to see it's also important"
+    },
+    {
+      "startSeconds": 219.04,
+      "durationSeconds": 6,
+      "text": "to note that the access token can be set"
+    },
+    {
+      "startSeconds": 221.92,
+      "durationSeconds": 6.12,
+      "text": "to expire after a certain time or can be"
+    },
+    {
+      "startSeconds": 225.04,
+      "durationSeconds": 4.68,
+      "text": "revoked by us at any point providing an"
+    },
+    {
+      "startSeconds": 228.04,
+      "durationSeconds": 5.52,
+      "text": "additional layer of"
+    },
+    {
+      "startSeconds": 229.72,
+      "durationSeconds": 6.12,
+      "text": "security oa2 also support refresh tokens"
+    },
+    {
+      "startSeconds": 233.56,
+      "durationSeconds": 5.12,
+      "text": "which can be used to obtain a new access"
+    },
+    {
+      "startSeconds": 235.84,
+      "durationSeconds": 6.16,
+      "text": "token when the o one expires without"
+    },
+    {
+      "startSeconds": 238.68,
+      "durationSeconds": 5.88,
+      "text": "requiring our in ition that's o off to"
+    },
+    {
+      "startSeconds": 242,
+      "durationSeconds": 5.12,
+      "text": "in a nutshell is an essential piece of"
+    },
+    {
+      "startSeconds": 244.56,
+      "durationSeconds": 5.84,
+      "text": "the web security infrastructure and the"
+    },
+    {
+      "startSeconds": 247.12,
+      "durationSeconds": 5.8,
+      "text": "backbone of many secure Seamless app"
+    },
+    {
+      "startSeconds": 250.4,
+      "durationSeconds": 5.399,
+      "text": "interactions we use"
+    },
+    {
+      "startSeconds": 252.92,
+      "durationSeconds": 4.839,
+      "text": "daily if you like our videos you may"
+    },
+    {
+      "startSeconds": 255.799,
+      "durationSeconds": 5,
+      "text": "like our system design newsletter as"
+    },
+    {
+      "startSeconds": 257.759,
+      "durationSeconds": 5.641,
+      "text": "well it covers topics and Trends in"
+    },
+    {
+      "startSeconds": 260.799,
+      "durationSeconds": 6.801,
+      "text": "large scale system design trusted by"
+    },
+    {
+      "startSeconds": 263.4,
+      "durationSeconds": 7.72,
+      "text": "400,000 readers subscribe that blog."
+    },
+    {
+      "startSeconds": 267.6,
+      "durationSeconds": 3.52,
+      "text": "byby go.com"
+    }
+  ],
+  "chapters": [],
+  "fetchedAt": "2026-09-11T04:23:15.865Z"
+}

@@ -1,0 +1,278 @@
+{
+  "version": 1,
+  "provider": "youtube",
+  "videoId": "aVgZE746OXw",
+  "url": "https://www.youtube.com/watch?v=aVgZE746OXw",
+  "title": "How Retrieval and Reranking works in RAG | Bi Encoder vs Cross Encoder",
+  "description": "In this video we explore the difference between bi encoders and cross encoders.\nBi encoders are primarily used as embedding model in a retriever while cross encoders are mainly used as reranking model in a Retrieval Augmented Generation (RAG) flow. \n\nTimestamps\n0:00 Background\n1:29 Cross Encoder\n2:36 Bi Encoder\n3:27 Differences between bi encoders and cross encoders\n4:01 Code Snippets for bi encoders and cross encoders\n4:16 Attempts to bridge the gap",
+  "expectedDurationSeconds": 315,
+  "transcript": [
+    {
+      "startSeconds": 1.08,
+      "durationSeconds": 5.24,
+      "text": "Retrieval and reranking are two important \nconcepts in the RAG workflow. But how do"
+    },
+    {
+      "startSeconds": 6.32,
+      "durationSeconds": 6,
+      "text": "they actually work and why is there a need to \nuse reranking models to rank context passages"
+    },
+    {
+      "startSeconds": 12.32,
+      "durationSeconds": 5.12,
+      "text": "again after retrieval? That's what we'll be \nexploring in this video. We would be focusing"
+    },
+    {
+      "startSeconds": 17.44,
+      "durationSeconds": 7.08,
+      "text": "on embedding using BERT based bi-encoder and \nranking using BERT based cross encoders. On a"
+    },
+    {
+      "startSeconds": 24.52,
+      "durationSeconds": 6.08,
+      "text": "high level embedding models are typically used for \ncreating embeddings of documents and queries both"
+    },
+    {
+      "startSeconds": 30.6,
+      "durationSeconds": 6.2,
+      "text": "in the vector store creation and context retrieval \nstage, while reranking models are typically used"
+    },
+    {
+      "startSeconds": 36.8,
+      "durationSeconds": 6.44,
+      "text": "to rerank context passages post the context \nretrieval stage. Embedding models can be used"
+    },
+    {
+      "startSeconds": 43.24,
+      "durationSeconds": 7,
+      "text": "for creating embeddings as well as determining the \nsimilarity score but ranking models can only help"
+    },
+    {
+      "startSeconds": 50.24,
+      "durationSeconds": 6.56,
+      "text": "with determining the similarity score. BERT model \nuses the same Transformer architecture outlined in"
+    },
+    {
+      "startSeconds": 56.8,
+      "durationSeconds": 7.4,
+      "text": "the paper Attention is all you need. A Transformer \nmodel comprises of an encoder and a decoder. If"
+    },
+    {
+      "startSeconds": 64.2,
+      "durationSeconds": 4.32,
+      "text": "you would need the numerical representation \nof a passage of text, you would simply use"
+    },
+    {
+      "startSeconds": 68.52,
+      "durationSeconds": 6.12,
+      "text": "the pooled output of the BERT Model. A BERT model \nis simply a bidirectional multi-layer Transformer"
+    },
+    {
+      "startSeconds": 74.64,
+      "durationSeconds": 6.24,
+      "text": "encoder. This output embedding represents the \nsemantics as well as other aspects of the piece"
+    },
+    {
+      "startSeconds": 80.88,
+      "durationSeconds": 9.04,
+      "text": "of text as a whole in the n dimensional \nspace. Here n is the size of the embedding"
+    },
+    {
+      "startSeconds": 90.68,
+      "durationSeconds": 5.4,
+      "text": "A BERT based cross encoder model accepts a pair \nof text and determines the degree of similarity"
+    },
+    {
+      "startSeconds": 96.08,
+      "durationSeconds": 6,
+      "text": "between them using a binary classification head. \nGiven a query and document, it first tokenizes"
+    },
+    {
+      "startSeconds": 102.08,
+      "durationSeconds": 5.4,
+      "text": "them. Then they are merged together separated by \nthe SEP token. The input embeddings corresponding"
+    },
+    {
+      "startSeconds": 107.48,
+      "durationSeconds": 6,
+      "text": "to the tokens are then fed to the BERT model. The \npooled output of the BERT model is finally passed"
+    },
+    {
+      "startSeconds": 113.48,
+      "durationSeconds": 5.68,
+      "text": "on to the binary classification layer. The output \nof the binary classification layer lies in the"
+    },
+    {
+      "startSeconds": 119.16,
+      "durationSeconds": 7,
+      "text": "range 0 and 1 and it is a measure of the semantic \nsimilarity between the query and the document."
+    },
+    {
+      "startSeconds": 126.16,
+      "durationSeconds": 4.76,
+      "text": "There are token level interactions between the \nquery and the passage which contributes to its"
+    },
+    {
+      "startSeconds": 130.92,
+      "durationSeconds": 6.8,
+      "text": "high accuracy in determining semantic similarity. \nBut there is an issue here. If we have a long"
+    },
+    {
+      "startSeconds": 137.72,
+      "durationSeconds": 4.56,
+      "text": "document and we want to get the passages \nmost semantically similar to a given query,"
+    },
+    {
+      "startSeconds": 142.28,
+      "durationSeconds": 5.28,
+      "text": "we would have to pass all the query passage \npairs at runtime for the entire document. This"
+    },
+    {
+      "startSeconds": 147.56,
+      "durationSeconds": 5.4,
+      "text": "would lead to poor latency if used on real time \napplications and also lead to high computational"
+    },
+    {
+      "startSeconds": 152.96,
+      "durationSeconds": 9.28,
+      "text": "cost. This is where buy encoder comes in. Here \nqueries and passages are processed separately,"
+    },
+    {
+      "startSeconds": 162.24,
+      "durationSeconds": 5.12,
+      "text": "so we don't need to pass them in pairs \njust like in Cross encoders. A given"
+    },
+    {
+      "startSeconds": 167.36,
+      "durationSeconds": 5.36,
+      "text": "piece of text is tokenized and passed to a \nBERT model. Mean pooling is then applied,"
+    },
+    {
+      "startSeconds": 172.72,
+      "durationSeconds": 7.12,
+      "text": "finally after normalization we get the output \nembeddings corresponding to the input text"
+    },
+    {
+      "startSeconds": 184.92,
+      "durationSeconds": 3.2,
+      "text": "Now if we have a query and a passage, we can find"
+    },
+    {
+      "startSeconds": 188.12,
+      "durationSeconds": 4.4,
+      "text": "out their degree of semantic similarity \nby using cosine similarity over both the"
+    },
+    {
+      "startSeconds": 192.52,
+      "durationSeconds": 8.92,
+      "text": "embeddings. If we have a query and two passages, \nwe can find out which passage is most semantically"
+    },
+    {
+      "startSeconds": 201.44,
+      "durationSeconds": 6.48,
+      "text": "similar by comparing the cosine similarity \nscores of both the passages with the query."
+    },
+    {
+      "startSeconds": 207.92,
+      "durationSeconds": 6.76,
+      "text": "So in bi-encoders, accuracy of semantic similarity \nmatching is slightly reduced due to the absence of"
+    },
+    {
+      "startSeconds": 214.68,
+      "durationSeconds": 5.64,
+      "text": "token level interactions between the query \nand the passages. But on a brighter side,"
+    },
+    {
+      "startSeconds": 220.32,
+      "durationSeconds": 5.04,
+      "text": "passages can be processed separately, and \nthe embeddings can be stored beforehand."
+    },
+    {
+      "startSeconds": 225.36,
+      "durationSeconds": 5.52,
+      "text": "For a given query we can retrieve the passage \nmost semantically similar using the cosine"
+    },
+    {
+      "startSeconds": 230.88,
+      "durationSeconds": 6,
+      "text": "similarity operation. Since the passages needs \nto be processed just once, similarity matching"
+    },
+    {
+      "startSeconds": 236.88,
+      "durationSeconds": 6.68,
+      "text": "is less computationally expensive compared \nto cross encoders. You can try out cross"
+    },
+    {
+      "startSeconds": 243.56,
+      "durationSeconds": 12.52,
+      "text": "encoder and bi encoder models using both sentence \nTransformer library as well as through Langchain"
+    },
+    {
+      "startSeconds": 256.08,
+      "durationSeconds": 3.96,
+      "text": "Significant attempts have been made to \nbridge the gap between cross encoders"
+    },
+    {
+      "startSeconds": 260.04,
+      "durationSeconds": 6.44,
+      "text": "and bi encoders. This paper introduces \nthe concept of late interactions. Instead"
+    },
+    {
+      "startSeconds": 266.48,
+      "durationSeconds": 4.76,
+      "text": "of compressing the entire passage into \na single vector embedding, it proposes"
+    },
+    {
+      "startSeconds": 271.24,
+      "durationSeconds": 4.88,
+      "text": "token level embeddings. Similarity \nmatch is performed using the MaxSim"
+    },
+    {
+      "startSeconds": 276.12,
+      "durationSeconds": 10.48,
+      "text": "operation. This paper on the other hand proposes \ntraining strategies for shallow cross encoders."
+    },
+    {
+      "startSeconds": 286.6,
+      "durationSeconds": 5.4,
+      "text": "A shallow cross encoder would have less number \nof layers than a full-sized BERT model and their"
+    },
+    {
+      "startSeconds": 292,
+      "durationSeconds": 6.8,
+      "text": "latency on retrieval task would be much better. \nThese would be covered in much more detail in"
+    },
+    {
+      "startSeconds": 298.8,
+      "durationSeconds": 15.56,
+      "text": "my upcoming videos. So that's it for this video. \nHope you like it. Let's learn and grow together"
+    }
+  ],
+  "chapters": [
+    {
+      "startSeconds": 0,
+      "label": "Background"
+    },
+    {
+      "startSeconds": 89,
+      "label": "Cross Encoder"
+    },
+    {
+      "startSeconds": 156,
+      "label": "Bi Encoder"
+    },
+    {
+      "startSeconds": 207,
+      "label": "Differences between bi encoders and cross encoders"
+    },
+    {
+      "startSeconds": 241,
+      "label": "Code Snippets for bi encoders and cross encoders"
+    },
+    {
+      "startSeconds": 256,
+      "label": "Attempts to bridge the gap"
+    }
+  ],
+  "fetchedAt": "2026-09-11T04:22:54.953Z"
+}
