@@ -40,7 +40,7 @@ export function SearchBox({ className, children }: SearchBoxProps) {
   }
 
   return (
-    <form className={className} role="search" onSubmit={handleSubmit}>
+    <form className={className} role="search" action="/search" method="get" onSubmit={handleSubmit}>
       {children}
     </form>
   );

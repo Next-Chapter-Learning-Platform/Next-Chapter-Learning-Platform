@@ -21,6 +21,7 @@
 /build
 # /studio/dist/
 /studio/node_modules/
+/studio/.video-ingestion/
 # /studio/.sanity/
 
 # misc

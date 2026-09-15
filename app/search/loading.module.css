@@ -1,0 +1,6 @@
+.page { display: grid; width: min(calc(100% - 48px), 1170px); gap: 14px; margin: 0 auto; padding: 70px 0; }
+.page span { display: block; border-radius: 11px; background: linear-gradient(100deg, #f8f2ee 20%, #fff 40%, #f8f2ee 60%); background-size: 220% 100%; animation: shimmer 1.5s linear infinite; }
+.title { width: 46%; height: 54px; margin: 0 auto 20px; }
+.search { height: 66px; }
+.card { height: 225px; }
+@keyframes shimmer { to { background-position-x: -220%; } }
